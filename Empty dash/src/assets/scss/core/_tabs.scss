@@ -1,0 +1,83 @@
+
+.nav-tabs {
+    border: 1;
+    border-radius: $border-radius-base;
+    padding: 1 15px;
+
+    .nav-item {
+        .nav-link {
+            color:brown;
+            border: 5;
+            margin: 1;
+            border-radius: $border-radius-base;
+            line-height: $mdb-btn-font-size-base * 2;
+            text-transform: uppercase;
+            font-size:101%;
+            padding: 10px 15px;
+            background-color:transparent;
+            transition: 0.3s background-color 0s;
+
+            &:hover {
+                border:medium;
+            }
+        }
+        .nav-link,
+        .nav-link:hover,
+        .nav-link:focus {
+            border:medium;
+            color:grey;
+            font-weight:bold;
+        }
+        &.disabled .nav-link,
+        &.disabled .nav-link:hover {
+            color:#ef5350;
+        }
+
+        .material-icons{
+            margin: -1px 5px 0 0;
+        }
+
+        .nav-link.active{
+            background-color:#ef5350;
+            transition: 0.3s background-color 0.2s;
+        }
+    }
+}
+
+
+.nav-tabs {
+  .nav-link {
+    border-bottom: $bmd-nav-tabs-border-size solid transparent;
+  }
+
+  // colors
+  @include bmd-tabs-color($bmd-nav-tabs-color, $bmd-nav-tabs-active-color, $bmd-nav-tabs-active-border-color, $bmd-nav-tabs-disabled-link-color, $bmd-nav-tabs-disabled-link-color-hover);
+
+  &.header-primary {
+    @include bmd-tabs-color($bmd-nav-tabs-primary-color, $bmd-nav-tabs-primary-active-color, $bmd-nav-tabs-primary-active-border-color, $bmd-nav-tabs-primary-disabled-link-color, $bmd-nav-tabs-primary-disabled-link-color-hover);
+  }
+
+  &.bg-inverse {
+    @include bmd-tabs-color($bmd-nav-tabs-inverse-color, $bmd-nav-tabs-inverse-active-color, $bmd-nav-tabs-inverse-active-border-color, $bmd-nav-tabs-inverse-disabled-link-color, $bmd-nav-tabs-inverse-disabled-link-color-hover);
+  }
+}
+
+
+
+.card-nav-tabs{
+    margin-top: 45px;
+
+    .card-header{
+        margin-top: -30px !important;
+    }
+}
+
+.tab-content .tab-pane .td-actions{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.card .tab-content .form-check{
+  margin-top: 6px;
+}
