@@ -7,10 +7,10 @@ import { GalleryComponent } from 'app/gallery/gallery.component';
 
 @Component({
   selector: 'app-typography',
-  templateUrl: './typography.component.html',
-  styleUrls: ['./typography.component.css']
+  templateUrl: './pre-select.component.html',
+  styleUrls: ['./pre-select.component.css']
 })
-export class TypographyComponent implements OnInit {
+export class PreselectComponent implements OnInit {
   tabs = ['General Information', 'Clinical Information', 'Final Assesment'];
   selected = new FormControl(0);
   tabtitle:string = '';

@@ -3,10 +3,10 @@ import * as Chartist from 'chartist';
 
 @Component({
   selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  templateUrl: './patient.component.html',
+  styleUrls: ['./patient.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class PatientComponent implements OnInit {
 
   constructor() { }
   startAnimationForLineChart(chart){

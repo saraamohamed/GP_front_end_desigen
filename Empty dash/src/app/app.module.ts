@@ -10,13 +10,12 @@ import { ComponentsModule } from './components/components.module';
 
 import { AppComponent } from './app.component';
 
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
+import { PatientComponent } from './patient/patient.component';
+import { DoctorProfileComponent } from './doctor-profile/doctor-profile.component';
 import { TableListComponent } from './table-list/table-list.component';
-import { TypographyComponent } from './typography/typography.component';
+import { PreselectComponent } from './pre-select/pre-select.component';
 import { IconsComponent } from './icons/icons.component';
 import { MapsComponent } from './maps/maps.component';
-import { NotificationsComponent } from './notifications/notifications.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
 import {
   AgmCoreModule
@@ -26,7 +25,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 
 import { BrowserModule } from '@angular/platform-browser';
 
-import { HelloComponent } from './typography/hello.component';
+import { HelloComponent } from './pre-select/hello.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
  import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
  import {MatAutocompleteModule} from '@angular/material/autocomplete';
