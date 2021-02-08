@@ -55,7 +55,11 @@ export class ClinicalInfo{
     distanceFromTheNipple: string = '';
 }
 export class FinalAssessmeny{
-
+    id: number = 0;
+    recommendationId: number = 0;
+    radAiId: number = 0;
+    recommendationText: string = '';
+    conc: string = '';
 }
 export class Patient{
     id: number = 0;

@@ -32,7 +32,7 @@ import {MatChipsModule} from '@angular/material/chips';
 
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
-import {MatNativeDateModule, MatRippleModule} from '@angula r/material/core';
+import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';

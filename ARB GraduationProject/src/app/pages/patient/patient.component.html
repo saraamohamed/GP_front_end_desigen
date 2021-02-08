@@ -14,26 +14,30 @@
             <div class="col-8">
             <h3 class="mb-0">Patient Information</h3>
             </div>
-            <div class="col-4 text-right">
-            <a href="#!" class="btn btn-sm btn-primary">Add Patient</a>
-            </div>
+            
         </div>
         </div>
         <div class="card-body">
-        <form>
+        <form #form="ngForm" (submit)="OnSubmit(form)">
             <h6 class="heading-small text-muted mb-4">Contact information</h6>
             <div class="pl-lg-4">
             <div class="row">
               <div class="col-lg-6">
+                
+
                 <div class="form-group focused">
+                    <input name = "id" type="hidden" [value]="service.ExamData.id"/>
                     <label class="form-control-label" for="input-username">Patient Name</label>
-                    <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="Mohamed Omar">
+
+                    <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" 
+                    name = "name" #name = "ngModel" [(ngModel)] = "service.ExamData.name">
                 </div>
                 </div>
                 <div class="col-lg-6">
                 <div class="form-group">
                     <label class="form-control-label" for="input-email">Email address</label>
-                    <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="Mohamed@example.com">
+                    <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="Mohamed@example.com"
+                    name = "email" #email = "ngModel" [(ngModel)] = "service.ExamData.email">
                 </div>
                 </div>
             </div>
@@ -41,13 +45,15 @@
                 <div class="col-lg-6">
                 <div class="form-group focused">
                     <label class="form-control-label" for="input-first-name">Mopile Number</label>
-                    <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" value="01111222333">
+                    <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="Mobile Number" 
+                    name = "mobileNumber" #mobileNumber = "ngModel" [(ngModel)] = "service.ExamData.mobileNumber">
                 </div>
                 </div>
                 <div class="col-lg-6">
                 <div class="form-group focused">
                     <label class="form-control-label" for="input-last-name">Patient ID</label>
-                    <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="ID">
+                    <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Patient Id" 
+                    name = "patientID" #patientID = "ngModel" [(ngModel)] = "service.ExamData.patientID">
                 </div>
                 </div>
             </div>
@@ -56,7 +62,9 @@
                 <div class="col-md-12">
                 <div class="form-group focused">
                     <label class="form-control-label" for="input-address">Address</label>
-                    <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="22 new St- cairo - Egypt" type="text">
+                    <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" 
+                    name = "address" #address = "ngModel" [(ngModel)] = "service.ExamData.address"
+                    type="text">
                 </div>
                 </div>
             </div>
@@ -70,19 +78,25 @@
                 <div class="col-lg-4">
                 <div class="form-group focused">
                     <label class="form-control-label" for="input-city">Modality</label>
-                    <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" value="MRI">
+                    <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" 
+                    name = "modality" #modality = "ngModel" [(ngModel)] = "service.ExamData.modality">
+                    
                 </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="form-group">
-                        <label class="form-control-label" for="input-country">Referring Doctor</label>
-                        <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="DR. Ahmed">
+                    <div class="form-group focused">
+                        <label class="form-control-label" for="input-city">Referring Doctor</label>
+                        <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" 
+                        name = "referringDoctor" #referringDoctor = "ngModel" [(ngModel)] = "service.ExamData.referringDoctor">
+                        
                     </div>
                     </div>
                 <div class="col-lg-4">
                 <div class="form-group focused">
                     <label class="form-control-label" for="input-country">Study Date</label><br>
-                    <input type="date" id="DATE_1449431264015" name="" data-field-type="DATE" data-field-completion-action="NONE" value=""  />
+                    <input type="date" id="DATE_1449431264015"  data-field-type="DATE" data-field-completion-action="NONE" 
+                    name = "studyDate" #studyDate = "ngModel" [(ngModel)] = "service.ExamData.studyDate">
+             
                 </div>
                 </div>
 
@@ -93,8 +107,13 @@
             <h6 class="heading-small text-muted mb-4">Last Operation</h6>
             <div class="pl-lg-4">
             <div class="form-group focused">
-                <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ..."></textarea>
+                <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ..." 
+                name = "lastOperation" #lastOperation = "ngModel" [(ngModel)] = "service.ExamData.lastOperation"
+                ></textarea>
             </div>
+            </div>
+            <div class="col-4 text-right">
+                <button href="#!" type="submit" class="btn btn-sm btn-primary" >Add Patient</button>
             </div>
         </form>
       </div>

@@ -10,13 +10,17 @@ export class ArbProjectService {
 
   constructor(private http:HttpClient) { }
 
-  readonly  baseUrl = 'http://localhost:57645/api/test';
+  readonly  examDataUrl = 'http://localhost:57645/api/ExamData';
+  ExamData:ExamData = new ExamData();
   httpOptions={
     headers: new HttpHeaders({
       'Content-type':'applicaion/json',
       'Access-Control-Allow-Origin':'*'
     })
   };
+  PostExamData(){
+    return (this.http.post(this.examDataUrl,this.ExamData));
+  }
 
 
 

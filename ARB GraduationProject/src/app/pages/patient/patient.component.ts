@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js';
+import { ArbProjectService } from 'src/app/shared/arb-project.service';
+import { NgForm } from '@angular/forms';
 
 // core components
 import {
@@ -15,6 +17,9 @@ import {
   styleUrls: ['./patient.component.scss']
 })
 export class PatientComponent implements OnInit {
+
+
+  constructor(public service:ArbProjectService) { }
 
   public datasets: any;
   public data: any;
@@ -56,5 +61,19 @@ export class PatientComponent implements OnInit {
     this.salesChart.data.datasets[0].data = this.data;
     this.salesChart.update();
   }
+  OnSubmit(form:NgForm){
 
+    if(this.service.ExamData. id == 0)
+        this.insertRecord(form);
+
+}
+insertRecord(form:NgForm){
+  this.service.PostExamData().subscribe(
+    res=>{
+    },
+    err=>{
+      console.log(err);
+    }
+)
+}
 }
