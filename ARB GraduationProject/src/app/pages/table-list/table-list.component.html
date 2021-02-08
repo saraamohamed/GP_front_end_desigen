@@ -17,7 +17,7 @@
                 <th scope="col">Patient Id</th>
                 <th scope="col">Birthdate</th>
                 <th scope="col">Status</th>
-                <th scope="col"> Performance</th>
+                <!-- <th scope="col"> Performance</th> -->
                 <th scope="col">Modality </th>
                 <th scope="col">Study Datetime</th>
                 <th scope="col">Referring Doctor</th>
@@ -35,11 +35,11 @@
                 </td>
                   <th scope="row">
                       <div class="media-body">
-                        <span class="mb-0 text-sm">Hana</span>
+                        <span class="mb-0 text-sm">{{pd.name}}</span>
                       </div>
                   </th>
                 <td >
-                    13659875
+                    {{pd.patientID}}
                 </td>
                 <td >
                   38
@@ -83,171 +83,7 @@
                   </div>
                 </td>
               </tr>
-<!-------------------------------------------2nd ROW------------------------------------------------------>
-              <tr>
-                <td >
-                   2
-                </td>
-                  <th scope="row">
-                      <div class="media-body">
-                        <span class="mb-0 text-sm">Aza</span>
-                      </div>
-                  </th>
-                <td >
-                    13659876
-                </td>
-                <td >
-                  42
-                </td>
-                <td>
-                  <span class="badge badge-dot mr-4">
-                    <i class="bg-warning"></i> completed
-                  </span>
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">100%</span>
-                    <div>
-                      <div class="progress">
-                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
 
-                <td><!--Modality -->
-                  Mamography
-                </td>
-                <td><!--Study Datetime -->
-                  8/12/2020
-                </td>
-                <td><!--Referring Doctor -->
-                  DR/ Harpy
-                </td>
-
-                <td class="text-right">
-                  <div ngbDropdown placement="bottom-right">
-                    <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                    <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" href="javascript:void(0)">Delete</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Edit</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Mark as done </a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-<!-------------------------------------------3rd ROW------------------------------------------------------>
-              <tr>
-                <td >
-                    3
-                </td>
-                  <th scope="row">
-                      <div class="media-body">
-                        <span class="mb-0 text-sm">salwa</span>
-                      </div>
-                  </th>
-                <td >
-                    13659877
-                </td>
-                <td >
-                  33
-                </td>
-                <td>
-                  <span class="badge badge-dot mr-4">
-                    <i class="bg-warning"></i> delayed
-                  </span>
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">80%</span>
-                    <div>
-                      <div class="progress">
-                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-
-                <td><!--Modality -->
-                  Mamography
-                </td>
-                <td><!--Study Datetime -->
-                  28/12/2020
-                </td>
-                <td><!--Referring Doctor -->
-                  DR/ Harpy
-                </td>
-
-                <td class="text-right">
-                  <div ngbDropdown placement="bottom-right">
-                    <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                    <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" href="javascript:void(0)">Delete</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Edit</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Mark as done </a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-<!-------------------------------------------4th ROW------------------------------------------------------>
-              <tr>
-                <td >
-                    4
-                </td>
-                  <th scope="row">
-                      <div class="media-body">
-                        <span class="mb-0 text-sm">Nahed</span>
-                      </div>
-                  </th>
-                <td >
-                    13659878
-                </td>
-                <td >
-                  40
-                </td>
-                <td>
-                  <span class="badge badge-dot mr-4">
-                    <i class="bg-warning"></i> on schedule
-                  </span>
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">70%</span>
-                    <div>
-                      <div class="progress">
-                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-
-                <td><!--Modality -->
-                  Mamography
-                </td>
-                <td><!--Study Datetime -->
-                  3/1/2021
-                </td>
-                <td><!--Referring Doctor -->
-                  DR/ Harpy
-                </td>
-
-                <td class="text-right">
-                  <div ngbDropdown placement="bottom-right">
-                    <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                    <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" href="javascript:void(0)">Delete</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Edit</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Mark as done </a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
             </tbody>
           </table>
         </div>

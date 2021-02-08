@@ -11,7 +11,7 @@ import {
   chartExample1,
   chartExample2
 } from "../../variables/charts";
-import { extname } from 'path';
+// import { extname } from 'path';
 import { ExamData } from 'src/app/shared/arb-project.model';
 
 @Component({
