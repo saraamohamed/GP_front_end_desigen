@@ -10,7 +10,7 @@ import {
 } from "../../variables/charts";
 
 @Component({
-  selector: 'app-new-patient-form',
+  selector: 'app-patient',
   templateUrl: './patient.component.html',
   styleUrls: ['./patient.component.scss']
 })
