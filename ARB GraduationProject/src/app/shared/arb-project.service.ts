@@ -23,10 +23,10 @@ export class ArbProjectService {
 
 
 
-  refreshList() {
-    this.http.get(this.baseUrl)
-      .toPromise()
-      .then(res =>this.list = res as test[]);
-  }
+  // refreshList() {
+  //   this.http.get(this.baseUrl)
+  //     .toPromise()
+  //     .then(res =>this.list = res as test[]);
+  // }
 
 }
