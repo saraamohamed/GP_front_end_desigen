@@ -13,8 +13,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
- import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
- import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
@@ -32,7 +32,7 @@ import {MatChipsModule} from '@angular/material/chips';
 
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
-import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
+import {MatNativeDateModule, MatRippleModule} from '@angula r/material/core';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
@@ -86,6 +86,7 @@ import { BrowserModule } from '@angular/platform-browser';
     BrowserModule,   
     FormsModule, 
     BrowserAnimationsModule,
+    HttpClientModule,
     NgxGalleryModule,
   ],
   declarations: [
