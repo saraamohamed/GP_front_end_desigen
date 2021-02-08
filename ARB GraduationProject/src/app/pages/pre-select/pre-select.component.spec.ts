@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PatientComponent } from './patient.component';
+import { PreselectComponent } from './pre-select.component';
 
-describe('PatientComponent', () => {
-  let component: PatientComponent;
-  let fixture: ComponentFixture<PatientComponent>;
+describe('TypographyComponent', () => {
+  let component: PreselectComponent;
+  let fixture: ComponentFixture<PreselectComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PatientComponent ]
+      declarations: [ PreselectComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PatientComponent);
+    fixture = TestBed.createComponent(PreselectComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
