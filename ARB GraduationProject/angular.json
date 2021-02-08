@@ -33,7 +33,9 @@
             ],
             "scripts": [
               "node_modules/chart.js/dist/Chart.min.js",
-              "node_modules/clipboard/dist/clipboard.min.js"
+              "node_modules/clipboard/dist/clipboard.min.js",
+              "node_modules/bootstrap-material-design/dist/js/bootstrap-material-design.min.js"
+
             ]
           },
           "configurations": {

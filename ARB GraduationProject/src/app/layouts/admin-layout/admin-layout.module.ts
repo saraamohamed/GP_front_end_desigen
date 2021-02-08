@@ -12,6 +12,14 @@ import { ReportComponent } from '../../pages/report/report.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { TableListComponent } from '../../pages/table-list/table-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatRippleModule} from '@angular/material/core';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSelectModule} from '@angular/material/select';
+// import { GalleryComponent } from 'app/gallery/gallery.component';
+import {NgxGalleryModule} from '@kolkov/ngx-gallery';
 
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -22,7 +30,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     HttpClientModule,
     NgbModule,
-    ClipboardModule
+    ClipboardModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatRippleModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatTooltipModule,
+    NgxGalleryModule
   ],
   declarations: [
     PatientComponent,
