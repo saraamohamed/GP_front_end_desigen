@@ -25,6 +25,7 @@ export class ArbProjectService {
   list:ExamData[];
   FinalAssessment:FinalAssessment = new FinalAssessment();
   ClinicalInfo:ClinicalInfo = new ClinicalInfo();
+  Patient:Patient = new Patient();
   whichVar(Name:string)
   {
     switch(Name){
@@ -37,12 +38,14 @@ export class ArbProjectService {
         return(this.ClinicalInfo);
       case 'ExamData':
         return(this.ExamData);
+      case 'Patient':
+        return(this.Patient);
     }
   }
 
   Post(APIUrl){
     let variableName = this.whichVar(APIUrl);
-    
+    console.log(variableName);
     return(this.http.post(`${this.APIUrl}/${APIUrl}`,variableName));
 
   }
