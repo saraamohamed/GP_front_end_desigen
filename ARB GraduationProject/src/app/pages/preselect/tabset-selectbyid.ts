@@ -14,8 +14,13 @@ export class NgbdTabsetSelectbyid  implements OnInit{
   constructor(public service:ArbProjectService,private http:HttpClient) { }
   ClinicalInfo:ClinicalInfo = new ClinicalInfo();
 
-
+  BiRadslist=[]
+  RecommendationList=[]
   ngOnInit(): void {
+    this.service.getBiRadsCombo()
+    .subscribe(res => this.BiRadslist = res as []);
+    this.service.getRecommendationCombo()
+    .subscribe(res => this.RecommendationList = res as []);
   }
 
   OnSubmit(form:NgForm,data:string){

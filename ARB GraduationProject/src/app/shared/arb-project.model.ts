@@ -67,7 +67,7 @@ export class ClinicalInfo{
     depth: string = '';
     distanceFromTheNipple: string = '';
 }
-export class FinalAssessmeny{
+export class FinalAssessment{
     id: number = 0;
     recommendationId: number = 0;
     radAiId: number = 0;

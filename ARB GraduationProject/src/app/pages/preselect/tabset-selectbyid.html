@@ -517,34 +517,24 @@
 
     <ngb-tab id="Final-tab" title="Final Assesment">
       <ng-template ngbTabContent>
-
+        <form #form="ngForm" (submit)="OnSubmit(form,'FinalAssessment')">
             <div class="form-group focused">
                 <h5 class="form-control-label" for="Mammo-history" style= "margin-right: 15px; padding-top: 15px;">BIRADS Categories</h5>
-                <select class="custom-select">
-                <option selected="">1</option>
-                <option value="Vascular">2</option>
-                <option value="Coarse or “popcorn-like”">3</option>
-                <option value="Large">4</option>
-                <option value="rod-like ">5 </option>
-                <option value="Round">4a</option>
-                <option value="Rim">4b</option>
-                <option value="Dystrophic">4c</option>
-                <option value="Milk of calcium Suture">5</option>
-                <option value="Milk of calcium Suture">6</option>
-                </select>
+                
+                <!-- name = "radAiId" #radAiId = "ngModel" [(ngModel)] = "service.FinalAssessment.radAiId" -->
+                <select class="custom-select" >
+                    <option value = "0"> SELECT</option>
+                    <option *ngFor="let item of BiRadslist" value="{{item.id}}">{{item.name}}</option>
+                  </select>
             </div>
 
             <div class="form-group focused">
                 <h5 class="form-control-label" for="Mammo-history" style= "margin-right: 15px; padding-top: 15px;"> Recommendation</h5>
-                <select class="custom-select">
-                <option selected="">Ultrasound</option>
-                <option value="Vascular">MRI</option>
-                <option value="Coarse or “popcorn-like”">Histology</option>
-                <option value="Large">Stereotactic Biopsy</option>
-                <option value="rod-like ">Repeat imaging over 6 months </option>
-                <option value="Round">No further investigation necessary</option>
-                <option value="Rim">no further research necessary, return screening</option>
-                </select>
+                
+                <select class="custom-select" >
+                    <option value = "0"> SELECT</option>
+                    <option *ngFor="let item of RecommendationList" value="{{item.id}}">{{item.name}}</option>
+                  </select>
                 <textarea rows="4" class="form-control form-control-alternative" placeholder=" Other Recommendations ..." style="border: 1ch;"></textarea>
             </div>
 
@@ -557,7 +547,7 @@
   
 
         
-    
+        </form>
         </ng-template>
     </ngb-tab>
 </ngb-tabset>

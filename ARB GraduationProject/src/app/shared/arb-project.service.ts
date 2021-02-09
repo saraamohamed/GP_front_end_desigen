@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import { ExamData, Patient , Doctor , GeneralInfo ,ClinicalInfo ,FinalAssessmeny} from './arb-project.model';
+import { ExamData, Patient , Doctor , GeneralInfo ,ClinicalInfo ,FinalAssessment} from './arb-project.model';
 import {HttpHeaders} from "@angular/common/http";
 
 @Injectable({
@@ -16,17 +16,20 @@ export class ArbProjectService {
     })
   };
   readonly APIUrl = 'http://localhost:57645/api/';
+  readonly ComboUrl = 'http://localhost:57645/api/combobox';
   readonly  examDataUrl = 'http://localhost:57645/api/ExamData';
   readonly  generalInfoUrl = 'http://localhost:57645/api/generalinfo';
   
   ExamData:ExamData = new ExamData();
   GeneralInfo:GeneralInfo = new GeneralInfo();
   list:ExamData[];
-  
+  FinalAssessment:FinalAssessment = new FinalAssessment();
   ClinicalInfo:ClinicalInfo = new ClinicalInfo();
   whichVar(Name:string)
   {
     switch(Name){
+      case 'FinalAssessment':
+        return(this.FinalAssessment);
       case 'GeneralInfo':
         return(this.GeneralInfo);
       case 'ClinicalInfo':
@@ -48,6 +51,12 @@ export class ArbProjectService {
   Delete(APIUrl,id)
   {
     return (this.http.delete(`${this.APIUrl}/${APIUrl}/${id}`)); 
+  }
+  getBiRadsCombo(){
+    return (this.http.get(`${this.ComboUrl}/getbirads`));
+  }
+  getRecommendationCombo(){
+    return (this.http.get(`${this.ComboUrl}/getrecommendation`));
   }
 
   getExamData(){
