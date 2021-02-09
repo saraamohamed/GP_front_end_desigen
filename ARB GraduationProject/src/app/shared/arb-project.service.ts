@@ -30,7 +30,7 @@ export class ArbProjectService {
     this.http.get(this.examDataUrl).toPromise().then(
       res => {this.list = res as ExamData[]});
   }
-  putTablelist(){
+  putExamData(){
     return (this.http.put(`${this.examDataUrl}/${this.ExamData.id}`,this.ExamData));
   }
 

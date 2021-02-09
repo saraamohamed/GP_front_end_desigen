@@ -23,7 +23,7 @@ export class PatientComponent implements OnInit {
 
 
   constructor(public service:ArbProjectService,private http:HttpClient) { }
-  ExamData:ExamData = new ExamData();
+
   list:ExamData[];
   public datasets: any;
   public data: any;
@@ -88,7 +88,7 @@ insertRecord(form:NgForm){
 )
 }
 updateRecord(form:NgForm){
-  this.service.putTablelist().subscribe(
+  this.service.putExamData().subscribe(
     res=>{
       this.resetForm(form);
       this.refreshList();
