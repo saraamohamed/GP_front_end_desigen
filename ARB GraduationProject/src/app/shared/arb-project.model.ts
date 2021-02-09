@@ -35,11 +35,24 @@ export class GeneralInfo{
     TakingHormones: boolean = false;
     HowlongTakingHormones: string = '';
 }
+export class features{
+    skinRetraction: boolean = false;
+    nippleRetraction: boolean = false;
+    skinThickening: boolean = false;
+    architecturalDistortion: boolean = false;
+    intramammaryLymphNode: boolean = false;
+    skinLesion: boolean = false;
+    solitaryDilatedDuct: boolean = false;
+    trabecularThickening: boolean = false;
+    axillaryAdenopathy: boolean = false;
+}
+
 export class ClinicalInfo{
     id: number = 0;
     numOfMass: number = 0;
     asyId: number = 0;
     featuresId: number = 0;
+    features:features=new features();
     massMarginId: number = 0;
     massDensityId: number = 0;
     typicallyBenignId: number = 0;

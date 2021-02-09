@@ -31,7 +31,7 @@ export class PatientComponent implements OnInit {
   public clicked: boolean = true;
   public clicked1: boolean = false;
 
-
+ ExamData:ExamData = new ExamData();
  
   ngOnInit() {
 
@@ -62,23 +62,22 @@ export class PatientComponent implements OnInit {
 		});
   }
 
-
   public updateOptions() {
     this.salesChart.data.datasets[0].data = this.data;
     this.salesChart.update();
   }
-
   
-  OnSubmit(form:NgForm){
-    console.log(this.service.ExamData. id);
-    if(this.service.ExamData. id == 0)
-        this.insertRecord(form);
+  OnSubmit(form:NgForm,data:string){
+    console.log(this.service.ExamData.id);
+    if(this.service.ExamData.id == 0)
+        this.insertRecord(form,data);
     else
-        this.updateRecord(form);    
-
+        this.updateRecord(form,data);    
 }
-insertRecord(form:NgForm){
-  this.service.PostExamData().subscribe(
+
+//post('ExamData',ExamData)
+insertRecord(form:NgForm,data:string){
+  this.service.Post(data).subscribe(
     res=>{
       this.resetForm(form);
     },
@@ -87,8 +86,8 @@ insertRecord(form:NgForm){
     }
 )
 }
-updateRecord(form:NgForm){
-  this.service.putExamData().subscribe(
+updateRecord(form:NgForm,data:string){
+  this.service.Put(data).subscribe(
     res=>{
       this.resetForm(form);
       this.refreshList();

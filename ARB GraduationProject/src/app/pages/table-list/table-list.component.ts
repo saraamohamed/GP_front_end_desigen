@@ -3,7 +3,7 @@ import Chart from 'chart.js';
 import { ArbProjectService } from 'src/app/shared/arb-project.service';
 import { NgForm } from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
-import { ExamData } from 'src/app/shared/arb-project.model';
+import { ExamData,ClinicalInfo,GeneralInfo,FinalAssessmeny } from 'src/app/shared/arb-project.model';
 
 @Component({
   selector: 'app-table-list',
@@ -21,7 +21,9 @@ export class TableListComponent implements OnInit {
   DeleteOn(id:number){
     if (confirm('Are You Sure You Want To Delete?'))
     {
-      this.service.deleteExamData(id)
+      //       this.service.Delete('ExamData',id)
+
+      this.service.Delete('ExamData',id)
       .subscribe(
       res =>{
         this.refreshList();

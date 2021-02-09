@@ -4,7 +4,7 @@ import {FormControl} from '@angular/forms';
 import { ArbProjectService } from 'src/app/shared/arb-project.service';
 import { NgForm } from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
-import { GeneralInfo } from 'src/app/shared/arb-project.model';
+import { ClinicalInfo, GeneralInfo } from 'src/app/shared/arb-project.model';
 
 @Component({
   selector: 'app-tabset-selectbyid',
@@ -12,22 +12,28 @@ import { GeneralInfo } from 'src/app/shared/arb-project.model';
 })
 export class NgbdTabsetSelectbyid  implements OnInit{
   constructor(public service:ArbProjectService,private http:HttpClient) { }
+  ClinicalInfo:ClinicalInfo = new ClinicalInfo();
+
 
   ngOnInit(): void {
   }
 
-  OnSubmit(form:NgForm){
-    this.service.PostGeneralInfo().subscribe(
+  OnSubmit(form:NgForm,data:string){
+    console.log(data)
+    this.service.Post(data).subscribe(
       res=>{
-        this.resetForm(form);
+        this.resetForm(form,data);
       },
       err=>{
         console.log(err);
       }
   )
   }
-  resetForm(form: NgForm) {
+  resetForm(form: NgForm,data:string) {
     form.form.reset();
-    this.service.GeneralInfo = new GeneralInfo();
+    if (data='GeneralInfo'){
+      this.service.GeneralInfo = new GeneralInfo();
+    }
   }
+ 
 }

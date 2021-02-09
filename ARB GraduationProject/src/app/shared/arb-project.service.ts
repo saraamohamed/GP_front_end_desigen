@@ -9,41 +9,65 @@ import {HttpHeaders} from "@angular/common/http";
 export class ArbProjectService {
 
   constructor(private http:HttpClient) { }
-
-  readonly  examDataUrl = 'http://localhost:57645/api/ExamData';
-  readonly  generalInfoUrl = 'http://localhost:57645/api/generalinfo';
-  ExamData:ExamData = new ExamData();
-  GeneralInfo:GeneralInfo = new GeneralInfo();
-  list:ExamData[];
   httpOptions={
     headers: new HttpHeaders({
       'Content-type':'applicaion/json',
       'Access-Control-Allow-Origin':'*'
     })
   };
+  readonly APIUrl = 'http://localhost:57645/api/';
+  readonly  examDataUrl = 'http://localhost:57645/api/ExamData';
+  readonly  generalInfoUrl = 'http://localhost:57645/api/generalinfo';
   
-  PostExamData(){
-    return (this.http.post(this.examDataUrl,this.ExamData));
+  ExamData:ExamData = new ExamData();
+  GeneralInfo:GeneralInfo = new GeneralInfo();
+  list:ExamData[];
+  
+  ClinicalInfo:ClinicalInfo = new ClinicalInfo();
+  whichVar(Name:string)
+  {
+    switch(Name){
+      case 'GeneralInfo':
+        return(this.GeneralInfo);
+      case 'ClinicalInfo':
+        return(this.ClinicalInfo);
+      case 'ExamData':
+        return(this.ExamData);
+    }
   }
-  deleteExamData(id:number){
-    return (this.http.delete(`${this.examDataUrl}/${id}` ));
-  } 
+
+  Post(APIUrl){
+    let variableName = this.whichVar(APIUrl);
+    return(this.http.post(`${this.APIUrl}/${APIUrl}`,variableName));
+
+  }
+  Put(APIUrl){
+    let variableName = this.whichVar(APIUrl);
+    return (this.http.put(`${this.APIUrl}/${APIUrl}/${variableName.id}`,variableName));
+  }
+  Delete(APIUrl,id)
+  {
+    return (this.http.delete(`${this.APIUrl}/${APIUrl}/${id}`)); 
+  }
+
   getExamData(){
     this.http.get(this.examDataUrl).toPromise().then(
       res => {this.list = res as ExamData[]});
   }
-  putExamData(){
-    return (this.http.put(`${this.examDataUrl}/${this.ExamData.id}`,this.ExamData));
-  }
-  PostGeneralInfo(){
-    return (this.http.post(this.generalInfoUrl,this.GeneralInfo));
-  }
+  // // PostExamData(){
+  // //   return (this.http.post(this.examDataUrl,this.ExamData));
+  // // }
+  // // deleteExamData(id:number){
+  // //   return (this.http.delete(`${this.examDataUrl}/${id}` ));
+  // // } 
+  // // putExamData(){
+  // //   return (this.http.put(`${this.examDataUrl}/${this.ExamData.id}`,this.ExamData));
+  // // }
+  // PostGeneralInfo(){
+  //   return (this.http.post(this.generalInfoUrl,this.GeneralInfo));
+  // }
 
-
-
-
-
-
+  
   // refreshList() {
   //   this.http.get(this.baseUrl)
   //     .toPromise()

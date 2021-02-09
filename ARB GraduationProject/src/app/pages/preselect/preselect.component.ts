@@ -39,19 +39,22 @@ export class PreselectComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  OnSubmit(form:NgForm){
-    this.service.PostGeneralInfo().subscribe(
+  OnSubmit(form:NgForm,data:string){
+
+    this.service.Post(data).subscribe(
       res=>{
-        this.resetForm(form);
+        this.resetForm(form,data);
       },
       err=>{
         console.log(err);
       }
   )
   }
-  resetForm(form: NgForm) {
+  resetForm(form: NgForm,data:string) {
     form.form.reset();
-    this.service.GeneralInfo = new GeneralInfo();
+    if (data='GeneralInfo'){
+      this.service.GeneralInfo = new GeneralInfo();
+    }
   }
 
 }
