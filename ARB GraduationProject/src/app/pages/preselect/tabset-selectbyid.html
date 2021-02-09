@@ -518,11 +518,13 @@
     <ngb-tab id="Final-tab" title="Final Assesment">
       <ng-template ngbTabContent>
         <form #form="ngForm" (submit)="OnSubmit(form,'FinalAssessment')">
+            <input name = "id" type="hidden" [value]="service.FinalAssessment.id"/>  
             <div class="form-group focused">
+
                 <h5 class="form-control-label" for="Mammo-history" style= "margin-right: 15px; padding-top: 15px;">BIRADS Categories</h5>
                 
                 <!-- name = "radAiId" #radAiId = "ngModel" [(ngModel)] = "service.FinalAssessment.radAiId" -->
-                <select class="custom-select" >
+                <select class="custom-select" name = "biRadsId" #biRadsId = "ngModel" [(ngModel)] = "service.FinalAssessment.biRadsId" >
                     <option value = "0"> SELECT</option>
                     <option *ngFor="let item of BiRadslist" value="{{item.id}}">{{item.name}}</option>
                   </select>
@@ -530,20 +532,25 @@
 
             <div class="form-group focused">
                 <h5 class="form-control-label" for="Mammo-history" style= "margin-right: 15px; padding-top: 15px;"> Recommendation</h5>
+                <select class="custom-select" name = "recommendationId" #recommendationId = "ngModel" [(ngModel)] = "service.FinalAssessment.recommendationId">
                 
-                <select class="custom-select" >
+                
                     <option value = "0"> SELECT</option>
                     <option *ngFor="let item of RecommendationList" value="{{item.id}}">{{item.name}}</option>
                   </select>
-                <textarea rows="4" class="form-control form-control-alternative" placeholder=" Other Recommendations ..." style="border: 1ch;"></textarea>
+                <textarea rows="4" class="form-control form-control-alternative" placeholder=" Other Recommendations ..." 
+                name = "recommendationText" #recommendationText = "ngModel" [(ngModel)] = "service.FinalAssessment.recommendationText" style="border: 1ch;"></textarea>
             </div>
 
             <div class="form-group focused">
                 <h5 class="form-control-label" for="Mammo-history" style= "margin-right: 15px; padding-top: 15px;"> Conclusion</h5>
                 
-                <textarea rows="4" class="form-control form-control-alternative" placeholder=" Conclusion  ..." style="border: 1ch;"></textarea>
+                <textarea rows="4" class="form-control form-control-alternative" placeholder=" Conclusion  ..."
+                name = "conc" #conc = "ngModel" [(ngModel)] = "service.FinalAssessment.conc" style="border: 1ch;"></textarea>
             </div>
-            
+            <div class="col-4 text-right">
+                <button href="#!" type="submit" class="btn btn-sm btn-primary" >Add Final Assessment</button>
+            </div>
   
 
         

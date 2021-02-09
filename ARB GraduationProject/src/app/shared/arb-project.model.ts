@@ -70,7 +70,7 @@ export class ClinicalInfo{
 export class FinalAssessment{
     id: number = 0;
     recommendationId: number = 0;
-    radAiId: number = 0;
+    biRadsId: number = 0;
     recommendationText: string = '';
     conc: string = '';
 }
