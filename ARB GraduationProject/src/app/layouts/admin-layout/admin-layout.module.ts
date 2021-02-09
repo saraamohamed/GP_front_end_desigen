@@ -12,8 +12,19 @@ import { ReportComponent } from '../../pages/report/report.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { TableListComponent } from '../../pages/table-list/table-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+<<<<<<< HEAD
 import{NgbdTabsetSelectbyid} from '../../pages/preselect/tabset-selectbyid'
 
+=======
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatRippleModule} from '@angular/material/core';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSelectModule} from '@angular/material/select';
+// import { GalleryComponent } from 'app/gallery/gallery.component';
+import {NgxGalleryModule} from '@kolkov/ngx-gallery';
+>>>>>>> cde56dd2872e3efe439ddf2794a0f44d04832a84
 
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -26,7 +37,17 @@ import{NgbdTabsetSelectbyid} from '../../pages/preselect/tabset-selectbyid'
     NgbModule,
     ClipboardModule,
     ReactiveFormsModule,
+<<<<<<< HEAD
     
+=======
+    MatButtonModule,
+    MatRippleModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatTooltipModule,
+    NgxGalleryModule
+>>>>>>> cde56dd2872e3efe439ddf2794a0f44d04832a84
   ],
   declarations: [
     PatientComponent,

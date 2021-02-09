@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import Chart from 'chart.js';
+import { ArbProjectService } from 'src/app/shared/arb-project.service';
+import { NgForm } from '@angular/forms';
+import {HttpClient} from "@angular/common/http";
+import { ExamData } from 'src/app/shared/arb-project.model';
 
 @Component({
   selector: 'app-table-list',
@@ -7,9 +12,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableListComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private service:ArbProjectService) { }
+  list:ExamData[]
   ngOnInit() {
+    this.service.get();
   }
 
 }

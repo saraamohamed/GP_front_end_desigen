@@ -12,24 +12,24 @@ export class PreselectComponent implements OnInit {
   selected = new FormControl(0);
   tabtitle:string = '';
 
-  addTab(selectAfterAdding: boolean) {
+  // addTab(selectAfterAdding: boolean) {
 
-    if(this.tabtitle != ''){
-        this.tabs.push(this.tabtitle);
-    }else{
-        this.tabs.push('New');
-    }
+  //   if(this.tabtitle != ''){
+  //       this.tabs.push(this.tabtitle);
+  //   }else{
+  //       this.tabs.push('New');
+  //   }
 
-    this.tabtitle = '';
+  //   this.tabtitle = '';
 
-    if (selectAfterAdding) {
-      this.selected.setValue(this.tabs.length - 1);
-    }
-  }
+  //   if (selectAfterAdding) {
+  //     this.selected.setValue(this.tabs.length - 1);
+  //   }
+  // }
 
-  removeTab(index: number) {
-    this.tabs.splice(index, 1);
-  }
+  // removeTab(index: number) {
+  //   this.tabs.splice(index, 1);
+  // }
   constructor() {
    }
 

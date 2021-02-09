@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js';
+import { ArbProjectService } from 'src/app/shared/arb-project.service';
+import { NgForm } from '@angular/forms';
+import {HttpClient} from "@angular/common/http";
 
 // core components
 import {
@@ -8,6 +11,8 @@ import {
   chartExample1,
   chartExample2
 } from "../../variables/charts";
+// import { extname } from 'path';
+import { ExamData } from 'src/app/shared/arb-project.model';
 
 @Component({
   selector: 'app-patient',
@@ -16,12 +21,18 @@ import {
 })
 export class PatientComponent implements OnInit {
 
+
+  constructor(public service:ArbProjectService,private http:HttpClient) { }
+
+  list:ExamData[];
   public datasets: any;
   public data: any;
   public salesChart;
   public clicked: boolean = true;
   public clicked1: boolean = false;
 
+
+ 
   ngOnInit() {
 
     this.datasets = [
@@ -56,5 +67,34 @@ export class PatientComponent implements OnInit {
     this.salesChart.data.datasets[0].data = this.data;
     this.salesChart.update();
   }
+
+  
+  OnSubmit(form:NgForm){
+
+    if(this.service.ExamData. id == 0)
+        this.insertRecord(form);
+
+}
+insertRecord(form:NgForm){
+  this.service.PostExamData().subscribe(
+    res=>{
+      this.resetForm(form);
+    },
+    err=>{
+      console.log(err);
+    }
+)
+}
+
+refreshList() {
+  this.http.get(this.service.examDataUrl)
+    .toPromise()
+    .then(res =>this.list = res as ExamData[]);
+}
+
+resetForm(form: NgForm) {
+  form.form.reset();
+  this.service.ExamData = new ExamData();
+}
 
 }
