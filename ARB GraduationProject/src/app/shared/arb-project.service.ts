@@ -19,12 +19,19 @@ export class ArbProjectService {
       'Access-Control-Allow-Origin':'*'
     })
   };
+  
   PostExamData(){
     return (this.http.post(this.examDataUrl,this.ExamData));
   }
-  get(){
+  deleteExamData(id:number){
+    return (this.http.delete(`${this.examDataUrl}/${id}` ));
+  } 
+  getExamData(){
     this.http.get(this.examDataUrl).toPromise().then(
       res => {this.list = res as ExamData[]});
+  }
+  putTablelist(){
+    return (this.http.put(`${this.examDataUrl}/${this.ExamData.id}`,this.ExamData));
   }
 
 

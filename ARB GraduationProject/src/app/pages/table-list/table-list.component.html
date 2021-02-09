@@ -15,8 +15,8 @@
                 <th scope="col">Priority</th>
                 <th scope="col">Patient Name</th>
                 <th scope="col">Patient Id</th>
-                <th scope="col">Birthdate</th>
-                <th scope="col">Status</th>
+                <!-- <th scope="col">Birthdate</th> -->
+                <!-- <th scope="col">Status</th> -->
                 <!-- <th scope="col"> Performance</th> -->
                 <th scope="col">Modality </th>
                 <th scope="col">Study Datetime</th>
@@ -41,15 +41,15 @@
                 <td >
                     {{pd.patientID}}
                 </td>
-                <td >
+                <!-- <td >
                   38
-                </td>
-                <td>
+                </td> -->
+                <!-- <td>
                   <span class="badge badge-dot mr-4">
                     <i class="bg-warning"></i> pending
                   </span>
-                </td>
-                <td>
+                </td> -->
+                <!-- <td>
                   <div class="d-flex align-items-center">
                     <span class="mr-2">60%</span>
                     <div>
@@ -58,16 +58,16 @@
                       </div>
                     </div>
                   </div>
-                </td>
+                </td> -->
 
                 <td><!--Modality -->
-                  Mamography
+                  {{pd.modailty}}
                 </td>
                 <td><!--Study Datetime -->
-                  26/1/2021
+                  {{pd.studyDate | date:'dd//MM/yyyy'}}
                 </td>
                 <td><!--Referring Doctor -->
-                  DR/ Ali Farag
+                 {{pd.referringDoctor}}
                 </td>
 
                 <td class="text-right">
@@ -76,8 +76,8 @@
                       <i class="fas fa-ellipsis-v"></i>
                     </a>
                     <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" href="javascript:void(0)">Delete</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Edit</a>
+                      <a class="dropdown-item" href="javascript:void(0)" (click)= DeleteOn(pd.id)>Delete</a>
+                      <a class="dropdown-item" href="javascript:void(0)" (click)= populateForm(pd)>Edit</a>
                       <a class="dropdown-item" href="javascript:void(0)">Mark as done </a>
                     </div>
                   </div>
