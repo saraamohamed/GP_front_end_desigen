@@ -25,6 +25,7 @@
     "@angular/platform-browser": "10.1.4",
     "@angular/platform-browser-dynamic": "10.1.4",
     "@angular/router": "10.1.4",
+    "@home-app/gallery.component": "^3.1.1",
     "@kolkov/ngx-gallery": "^1.2.3",
     "@material/button": "^10.0.0",
     "@ng-bootstrap/ng-bootstrap": "7.0.0",
