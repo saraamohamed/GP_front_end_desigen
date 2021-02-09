@@ -16,11 +16,47 @@ export class NgbdTabsetSelectbyid  implements OnInit{
 
   BiRadslist=[]
   RecommendationList=[]
+  Asymmetries=[]
+  MassMargin=[]
+  MassDensities=[]
+  Quadrants=[]
+  ClockFaces=[]
+  ClacificationTypicallyBenign=[]
+  ClacificationSuspiciousMorphology=[]
+  ClacificationDistribution=[]
   ngOnInit(): void {
     this.service.getBiRadsCombo()
     .subscribe(res => this.BiRadslist = res as []);
+
     this.service.getRecommendationCombo()
     .subscribe(res => this.RecommendationList = res as []);
+    // ClinicalComboBoxs
+    this.service.get('GetMassMargin')
+    .subscribe(res => this.MassMargin = res as []);
+
+    this.service.get('GetMassDensities')
+    .subscribe(res =>  this.MassDensities = res as []);
+
+
+    this.service.get('GetAsymmetries')
+    .subscribe(res =>  this.Asymmetries = res as []);
+
+    this.service.get('GetQuadrants')
+    .subscribe(res =>  this.Quadrants = res as []);
+
+    this.service.get('GetClockFaces')
+    .subscribe(res =>  this.ClockFaces = res as []);
+
+
+    this.service.get('GetClacificationTypicallyBenign')
+    .subscribe(res =>  this.ClacificationTypicallyBenign = res as []);
+
+    this.service.get('GetClacificationSuspiciousMorphology')
+    .subscribe(res =>  this.ClacificationSuspiciousMorphology = res as []);
+
+    this.service.get('GetClacificationDistribution')
+    .subscribe(res =>  this.ClacificationDistribution = res as []);
+
   }
 
   OnSubmit(form:NgForm,data:string){
@@ -43,6 +79,10 @@ export class NgbdTabsetSelectbyid  implements OnInit{
     if (data='FianlAssessment'){
       this.service.FinalAssessment = new FinalAssessment();
     }
+    if (data='ClinicalInfo'){
+      this.service.ClinicalInfo = new ClinicalInfo();
+    }
+    
   }
  
 }

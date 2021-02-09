@@ -236,25 +236,43 @@
       <ng-template ngbTabTitle>Clinical Information</ng-template>
       <ng-template ngbTabContent>
         <form  #form="ngForm" (submit)="OnSubmit(form,'ClinicalInfo')">
+        <input name = "id" type="hidden" [value]="service.ClinicalInfo.id"/>
 
-        <!----------------------------  Asymmetries ---------------------------------- -->
+        <div class="form-group focused">
+            <label class="container"> Breast Compostion
+                <input type="radio" name="breastCompostion" value="a" [(ngModel)]="service.ClinicalInfo.breastCompostion">
+                <span class="checkmark">a. The Breasts are almost entirely fatty</span>
+                
+                <input type="radio" name="breastCompostion" value="b" [(ngModel)]="service.ClinicalInfo.breastCompostion">
+                <span class="checkmark">b. There are scattered areas of fibroglandular density</span>
+                <input type="radio" name="breastCompostion" value="c" [(ngModel)]="service.ClinicalInfo.breastCompostion">
+                <span class="checkmark">c. The breasts are heterogeneously dense, which may obscure small masses</span>
+                <input type="radio" name="breastCompostion" value="d" [(ngModel)]="service.ClinicalInfo.breastCompostion">
+                <span class="checkmark">d. TThe breasts are extremely dense, which lowers the sensitivity of mammography</span>
+             
+           </label>
+        </div>  
+       
 
+        <!----------------------------  AFsymmetries..Done ---------------------------------- -->
+`
             <div class="form-group focused">
                 <h5 class="form-control-label" for="Mammo-history" style="margin-right: 15px; padding-top: 15px;"> Asymmetries </h5>
-                <select class="custom-select">
-                <option selected="">Asymmetry</option>
-                <option value="1">Global asymmetry</option>
-                <option value="2">Focal asymmetry</option>
-                <option value="3">Developing asymmetry</option>
-                </select>
+                <select class="custom-select" name = "asyId" #asyId = "ngModel" [(ngModel)] = "service.ClinicalInfo.asyId" >
+                    <option value = "0"> SELECT</option>
+                    <option *ngFor="let item of Asymmetries" value="{{item.id}}">{{item.name}}</option>
+                  </select>
             </div>
+           
+           
         <!----------------------------  Asymmetries ---------------------------------- -->
-            <!-- numberOfMassess -->
+            <!-- numberOfMassess..Done -->
             <div class="form-group focused ">
                 <h5  style="margin-right: 10px; padding-top: 9px;"> Numer of Mass(es) </h5>
                 <input type="text" name="numOfMass" value="numOfMass" [(ngModel)]="service.ClinicalInfo.numOfMass">
                 
             </div>
+
 
             <div class="form-group ">
                 <h5 class="category"> Masses: </h5>
@@ -264,27 +282,36 @@
             <h5 class="form-control-label" for="Mammo-history" style= "margin-right: 15px; padding-top: 15px;">Shape</h5>
             
             </div>
-            <!-- Mass Shape -->
+            <!-- Mass Shape ..Done-->
+            <div class="form-group focused">
+                <h5 class="form-control-label" for="Mammo-history" style="margin-right: 15px; padding-top: 15px;"> Shape </h5>
+                <input type="radio" name="massShape" value="Oval" [(ngModel)]="service.ClinicalInfo.massShape">
+                <span class="checkmark">oval</span>
+                <input type="radio" name="massShape" value="Round" [(ngModel)]="service.ClinicalInfo.massShape">
+                <span class="checkmark">Round</span>
+                <input type="radio" name="massShape" value="Irregular" [(ngModel)]="service.ClinicalInfo.massShape">
+                <span class="checkmark">Irregular</span>
+ 
+            </div>
+            <!-- Mass Shape ..Done-->
+    
             <div class="form-group focused">
             <h5 class="form-control-label" for="Mammo-history" style="margin-right: 15px; padding-top: 15px;"> Margin </h5>
-            <select class="custom-select">
-                <option selected="">Circumscribed</option>
-                <option value="1">Microlobulated</option>
-                <option value="2">Indistinct</option>
-                <option value="3">Spiculated</option>
-            </select>
+            <select class="custom-select" name = "massMarginId" #massMarginId = "ngModel"
+             [(ngModel)] = "service.ClinicalInfo.massMarginId" >
+                <option value = "0"> SELECT</option>
+                <option *ngFor="let item of MassMargin" value="{{item.id}}">{{item.name}}</option>
+              </select>
             </div>
-              <!-- Mass Density -->
+              <!-- Mass Density ..Done-->
             <div class="form-group focused">
             <h5 class="form-control-label" for="Mammo-history" style= "margin-right: 15px; padding-top: 15px;"> Density </h5>
-            <select class="custom-select">
-                <option selected="">High density</option>
-                <option value="1">Equal density</option>
-                <option value="2">Low density</option>
-                <option value="3">Fat-containing</option>
-            </select>
+            <select class="custom-select" name = "massDensityId" #massDensityId = "ngModel" [(ngModel)] = "service.ClinicalInfo.massDensityId" >
+                <option value = "0"> SELECT</option>
+                <option *ngFor="let item of MassDensities" value="{{item.id}}">{{item.name}}</option>
+              </select>
             </div>
-            <!-- Laterality -->
+            <!-- Laterality ..Done-->
             <div class="form-group focused">
             <h5 class="form-control-label" for="Mammo-history" style= "margin-right: 15px; padding-top: 15px;">Laterality</h5>
      
@@ -293,39 +320,28 @@
             </div>
           
                 
-            <!-- Quadrant -->
+            <!-- Quadrant ..Done-->
             <div class="form-group focused">
             <h5 class="form-control-label" for="Mammo-history" style= "margin-right: 15px; padding-top: 15px;">Quadrant</h5>
-            <select class="custom-select">
-                <option selected="">Upper inner</option>
-                <option value="1">Lower inner</option>
-                <option value="2">Central</option>
-                <option value="3">Upper outer</option>
-                <option value="4">Lower outer</option>
+            <select class="custom-select" name = "quadrantId" #asyId = "ngModel" [(ngModel)] = "service.ClinicalInfo.quadrantId" >
+                <option value = "0"> SELECT</option>
+                <option *ngFor="let item of Quadrants" value="{{item.id}}">{{item.name}}</option>
             </select>
             </div>
-<!-- Clock Face -->
+            <!-- Clock Face ..Done-->
             <div class="form-group focused">
             <h5 class="form-control-label" for="Mammo-history" style= "margin-right: 15px; padding-top: 15px;">clock face</h5>
-            <select class="custom-select">
-                <option selected="">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-            </select>
+            <div class="form-group focused">
+                <h5 class="form-control-label" for="Mammo-history" style="margin-right: 15px; padding-top: 15px;"> Asymmetries </h5>
+                <select class="custom-select" name = "clockFaceId" #clockFaceId = "ngModel" [(ngModel)] = "service.ClinicalInfo.clockFaceId" >
+                    <option value = "0"> SELECT</option>
+                    <option *ngFor="let item of ClockFaces" value="{{item.id}}">{{item.name}}</option>
+                  </select>
             </div>
-              <!--Depth  -->
+            </div>
+              <!--Depth  ..Done-->
             <div class="form-group focused ">
             <h5  style="margin-right: 10px; padding-top: 9px;">Depth </h5>
-            <input type="text" id="TEXT_1450682011285" name="" data-field-type="TEXT" data-field-completion-action="NONE" value="" style="width: 30px; height: 25px;"  />
             <input type="text" id="TEXT_1450682011285" name="depth" data-field-type="TEXT" data-field-completion-action="NONE"
             #depth = "ngModel" [(ngModel)] = "service.ClinicalInfo.depth"  />
             </div>
@@ -333,7 +349,7 @@
              
     
            
-<!--Distance from the nipple   -->
+<!--Distance from the nipple ..Done  -->
             <div class="form-group focused ">
             <h5  style="margin-right: 10px; padding-top: 9px;">Distance from the nipple </h5>
             <input type="text" id="TEXT_1450682011285" name="distanceFromTheNipple" data-field-type="TEXT" data-field-completion-action="NONE"
@@ -345,52 +361,46 @@
             <div class="form-group focused">
             <h5 class="form-control-label" for="Mammo-history" style= "margin-right: 15px; padding-top: 15px;">Clacifications</h5>
             </div>
-<!-- Typically benign -->
+<!-- Typically benign ..Done -->
             <div class="form-group focused">
             <h5 class="form-control-label" for="Mammo-history" style= "margin-right: 15px; padding-top: 15px;">Typically benign</h5>
-            <select class="custom-select">
-                <option selected="">Skin</option>
-                <option value="Vascular">Vascular</option>
-                <option value="Coarse or “popcorn-like”">Coarse or “popcorn-like”</option>
-                <option value="Large">Large</option>
-                <option value="rod-like ">rod-like </option>
-                <option value="Round">Round</option>
-                <option value="Rim">Rim</option>
-                <option value="Dystrophic">Dystrophic</option>
-                <option value="Milk of calcium Suture">Milk of calcium Suture</option>
+            <select class="custom-select" name = "typicallyBenignId" #typicallyBenignId = "ngModel" 
+            [(ngModel)] = "service.ClinicalInfo.typicallyBenignId" >
+                <option value = "0"> SELECT</option>
+                <option *ngFor="let item of ClacificationTypicallyBenign" value="{{item.id}}">{{item.name}}</option>
             </select>
             </div>
-
+<!-- Suspicious Morphology ..Done -->
             <div class="form-group focused">
             <h5 class="form-control-label" for="Mammo-history" style= "margin-right: 15px; padding-top: 15px;">Suspicious morphology</h5>
-            <select class="custom-select">
-                <option selected="">Amorphous</option>
-                <option value="Vascular">Coarse heterogeneous</option>
-                <option value="Coarse or “popcorn-like”">Fine pleomorphic</option>
-                <option value="Large">Fine linear or fine-linear branching</option>
+            <select class="custom-select" name = "suspiciousMorphologyId" #suspiciousMorphologyId = "ngModel" 
+            [(ngModel)] = "service.ClinicalInfo.suspiciousMorphologyId" >
+                <option value = "0"> SELECT</option>
+                <option *ngFor="let item of ClacificationSuspiciousMorphology" value="{{item.id}}">{{item.name}}</option>
             </select>
             </div>
+<!-- Distribution..Done -->
+
 
             <div class="form-group focused">
             <h5 class="form-control-label" for="Mammo-history" style= "margin-right: 15px; padding-top: 15px;">Distribution</h5>
-            <select class="custom-select">
-                <option selected="">Regional</option>
-                <option value="Vascular">Grouped</option>
-                <option value="Coarse or “popcorn-like”">Linear</option>
-                <option value="Large">Segmental</option>
+            <select class="custom-select" name = "distributionId" #suspiciousMorphologyId = "ngModel" 
+            [(ngModel)] = "service.ClinicalInfo.distributionId" >
+                <option value = "0"> SELECT</option>
+                <option *ngFor="let item of ClacificationDistribution" value="{{item.id}}">{{item.name}}</option>
             </select>
             </div>
 
             <div class="form-group focused">
-            <h5 class="form-control-label" for="Mammo-history" style= "margin-right: 15px; padding-top: 15px;">Features</h5>
+            <h5 class="form-control-label" for="Mammo-history" style= "margin-right: 15px; padding-top: 15px;">features</h5>
             </div>
 
             <div class="form-group focused">
              <h5 class="form-control-label" for="Mammo-history style= margin-right: 15px; padding-top: 5px;"> <b>Skin retraction:</b></h5>
                 <div class="form-check" style="margin-left: 5px; padding-bottom: 20px ;" >
                 <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" value="" checked="">
-                    <input class="form-check-input" type="checkbox" name="skinRetraction" #Features ="ngModel" [(ngModel)] = "service.ClinicalInfo.Features.skinRetraction">
+
+                    <input class="form-check-input" type="checkbox" name="skinRetraction" #skinRetraction ="ngModel" [(ngModel)] = "service.ClinicalInfo.features.skinRetraction">
                     <span class="form-check-sign">
                     <span class="check"></span>
                     </span>
@@ -402,7 +412,7 @@
               <h5 class="form-control-label" for="Mammo-history style= margin-right: 15px; padding-top: 5px;"> <b>Nipple retraction:</b> </h5>
               <div class="form-check" style="margin-left: 5px; padding-bottom: 20px ;" >
               <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" name="nippleRetraction" #nippleRetraction ="ngModel" [(ngModel)] = "service.ClinicalInfo.Features.nippleRetraction">
+                <input class="form-check-input" type="checkbox" name="nippleRetraction" #nippleRetraction ="ngModel" [(ngModel)] = "service.ClinicalInfo.features.nippleRetraction">
 
                 <span class="form-check-sign">
                   <span class="check"></span>
@@ -415,7 +425,7 @@
                 <h5 class="form-control-label" for="Mammo-history style= margin-right: 15px; padding-top: 5px;"> <b>Skin thickening:</b> </h5>
                  <div class="form-check" style="margin-left: 5px; padding-bottom: 20px ;" >
                     <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" name="architecturalDistortion" #architecturalDistortion ="ngModel" [(ngModel)] = "service.ClinicalInfo.Features.architecturalDistortion">
+                        <input class="form-check-input" type="checkbox" name="architecturalDistortion" #architecturalDistortion ="ngModel" [(ngModel)] = "service.ClinicalInfo.features.architecturalDistortion">
                         <span class="form-check-sign">
                         <span class="check"></span>
                     </span>
@@ -427,7 +437,7 @@
                 </h5>
                 <div class="form-check" style="margin-left: 5px; padding-bottom: 20px ;" >
                 <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" name="trabecularThickening" #trabecularThickening ="ngModel" [(ngModel)] = "service.ClinicalInfo.Features.trabecularThickening">
+                    <input class="form-check-input" type="checkbox" name="trabecularThickening" #trabecularThickening ="ngModel" [(ngModel)] = "service.ClinicalInfo.features.trabecularThickening">
                      <span class="form-check-sign">
                     <span class="check"></span>
                 </span>
@@ -439,7 +449,7 @@
             <h5 class="form-control-label" for="Mammo-history style= margin-right: 15px; padding-top: 5px;"><b>Intramammary lymph node:</b> </h5>
                 <div class="form-check" style="margin-left: 5px; padding-bottom: 20px ;" >
                 <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" name="intramammaryLymphNode" #intramammaryLymphNode ="ngModel" [(ngModel)] = "service.ClinicalInfo.Features.intramammaryLymphNode">
+                    <input class="form-check-input" type="checkbox" name="intramammaryLymphNode" #intramammaryLymphNode ="ngModel" [(ngModel)] = "service.ClinicalInfo.features.intramammaryLymphNode">
                     <span class="form-check-sign">
                     <span class="check"></span>
                     </span>
@@ -451,7 +461,7 @@
                 <h5 class="form-control-label" for="Mammo-history style= margin-right: 15px; padding-top: 5px;"> Skin lesion:<b></b> </h5>
                 <div class="form-check" style="margin-left: 5px; padding-bottom: 20px ;" >
                 <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" name="skinLesion" #skinLesion ="ngModel" [(ngModel)] = "service.ClinicalInfo.Features.skinLesion">
+                    <input class="form-check-input" type="checkbox" name="features" #skinLesion ="ngModel" [(ngModel)] = "service.ClinicalInfo.features.skinLesion">
                 <span class="form-check-sign">
                     <span class="check"></span>
                 </span>
@@ -463,7 +473,7 @@
             <h5 class="form-control-label" for="Mammo-history style= margin-right: 15px; padding-top: 5px;"> <b>Solitary dilated duct:</b></h5>
                 <div class="form-check" style="margin-left: 5px; padding-bottom: 20px ;" >
                 <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" name="solitaryDilatedDuct" #solitaryDilatedDuct ="ngModel" [(ngModel)] = "service.ClinicalInfo.Features.solitaryDilatedDuct">
+                    <input class="form-check-input" type="checkbox" name="features" #solitaryDilatedDuct ="ngModel" [(ngModel)] = "service.ClinicalInfo.features.solitaryDilatedDuct">
                     <span class="form-check-sign">
                     <span class="check"></span>
                     </span>
@@ -475,7 +485,7 @@
                 <h5 class="form-control-label" for="Mammo-history style= margin-right: 15px; padding-top: 5px;"><b>Trabecular thickening:</b></h5>
                 <div class="form-check" style="margin-left: 5px; padding-bottom: 20px ;" >
                 <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" name="trabecularThickening" #trabecularThickening ="ngModel" [(ngModel)] = "service.ClinicalInfo.Features.trabecularThickening">
+                    <input class="form-check-input" type="checkbox" name="features" #trabecularThickening ="ngModel" [(ngModel)] = "service.ClinicalInfo.features.trabecularThickening">
                 <span class="form-check-sign">
                     <span class="check"></span>
                 </span>
@@ -487,7 +497,7 @@
                 <h5 class="form-control-label" for="Mammo-history style= margin-right: 15px; padding-top: 5px;"><b>axillaryAdenopathy</b> </h5>
                 <div class="form-check" style="margin-left: 5px; padding-bottom: 20px ;" >
                 <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" name="axillaryAdenopathy" #axillaryAdenopathy ="ngModel" [(ngModel)] = "service.ClinicalInfo.Features.axillaryAdenopathy">
+                    <input class="form-check-input" type="checkbox" name="features" #axillaryAdenopathy ="ngModel" [(ngModel)] = "service.ClinicalInfo.features.axillaryAdenopathy">
                     <span class="form-check-sign">
                     <span class="check"></span>
                     </span>
@@ -495,19 +505,23 @@
                 </div>
             </div>
 
-            <div class="form-group focused">
+            <!-- <div class="form-group focused">
                 <h5 class="form-control-label" for="Mammo-history style= margin-right: 15px; padding-top: 5px;"><b>Axillary adenopathy:</b></h5>
                 <div class="form-check" style="margin-left: 5px; padding-bottom: 20px ;" >
                 <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" value="" checked="">
+                <input class="form-check-input" type="checkbox" name="features" #axillaryAdenopathy ="ngModel" 
+                [(ngModel)] = "service.ClinicalInfo.features.axillaryAdenopathy">
                 <span class="form-check-sign">
                     <span class="check"></span>
                 </span>
                 </label>
                 </div>
-            </div>
+            </div> -->
 
 
+        </div>
+        <div class="col-4 text-right">
+            <button href="#!" type="submit" class="btn btn-sm btn-primary" >Add Final Assessment</button>
         </div>
         </form>     
       </ng-template>

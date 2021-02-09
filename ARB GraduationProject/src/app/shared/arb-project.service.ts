@@ -41,6 +41,8 @@ export class ArbProjectService {
 
   Post(APIUrl){
     let variableName = this.whichVar(APIUrl);
+    console.log(variableName);
+    
     return(this.http.post(`${this.APIUrl}/${APIUrl}`,variableName));
 
   }
@@ -53,6 +55,9 @@ export class ArbProjectService {
     return (this.http.delete(`${this.APIUrl}/${APIUrl}/${id}`)); 
   }
 
+  get(comboboxName:string){
+    return (this.http.get(`${this.ComboUrl}/${comboboxName}`));
+  }
   getBiRadsCombo(){
     return (this.http.get(`${this.ComboUrl}/getbirads`));
   }
