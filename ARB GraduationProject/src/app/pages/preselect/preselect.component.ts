@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { ElementRef, ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
 

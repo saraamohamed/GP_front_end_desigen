@@ -12,6 +12,8 @@ import { ReportComponent } from '../../pages/report/report.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { TableListComponent } from '../../pages/table-list/table-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import{NgbdTabsetSelectbyid} from '../../pages/preselect/tabset-selectbyid'
+
 
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -22,7 +24,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     HttpClientModule,
     NgbModule,
-    ClipboardModule
+    ClipboardModule,
+    ReactiveFormsModule,
+    
   ],
   declarations: [
     PatientComponent,
@@ -30,6 +34,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     TableListComponent,
     PreselectComponent,
     ReportComponent,
+    NgbdTabsetSelectbyid
 
   ]
 })
