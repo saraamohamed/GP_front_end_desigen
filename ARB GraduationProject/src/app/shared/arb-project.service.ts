@@ -33,6 +33,7 @@ export class ArbProjectService {
       case 'GeneralInfo':
         return(this.GeneralInfo);
       case 'ClinicalInfo':
+        
         return(this.ClinicalInfo);
       case 'ExamData':
         return(this.ExamData);
@@ -41,7 +42,6 @@ export class ArbProjectService {
 
   Post(APIUrl){
     let variableName = this.whichVar(APIUrl);
-    console.log(variableName);
     
     return(this.http.post(`${this.APIUrl}/${APIUrl}`,variableName));
 

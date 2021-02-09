@@ -330,9 +330,8 @@
             </div>
             <!-- Clock Face ..Done-->
             <div class="form-group focused">
-            <h5 class="form-control-label" for="Mammo-history" style= "margin-right: 15px; padding-top: 15px;">clock face</h5>
             <div class="form-group focused">
-                <h5 class="form-control-label" for="Mammo-history" style="margin-right: 15px; padding-top: 15px;"> Asymmetries </h5>
+            <h5 class="form-control-label" for="Mammo-history" style= "margin-right: 15px; padding-top: 15px;">clock face</h5>
                 <select class="custom-select" name = "clockFaceId" #clockFaceId = "ngModel" [(ngModel)] = "service.ClinicalInfo.clockFaceId" >
                     <option value = "0"> SELECT</option>
                     <option *ngFor="let item of ClockFaces" value="{{item.id}}">{{item.name}}</option>
