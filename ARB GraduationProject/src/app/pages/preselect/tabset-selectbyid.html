@@ -287,12 +287,12 @@
             <!-- Laterality -->
             <div class="form-group focused">
             <h5 class="form-control-label" for="Mammo-history" style= "margin-right: 15px; padding-top: 15px;">Laterality</h5>
-            <input type="text"  name="" data-field-type="TEXT" data-field-completion-action="NONE" value=""   />
+     
             <input type="text" id="TEXT_1450682011285" name="laterality" data-field-type="TEXT" data-field-completion-action="NONE"
-            #laterality = "ngModel" [(ngModel)] = "service.ClinicalInfo.laterality" style="width: 30px; height: 25px;" /><br>
+            #laterality = "ngModel" [(ngModel)] = "service.ClinicalInfo.laterality" style="width: 30px; height: 25px;" />
+            </div>
           
                 
-        </div>
             <!-- Quadrant -->
             <div class="form-group focused">
             <h5 class="form-control-label" for="Mammo-history" style= "margin-right: 15px; padding-top: 15px;">Quadrant</h5>
@@ -327,17 +327,20 @@
             <h5  style="margin-right: 10px; padding-top: 9px;">Depth </h5>
             <input type="text" id="TEXT_1450682011285" name="" data-field-type="TEXT" data-field-completion-action="NONE" value="" style="width: 30px; height: 25px;"  />
             <input type="text" id="TEXT_1450682011285" name="depth" data-field-type="TEXT" data-field-completion-action="NONE"
-            #depth = "ngModel" [(ngModel)] = "service.ClinicalInfo.depth"  /><br>
+            #depth = "ngModel" [(ngModel)] = "service.ClinicalInfo.depth"  />
+            </div>
+
              
-        </div>
+    
            
 <!--Distance from the nipple   -->
             <div class="form-group focused ">
             <h5  style="margin-right: 10px; padding-top: 9px;">Distance from the nipple </h5>
             <input type="text" id="TEXT_1450682011285" name="distanceFromTheNipple" data-field-type="TEXT" data-field-completion-action="NONE"
-            #distanceFromTheNipple = "ngModel" [(ngModel)] = "service.ClinicalInfo.distanceFromTheNipple"  /><br>
+            #distanceFromTheNipple = "ngModel" [(ngModel)] = "service.ClinicalInfo.distanceFromTheNipple"  />
+            </div>
               
-        </div>
+
 
             <div class="form-group focused">
             <h5 class="form-control-label" for="Mammo-history" style= "margin-right: 15px; padding-top: 15px;">Clacifications</h5>
@@ -420,15 +423,16 @@
                 </div>
             </div>
             <div class="form-group focused">
-                <h5 class="form-control-label" for="Mammo-history style= margin-right: 15px; padding-top: 5px;"><b>Architectural Distortion<</b>/h5>
+                <h5 class="form-control-label" for="Mammo-history style= margin-right: 15px; padding-top: 5px;"><b>Architectural Distortion</b>
+                </h5>
                 <div class="form-check" style="margin-left: 5px; padding-bottom: 20px ;" >
                 <label class="form-check-label">
                     <input class="form-check-input" type="checkbox" name="trabecularThickening" #trabecularThickening ="ngModel" [(ngModel)] = "service.ClinicalInfo.Features.trabecularThickening">
-                <span class="form-check-sign">
+                     <span class="form-check-sign">
                     <span class="check"></span>
                 </span>
                 </label>
-                </div>
+                
             </div>
 
             <div class="form-group focused">
@@ -504,7 +508,8 @@
             </div>
 
 
-        </form>          
+        </div>
+        </form>     
       </ng-template>
     </ngb-tab>
 
