@@ -11,7 +11,9 @@ export class ArbProjectService {
   constructor(private http:HttpClient) { }
 
   readonly  examDataUrl = 'http://localhost:57645/api/ExamData';
+  readonly  generalInfoUrl = 'http://localhost:57645/api/generalinfo';
   ExamData:ExamData = new ExamData();
+  GeneralInfo:GeneralInfo = new GeneralInfo();
   list:ExamData[];
   httpOptions={
     headers: new HttpHeaders({
@@ -32,6 +34,9 @@ export class ArbProjectService {
   }
   putExamData(){
     return (this.http.put(`${this.examDataUrl}/${this.ExamData.id}`,this.ExamData));
+  }
+  PostGeneralInfo(){
+    return (this.http.post(this.generalInfoUrl,this.GeneralInfo));
   }
 
 

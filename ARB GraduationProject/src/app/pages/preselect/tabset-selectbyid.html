@@ -1,38 +1,47 @@
 <div class="card-header border-0">
-    <h3 class="mb-0">Pattient Worksheet</h3>
+    <h3 class="mb-0">Patient Worksheet</h3>
   </div>
 <ngb-tabset #t="ngbTabset">
+    
     <ngb-tab id="General-tab" title="General Information">
+       
       <ng-template ngbTabContent>
 <!---------------------------- General-tab ---------------------------------- -->
+
         <!---------------------------- tab1 Exam reason ---------------------------------- -->
-            <div class="container">
+        <!-- <form> -->
+        <form #form="ngForm" (submit)="OnSubmit(form)">
+            <div class="container" >
+            <input name = "id" type="hidden" [value]="service.GeneralInfo.id"/>   
             <h5 class="form-control-label" for="exam-date" style="margin-right: 15px; padding-top: 15px;"><b>Exam reason</b></h5>
                 <label class="container">Screaning
-                    <input type="radio" checked="checked" name="radio">
+                    <input type="radio" name="examReason" value="Screaning" [(ngModel)]="service.GeneralInfo.examReason">
                     <span class="checkmark"></span>
                 </label>
                 <label class="container">Follow Up
-                    <input type="radio" name="radio">
+                    <input type="radio" name="examReason" value="Follow Up" [(ngModel)]="service.GeneralInfo.examReason">
                     <span class="checkmark"></span>
                 </label>
                 <label class="container">Complain
-                    <input type="radio" name="radio">
+                    <input type="radio" name="examReason" value="Complain" [(ngModel)]="service.GeneralInfo.examReason">
                     <span class="checkmark"></span>
                 </label>
+                <h5 style="margin-right: 15px; padding-top: 7px;">Complain? </h5>
+                <input type="text" id="TEXT_1450682011285" name="complain" data-field-type="TEXT" data-field-completion-action="NONE"
+                 #complain = "ngModel" [(ngModel)] = "service.GeneralInfo.complain"  /><br>
              </div>   
         <!---------------------------- Exam date ---------------------------------- -->
-
             <div class="form-group focused">
                 <h5 class="form-control-label" for="exam-date" style="margin-right: 15px; padding-top: 15px;">Exam Date</h5>
-                <input type="date" id="DATE_1449431264015" name="" data-field-type="DATE" data-field-completion-action="NONE" value="" />
+                <input type="date" id="DATE_1449431264015" name="examDate" data-field-type="DATE" data-field-completion-action="NONE" 
+                #examDate = "ngModel" [(ngModel)] = "service.GeneralInfo.examDate" />
               </div>
         <!---------------------------- Exam history ---------------------------------- -->
             <div class="form-group focused">
                 <h5 class="form-control-label" for="Mammo-history">Have you ever had a mammogram ?</h5>
                 <div class="form-check" style="margin-left: 5px; vertical: align 5px; padding-bottom: 20px ;" >
                 <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" value="" checked="">
+                    <input class="form-check-input" name = "hadAMammogram" #hadAMammogram = "ngModel" [(ngModel)] = "service.GeneralInfo.hadAMammogram" type="checkbox">
                     <span class="form-check-sign">
                     <span class="check"></span>
                     </span>
@@ -43,23 +52,28 @@
 
             <div class="form-group focused ">
                 <h5 style="margin-right: 15px; padding-top: 7px;">Where? </h5>
-                <input type="text" id="TEXT_1450682011285" name="" data-field-type="TEXT" data-field-completion-action="NONE" value="" /><br>
+                <input type="text" id="TEXT_1450682011285" name="whereHadAMammogram" data-field-type="TEXT" data-field-completion-action="NONE"
+                 #whereHadAMammogram = "ngModel" [(ngModel)] = "service.GeneralInfo.whereHadAMammogram"  /><br>
                 
                 <h5  style="margin-right: 15px; margin-left: 20px; padding-top: 9px;"> When? </h5>
-                <input type="text" id="TEXT_1450682011285" name="" data-field-type="TEXT" data-field-completion-action="NONE" value="" style="width: 30px; height: 25px;"  />(Year)
+                <input type="text" id="TEXT_1450682011285" name="whenHadAMammogram" data-field-type="TEXT" data-field-completion-action="NONE" 
+                 style="width: 30px; height: 25px;" #whenHadAMammogram = "ngModel" [(ngModel)] = "service.GeneralInfo.whenHadAMammogram"  />(Year)
+                
               
               </div>
         <!---------------------------- Finding ---------------------------------- -->
+        
             <div class="form-group">
                 <h5  style="margin-right: 15px;"> Findings </h5>
-                <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about your complain ..." style="border: 1ch;"></textarea>
+                <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about your complain ..." 
+                name = "HistoryOfMammogram" #HistoryOfMammogram = "ngModel" [(ngModel)] = "service.GeneralInfo.HistoryOfMammogram"
+                style="border: 1ch;"></textarea>
             </div>
-
             <div class="form-group focused">
                 <h5 class="form-control-label" for="Mammo-history">Personal history of breast cancer:</h5>
                 <div class="form-check" style="margin-left: 5px; padding-bottom: 20px ;" >
                 <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" value="" checked="">
+                    <input class="form-check-input" type="checkbox" name="PersonalHistoryOfBreastCancer" #PersonalHistoryOfBreastCancer ="ngModel" [(ngModel)] = "service.GeneralInfo.PersonalHistoryOfBreastCancer">
                     <span class="form-check-sign">
                     <span class="check"></span>
                     </span>
@@ -74,29 +88,104 @@
                 
                 <div class="row">
                     <div class="col-sm-6 col-lg-3 mb-4">
-                    <label for="">Mother</label><br>
+                        <div class="form-group focused">
+                            
+                            <div class="form-check" style="margin-left: 5px; vertical: align 5px; padding-bottom: 20px ;" >
+                            <label class="form-check-label">
+                                <input class="form-check-input" name = "mother" #mother = "ngModel" [(ngModel)] = "service.GeneralInfo.mother" type="checkbox">
+                                <span class="form-check-sign">
+                                <span class="check"></span>
+                                </span>
+                            </label>
+                            <h5 class="form-control-label" for="Mammo-history">Mother</h5>
+                            </div>
+                        </div>
+                        <div class="form-group focused">
+                            
+                            <div class="form-check" style="margin-left: 5px; vertical: align 5px; padding-bottom: 20px ;" >
+                            <label class="form-check-label">
+                                <input class="form-check-input" name = "sister" #sister = "ngModel" [(ngModel)] = "service.GeneralInfo.sister" type="checkbox">
+                                <span class="form-check-sign">
+                                <span class="check"></span>
+                                </span>
+                            </label>
+                            <h5 class="form-control-label" for="Mammo-history">Sister</h5>
+                            </div>
+                        </div>
+                        <div class="form-group focused">
+                            
+                            <div class="form-check" style="margin-left: 5px; vertical: align 5px; padding-bottom: 20px ;" >
+                            <label class="form-check-label">
+                                <input class="form-check-input" name = "daughter" #daughter = "ngModel" [(ngModel)] = "service.GeneralInfo.daughter" type="checkbox">
+                                <span class="form-check-sign">
+                                <span class="check"></span>
+                                </span>
+                            </label>
+                            <h5 class="form-control-label" for="Mammo-history">Daughter</h5>
+                            </div>
+                        </div>
+                    <!-- <label for="">Mother</label><br>
                     <label for="" style="padding-top: 7px;">Sister</label><br>
-                    <label for="" style="padding-top: 7px;">Daughter</label><br>
+                    <label for="" style="padding-top: 7px;">Daughter</label><br> -->
                     
                     
                     </div>
                     <div class="col-sm-6 col-lg-3 mb-4">
-                    Age: <input type="text" id="TEXT_1450682011285" name="" data-field-type="TEXT" data-field-completion-action="NONE" value="" style="width: 30px; height: 25px;" /><br><br>
-                    Age: <input type="text" id="TEXT_1450682011285" name="" data-field-type="TEXT" data-field-completion-action="NONE" value="" style="width: 30px; height: 25px;" /><br><br>
-                    Age: <input type="text" id="TEXT_1450682011285" name="" data-field-type="TEXT" data-field-completion-action="NONE" value="" style="width: 30px; height: 25px;" /><br><br>
+                    Age: <input type="number" id="TEXT_1450682011285" name="motherAge" data-field-type="TEXT" data-field-completion-action="NONE" 
+                    #motherAge = "ngModel" [(ngModel)] = "service.GeneralInfo.motherAge" style="width: 30px; height: 25px;" /><br><br>
+                    Age: <input type="number" id="TEXT_1450682011285" name="sisterAge" data-field-type="TEXT" data-field-completion-action="NONE"
+                    #sisterAge = "ngModel" [(ngModel)] = "service.GeneralInfo.sisterAge" style="width: 30px; height: 25px;" /><br><br>
+                    Age: <input type="number" id="TEXT_1450682011285" name="daughterAge" data-field-type="TEXT" data-field-completion-action="NONE" 
+                    #daughterAge = "ngModel" [(ngModel)] = "service.GeneralInfo.daughterAge" style="width: 30px; height: 25px;" /><br><br>
                     
                     
                     </div>
                     <div class="col-sm-6 col-lg-3">
-                    <label for="" >Grandmother</label><br>
-                    <label for="" style="padding-top: 7px;">Aunt</label><br>
-                    <label for="" style="padding-top: 7px;">Cousin</label><br>
+                        <div class="form-group focused">
+                            
+                            <div class="form-check" style="margin-left: 5px; vertical: align 5px; padding-bottom: 20px ;" >
+                            <label class="form-check-label">
+                                <input class="form-check-input" name = "grandmother" #grandmother = "ngModel" [(ngModel)] = "service.GeneralInfo.grandmother" type="checkbox">
+                                <span class="form-check-sign">
+                                <span class="check"></span>
+                                </span>
+                            </label>
+                            <h5 class="form-control-label" for="Mammo-history">Grandmother</h5>
+                            </div>
+                        </div>
+                        <div class="form-group focused">
+                            
+                            <div class="form-check" style="margin-left: 5px; vertical: align 5px; padding-bottom: 20px ;" >
+                            <label class="form-check-label">
+                                <input class="form-check-input" name = "aunt" #aunt = "ngModel" [(ngModel)] = "service.GeneralInfo.aunt" type="checkbox">
+                                <span class="form-check-sign">
+                                <span class="check"></span>
+                                </span>
+                            </label>
+                            <h5 class="form-control-label" for="Mammo-history">Aunt</h5>
+                            </div>
+                        </div>
+                        <div class="form-group focused">
+                            
+                            <div class="form-check" style="margin-left: 5px; vertical: align 5px; padding-bottom: 20px ;" >
+                            <label class="form-check-label">
+                                <input class="form-check-input" name = "cousin" #cousin = "ngModel" [(ngModel)] = "service.GeneralInfo.cousin" type="checkbox">
+                                <span class="form-check-sign">
+                                <span class="check"></span>
+                                </span>
+                            </label>
+                            <h5 class="form-control-label" for="Mammo-history">Cousin</h5>
+                            </div>
+                        </div>
                 
                     </div>
                     <div class="col-sm-6 col-lg-3">
-                    Age: <input type="text" id="TEXT_1450682011285" name="" data-field-type="TEXT" data-field-completion-action="NONE" value="" style="width: 30px; height: 25px;" /><br><br>
-                    Age: <input type="text" id="TEXT_1450682011285" name="" data-field-type="TEXT" data-field-completion-action="NONE" value="" style="width: 30px; height: 25px;" /><br><br>
-                    Age: <input type="text" id="TEXT_1450682011285" name="" data-field-type="TEXT" data-field-completion-action="NONE" value="" style="width: 30px; height: 25px;" /><br><br>
+                    Age: <input type="text" id="TEXT_1450682011285" name="grandmotherAge" data-field-type="TEXT" data-field-completion-action="NONE"
+                    #grandmotherAge = "ngModel" [(ngModel)] = "service.GeneralInfo.grandmotherAge" style="width: 30px; height: 25px;" /><br><br>
+                    Age: <input type="text" id="TEXT_1450682011285" name="auntAge" data-field-type="TEXT" data-field-completion-action="NONE" 
+                    #auntAge = "ngModel" [(ngModel)] = "service.GeneralInfo.auntAge" style="width: 30px; height: 25px;" /><br><br>
+                    Age: <input type="text" id="TEXT_1450682011285" name="cousinAge" data-field-type="TEXT" data-field-completion-action="NONE" 
+                    #cousinAge = "ngModel" [(ngModel)] = "service.GeneralInfo.cousinAge" style="width: 30px; height: 25px;" /><br><br>
                     
                     </div>
                 </div>
@@ -108,7 +197,7 @@
                 <h5 class="form-control-label" for="Mammo-history" style="padding-top: 5px;">Taking hormones:</h5>
                 <div class="form-check" style="margin-left: 5px; padding-bottom: 20px ;" >
                 <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" value="" checked="">
+                    <input class="form-check-input" type="checkbox" name="TakingHormones" #TakingHormones ="ngModel" [(ngModel)] = "service.GeneralInfo.TakingHormones">
                     <span class="form-check-sign">
                     <span class="check"></span>
                     </span>
@@ -116,11 +205,11 @@
                 </div>
                 
                 <h5  style="margin-right: 15px; margin-left: 20px; padding-top: 5px;"> For how long? </h5>
-                <input type="text" id="TEXT_1450682011285" name="" data-field-type="TEXT" data-field-completion-action="NONE" value="" style="width: 30px; height: 25px; ;" />(Year)
+                <input type="text" id="TEXT_1450682011285" name="HowlongTakingHormones" data-field-type="TEXT" data-field-completion-action="NONE" #HowlongTakingHormones = "ngModel" [(ngModel)] = "service.GeneralInfo.HowlongTakingHormones" style="width: 30px; height: 25px; ;" />(Year)
             
             </div>
         <!----------------------------  given birth ---------------------------------- -->
-            <div class="form-group focused">
+            <!-- <div class="form-group focused">
                 <h5 class="form-control-label" for="Mammo-history style= margin-right: 15px; padding-top: 5px;"> Have you ever given birth? </h5>
                 <div class="form-check" style="margin-left: 5px; padding-bottom: 20px ;" >
                 <label class="form-check-label">
@@ -130,11 +219,16 @@
                 </span>
                 </label>
             </div>
+            </div> -->
+            <div class="col-4 text-right">
+                <button href="#!" type="submit" class="btn btn-sm btn-primary" >Add General Info</button>
             </div>
 
-
+        </form>
       </ng-template>
+    
     </ngb-tab>
+
 
 <!---------------------------- Clinical-tab ---------------------------------- -->
 
