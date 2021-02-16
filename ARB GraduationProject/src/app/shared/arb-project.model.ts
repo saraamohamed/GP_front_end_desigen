@@ -15,6 +15,7 @@ export class GeneralInfo{
     examDate: string = '';
     examReason: string = '';
     complain: string = '';
+    modalityType: string='';
     hadAMammogram: boolean = false;
     whenHadAMammogram: string = '';
     whereHadAMammogram: string = '';
@@ -34,6 +35,11 @@ export class GeneralInfo{
     cousin: boolean = false;
     TakingHormones: boolean = false;
     HowlongTakingHormones: string = '';
+    menopause: boolean = false;
+    pregnant: boolean = false;
+    gravida: number = 0;
+    para: number= 0;
+    lmp:string='';
 }
 export class features{
     skinRetraction: boolean = false;

@@ -54,6 +54,10 @@
 
 
             <div class="form-group focused ">
+                <h5 style="margin-right: 15px; padding-top: 7px;">Type of Modality </h5>
+                <input type="text" id="TEXT_1450682011285" name="modalityType" data-field-type="TEXT" data-field-completion-action="NONE"
+                 #modalityType = "ngModel" [(ngModel)] = "service.Patient.GeneralInfo.modalityType"  /><br>
+
                 <h5 style="margin-right: 15px; padding-top: 7px;">Where? </h5>
                 <input type="text" id="TEXT_1450682011285" name="whereHadAMammogram" data-field-type="TEXT" data-field-completion-action="NONE"
                  #whereHadAMammogram = "ngModel" [(ngModel)] = "service.Patient.GeneralInfo.whereHadAMammogram"  /><br>
@@ -212,18 +216,42 @@
             
             </div>
         <!----------------------------  given birth ---------------------------------- -->
-            <!-- <div class="form-group focused">
-                <h5 class="form-control-label" for="Mammo-history style= margin-right: 15px; padding-top: 5px;"> Have you ever given birth? </h5>
-                <div class="form-check" style="margin-left: 5px; padding-bottom: 20px ;" >
-                <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" value="" checked="">
-                <span class="form-check-sign">
-                    <span class="check"></span>
-                </span>
-                </label>
+        <h2>Pregnancy Section</h2>
+            <div class="form-group focused">
+                <div class="form-check" style="margin-left: 5px; vertical-align: 5px; padding-bottom: 20px ;" >
+                    <label class="form-check-label">
+                        <input class="form-check-input" name = "menopause" #menopause = "ngModel" [(ngModel)] = "service.Patient.GeneralInfo.menopause" type="checkbox">
+                        <span class="form-check-sign">
+                        <span class="check"></span>
+                        </span>
+                    </label>
+                    <h5 class="form-control-label" for="Mammo-history">Menopause</h5>
+                    </div>
             </div>
-            </div> -->
-
+            <div class="form-group focused">
+                <div class="form-check" style="margin-left: 5px; vertical-align: 5px; padding-bottom: 20px ;" >
+                    <label class="form-check-label">
+                        <input class="form-check-input" name = "pregnant" #pregnant = "ngModel" [(ngModel)] = "service.Patient.GeneralInfo.pregnant" type="checkbox">
+                        <span class="form-check-sign">
+                        <span class="check"></span>
+                        </span>
+                    </label>
+                    <h5 class="form-control-label" for="Mammo-history">Pregnant</h5>
+                    </div>
+            </div>
+            <div class="form-group focused">
+                <h5  style="margin-right: 15px; margin-left: 20px; padding-top: 5px;"> Gravida </h5>
+                <input type="text" id="TEXT_1450682011285" name="gravida" data-field-type="TEXT" data-field-completion-action="NONE" #gravida = "ngModel" [(ngModel)] = "service.Patient.GeneralInfo.gravida" style="width: 30px; height: 25px; ;" />
+            </div>
+            <div class="form-group focused">
+                <h5  style="margin-right: 15px; margin-left: 20px; padding-top: 5px;"> Para </h5>
+                <input type="text" id="TEXT_1450682011285" name="para" data-field-type="TEXT" data-field-completion-action="NONE" #para = "ngModel" [(ngModel)] = "service.Patient.GeneralInfo.para" style="width: 30px; height: 25px; ;" />
+            </div>
+            <div class="form-group focused">
+                <h5 class="form-control-label" for="exam-date" style="margin-right: 15px; padding-top: 15px;">LMP</h5>
+                <input type="date" id="DATE_1449431264015" name="lmp" data-field-type="DATE" data-field-completion-action="NONE" 
+                #lmp = "ngModel" [(ngModel)] = "service.Patient.GeneralInfo.lmp" />
+            </div>
         <!-- </form> -->
       </ng-template>
     
