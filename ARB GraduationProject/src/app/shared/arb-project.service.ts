@@ -67,7 +67,11 @@ export class ArbProjectService {
   getRecommendationCombo(){
     return (this.http.get(`${this.ComboUrl}/getrecommendation`));
   }
-
+  //gded ytzbat
+  getExam(id){
+    this.http.get(`${this.examDataUrl}/${id}`).toPromise().then(
+      res => {this.list = res as ExamData[]});
+  }
   getExamData(){
     this.http.get(this.examDataUrl).toPromise().then(
       res => {this.list = res as ExamData[]});

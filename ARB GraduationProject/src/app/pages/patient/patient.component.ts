@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js';
 import { ArbProjectService } from 'src/app/shared/arb-project.service';
+import{TableListComponent}from 'src/app/pages/table-list/table-list.component'
 import { NgForm } from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
 
@@ -13,6 +14,7 @@ import {
 } from "../../variables/charts";
 // import { extname } from 'path';
 import { ExamData } from 'src/app/shared/arb-project.model';
+import { RouterOutlet, Router, ActivationStart } from '@angular/router';
 
 @Component({
   selector: 'app-patient',
@@ -32,9 +34,15 @@ export class PatientComponent implements OnInit {
   public clicked1: boolean = false;
 
  ExamData:ExamData = new ExamData();
+ hey:ExamData = new ExamData
  
   ngOnInit() {
 
+    if(this.service.ExamData.id !== 0){
+      this.service.getExam(this.service.ExamData.id);
+    }
+        
+    // this.TableList.patientForm;
     this.datasets = [
       [0, 20, 10, 30, 15, 40, 20, 60, 60],
       [0, 20, 5, 25, 10, 30, 15, 40, 40]
@@ -74,7 +82,9 @@ export class PatientComponent implements OnInit {
     else
         this.updateRecord(form,data);    
 }
-
+patientForm(selectedRecord:ExamData){
+  console.log(selectedRecord);
+}
 //post('ExamData',ExamData)
 insertRecord(form:NgForm,data:string){
   this.service.Post(data).subscribe(

@@ -73,15 +73,18 @@ export class NgbdTabsetSelectbyid  implements OnInit{
   }
   resetForm(form: NgForm,data:string) {
     form.form.reset();
-    if (data='GeneralInfo'){
-      this.service.GeneralInfo = new GeneralInfo();
-    }
-    if (data='FianlAssessment'){
-      this.service.FinalAssessment = new FinalAssessment();
-    }
-    if (data='ClinicalInfo'){
-      this.service.ClinicalInfo = new ClinicalInfo();
-    }
+    // if (data='GeneralInfo'){
+    //   this.service.GeneralInfo = new GeneralInfo();
+    // }
+    // if (data='FianlAssessment'){
+    //   this.service.FinalAssessment = new FinalAssessment();
+    // }
+    // if (data='ClinicalInfo'){
+    //   this.service.ClinicalInfo = new ClinicalInfo();
+    // }
+    this.service.GeneralInfo = new GeneralInfo();
+    this.service.FinalAssessment = new FinalAssessment();
+    this.service.ClinicalInfo = new ClinicalInfo();
     
   }
  
