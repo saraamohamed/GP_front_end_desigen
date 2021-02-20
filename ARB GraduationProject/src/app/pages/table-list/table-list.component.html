@@ -32,13 +32,13 @@
             </thead>
 
             <tbody>
-              <tr *ngFor = "let pd of service.list">
+              <tr *ngFor = "let pd of service.list" >
                 <td >
                     1
                 </td>
                   <th scope="row">
                       <div class="media-body">
-                        <span class="mb-0 text-sm" (click) = preselect(pd.id)>{{pd.name}}</span>
+                        <a class="mb-0 text-sm" href="/#/preselect" (click) = preselect(pd.id)>{{pd.name}}</a>
                       </div>
                   </th>
                 <td >
@@ -92,7 +92,7 @@
                     </a>
                     <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
                       <a class="dropdown-item" href="javascript:void(0)" (click)= DeleteOn(pd.id)>Delete</a>
-                      <a class="dropdown-item" href="/#/patient" (click) = patientForm(pd)>Edit</a>
+                      <a class="dropdown-item" href="/#/patient" (click) = patientForm(pd.id)>Edit</a>
                       <a class="dropdown-item" href="/#/report">Report Review </a>
                     </div>
                   </div>

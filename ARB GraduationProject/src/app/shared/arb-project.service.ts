@@ -8,7 +8,7 @@ import {HttpHeaders} from "@angular/common/http";
 })
 export class ArbProjectService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient ) { }
   httpOptions={
     headers: new HttpHeaders({
       'Content-type':'applicaion/json',
@@ -18,14 +18,16 @@ export class ArbProjectService {
   readonly APIUrl = 'http://localhost:57645/api/';
   readonly ComboUrl = 'http://localhost:57645/api/combobox';
   readonly  examDataUrl = 'http://localhost:57645/api/ExamData';
-  readonly  generalInfoUrl = 'http://localhost:57645/api/generalinfo';
   
+  PatientId:number = 0;
   ExamData:ExamData = new ExamData();
   GeneralInfo:GeneralInfo = new GeneralInfo();
+  general:GeneralInfo[]
   list:ExamData[];
   FinalAssessment:FinalAssessment = new FinalAssessment();
   ClinicalInfo:ClinicalInfo = new ClinicalInfo();
   Patient:Patient = new Patient();
+
   whichVar(Name:string)
   {
     switch(Name){
@@ -58,36 +60,18 @@ export class ArbProjectService {
     return (this.http.delete(`${this.APIUrl}/${APIUrl}/${id}`)); 
   }
 
-  get(comboboxName:string){
+  getCombo(comboboxName:string){
     return (this.http.get(`${this.ComboUrl}/${comboboxName}`));
   }
-  getBiRadsCombo(){
-    return (this.http.get(`${this.ComboUrl}/getbirads`));
+  
+  getOne(id,APIUrl){
+    return (this.http.get(`${this.APIUrl}/${APIUrl}/${id}`));
   }
-  getRecommendationCombo(){
-    return (this.http.get(`${this.ComboUrl}/getrecommendation`));
-  }
-  //gded ytzbat
-  getExam(id){
-    this.http.get(`${this.examDataUrl}/${id}`).toPromise().then(
-      res => {this.list = res as ExamData[]});
-  }
+  
   getExamData(){
     this.http.get(this.examDataUrl).toPromise().then(
       res => {this.list = res as ExamData[]});
   }
-  // // PostExamData(){
-  // //   return (this.http.post(this.examDataUrl,this.ExamData));
-  // // }
-  // // deleteExamData(id:number){
-  // //   return (this.http.delete(`${this.examDataUrl}/${id}` ));
-  // // } 
-  // // putExamData(){
-  // //   return (this.http.put(`${this.examDataUrl}/${this.ExamData.id}`,this.ExamData));
-  // // }
-  // PostGeneralInfo(){
-  //   return (this.http.post(this.generalInfoUrl,this.GeneralInfo));
-  // }
 
   
   // refreshList() {

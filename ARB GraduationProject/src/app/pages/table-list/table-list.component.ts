@@ -21,10 +21,10 @@ export class TableListComponent implements OnInit {
     this.service.getExamData();
   }
   preselect(id:number){
-    console.log(id);
+    this.service.PatientId = id;
   }
-  patientForm(selectedRecord:ExamData){
-    this.service.ExamData = selectedRecord;
+  patientForm(id:number){
+    this.service.ExamData.id = id;
   }
   DeleteOn(id:number){
     if (confirm('Are You Sure You Want To Delete?'))

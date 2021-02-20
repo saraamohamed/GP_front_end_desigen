@@ -39,7 +39,7 @@ export class PatientComponent implements OnInit {
   ngOnInit() {
 
     if(this.service.ExamData.id !== 0){
-      this.service.getExam(this.service.ExamData.id);
+      this.service.getOne(this.service.ExamData.id,'ExamData').subscribe(res =>this.service.ExamData = res as ExamData) 
     }
         
     // this.TableList.patientForm;
@@ -82,9 +82,9 @@ export class PatientComponent implements OnInit {
     else
         this.updateRecord(form,data);    
 }
-patientForm(selectedRecord:ExamData){
-  console.log(selectedRecord);
-}
+// patientForm(selectedRecord:ExamData){
+//   console.log(selectedRecord);
+// }
 //post('ExamData',ExamData)
 insertRecord(form:NgForm,data:string){
   this.service.Post(data).subscribe(

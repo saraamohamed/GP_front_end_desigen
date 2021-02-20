@@ -36,8 +36,9 @@
         <!---------------------------- Exam date ---------------------------------- -->
             <div class="form-group focused">
                 <h5 class="form-control-label" for="exam-date" style="margin-right: 15px; padding-top: 15px;">Exam Date</h5>
-                <input type="date" id="DATE_1449431264015" name="examDate" data-field-type="DATE" data-field-completion-action="NONE" 
-                #examDate = "ngModel" [(ngModel)] = "service.Patient.GeneralInfo.examDate" />
+                
+                <input type="datetime-local"  id="DATE_1449431264015"  name="examDate" data-field-type="DATE" data-field-completion-action="NONE" 
+                #examDate = "ngModel" value = "" [(ngModel)] = "service.Patient.GeneralInfo.examDate" />
               </div>
         <!---------------------------- Exam history ---------------------------------- -->
             <div class="form-group focused">
@@ -249,7 +250,7 @@
             </div>
             <div class="form-group focused">
                 <h5 class="form-control-label" for="exam-date" style="margin-right: 15px; padding-top: 15px;">LMP</h5>
-                <input type="date" id="DATE_1449431264015" name="lmp" data-field-type="DATE" data-field-completion-action="NONE" 
+                <input type="datetime-local" id="DATE_1449431264015" name="lmp" data-field-type="DATE" data-field-completion-action="NONE" 
                 #lmp = "ngModel" [(ngModel)] = "service.Patient.GeneralInfo.lmp" />
             </div>
         <!-- </form> -->
