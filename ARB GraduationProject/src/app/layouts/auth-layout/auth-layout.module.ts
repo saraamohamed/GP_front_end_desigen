@@ -5,6 +5,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthLayoutRoutes } from './auth-layout.routing';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from '../../pages/login/login.component';
+import {homenavbarComponent} from '../../pages/home/navbar/navbar.component';
+import {HomecomponentComponent} from '../../pages/homecomponent/homecomponent.component';
+import { AuthLayoutComponent } from './auth-layout.component';
+
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -13,7 +19,10 @@ import { LoginComponent } from '../../pages/login/login.component';
     // NgbModule
   ],
   declarations: [
-    LoginComponent
+    LoginComponent,
+    HomecomponentComponent,
+    // AuthLayoutComponent,
+    homenavbarComponent
 
   ]
 })

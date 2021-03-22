@@ -25,6 +25,12 @@ import {MatSelectModule} from '@angular/material/select';
 // import { GalleryComponent } from 'app/gallery/gallery.component';
 import {NgxGalleryModule} from '@kolkov/ngx-gallery';
 // >>>>>>> cde56dd2872e3efe439ddf2794a0f44d04832a84
+// import { FooterComponent } from '../../components/footer/footer.component';
+// import { NavbarComponent } from '../../components/navbar/navbar.component';
+// import { SidebarComponent } from '../../components/sidebar/sidebar.component';
+
+
+import { AdminLayoutComponent } from './admin-layout.component';
 
 import { ToastrModule } from 'ngx-toastr';
 
@@ -55,7 +61,12 @@ import { ToastrModule } from 'ngx-toastr';
     TableListComponent,
     PreselectComponent,
     ReportComponent,
-    NgbdTabsetSelectbyid
+    NgbdTabsetSelectbyid,
+    // AdminLayoutComponent,
+    // FooterComponent,
+    // NavbarComponent,
+    // SidebarComponent,
+
 
   ]
 })
