@@ -31,7 +31,8 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    
  
 
   ],

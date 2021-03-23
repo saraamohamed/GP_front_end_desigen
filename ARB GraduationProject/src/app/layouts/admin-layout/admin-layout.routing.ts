@@ -36,6 +36,7 @@ export const AdminLayoutRoutes: Routes = [
                 path:'report',
                 component: ReportComponent
             },
+
         ]
       },
 

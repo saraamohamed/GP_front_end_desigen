@@ -8,6 +8,7 @@ declare const google: any;
 })
 export class ReportComponent implements OnInit {
 
+
   constructor() { }
 
   ngOnInit() {}

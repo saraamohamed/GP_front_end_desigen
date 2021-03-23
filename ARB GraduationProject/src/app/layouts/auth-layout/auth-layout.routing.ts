@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from '../../pages/login/login.component';
-import {homenavbarComponent} from '../../pages/home/navbar/navbar.component';
 import {HomecomponentComponent} from '../../pages/homecomponent/homecomponent.component';
 import {AuthLayoutComponent} from '../../layouts/auth-layout/auth-layout.component';
 

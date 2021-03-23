@@ -37,8 +37,10 @@
     "core-js": "3.6.5",
     "mdbootstrap": "^4.19.2",
     "ngx-clipboard": "13.0.1",
+    "ngx-doc-viewer": "^2.0.1",
     "ngx-toastr": "13.0.0",
     "nouislider": "14.6.2",
+    "rellax": "^1.12.1",
     "rxjs": "6.6.3",
     "zone.js": "0.11.1"
   },

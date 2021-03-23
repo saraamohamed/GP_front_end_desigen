@@ -12,6 +12,7 @@ import { ReportComponent } from '../../pages/report/report.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { TableListComponent } from '../../pages/table-list/table-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 // <<<<<<< HEAD
 import{NgbdTabsetSelectbyid} from '../../pages/preselect/tabset-selectbyid'
 
@@ -61,7 +62,7 @@ import { ToastrModule } from 'ngx-toastr';
     TableListComponent,
     PreselectComponent,
     ReportComponent,
-    NgbdTabsetSelectbyid,
+    NgbdTabsetSelectbyid
     // AdminLayoutComponent,
     // FooterComponent,
     // NavbarComponent,
