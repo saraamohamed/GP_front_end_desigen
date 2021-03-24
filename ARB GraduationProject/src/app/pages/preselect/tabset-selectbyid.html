@@ -37,7 +37,8 @@
             <div class="form-group focused">
                 <h5 class="form-control-label" for="exam-date" style="margin-right: 15px; padding-top: 15px;">Exam Date</h5>
                 
-                <input type="datetime-local"  id="DATE_1449431264015"  name="examDate" data-field-type="DATE" data-field-completion-action="NONE" 
+                <input type="datetime-local"  id="DATE_1449431264015"  name="examDate"
+                 data-field-type="DATE" data-field-completion-action="NONE" 
                 #examDate = "ngModel" value = "" [(ngModel)] = "service.Patient.GeneralInfo.examDate" />
               </div>
         <!---------------------------- Exam history ---------------------------------- -->
@@ -287,7 +288,7 @@
 `
             <div class="form-group focused">
                 <h5 class="form-control-label" for="Mammo-history" style="margin-right: 15px; padding-top: 15px;"> Asymmetries </h5>
-                <select class="custom-select" name = "asyId" #asyId = "ngModel" [(ngModel)] = "service.Patient.ClinicalInfo.asyId" >
+                <select class="custom-select" name = "asymmetriesId" #asyId = "ngModel" [(ngModel)] = "service.Patient.ClinicalInfo.asymmetriesId" >
                     <option value = "0"> SELECT</option>
                     <option *ngFor="let item of Asymmetries" value="{{item.id}}">{{item.name}}</option>
                   </select>
@@ -314,11 +315,11 @@
             <!-- Mass Shape ..Done-->
             <div class="form-group focused">
                 <h5 class="form-control-label" for="Mammo-history" style="margin-right: 15px; padding-top: 15px;"> Shape </h5>
-                <input type="radio" name="massShape" value="Oval" [(ngModel)]="service.Patient.ClinicalInfo.massShape">
+                <input type="radio" name="massShape" value="Oval" [(ngModel)]="service.Patient.ClinicalInfo.massSpecifications[0].massShape">
                 <span class="checkmark">oval</span>
-                <input type="radio" name="massShape" value="Round" [(ngModel)]="service.Patient.ClinicalInfo.massShape">
+                <input type="radio" name="massShape" value="Round" [(ngModel)]="service.Patient.ClinicalInfo.massSpecifications[0].massShape">
                 <span class="checkmark">Round</span>
-                <input type="radio" name="massShape" value="Irregular" [(ngModel)]="service.Patient.ClinicalInfo.massShape">
+                <input type="radio" name="massShape" value="Irregular" [(ngModel)]="service.Patient.ClinicalInfo.massSpecifications[0].massShape">
                 <span class="checkmark">Irregular</span>
  
             </div>
@@ -327,7 +328,7 @@
             <div class="form-group focused">
             <h5 class="form-control-label" for="Mammo-history" style="margin-right: 15px; padding-top: 15px;"> Margin </h5>
             <select class="custom-select" name = "massMarginId" #massMarginId = "ngModel"
-             [(ngModel)] = "service.Patient.ClinicalInfo.massMarginId" >
+             [(ngModel)] = "service.Patient.ClinicalInfo.massSpecifications[0].massMarginId" >
                 <option value = "0"> SELECT</option>
                 <option *ngFor="let item of MassMargin" value="{{item.id}}">{{item.name}}</option>
               </select>
@@ -335,7 +336,7 @@
               <!-- Mass Density ..Done-->
             <div class="form-group focused">
             <h5 class="form-control-label" for="Mammo-history" style= "margin-right: 15px; padding-top: 15px;"> Density </h5>
-            <select class="custom-select" name = "massDensityId" #massDensityId = "ngModel" [(ngModel)] = "service.Patient.ClinicalInfo.massDensityId" >
+            <select class="custom-select" name = "massDensityId" #massDensityId = "ngModel" [(ngModel)] = "service.Patient.ClinicalInfo.massSpecifications[0].massDensityId" >
                 <option value = "0"> SELECT</option>
                 <option *ngFor="let item of MassDensities" value="{{item.id}}">{{item.name}}</option>
               </select>
@@ -345,14 +346,14 @@
             <h5 class="form-control-label" for="Mammo-history" style= "margin-right: 15px; padding-top: 15px;">Laterality</h5>
      
             <input type="text" id="TEXT_1450682011285" name="laterality" data-field-type="TEXT" data-field-completion-action="NONE"
-            #laterality = "ngModel" [(ngModel)] = "service.Patient.ClinicalInfo.laterality" style="width: 30px; height: 25px;" />
+            #laterality = "ngModel" [(ngModel)] = "service.Patient.ClinicalInfo.massSpecifications[0].laterality" style="width: 30px; height: 25px;" />
             </div>
           
                 
             <!-- Quadrant ..Done-->
             <div class="form-group focused">
             <h5 class="form-control-label" for="Mammo-history" style= "margin-right: 15px; padding-top: 15px;">Quadrant</h5>
-            <select class="custom-select" name = "quadrantId" #asyId = "ngModel" [(ngModel)] = "service.Patient.ClinicalInfo.quadrantId" >
+            <select class="custom-select" name = "quadrantId" #asyId = "ngModel" [(ngModel)] = "service.Patient.ClinicalInfo.massSpecifications[0].quadrantId" >
                 <option value = "0"> SELECT</option>
                 <option *ngFor="let item of Quadrants" value="{{item.id}}">{{item.name}}</option>
             </select>
@@ -361,7 +362,7 @@
             <div class="form-group focused">
             <div class="form-group focused">
             <h5 class="form-control-label" for="Mammo-history" style= "margin-right: 15px; padding-top: 15px;">clock face</h5>
-                <select class="custom-select" name = "clockFaceId" #clockFaceId = "ngModel" [(ngModel)] = "service.Patient.ClinicalInfo.clockFaceId" >
+                <select class="custom-select" name = "clockFaceId" #clockFaceId = "ngModel" [(ngModel)] = "service.Patient.ClinicalInfo.massSpecifications[0].clockFaceId" >
                     <option value = "0"> SELECT</option>
                     <option *ngFor="let item of ClockFaces" value="{{item.id}}">{{item.name}}</option>
                   </select>
@@ -371,7 +372,7 @@
             <div class="form-group focused ">
             <h5  style="margin-right: 10px; padding-top: 9px;">Depth </h5>
             <input type="text" id="TEXT_1450682011285" name="depth" data-field-type="TEXT" data-field-completion-action="NONE"
-            #depth = "ngModel" [(ngModel)] = "service.Patient.ClinicalInfo.depth"  />
+            #depth = "ngModel" [(ngModel)] = "service.Patient.ClinicalInfo.massSpecifications[0].depth"  />
             </div>
 
              
@@ -381,11 +382,9 @@
             <div class="form-group focused ">
             <h5  style="margin-right: 10px; padding-top: 9px;">Distance from the nipple </h5>
             <input type="text" id="TEXT_1450682011285" name="distanceFromTheNipple" data-field-type="TEXT" data-field-completion-action="NONE"
-            #distanceFromTheNipple = "ngModel" [(ngModel)] = "service.Patient.ClinicalInfo.distanceFromTheNipple"  />
+            #distanceFromTheNipple = "ngModel" [(ngModel)] = "service.Patient.ClinicalInfo.massSpecifications[0].distanceFromTheNipple" />
             </div>
               
-
-
             <div class="form-group focused">
             <h5 class="form-control-label" for="Mammo-history" style= "margin-right: 15px; padding-top: 15px;">Clacifications</h5>
             </div>

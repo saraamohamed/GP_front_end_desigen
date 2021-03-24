@@ -22,6 +22,7 @@ export class ArbProjectService {
   PatientId:number = 0;
   ExamData:ExamData = new ExamData();
   GeneralInfo:GeneralInfo = new GeneralInfo();
+  Doctor:Doctor = new Doctor();
   general:GeneralInfo[]
   list:ExamData[];
   FinalAssessment:FinalAssessment = new FinalAssessment();
@@ -36,17 +37,16 @@ export class ArbProjectService {
       case 'GeneralInfo':
         return(this.GeneralInfo);
       case 'ClinicalInfo':
-        
         return(this.ClinicalInfo);
       case 'ExamData':
         return(this.ExamData);
       case 'Patient':
         return(this.Patient);
+      case 'Doctor':
+        return(this.Doctor);
     }
   }
-  PostTest(data){
-    return(this.http.post('http://localhost:57645/api/generalinfo',data))
-  }
+
   Post(APIUrl){
     let variableName = this.whichVar(APIUrl);
     console.log(variableName);
@@ -67,7 +67,7 @@ export class ArbProjectService {
   }
   
   getOne(id,APIUrl){
-    return (this.http.get(`${this.APIUrl}/${APIUrl}/${id}`));
+    return (this.http.get(`${this.APIUrl}/${APIUrl}/?${id}`));
   }
   
   getExamData(){

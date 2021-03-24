@@ -70,10 +70,10 @@ export class massSpecifications{
 export class ClinicalInfo{
     id: number = 0;
     numOfMass: number = 0;
-    asyId: number = 0;
+    asymmetriesId: number = 0;
     featuresId: number = 0;
     features:features=new features();
-    massSpecifications:massSpecifications[]=[];
+    massSpecifications:massSpecifications[]=[new massSpecifications()];
     typicallyBenignId: number = 0;
     suspiciousMorphologyId: number = 0;
     distributionId: number = 0;  
