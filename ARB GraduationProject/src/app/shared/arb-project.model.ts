@@ -42,6 +42,7 @@ export class GeneralInfo{
     lmp:string='';
 }
 export class features{
+    id:number=0;
     skinRetraction: boolean = false;
     nippleRetraction: boolean = false;
     skinThickening: boolean = false;
@@ -53,25 +54,33 @@ export class features{
     axillaryAdenopathy: boolean = false;
 }
 
+export class massSpecifications{
+        id:number=0;    
+        clinicalInfoId:number=0 ;
+        massShape:String='';
+        massMarginId :number=0 ;
+        massDensityId:number=0 ;
+        laterality:string ='';
+        quadrantId:number=0 ;
+        clockFaceId:number=0 ;
+        depth:string='' ;
+        distanceFromTheNipple:string ='';
+}
+
 export class ClinicalInfo{
     id: number = 0;
     numOfMass: number = 0;
     asyId: number = 0;
     featuresId: number = 0;
     features:features=new features();
-    massMarginId: number = 0;
-    massDensityId: number = 0;
+    massSpecifications:massSpecifications[]=[];
     typicallyBenignId: number = 0;
     suspiciousMorphologyId: number = 0;
-    distributionId: number = 0;
-    quadrantId: number = 0;
-    clockFaceId: number = 0;
-    massShape: string = '';
+    distributionId: number = 0;  
     breastCompostion: string = '';
     distribution: string = '';
     laterality: string = '';
-    depth: string = '';
-    distanceFromTheNipple: string = '';
+
 }
 export class FinalAssessment{
     id: number = 0;
@@ -88,8 +97,12 @@ export class Patient{
     FinalAssessment:FinalAssessment = new FinalAssessment();
     generalInfoId: number = 0;
     finalAssessmentId: number = 0;
+    doctorId: number=0;
     // examDataId: number = 0;
 }
 export class Doctor{
-
+    id: number = 0;
+    name:String='';
+    email:string='';
+    password:string=''
 }

@@ -42,7 +42,9 @@ export class ArbProjectService {
         return(this.Patient);
     }
   }
-
+  PostTest(data){
+    return(this.http.post('http://localhost:57645/api/generalinfo',data))
+  }
   Post(APIUrl){
     let variableName = this.whichVar(APIUrl);
     console.log(variableName);
