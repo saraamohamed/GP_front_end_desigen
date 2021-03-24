@@ -11,9 +11,12 @@ import { ClinicalInfo, GeneralInfo ,FinalAssessment} from 'src/app/shared/arb-pr
   templateUrl: './tabset-selectbyid.html'
 })
 export class NgbdTabsetSelectbyid  implements OnInit{
-  constructor(public service:ArbProjectService,private http:HttpClient) { }
-  ClinicalInfo:ClinicalInfo = new ClinicalInfo();
 
+  constructor(public service:ArbProjectService,private http:HttpClient) { }
+
+  ClinicalInfo:ClinicalInfo = new ClinicalInfo();
+  GeneralInfo:GeneralInfo= new GeneralInfo();
+  general : GeneralInfo[]
   BiRadslist=[]
   RecommendationList=[]
   Asymmetries=[]
@@ -24,64 +27,88 @@ export class NgbdTabsetSelectbyid  implements OnInit{
   ClacificationTypicallyBenign=[]
   ClacificationSuspiciousMorphology=[]
   ClacificationDistribution=[]
+
   ngOnInit(): void {
-    this.service.getBiRadsCombo()
+    if(this.service.PatientId !== 0){
+      this.service.getOne(this.service.PatientId,'GeneralInfo').subscribe(res => this.service.Patient.GeneralInfo = res as GeneralInfo);
+      this.service.getOne(this.service.PatientId,'FinalAssessment').subscribe(res => this.service.Patient.FinalAssessment = res as FinalAssessment);
+      this.service.getOne(this.service.PatientId,'ClinicalInfo').subscribe(res => this.service.Patient.ClinicalInfo = res as ClinicalInfo);
+    }
+    this.service.getCombo('GetBiRads')
     .subscribe(res => this.BiRadslist = res as []);
-
-    this.service.getRecommendationCombo()
+    this.service.getCombo('GetRecommendation')
     .subscribe(res => this.RecommendationList = res as []);
-    // ClinicalComboBoxs
-    this.service.get('GetMassMargin')
+    this.service.getCombo('GetMassMargin')
     .subscribe(res => this.MassMargin = res as []);
-
-    this.service.get('GetMassDensities')
+    this.service.getCombo('GetMassDensities')
     .subscribe(res =>  this.MassDensities = res as []);
-
-
-    this.service.get('GetAsymmetries')
+    this.service.getCombo('GetAsymmetries')
     .subscribe(res =>  this.Asymmetries = res as []);
-
-    this.service.get('GetQuadrants')
+    this.service.getCombo('GetQuadrants')
     .subscribe(res =>  this.Quadrants = res as []);
-
-    this.service.get('GetClockFaces')
+    this.service.getCombo('GetClockFaces')
     .subscribe(res =>  this.ClockFaces = res as []);
-
-
-    this.service.get('GetClacificationTypicallyBenign')
+    this.service.getCombo('GetClacificationTypicallyBenign')
     .subscribe(res =>  this.ClacificationTypicallyBenign = res as []);
-
-    this.service.get('GetClacificationSuspiciousMorphology')
+    this.service.getCombo('GetClacificationSuspiciousMorphology')
     .subscribe(res =>  this.ClacificationSuspiciousMorphology = res as []);
-
-    this.service.get('GetClacificationDistribution')
+    this.service.getCombo('GetClacificationDistribution')
     .subscribe(res =>  this.ClacificationDistribution = res as []);
-
   }
 
   OnSubmit(form:NgForm,data:string){
-    console.log(data);
-    console.log(form);
+    if ((this.service.Patient.GeneralInfo.id == 0) && (this.service.Patient.ClinicalInfo.id == 0) && (this.service.Patient.FinalAssessment.id == 0)){
+      this.InsertFeatures(form,data);
+    }
+    else {
+      this.UpdateFeatures(form,data);
+    }
+  //   console.log(data);
+
+  //   console.log(form);
+  //   this.service.Post(data).subscribe(
+  //     res=>{
+  //       this.resetForm(form,data);
+  //     },
+  //     err=>{
+  //       console.log(err);
+  //     }
+  // )
+  }
+  InsertFeatures(form:NgForm,data:string){
     this.service.Post(data).subscribe(
       res=>{
         this.resetForm(form,data);
       },
       err=>{
         console.log(err);
+      })
+  }
+  UpdateFeatures(form:NgForm,data:string){
+    this.service.Put(data).subscribe(
+      res=>{
+        this.resetForm(form,data);
+        // this.refreshList();
+      },
+      err=>{
+        console.log(err);
       }
-  )
+  );
   }
   resetForm(form: NgForm,data:string) {
     form.form.reset();
-    if (data='GeneralInfo'){
-      this.service.GeneralInfo = new GeneralInfo();
-    }
-    if (data='FianlAssessment'){
-      this.service.FinalAssessment = new FinalAssessment();
-    }
-    if (data='ClinicalInfo'){
-      this.service.ClinicalInfo = new ClinicalInfo();
-    }
+    // if (data='GeneralInfo'){
+    //   this.service.GeneralInfo = new GeneralInfo();
+    // }
+    // if (data='FianlAssessment'){
+    //   this.service.FinalAssessment = new FinalAssessment();
+    // }
+    // if (data='ClinicalInfo'){
+    //   this.service.ClinicalInfo = new ClinicalInfo();
+    // }
+    this.service.GeneralInfo = new GeneralInfo();
+    this.service.FinalAssessment = new FinalAssessment();
+    this.service.ClinicalInfo = new ClinicalInfo();
     
   }
  

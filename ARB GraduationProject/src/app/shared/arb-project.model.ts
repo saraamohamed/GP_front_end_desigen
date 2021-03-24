@@ -13,7 +13,7 @@ export class ExamData{
 export class GeneralInfo{
     id: number = 0;
     examDate: string = '';
-    examReason: string = '';
+    examReason: string = '' ;
     complain: string = '';
     modalityType: string='';
     hadAMammogram: boolean = false;

@@ -12,6 +12,7 @@ import { ReportComponent } from '../../pages/report/report.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { TableListComponent } from '../../pages/table-list/table-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 // <<<<<<< HEAD
 import{NgbdTabsetSelectbyid} from '../../pages/preselect/tabset-selectbyid'
 
@@ -25,6 +26,12 @@ import {MatSelectModule} from '@angular/material/select';
 // import { GalleryComponent } from 'app/gallery/gallery.component';
 import {NgxGalleryModule} from '@kolkov/ngx-gallery';
 // >>>>>>> cde56dd2872e3efe439ddf2794a0f44d04832a84
+// import { FooterComponent } from '../../components/footer/footer.component';
+// import { NavbarComponent } from '../../components/navbar/navbar.component';
+// import { SidebarComponent } from '../../components/sidebar/sidebar.component';
+
+
+import { AdminLayoutComponent } from './admin-layout.component';
 
 import { ToastrModule } from 'ngx-toastr';
 
@@ -56,6 +63,11 @@ import { ToastrModule } from 'ngx-toastr';
     PreselectComponent,
     ReportComponent,
     NgbdTabsetSelectbyid
+    // AdminLayoutComponent,
+    // FooterComponent,
+    // NavbarComponent,
+    // SidebarComponent,
+
 
   ]
 })

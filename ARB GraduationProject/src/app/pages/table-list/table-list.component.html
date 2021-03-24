@@ -15,13 +15,16 @@
                 <th scope="col">Priority</th>
                 <th scope="col">Patient Name</th>
                 <th scope="col">Patient Id</th>
-                <!-- <th scope="col">Birthdate</th> -->
-                <!-- <th scope="col">Status</th> -->
-                <!-- <th scope="col"> Performance</th> -->
+                
                 <th scope="col">Modality </th>
                 <th scope="col">Study Datetime</th>
                 <th scope="col">Referring Doctor</th>
                 <th scope="col"> Action</th>
+                <th hidden scope="col">Email Address</th>
+                <th hidden scope="col">mobile number</th>
+                <th hidden scope="col"> address</th>
+                <th hidden scope="col"> Last Operation</th>
+
 
 
 
@@ -29,13 +32,13 @@
             </thead>
 
             <tbody>
-              <tr *ngFor = "let pd of service.list">
+              <tr *ngFor = "let pd of service.list" >
                 <td >
                     1
                 </td>
                   <th scope="row">
                       <div class="media-body">
-                        <span class="mb-0 text-sm">{{pd.name}}</span>
+                        <a class="mb-0 text-sm" href="/#/preselect" (click) = preselect(pd.id)>{{pd.name}}</a>
                       </div>
                   </th>
                 <td >
@@ -69,6 +72,18 @@
                 <td><!--Referring Doctor -->
                  {{pd.referringDoctor}}
                 </td>
+                <td hidden><!--Modality -->
+                  {{pd.mobileNumber}}
+                </td>
+                <td hidden><!--Study Datetime -->
+                  {{pd.emailAddress}}
+                </td>
+                <td hidden><!--Referring Doctor -->
+                 {{pd.address}}
+                </td>
+                <td hidden><!--Referring Doctor -->
+                  {{pd.lastOperation}}
+                 </td>
 
                 <td class="text-right">
                   <div ngbDropdown placement="bottom-right">
@@ -77,8 +92,8 @@
                     </a>
                     <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
                       <a class="dropdown-item" href="javascript:void(0)" (click)= DeleteOn(pd.id)>Delete</a>
-                      <a class="dropdown-item" href="/#/patient" (click)= populateForm(pd)>Edit</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Mark as done </a>
+                      <a class="dropdown-item" href="/#/patient" (click) = patientForm(pd.id)>Edit</a>
+                      <a class="dropdown-item" href="/#/report">Report Review </a>
                     </div>
                   </div>
                 </td>
