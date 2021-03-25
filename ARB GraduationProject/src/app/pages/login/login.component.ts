@@ -12,29 +12,33 @@ import { Doctor} from 'src/app/shared/arb-project.model';
 })
 export class LoginComponent implements OnInit {
   constructor(public service:ArbProjectService,private http:HttpClient) {}
-  Doctor:Doctor=new Doctor();
+  Doctor = new Doctor();
 
   ngOnInit() {
   }
+
   OnSubmit(form:NgForm,data:string){
    
-    this.service.getOne(this.service.Doctor.email,data).subscribe(
-      res=>{
-        let Doctor = res[0];
-        console.log(Doctor.password);
-        console.log(this.service.Doctor.password);
-        if (Doctor.password == this.service.Doctor.password){
-          console.log("redirct to home with Doctor Id ");
-        }
-        else{
-          console.log("reload the same page with error msg")
-        }
-      },
-      err=>{
-        console.log(err);
+    console.log(this.Doctor)
+    this.service.getOne(this.Doctor.email,data).subscribe(
+      res=> {let doctor =res[0]
+        console.log(doctor.id)
+          console.log(doctor.password);
+          console.log(this.Doctor.password);
+          if (doctor.password == this.Doctor.password){
+            this.service.DoctorId = doctor.id
+            console.log(this.service.DoctorId)
+          }
+          else{
+            console.log("reload the same page with error msg")
+          }
+        },
+        err=>{
+          console.log(err);
+      
       })
+    }
+
+        
+     
   }
-
- 
-
-}

@@ -18,7 +18,11 @@ export class TableListComponent implements OnInit {
   ExamData:ExamData = new ExamData();
   list:ExamData[]
   ngOnInit() {
-    this.service.getExamData();
+
+    if (this.service.DoctorId !=0)
+    {
+      console.log(this.service.DoctorId)
+    }
   }
   preselect(id:number){
     this.service.PatientId = id;
