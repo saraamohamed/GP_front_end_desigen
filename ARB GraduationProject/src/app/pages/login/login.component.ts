@@ -3,7 +3,7 @@ import {FormControl} from '@angular/forms';
 import { ArbProjectService } from 'src/app/shared/arb-project.service';
 import { NgForm } from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
-import { Doctor} from 'src/app/shared/arb-project.model';
+import { Doctor, Login} from 'src/app/shared/arb-project.model';
 
 @Component({
   selector: 'app-login',
@@ -12,26 +12,22 @@ import { Doctor} from 'src/app/shared/arb-project.model';
 })
 export class LoginComponent implements OnInit {
   constructor(public service:ArbProjectService,private http:HttpClient) {}
-  Doctor:Doctor=new Doctor();
+  Doctor:Doctor = new Doctor();
+  Login:Login = new Login();
 
   ngOnInit() {
   }
-  OnSubmit(form:NgForm,data:string){
-   
-    this.service.getOne(this.service.Doctor.email,data).subscribe(
+  OnSubmit(form:NgForm){
+    this.service.PostLogin().subscribe(
       res=>{
-        let Doctor = res[0];
-        console.log(Doctor.password);
-        console.log(this.service.Doctor.password);
-        if (Doctor.password == this.service.Doctor.password){
-          console.log("redirct to home with Doctor Id ");
-        }
-        else{
-          console.log("reload the same page with error msg")
-        }
+        console.log(res);
+       let doctorId = res['id'];
+      //  salma: 
+        console.log("redirect to tablelist with patient of the Doctor");
+        // Get patients of the Doctor 
       },
       err=>{
-        console.log(err);
+        console.log("Not found send error msg");
       })
   }
 

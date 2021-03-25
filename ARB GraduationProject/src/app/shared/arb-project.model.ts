@@ -106,3 +106,9 @@ export class Doctor{
     email:string='';
     password:string=''
 }
+
+export class Login{
+    email:string='';
+    password:string='';
+    RememberMe:boolean=false
+}
