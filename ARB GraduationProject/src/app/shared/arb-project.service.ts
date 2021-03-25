@@ -21,6 +21,7 @@ export class ArbProjectService {
   readonly  examDataUrl = 'http://localhost:57645/api/ExamData';
   
   PatientId:number = 0;
+  DoctorId:number = 0;
   ExamData:ExamData = new ExamData();
   GeneralInfo:GeneralInfo = new GeneralInfo();
   Doctor:Doctor = new Doctor();
@@ -73,6 +74,7 @@ export class ArbProjectService {
   }
   
   getOne(id,APIUrl){
+    console.log(`${this.APIUrl}/${APIUrl}/?${id}`)
     return (this.http.get(`${this.APIUrl}/${APIUrl}/?${id}`));
   }
   
