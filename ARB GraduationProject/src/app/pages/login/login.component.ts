@@ -22,15 +22,18 @@ export class LoginComponent implements OnInit {
     this.service.PostLogin().subscribe(
       res=>{
         console.log(res);
-        if (res == "Wrong Password")
-        {
-          console.log("error msg to user")
-        }
-        else{
-          let doctorId = res['id'];
-          console.log("redirect to tablelist with patient of the Doctor");
-        }
-      
+        switch(res){
+          case "wrong password":
+            return("WRONG PASS NOTIFICATION");
+          case "Not Found":
+            return("Not Found")
+          default:
+            {
+            let doctorId = res['id'];
+           console.log("redirect to tablelist with patient of the Doctor");
+
+            }
+        }      
       },
       err=>{
         console.log("Not found send error msg");
