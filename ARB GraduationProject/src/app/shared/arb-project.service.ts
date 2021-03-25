@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import { ExamData, Patient , Doctor , GeneralInfo ,ClinicalInfo ,FinalAssessment} from './arb-project.model';
+import { ExamData, Patient , Doctor , 
+  GeneralInfo ,ClinicalInfo ,FinalAssessment , Login} from './arb-project.model';
 import {HttpHeaders} from "@angular/common/http";
 
 @Injectable({
@@ -20,13 +21,16 @@ export class ArbProjectService {
   readonly  examDataUrl = 'http://localhost:57645/api/ExamData';
   
   PatientId:number = 0;
+  DoctorId:number = 0;
   ExamData:ExamData = new ExamData();
   GeneralInfo:GeneralInfo = new GeneralInfo();
+  Doctor:Doctor = new Doctor();
   general:GeneralInfo[]
   list:ExamData[];
   FinalAssessment:FinalAssessment = new FinalAssessment();
   ClinicalInfo:ClinicalInfo = new ClinicalInfo();
   Patient:Patient = new Patient();
+  Login:Login = new Login();
 
   whichVar(Name:string)
   {
@@ -36,15 +40,20 @@ export class ArbProjectService {
       case 'GeneralInfo':
         return(this.GeneralInfo);
       case 'ClinicalInfo':
-        
         return(this.ClinicalInfo);
       case 'ExamData':
         return(this.ExamData);
       case 'Patient':
         return(this.Patient);
+      case 'Doctor':
+        return(this.Doctor);
+     
     }
   }
-
+  PostLogin(){
+    let APIUrl = "Doctor/LoginOfTheDoctor";
+    return(this.http.post(`${this.APIUrl}/${APIUrl}`,this.Login));
+  }
   Post(APIUrl){
     let variableName = this.whichVar(APIUrl);
     console.log(variableName);
@@ -53,7 +62,7 @@ export class ArbProjectService {
   }
   Put(APIUrl){
     let variableName = this.whichVar(APIUrl);
-    return (this.http.put(`${this.APIUrl}/${APIUrl}/${variableName.id}`,variableName));
+      return (this.http.put(`${this.APIUrl}/${APIUrl}/${variableName.id}`,variableName));
   }
   Delete(APIUrl,id)
   {
@@ -65,7 +74,8 @@ export class ArbProjectService {
   }
   
   getOne(id,APIUrl){
-    return (this.http.get(`${this.APIUrl}/${APIUrl}/${id}`));
+    console.log(`${this.APIUrl}/${APIUrl}/?${id}`)
+    return (this.http.get(`${this.APIUrl}/${APIUrl}/?${id}`));
   }
   
   getExamData(){

@@ -23,16 +23,21 @@
         <div class="card-body px-lg-5 py-lg-5">
           <div class="text-center text-muted mb-4">
             <small>sign in with credentials</small>
-          </div>
-          <form role="form">
+          </div>  
+            <form  #form="ngForm" name="campaignForm" (submit)="OnSubmit(form,'doctor/LoginOfTheDoctor')">
+       
             <div class="form-group mb-3">
               <label for="username">Email</label>
               <div class="input-group input-group-alternative">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                 </div>
-                
-                <input class="form-control" placeholder="Email" type="email" >
+
+                <input class="form-control" placeholder="Email" type="email" 
+
+                name="email" #email="ngModel" value = "" [(ngModel)] = "service.Login.email">
+
+                <!-- name="email" #email="ngModel" value = "" [(ngModel)] = "Doctor.email"> -->
 
               </div>
             </div>
@@ -42,19 +47,28 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                 </div>
+
+                <input class="form-control" placeholder="Password" type="password"
+                name="password" #password="ngModel"  value = "" [(ngModel)] = "service.Login.password">
+                <!-- name="password" #password="ngModel"  value = "" [(ngModel)] = "Doctor.password"> -->
                 
-                <input class="form-control" placeholder="Password" type="password">
-                
+              
+
               </div>
             </div>
             <div class="custom-control custom-control-alternative custom-checkbox">
-              <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
+              <input class="custom-control-input" id=" customCheckLogin" type="checkbox"
+              name="RememberMe" #RememberMe="ngModel"  value = "" [(ngModel)] = "service.Login.RememberMe">
+
+              >
               <label class="custom-control-label" for=" customCheckLogin">
-                <span class="text-muted">Remember me</span>
+                <span class="text-muted" >Remember me</span>
               </label>
             </div>
             <div class="text-center">
-              <button type="button" class="btn btn-primary my-4" routerLinkActive="active" [routerLink]="['/dash']">Sign in</button>
+              <!-- <button  class="btn btn-primary my-4" 
+              routerLinkActive="active" [routerLink]="['/dash']" type="submit">Sign in</button> -->
+              <button href="/#/dash/table-list" type="submit" class="btn btn-sm btn-primary" >Sign in</button>
             </div>
           </form>
         </div>
