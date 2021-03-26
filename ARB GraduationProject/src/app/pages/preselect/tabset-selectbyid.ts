@@ -8,7 +8,8 @@ import { ClinicalInfo, GeneralInfo ,FinalAssessment} from 'src/app/shared/arb-pr
 
 @Component({
   selector: 'app-tabset-selectbyid',
-  templateUrl: './tabset-selectbyid.html'
+  templateUrl: './tabset-selectbyid.html',
+  styleUrls: ['./tabset-selectbyid.css']
 })
 export class NgbdTabsetSelectbyid  implements OnInit{
 
