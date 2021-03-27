@@ -19,7 +19,7 @@ import { Doctor, Login} from 'src/app/shared/arb-project.model';
 })
 
 export class LoginComponent implements OnInit {
-  public redirectUrl: string = '/#/dash/table-list';
+  public redirectUrl: string = 'dash/table-list';
   constructor(public service:ArbProjectService,private http:HttpClient,private router: Router) {}
 
   Doctor:Doctor = new Doctor();
@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
             return("Not Found")
           default:
             {
+            console.log(res['id']);
             this.service.DoctorId = res['id'];
             this.router.navigate([this.redirectUrl]);
             this.redirectUrl = null;
