@@ -4,7 +4,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 // import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // import { first } from 'rxjs/operators';
 
-
+import { Router } from '@angular/router';
 import {FormControl} from '@angular/forms';
 import { ArbProjectService } from 'src/app/shared/arb-project.service';
 import { NgForm } from '@angular/forms';
@@ -19,7 +19,8 @@ import { Doctor, Login} from 'src/app/shared/arb-project.model';
 })
 
 export class LoginComponent implements OnInit {
-  constructor(public service:ArbProjectService,private http:HttpClient) {}
+  public redirectUrl: string = '/#/dash/table-list';
+  constructor(public service:ArbProjectService,private http:HttpClient,private router: Router) {}
 
   Doctor:Doctor = new Doctor();
   Login:Login = new Login();
@@ -37,9 +38,10 @@ export class LoginComponent implements OnInit {
             return("Not Found")
           default:
             {
-            let doctorId = res['id'];
-           console.log("redirect to tablelist with patient of the Doctor");
-
+            this.service.DoctorId = res['id'];
+            this.router.navigate([this.redirectUrl]);
+            this.redirectUrl = null;
+            // get request to get all ExamData of doctor of Id
             }
         }      
       },
@@ -47,25 +49,7 @@ export class LoginComponent implements OnInit {
         console.log("Not found send error msg");
       })
     };
-  // OnSubmit(form:NgForm,data:string){
-   
-  //   console.log(this.Doctor)
-  //   this.service.getOne(this.Doctor.email,data).subscribe(
-  //     res=> {let doctor =res[0]
-  //       console.log(doctor.id)
-  //         console.log(doctor.password);
-  //         console.log(this.Doctor.password);
-  //         if (doctor.password == this.Doctor.password){
-  //           this.service.DoctorId = doctor.id
-  //           console.log(this.service.DoctorId)
-  //         }
-  //         else{
-  //           console.log("reload the same page with error msg")
-  //         }
-  //       },
-  //       err=>{
-  //         console.log(err);
-      
-  //     })
-  //   }  
+    // SuccessLogin(Id:number){
+    //   this.   
+    // }
   }
