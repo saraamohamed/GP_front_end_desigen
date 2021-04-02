@@ -19,7 +19,7 @@ export class TableListComponent implements OnInit {
   list:ExamData[]
   ngOnInit() {
     let doctorId = this.service.DoctorId;
-    this.service.getOne(doctorId,'examData');
+    this.service.getOne(doctorId,'examData/ExamDataOfDoctor').subscribe(res=>{this.service.list = res as ExamData[]})
     if (this.service.DoctorId !=0)
     {
       console.log(this.service.DoctorId)
@@ -31,6 +31,7 @@ export class TableListComponent implements OnInit {
   patientForm(id:number){
     this.service.ExamData.id = id;
   }
+
   DeleteOn(id:number){
     if (confirm('Are You Sure You Want To Delete?'))
     {
