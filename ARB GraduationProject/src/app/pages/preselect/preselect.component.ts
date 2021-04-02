@@ -55,7 +55,7 @@ export class PreselectComponent implements OnInit {
     this.service.GeneralInfo = new GeneralInfo();
     this.service.FinalAssessment = new FinalAssessment();
     this.service.ClinicalInfo = new ClinicalInfo();
-    
+
   }
 
 }

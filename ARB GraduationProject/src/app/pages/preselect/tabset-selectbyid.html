@@ -1,8 +1,8 @@
 <div class="card-header border-0">
     <h3 class="mb-0">Patient Worksheet</h3>
 
-</div>
-<form #form="ngForm" name="campaignForm" (submit)="OnSubmit(form,'Patient')">
+  </div>
+  <form #form="ngForm" name="campaignForm" (submit)="OnSubmit(form,'Patient')">
     <input name="id" type="hidden" [value]="service.Patient.id" />
     <ngb-tabset #t="ngbTabset">
 
@@ -72,24 +72,24 @@
                                     data-field-completion-action="NONE" #complain="ngModel"
                                     [(ngModel)]="service.Patient.GeneralInfo.complain" class="form-control " />
                             </li>
-                        </ul> -->
-                </div>
+                        </ul>
+                    </div>
 
-                <div class="row">
-                    <!---------------------------- Exam date ---------------------------------- -->
-                    <h3 class="form-group focused" for="exam-date">
-                        Exam Date
-                    </h3>
-                    <ul style="list-style-type:none;">
-                        <li>
-                            <input class="form-control " type="datetime-local" id="DATE_1449431264015" name="examDate"
-                                data-field-type="DATE" data-field-completion-action="NONE" #examDate="ngModel" value=""
-                                [(ngModel)]="service.Patient.GeneralInfo.examDate" />
-                        </li>
-                    </ul>
-                </div>
+                    <div class="col">
+                        <!---------------------------- Exam date ---------------------------------- -->
+                        <h3 class="form-group focused" for="exam-date">
+                            Exam Date
+                        </h3>
+                        <ul style="list-style-type:none;">
+                            <li>
+                                <input class="form-control " type="datetime-local" id="DATE_1449431264015"
+                                    name="examDate" data-field-type="DATE" data-field-completion-action="NONE"
+                                    #examDate="ngModel" value="" [(ngModel)]="service.Patient.GeneralInfo.examDate" />
+                            </li>
+                        </ul>
+                    </div>
 
-                
+                </div>
 
 
 
@@ -118,7 +118,8 @@
                             Type of Modality
                             <input type="text" id="TEXT_1450682011285" name="modalityType" data-field-type="TEXT"
                                 data-field-completion-action="NONE" #modalityType="ngModel"
-                                [(ngModel)]="service.Patient.GeneralInfo.modalityType" class="form-control " />
+                                [(ngModel)]="service.Patient.GeneralInfo.modalityType" class="form-control "  />
+
 
                         </label>
                     </div>
@@ -489,10 +490,13 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <h3 class="form-control-alternative" style="margin-top: 9px; background-color:gainsboro;">Masses</h3>
+                    <th width="150px"><button type="button" (click)="addQuantity()" class="btn btn-primary">Add More</button></th>
 
-                <h3 class="form-control-alternative" style="margin-top: 9px; background-color:gainsboro;">Masses</h3>
-
+                </div>
                 <!----------------------------  Masses ---------------------------------- -->
+                <tr *ngFor="let quantity of quantities().controls; let i=index" [formGroupName]="i">
 
                 <div class="row">
                     <div class="col-sm">
@@ -500,7 +504,7 @@
 
                             <table style="border: 0ch;">
                                 <thead>
-                                    <tr>
+                                  <tr *ngFor="let quantity of quantities().controls; let i=index" [formGroupName]="i">
 
                                         <th style="vertical-align: top;">
                                             <h3 for="Shape" class="form-group focused">
@@ -624,6 +628,7 @@
                 </div>
                 <br>
 
+
                 <!--Depth  ..Done-->
 
 
@@ -652,6 +657,7 @@
                         </div>
                     </div>
                 </div>
+                </tr>
 
                 <h3 class="form-control-alternative" style="margin-top: 14px; background-color:gainsboro;">
                     Clacifications</h3>
@@ -1002,4 +1008,4 @@
 
     </ngb-tabset>
 
-</form>
+  </form>

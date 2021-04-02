@@ -45,7 +45,7 @@ import { ToastrModule } from 'ngx-toastr';
     ClipboardModule,
     ReactiveFormsModule,
 // <<<<<<< HEAD
-    
+
 // =======
     MatButtonModule,
     MatRippleModule,
@@ -62,7 +62,7 @@ import { ToastrModule } from 'ngx-toastr';
     TableListComponent,
     PreselectComponent,
     ReportComponent,
-    NgbdTabsetSelectbyid
+    NgbdTabsetSelectbyid,
     // AdminLayoutComponent,
     // FooterComponent,
     // NavbarComponent,
