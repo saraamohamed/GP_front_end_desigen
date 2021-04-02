@@ -17,12 +17,35 @@
                 <!-- <form #form="ngForm" (submit)="OnSubmit(form,'GeneralInfo')"> -->
                 <br>
                 <div class="row ">
-                    <div class="col">
-                        <!-- <input name = "id" type="hidden" [value]="service.Patient.GeneralInfo.id"/>    -->
-                        <h3 for="exam-reason">
-                            Exam Reason
-                        </h3>
-                        <ul style="list-style-type:none;">
+                    <!-- <input name = "id" type="hidden" [value]="service.Patient.GeneralInfo.id"/>    -->
+                    <h3 for="exam-reason">
+                        Exam Reason
+                    </h3>
+                    <div class="col-sm">
+                        <h4 class="form-group focused">
+                            <input type="radio" name="examReason" value="Screaning"
+                                [(ngModel)]="service.Patient.GeneralInfo.examReason" class="form-control ">
+                            Screaning<span class="checkmark"></span>
+                        </h4>
+                    </div>
+                    <div class="col-sm">
+                        <h4 class="form-group focused">
+                            <input type="radio" name="examReason" value="Follow Up"
+                                [(ngModel)]="service.Patient.GeneralInfo.examReason" class="form-control ">
+                            Follow Up<span class="checkmark"></span>
+                        </h4>
+                    </div>
+                    <div class="col-sm">
+                        <h4 class="form-group focused"><input type="radio" name="examReason" value="Complain"
+                                [(ngModel)]="service.Patient.GeneralInfo.examReason" class="form-control ">
+                            Complain<span class="checkmark"></span>
+                        </h4>
+                        <input type="text" id="TEXT_1450682011285" name="complain" data-field-type="TEXT"
+                            data-field-completion-action="NONE" #complain="ngModel"
+                            [(ngModel)]="service.Patient.GeneralInfo.complain" class="form-control " />
+                    </div>
+
+                    <!-- <ul style="list-style-type:none;">
                             <li>
                                 <h4 class="form-group focused">
                                     <input type="radio" name="examReason" value="Screaning"
@@ -49,24 +72,24 @@
                                     data-field-completion-action="NONE" #complain="ngModel"
                                     [(ngModel)]="service.Patient.GeneralInfo.complain" class="form-control " />
                             </li>
-                        </ul>
-                    </div>
-
-                    <div class="col">
-                        <!---------------------------- Exam date ---------------------------------- -->
-                        <h3 class="form-group focused" for="exam-date">
-                            Exam Date
-                        </h3>
-                        <ul style="list-style-type:none;">
-                            <li>
-                                <input class="form-control " type="datetime-local" id="DATE_1449431264015"
-                                    name="examDate" data-field-type="DATE" data-field-completion-action="NONE"
-                                    #examDate="ngModel" value="" [(ngModel)]="service.Patient.GeneralInfo.examDate" />
-                            </li>
-                        </ul>
-                    </div>
-
+                        </ul> -->
                 </div>
+
+                <div class="row">
+                    <!---------------------------- Exam date ---------------------------------- -->
+                    <h3 class="form-group focused" for="exam-date">
+                        Exam Date
+                    </h3>
+                    <ul style="list-style-type:none;">
+                        <li>
+                            <input class="form-control " type="datetime-local" id="DATE_1449431264015" name="examDate"
+                                data-field-type="DATE" data-field-completion-action="NONE" #examDate="ngModel" value=""
+                                [(ngModel)]="service.Patient.GeneralInfo.examDate" />
+                        </li>
+                    </ul>
+                </div>
+
+                
 
 
 
@@ -91,17 +114,17 @@
                 <div class="form-row" style="margin-bottom: 2px;">
 
                     <div class="form-group col-md-5">
-                        <label style="padding-top: 7px;">
-                            <strong> Type of Modality</strong>
+                        <label>
+                            Type of Modality
                             <input type="text" id="TEXT_1450682011285" name="modalityType" data-field-type="TEXT"
                                 data-field-completion-action="NONE" #modalityType="ngModel"
-                                [(ngModel)]="service.Patient.GeneralInfo.modalityType" class="form-control "  />
+                                [(ngModel)]="service.Patient.GeneralInfo.modalityType" class="form-control " />
 
                         </label>
                     </div>
                     <div class="form-group col-md-4">
-                        <label style="margin-right: 5px; padding-top: 7px;">
-                            <strong> Place </strong>
+                        <label style="margin-right: 5px; ">
+                            Place
                             <br>
                             <input type="text" id="TEXT_1450682011285" name="whereHadAMammogram" data-field-type="TEXT"
                                 data-field-completion-action="NONE" #whereHadAMammogram="ngModel"
@@ -112,7 +135,7 @@
                     </div>
                     <div class="form-group col-md-3">
                         <label style="margin-right: 5px; padding-top: 9px;">
-                            <strong>Time </strong>
+                            Time
                             <br>
                             <input type="text" id="TEXT_1450682011285" name="whenHadAMammogram" data-field-type="TEXT"
                                 data-field-completion-action="NONE" style="width: 60px; height: 25px;"
@@ -124,8 +147,8 @@
                 <br>
                 <div class="form-row">
                     <div class="form-group">
-                        <label style="margin-right: 15px;"> <strong>Findings</strong> </label>
-                        <textarea rows="3" cols="20" class="form-control "
+                        <label style="margin-right: 15px;"> Findings</label>
+                        <textarea rows="2" cols="50" class="form-control "
                             placeholder="A few words about your complain ..." name="HistoryOfMammogram"
                             #HistoryOfMammogram="ngModel"
                             [(ngModel)]="service.Patient.GeneralInfo.HistoryOfMammogram"></textarea>
@@ -168,12 +191,12 @@
                                     </div>
                                 </div>
                             </th>
-                            <th>
-                                Age: <input type="number" id="TEXT_1450682011285" name="motherAge"
-                                    data-field-type="TEXT" data-field-completion-action="NONE" #motherAge="ngModel"
+                            <td>
+                                Age: <input type="text" id="TEXT_1450682011285" name="motherAge" data-field-type="TEXT"
+                                    data-field-completion-action="NONE" #motherAge="ngModel"
                                     [(ngModel)]="service.Patient.GeneralInfo.motherAge"
-                                    style="width: 30px; height: 25px;" class="form-control " />
-                            </th>
+                                    style="width: 35px; height: 25px;" class="form-control " />
+                            </td>
                             <th>
                                 <div class="form-group focused">
 
@@ -189,12 +212,12 @@
                                     </div>
                                 </div>
                             </th>
-                            <th>
-                                Age: <input type="number" id="TEXT_1450682011285" name="motherAge"
-                                    data-field-type="TEXT" data-field-completion-action="NONE" #motherAge="ngModel"
+                            <td>
+                                Age: <input type="text" id="TEXT_1450682011285" name="motherAge" data-field-type="TEXT"
+                                    data-field-completion-action="NONE" #motherAge="ngModel"
                                     [(ngModel)]="service.Patient.GeneralInfo.motherAge"
-                                    style="width: 30px; height: 25px;" class="form-control " />
-                            </th>
+                                    style="width: 35px; height: 25px;" class="form-control " />
+                            </td>
                         </tr>
                         <tbody>
                             <tr>
@@ -220,10 +243,12 @@
                                     </div>
                                 </th>
                                 <td>
-                                    Age: <input type="number" id="TEXT_1450682011285" name="motherAge"
+                                    Age: <input type="text" id="TEXT_1450682011285" name="motherAge"
                                         data-field-type="TEXT" data-field-completion-action="NONE" #motherAge="ngModel"
                                         [(ngModel)]="service.Patient.GeneralInfo.motherAge"
-                                        style="width: 30px; height: 25px;" class="form-control " />
+                                        style="width: 35px; height: 25px;" class="form-control " />
+
+
                                 </td>
                                 <td>
                                     <div class="form-group focused">
@@ -243,10 +268,10 @@
                                     </div>
                                 </td>
                                 <td>
-                                    Age: <input type="number" id="TEXT_1450682011285" name="motherAge"
+                                    Age: <input type="text" id="TEXT_1450682011285" name="motherAge"
                                         data-field-type="TEXT" data-field-completion-action="NONE" #motherAge="ngModel"
                                         [(ngModel)]="service.Patient.GeneralInfo.motherAge"
-                                        style="width: 30px; height: 25px;" class="form-control " />
+                                        style="width: 35px; height: 25px;" class="form-control " />
                                 </td>
                             </tr>
                             <tr>
@@ -265,10 +290,10 @@
                                     </div>
                                 </th>
                                 <td>
-                                    Age: <input type="number" id="TEXT_1450682011285" name="motherAge"
+                                    Age: <input type="text" id="TEXT_1450682011285" name="motherAge"
                                         data-field-type="TEXT" data-field-completion-action="NONE" #motherAge="ngModel"
                                         [(ngModel)]="service.Patient.GeneralInfo.motherAge"
-                                        style="width: 30px; height: 25px;" class="form-control " />
+                                        style="width: 35px; height: 25px;" class="form-control " />
                                 </td>
                                 <td>
                                     <div class="form-group focused">
@@ -288,10 +313,10 @@
                                     </div>
                                 </td>
                                 <td>
-                                    Age: <input type="number" id="TEXT_1450682011285" name="motherAge"
+                                    Age: <input type="text" id="TEXT_1450682011285" name="motherAge"
                                         data-field-type="TEXT" data-field-completion-action="NONE" #motherAge="ngModel"
                                         [(ngModel)]="service.Patient.GeneralInfo.motherAge"
-                                        style="width: 30px; height: 25px;" class="form-control " />
+                                        style="width: 35px; height: 25px;" class="form-control " />
                                 </td>
                             </tr>
                         </tbody>
@@ -304,8 +329,7 @@
                     <div class="col-3">
                         <div class="form-group focused">
                             <div class="form-group form-check">
-                                <label class="form-control" for="Mammo-history"
-                                    style="margin-right: 15px; padding-top: 2px;">
+                                <label for="Mammo-history" style="margin-right: 15px; padding-top: 2px;">
                                     <input class="form-control " type="checkbox" name="TakingHormones"
                                         #TakingHormones="ngModel"
                                         [(ngModel)]="service.Patient.GeneralInfo.TakingHormones">
@@ -484,7 +508,6 @@
                                             </h3>
                                         </th>
                                         <th>
-                                            <br>
                                             <ul style="list-style-type:none;">
                                                 <li>
                                                     <h4 class="form-group focused">
@@ -886,7 +909,7 @@
                 <h5 class="form-control-label" for="Mammo-history style= margin-right: 15px; padding-top: 5px;"><b>Axillary adenopathy:</b></h5>
                 <div class="form-check" style="margin-left: 5px; padding-bottom: 20px ;" >
                 <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" name="features" #axillaryAdenopathy ="ngModel" 
+                <input class="form-check-input" type="checkbox" name="features" #axillaryAdenopathy ="ngModel"
                 [(ngModel)] = "service.Patient.ClinicalInfo.features.axillaryAdenopathy">
                 <span class="form-check-sign">
                     <span class="check"></span>
