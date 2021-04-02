@@ -5,6 +5,7 @@ import { ArbProjectService } from 'src/app/shared/arb-project.service';
 import { NgForm } from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
 import { ClinicalInfo, GeneralInfo ,FinalAssessment} from 'src/app/shared/arb-project.model';
+import { FormGroup, FormArray, FormBuilder } from '@angular/forms'
 
 @Component({
   selector: 'app-tabset-selectbyid',
@@ -12,8 +13,15 @@ import { ClinicalInfo, GeneralInfo ,FinalAssessment} from 'src/app/shared/arb-pr
   styleUrls: ['./tabset-selectbyid.css']
 })
 export class NgbdTabsetSelectbyid  implements OnInit{
+  name = 'Angular';
 
-  constructor(public service:ArbProjectService,private http:HttpClient) { }
+  productForm: FormGroup;
+
+  constructor(public service:ArbProjectService,private http:HttpClient,private fb:FormBuilder) {
+     this.productForm = this.fb.group({
+    name: '',
+    quantities: this.fb.array([]) ,
+  });}
 
   ClinicalInfo:ClinicalInfo = new ClinicalInfo();
   GeneralInfo:GeneralInfo= new GeneralInfo();
@@ -56,6 +64,28 @@ export class NgbdTabsetSelectbyid  implements OnInit{
     this.service.getCombo('GetClacificationDistribution')
     .subscribe(res =>  this.ClacificationDistribution = res as []);
   }
+  quantities() : FormArray {
+    return this.productForm.get("quantities") as FormArray
+  }
+
+  newQuantity(): FormGroup {
+    return this.fb.group({
+      qty: '',
+      price: '',
+    })
+  }
+
+  addQuantity() {
+    this.quantities().push(this.newQuantity());
+  }
+
+  removeQuantity(i:number) {
+    this.quantities().removeAt(i);
+  }
+
+
+
+
 
   OnSubmit(form:NgForm,data:string){
     if ((this.service.Patient.GeneralInfo.id == 0) && (this.service.Patient.ClinicalInfo.id == 0) && (this.service.Patient.FinalAssessment.id == 0)){

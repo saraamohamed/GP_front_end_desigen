@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import {AdminLayoutComponent} from '../../layouts/admin-layout/admin-layout.component';
-import { LoginComponent } from '../../pages/login/login.component';
 import { PatientComponent } from '../../pages/patient/patient.component';
 import { PreselectComponent } from '../../pages/preselect/preselect.component';
 import { ReportComponent } from '../../pages/report/report.component';
@@ -44,7 +43,7 @@ export const AdminLayoutRoutes: Routes = [
     //     path:'',
     //     redirectTo: 'table-list'
     // },
-     
+
     // { path: 'patient',      component: PatientComponent },
     // { path: 'user-profile',   component: UserProfileComponent },
     // { path: 'table-list',         component: TableListComponent },
