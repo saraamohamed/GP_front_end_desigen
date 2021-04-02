@@ -77,6 +77,7 @@ export class PatientComponent implements OnInit {
   
   OnSubmit(form:NgForm,data:string){
     console.log(this.service.ExamData.id);
+    this.service.ExamData.doctorId = this.service.DoctorId;
     if(this.service.ExamData.id == 0)
         this.insertRecord(form,data);
     else

@@ -18,7 +18,8 @@ export class TableListComponent implements OnInit {
   ExamData:ExamData = new ExamData();
   list:ExamData[]
   ngOnInit() {
-    this.service.getExamData();
+    let doctorId = this.service.DoctorId;
+    this.service.getOne(doctorId,'examData');
     if (this.service.DoctorId !=0)
     {
       console.log(this.service.DoctorId)

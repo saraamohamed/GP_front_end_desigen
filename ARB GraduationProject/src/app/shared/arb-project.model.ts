@@ -9,6 +9,7 @@ export class ExamData{
     referringDoctor: string= '';
     studyDate: string= '';
     lastOperation: string= '';
+    doctorId:number=0;
 }
 export class GeneralInfo{
     id: number = 0;
