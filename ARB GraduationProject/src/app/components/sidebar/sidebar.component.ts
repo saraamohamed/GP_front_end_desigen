@@ -15,6 +15,7 @@ export const ROUTES: RouteInfo[] = [
     { path: 'user-profile', title: 'User profile',  icon:'ni-single-02 text-yellow', class: '' },
     // { path: 'viewer', title: 'Report PDF',  icon:'ni-single-02 text-yellow', class: '' }
     // { path: '/login', title: 'Login',  icon:'ni-key-25 text-info', class: '' }
+    
 ];
 
 @Component({
