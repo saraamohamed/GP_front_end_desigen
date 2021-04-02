@@ -18,31 +18,33 @@
                 <br>
                 <div class="row ">
                     <!-- <input name = "id" type="hidden" [value]="service.Patient.GeneralInfo.id"/>    -->
-                    <h3 for="exam-reason">
+                    <h3 for="exam-reason" class="form-control">
                         Exam Reason
                     </h3>
-                    <div class="col-sm">
+                    <br>
+                    <div class="col-sm-3">
                         <h4 class="form-group focused">
                             <input type="radio" name="examReason" value="Screaning"
                                 [(ngModel)]="service.Patient.GeneralInfo.examReason" class="form-control ">
                             Screaning<span class="checkmark"></span>
                         </h4>
                     </div>
-                    <div class="col-sm">
+                    <div class="col-sm-3">
                         <h4 class="form-group focused">
                             <input type="radio" name="examReason" value="Follow Up"
                                 [(ngModel)]="service.Patient.GeneralInfo.examReason" class="form-control ">
                             Follow Up<span class="checkmark"></span>
                         </h4>
                     </div>
-                    <div class="col-sm">
-                        <h4 class="form-group focused"><input type="radio" name="examReason" value="Complain"
-                                [(ngModel)]="service.Patient.GeneralInfo.examReason" class="form-control ">
+                    <div class="col-sm-3">
+                        <h4 class="form-group focused">
+                            <input type="radio" name="examReason" value="Complain"
+                                [(ngModel)]="service.Patient.GeneralInfo.examReason" ng-model="howMany" class="form-control " ng-click="option.selected=quantity.snippet">
                             Complain<span class="checkmark"></span>
                         </h4>
                         <input type="text" id="TEXT_1450682011285" name="complain" data-field-type="TEXT"
                             data-field-completion-action="NONE" #complain="ngModel"
-                            [(ngModel)]="service.Patient.GeneralInfo.complain" class="form-control " />
+                            [(ngModel)]="service.Patient.GeneralInfo.complain" class="form-control" ng-if="quantity.extraField" ng-show="option.selected === howMany " />
                     </div>
 
                     <!-- <ul style="list-style-type:none;">
