@@ -4,7 +4,7 @@ import {FormControl} from '@angular/forms';
 import { ArbProjectService } from 'src/app/shared/arb-project.service';
 import { NgForm } from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
-import { ClinicalInfo, GeneralInfo ,FinalAssessment} from 'src/app/shared/arb-project.model';
+import { ClinicalInfo, GeneralInfo ,FinalAssessment, features} from 'src/app/shared/arb-project.model';
 
 @Component({
   selector: 'app-tabset-selectbyid',
@@ -30,10 +30,11 @@ export class NgbdTabsetSelectbyid  implements OnInit{
   ClacificationDistribution=[]
 
   ngOnInit(): void {
-    if(this.service.PatientId !== 0){
+
+    if(this.service.Patient.GeneralInfo.id !== 0){
       this.service.getOne(this.service.PatientId,'GeneralInfo').subscribe(res => this.service.Patient.GeneralInfo = res as GeneralInfo);
       this.service.getOne(this.service.PatientId,'FinalAssessment').subscribe(res => this.service.Patient.FinalAssessment = res as FinalAssessment);
-      this.service.getOne(this.service.PatientId,'ClinicalInfo').subscribe(res => this.service.Patient.ClinicalInfo = res as ClinicalInfo);
+      this.service.getOne(this.service.PatientId,'ClinicalInfo').subscribe(res => this.service.Patient.ClinicalInfo = res as ClinicalInfo); 
     }
     this.service.getCombo('GetBiRads')
     .subscribe(res => this.BiRadslist = res as []);
@@ -58,23 +59,15 @@ export class NgbdTabsetSelectbyid  implements OnInit{
   }
 
   OnSubmit(form:NgForm,data:string){
-    if ((this.service.Patient.GeneralInfo.id == 0) && (this.service.Patient.ClinicalInfo.id == 0) && (this.service.Patient.FinalAssessment.id == 0)){
+    this.service.Patient.doctorId = this.service.DoctorId;
+    this.service.Patient.examDataId = this.service.PatientId;
+    if ((this.service.Patient.GeneralInfo.id == 0) && (this.service.Patient.ClinicalInfo.id == 0) 
+                                                   && (this.service.Patient.FinalAssessment.id == 0)){
       this.InsertFeatures(form,data);
     }
     else {
       this.UpdateFeatures(form,data);
     }
-  //   console.log(data);
-
-  //   console.log(form);
-  //   this.service.Post(data).subscribe(
-  //     res=>{
-  //       this.resetForm(form,data);
-  //     },
-  //     err=>{
-  //       console.log(err);
-  //     }
-  // )
   }
   InsertFeatures(form:NgForm,data:string){
     this.service.Post(data).subscribe(

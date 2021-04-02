@@ -78,7 +78,7 @@ export class ClinicalInfo{
     suspiciousMorphologyId: number = 0;
     distributionId: number = 0;  
     breastCompostion: string = '';
-    distribution: string = '';
+    // distribution: string = '';
     laterality: string = '';
 
 }
@@ -98,7 +98,7 @@ export class Patient{
     generalInfoId: number = 0;
     finalAssessmentId: number = 0;
     doctorId: number=0;
-    // examDataId: number = 0;
+    examDataId: number = 0;
 }
 export class Doctor{
     id: number = 0;
