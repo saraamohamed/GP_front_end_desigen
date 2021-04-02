@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import { ExamData, Patient , Doctor , 
-  GeneralInfo ,ClinicalInfo ,FinalAssessment , Login} from './arb-project.model';
+  GeneralInfo ,ClinicalInfo ,FinalAssessment , Login, features} from './arb-project.model';
 import {HttpHeaders} from "@angular/common/http";
 
 @Injectable({
@@ -31,7 +31,7 @@ export class ArbProjectService {
   ClinicalInfo:ClinicalInfo = new ClinicalInfo();
   Patient:Patient = new Patient();
   Login:Login = new Login();
-
+  features:features = new features()
   whichVar(Name:string)
   {
     switch(Name){

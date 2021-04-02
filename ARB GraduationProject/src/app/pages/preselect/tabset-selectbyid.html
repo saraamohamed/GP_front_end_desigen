@@ -471,8 +471,8 @@
                         <div class="form-group focused">
                             <label class="form-control-label" for="Mammo-history">
                                 <strong style="margin-right: 15px;"> Asymmetries </strong>
-                                <select class="custom-select" name="asyId" #asyId="ngModel"
-                                    [(ngModel)]="service.Patient.ClinicalInfo.asyId" style="width:150px;">
+                                <select class="custom-select" name="asymmetriesId" #asymmetriesId="ngModel"
+                                    [(ngModel)]="service.Patient.ClinicalInfo.asymmetriesId" style="width:150px;">
                                     <option value="0"> SELECT</option>
                                     <option *ngFor="let item of Asymmetries" value="{{item.id}}">{{item.name}}</option>
                                 </select>
@@ -514,7 +514,7 @@
                                                 <li>
                                                     <h4 class="form-group focused">
                                                         <input type="radio" name="massShape" value="Oval"
-                                                            [(ngModel)]="service.Patient.ClinicalInfo.massShape">
+                                                            [(ngModel)]="service.Patient.ClinicalInfo.massSpecifications[0].massShape">
                                                         <span class="checkmark">oval</span>
                                                     </h4>
                                                 </li><br>
@@ -523,14 +523,14 @@
 
                                                     <h4 class="form-group focused">
                                                         <input type="radio" name="massShape" value="Round"
-                                                            [(ngModel)]="service.Patient.ClinicalInfo.massShape">
+                                                            [(ngModel)]="service.Patient.ClinicalInfo.massSpecifications[0].massShape">
                                                         <span class="checkmark">Round</span>
                                                     </h4>
                                                 </li><br>
                                                 <li>
 
                                                     <input type="radio" name="massShape" value="Irregular"
-                                                        [(ngModel)]="service.Patient.ClinicalInfo.massShape">
+                                                        [(ngModel)]="service.Patient.ClinicalInfo.massSpecifications[0].massShape">
                                                     <span class="checkmark">Irregular</span>
                                                 </li><br>
 
@@ -550,7 +550,7 @@
                                 <strong>Margin</strong>
                             </h3>
                             <select class="custom-select" name="massMarginId" #massMarginId="ngModel"
-                                [(ngModel)]="service.Patient.ClinicalInfo.massMarginId" style="width:150px;">
+                                [(ngModel)]="service.Patient.ClinicalInfo.massSpecifications[0].massMarginId" style="width:150px;">
                                 <option value="0"> SELECT</option>
                                 <option *ngFor="let item of MassMargin" value="{{item.id}}">{{item.name}}</option>
                             </select>
@@ -564,7 +564,7 @@
                                 style="margin-right: 15px; padding-top: 15px;">
                                 Density </h5>
                             <select class="custom-select" name="massDensityId" #massDensityId="ngModel"
-                                [(ngModel)]="service.Patient.ClinicalInfo.massDensityId" style="width:150px;">
+                                [(ngModel)]="service.Patient.ClinicalInfo.massSpecifications[0].massDensityId" style="width:150px;">
                                 <option value="0"> SELECT</option>
                                 <option *ngFor="let item of MassDensities" value="{{item.id}}">{{item.name}}</option>
                             </select>
@@ -590,7 +590,7 @@
 
                             <input type="text" id="TEXT_1450682011285" name="laterality" data-field-type="TEXT"
                                 data-field-completion-action="NONE" #laterality="ngModel"
-                                [(ngModel)]="service.Patient.ClinicalInfo.laterality" style="width: 50px; height: 25px;"
+                                [(ngModel)]="service.Patient.ClinicalInfo.massSpecifications[0].laterality" style="width: 50px; height: 25px;"
                                 class="form-control" />
                         </div>
                     </div>
@@ -604,8 +604,8 @@
                             <label class="form-control-label" for="Mammo-history"
                                 style="margin-right: 15px; padding-top: 15px;">
                                 <strong> Quadrant </strong> </label>
-                            <select class="custom-select" name="quadrantId" #asyId="ngModel"
-                                [(ngModel)]="service.Patient.ClinicalInfo.quadrantId" style="width:150px;">
+                            <select class="custom-select" name="quadrantId" #quadrantId="ngModel"
+                                [(ngModel)]="service.Patient.ClinicalInfo.massSpecifications[0].quadrantId" style="width:150px;">
                                 <option value="0"> SELECT</option>
                                 <option *ngFor="let item of Quadrants" value="{{item.id}}">{{item.name}}</option>
                             </select>
@@ -617,7 +617,7 @@
                             <label class="form-control-label" for="Mammo-history"
                                 style="margin-right: 15px; padding-top: 15px;"><strong> clock face</strong></label>
                             <select class="custom-select" name="clockFaceId" #clockFaceId="ngModel"
-                                [(ngModel)]="service.Patient.ClinicalInfo.clockFaceId" style="width:150px;">
+                                [(ngModel)]="service.Patient.ClinicalInfo.massSpecifications[0].clockFaceId" style="width:150px;">
                                 <option value="0"> SELECT</option>
                                 <option *ngFor="let item of ClockFaces" value="{{item.id}}">{{item.name}}</option>
                             </select>
@@ -636,7 +636,7 @@
                             <label style="margin-right: 10px; padding-top: 9px;"><strong> Depth</strong> </label>
                             <input type="text" id="TEXT_1450682011285" name="depth" data-field-type="TEXT"
                                 data-field-completion-action="NONE" #depth="ngModel"
-                                [(ngModel)]="service.Patient.ClinicalInfo.depth" class="form-control" />
+                                [(ngModel)]="service.Patient.ClinicalInfo.massSpecifications[0].depth" class="form-control" />
 
 
                         </div>
@@ -648,7 +648,7 @@
                             <input type="text" id="TEXT_1450682011285" name="distanceFromTheNipple"
                                 data-field-type="TEXT" data-field-completion-action="NONE"
                                 #distanceFromTheNipple="ngModel"
-                                [(ngModel)]="service.Patient.ClinicalInfo.distanceFromTheNipple" class="form-control" />
+                                [(ngModel)]="service.Patient.ClinicalInfo.massSpecifications[0].distanceFromTheNipple" class="form-control" />
 
 
                         </div>
