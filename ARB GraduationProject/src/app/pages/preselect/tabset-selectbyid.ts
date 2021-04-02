@@ -8,7 +8,8 @@ import { ClinicalInfo, GeneralInfo ,FinalAssessment, features} from 'src/app/sha
 
 @Component({
   selector: 'app-tabset-selectbyid',
-  templateUrl: './tabset-selectbyid.html'
+  templateUrl: './tabset-selectbyid.html',
+  styleUrls: ['./tabset-selectbyid.css']
 })
 export class NgbdTabsetSelectbyid  implements OnInit{
 
