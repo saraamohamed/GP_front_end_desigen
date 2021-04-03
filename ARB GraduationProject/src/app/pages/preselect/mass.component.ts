@@ -14,27 +14,8 @@ import { FormGroup, FormArray, FormBuilder } from '@angular/forms'
 })
 export class NgbdTabsetSelectbyid  implements OnInit{
   name = 'Angular';
-  testBoolean1 : Boolean = false;
-  testBoolean2 : Boolean = false;
-  testBoolean3 : Boolean = false;
-  compalinBoolean : Boolean = false;
-
 
   productForm: FormGroup;
-
-  onButtonClick1(){
-    this.testBoolean1 = !this.testBoolean1;
-  }
-  onButtonClick2(){
-    this.testBoolean2 = !this.testBoolean2;
-  }
-  onButtonClick3(){
-    this.testBoolean3 = !this.testBoolean3;
-  }
-  oncomplainClick(){
-    this.compalinBoolean = !this.compalinBoolean;
-
-  }
 
   constructor(public service:ArbProjectService,private http:HttpClient,private fb:FormBuilder) {
      this.productForm = this.fb.group({

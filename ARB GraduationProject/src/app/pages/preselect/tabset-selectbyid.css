@@ -1,18 +1,18 @@
 .body {
-    margin: 0;
-    font-family: Open Sans, sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #fb6340;
-    text-align: left;
-    background-color: #f8f9fe;
-  }
+  margin: 0;
+  font-family: Open Sans, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color:  #fb6340;
+  text-align: left;
+  background-color: #f8f9fe;
+}
 .element.style {
-    background-color: #b0b0b7;
-  }
+  background-color: #b0b0b7;
+}
 .nav-link.active{
-    color: #dce6ff;
-    background-color: #2b2b2d;
-    border-color: #dee2e6 #dee2e6 #2b2b2d;
-  }
+  color: #dce6ff;
+  background-color: #2b2b2d;
+  border-color: #dee2e6 #dee2e6 #2b2b2d;
+}
