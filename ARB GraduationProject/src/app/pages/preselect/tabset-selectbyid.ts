@@ -18,6 +18,8 @@ export class NgbdTabsetSelectbyid  implements OnInit{
   testBoolean2 : Boolean = false;
   testBoolean3 : Boolean = false;
   compalinBoolean : Boolean = false;
+  hormoneBoolean : Boolean = false;
+
 
 
   productForm: FormGroup;
@@ -33,6 +35,10 @@ export class NgbdTabsetSelectbyid  implements OnInit{
   }
   oncomplainClick(){
     this.compalinBoolean = !this.compalinBoolean;
+
+  }
+  onHormoneClick(){ 
+    this.hormoneBoolean = !this.hormoneBoolean;
 
   }
 
