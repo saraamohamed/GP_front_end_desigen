@@ -14,24 +14,30 @@
   <div class="row">
     <div class="col-xl-8 mb-5 mb-xl-0">
       <div class="card  shadow">
-        <div class="card-header ">
-
-
-          <div class="card-body">
-            <div #viewer class="webviewer"></div>
-
-
-
-
-          </div>
+        <div class="card-header " id="contentToConvert">
+          <h1>Indication for examination:</h1>
+          ExamReason ,Laterality ,ExamDate.
+          Pervious Mammogram.
+          Personal History.
+          Pregnancy.
+          <h1>Findings:</h1>
+          Mammography => Overall breast composition: “breastComposition”.
+          Lateral in “Laterality” there is a mass with “Shape” shape and margin, “Margin”.
+          The mass is “Density”.
+          Location: “Laterality”, “Clock” o'clock position, “Quad”. 
+          Size: distance nibble …. and skin ……..
+          <h1>Assessment:</h1>
+          BI-RADS “Birads” (benign finding).
+          <h1>Recommendation:</h1>
+          <h1>Conclusion:</h1>
+          
         </div>
+        <button (click) = generatePDF()>Export PDF</button>
       </div>
-
     </div>
-
   </div>
-  <div class="content" role="main">
+  <!-- <div class="content" role="main">
     <div #viewer class="webviewer"></div>
 
-  </div>
+  </div> -->
 </div>

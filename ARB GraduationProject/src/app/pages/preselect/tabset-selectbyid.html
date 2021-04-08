@@ -926,7 +926,9 @@
               <button href="#!" type="submit" class="btn btn-sm btn-primary" >Add Final Assessment</button>
           </div> -->
               <div class="col-4" style="vertical-align:sub;">
-                  <button href="#!" type="submit" class="btn btn-sm btn-primary">Finsih Report</button>
+                  <button href="#!" type="submit" class="btn btn-sm btn-primary">Save</button>
+                  <!-- <button href="/dash/report" type="submit" class="btn btn-sm btn-primary">Show Report</button> -->
+                  <button routerLinkActive="active" [routerLink]="['/dash/report']"type="submit" class="btn btn-sm btn-primary">Show Report</button>
               </div>
           </ng-template>
       </ngb-tab>
