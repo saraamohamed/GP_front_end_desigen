@@ -88,6 +88,8 @@ export class NgbdTabsetSelectbyid  implements OnInit{
 
 
   OnSubmit(form:NgForm,data:string){
+    this.service.Patient.doctorId = this.service.DoctorId;
+    this.service.Patient.examDataId = this.service.PatientId;
     if ((this.service.Patient.GeneralInfo.id == 0) && (this.service.Patient.ClinicalInfo.id == 0) && (this.service.Patient.FinalAssessment.id == 0)){
       this.InsertFeatures(form,data);
     }
