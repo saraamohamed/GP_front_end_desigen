@@ -3,6 +3,8 @@ import {HttpClient} from "@angular/common/http";
 import { ExamData, Patient , Doctor , 
   GeneralInfo ,ClinicalInfo ,FinalAssessment , Login, features} from './arb-project.model';
 import {HttpHeaders} from "@angular/common/http";
+import jspdf from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Injectable({
   providedIn: 'root'
@@ -82,6 +84,21 @@ export class ArbProjectService {
     this.http.get(this.examDataUrl).toPromise().then(
       res => {this.list = res as ExamData[]});
   }
+
+  generatePDF() {
+    console.log("kher")
+    // var data = document.getElementById('contentToConvert') as HTMLCanvasElement;
+    // html2canvas(data).then(canvas => {
+    //   var imgWidth = 208;
+    //   var imgHeight = canvas.height * imgWidth / canvas.width;
+    //   const contentDataURL = canvas.toDataURL('image/png')
+    //   let pdf = new jspdf('p', 'mm', 'a4');
+    //   var position = 0;
+    //   pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
+    //   var blob = pdf.output("blob");
+    //   window.open(URL.createObjectURL(blob));
+    // });
+    }
 
   
   // refreshList() {

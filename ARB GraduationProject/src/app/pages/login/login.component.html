@@ -23,9 +23,9 @@
         <div class="card-body px-lg-5 py-lg-5">
           <div class="text-center text-muted mb-4">
             <small>sign in with credentials</small>
-          </div>  
+          </div>
             <form  #form="ngForm" name="campaignForm" (submit)="OnSubmit(form,'doctor/LoginOfTheDoctor')">
-       
+
             <div class="form-group mb-3">
               <label for="username">Email</label>
               <div class="input-group input-group-alternative">
@@ -33,7 +33,7 @@
                   <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                 </div>
 
-                <input class="form-control" placeholder="Email" type="email" 
+                <input class="form-control" placeholder="Email" type="email"
 
                 name="email" #email="ngModel" value = "" [(ngModel)] = "service.Login.email">
 
@@ -51,8 +51,8 @@
                 <input class="form-control" placeholder="Password" type="password"
                 name="password" #password="ngModel"  value = "" [(ngModel)] = "service.Login.password">
                 <!-- name="password" #password="ngModel"  value = "" [(ngModel)] = "Doctor.password"> -->
-                
-              
+
+
 
               </div>
             </div>
@@ -66,10 +66,10 @@
               </label> -->
             </div>
             <div class="text-center">
-              <button  class="btn btn-primary my-4" 
+              <button  class="btn btn-primary my-4"
               routerLinkActive="active" [routerLink]="['/dash']" type="submit">Sign in</button>
               <!-- <button href="/#/dash/table-list" type="submit" class="btn btn-sm btn-primary" >Sign in</button> -->
-              <button  type="submit" class="btn btn-sm btn-primary" >Sign in</button>
+             <!--- <button  type="submit" class="btn btn-sm btn-primary" >Sign in</button>-->
 
             </div>
           </form>
