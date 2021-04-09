@@ -17,14 +17,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import{NgbdTabsetSelectbyid} from '../../pages/preselect/tabset-selectbyid'
 
 // =======
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatRippleModule} from '@angular/material/core';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 // import { GalleryComponent } from 'app/gallery/gallery.component';
 import {NgxGalleryModule} from '@kolkov/ngx-gallery';
+import{MassComponent}from'../../pages/preselect/mass.component'
 // >>>>>>> cde56dd2872e3efe439ddf2794a0f44d04832a84
 // import { FooterComponent } from '../../components/footer/footer.component';
 // import { NavbarComponent } from '../../components/navbar/navbar.component';
@@ -34,6 +37,7 @@ import {NgxGalleryModule} from '@kolkov/ngx-gallery';
 import { AdminLayoutComponent } from './admin-layout.component';
 
 import { ToastrModule } from 'ngx-toastr';
+import { from } from 'rxjs';
 
 @NgModule({
   imports: [
@@ -47,10 +51,13 @@ import { ToastrModule } from 'ngx-toastr';
 // <<<<<<< HEAD
 
 // =======
+    MatCheckboxModule,
+    MatTabsModule,
     MatButtonModule,
-    MatRippleModule,
     MatFormFieldModule,
     MatInputModule,
+    MatRippleModule,
+
     MatSelectModule,
     MatTooltipModule,
     NgxGalleryModule
@@ -63,6 +70,7 @@ import { ToastrModule } from 'ngx-toastr';
     PreselectComponent,
     ReportComponent,
     NgbdTabsetSelectbyid,
+    MassComponent
     // AdminLayoutComponent,
     // FooterComponent,
     // NavbarComponent,

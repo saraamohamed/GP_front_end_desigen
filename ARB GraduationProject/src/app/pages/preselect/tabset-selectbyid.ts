@@ -5,7 +5,6 @@ import { ArbProjectService } from 'src/app/shared/arb-project.service';
 import { NgForm } from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
 import { ClinicalInfo, GeneralInfo ,FinalAssessment} from 'src/app/shared/arb-project.model';
-import { FormGroup, FormArray, FormBuilder } from '@angular/forms'
 
 @Component({
   selector: 'app-tabset-selectbyid',
@@ -13,15 +12,38 @@ import { FormGroup, FormArray, FormBuilder } from '@angular/forms'
   styleUrls: ['./tabset-selectbyid.css']
 })
 export class NgbdTabsetSelectbyid  implements OnInit{
-  name = 'Angular';
+  testBoolean1 : Boolean = false;
+  testBoolean2 : Boolean = false;
+  testBoolean3 : Boolean = false;
+  compalinBoolean : Boolean = false;
+  hormoneBoolean : Boolean = false;
 
-  productForm: FormGroup;
 
-  constructor(public service:ArbProjectService,private http:HttpClient,private fb:FormBuilder) {
-     this.productForm = this.fb.group({
-    name: '',
-    quantities: this.fb.array([]) ,
-  });}
+
+
+
+  onButtonClick1(){
+    this.testBoolean1 = !this.testBoolean1;
+  }
+  onButtonClick2(){
+    this.testBoolean2 = !this.testBoolean2;
+  }
+  onButtonClick3(){
+    this.testBoolean3 = !this.testBoolean3;
+  }
+  oncomplainClick(){
+    this.compalinBoolean = !this.compalinBoolean;
+
+  }
+  onHormoneClick(){ 
+    this.hormoneBoolean = !this.hormoneBoolean;
+
+  }
+
+ 
+
+  
+  constructor(public service:ArbProjectService,private http:HttpClient) {}
 
   ClinicalInfo:ClinicalInfo = new ClinicalInfo();
   GeneralInfo:GeneralInfo= new GeneralInfo();
@@ -64,28 +86,6 @@ export class NgbdTabsetSelectbyid  implements OnInit{
     this.service.getCombo('GetClacificationDistribution')
     .subscribe(res =>  this.ClacificationDistribution = res as []);
   }
-  quantities() : FormArray {
-    return this.productForm.get("quantities") as FormArray
-  }
-
-  newQuantity(): FormGroup {
-    return this.fb.group({
-      qty: '',
-      price: '',
-    })
-  }
-
-  addQuantity() {
-    this.quantities().push(this.newQuantity());
-  }
-
-  removeQuantity(i:number) {
-    this.quantities().removeAt(i);
-  }
-
-
-
-
 
   OnSubmit(form:NgForm,data:string){
     this.service.Patient.doctorId = this.service.DoctorId;
