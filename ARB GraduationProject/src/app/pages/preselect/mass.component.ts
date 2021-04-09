@@ -16,7 +16,7 @@ export class MassComponent {
   testBoolean2 : Boolean = false;
   testBoolean3 : Boolean = false;
   compalinBoolean : Boolean = false;
-  tabs = ['Mass1', 'Mass2'];
+  tabs = ['Mass1'];
   selected = new FormControl(0);
 
   onButtonClick1(){
@@ -33,7 +33,7 @@ export class MassComponent {
 
   }
   addTab(selectAfterAdding: boolean) {
-    this.tabs.push('New Mass');
+    this.tabs.push('Mass' + (this.tabs.length +1));
 
     if (selectAfterAdding) {
       this.selected.setValue(this.tabs.length - 1);

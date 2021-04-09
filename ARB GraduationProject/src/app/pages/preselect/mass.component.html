@@ -13,7 +13,7 @@
     <mat-tab-group [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)">
         <mat-tab *ngFor="let tab of tabs; let index = index" [label]="tab">
             <h3 class="form-control-alternative"
-                style="margin-top: 18px; margin-left: 13px; background-color:gainsboro;">Mass Spacifications {{tab}}
+                style="margin-top: 18px; margin-left: 13px; background-color:gainsboro;">{{tab}} Spacifications
             </h3>
 
 
@@ -108,7 +108,7 @@
 
                 <!----------------------------  Literality ---------------------------------- -->
 
-                
+
                 <div class="row">
                     <div class="col">
                         <div class="form-group focused">
