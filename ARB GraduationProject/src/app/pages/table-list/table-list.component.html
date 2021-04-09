@@ -6,8 +6,24 @@
     <div class="col">
       <div class="card shadow">
         <div class="card-header border-0">
-          <h3 class="mb-0">WORKLIST</h3>
+          <div class="col">
+            <h3 class=" mb-0">WORKLIST</h3>
+          </div>
+          <div class="col">
+            <div class=" form-group mb-0" [ngClass]="{ 'focused': focus === true }">
+              <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-search"></i></span>
+                </div>
+                <input class="form-control" placeholder="Search" type="text" (focus)="focus = true"
+                (blur)="focus = false">
+              </div>
+            </div>
+          </div>
+          
+          
         </div>
+        
         <div class="table-responsive">
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
