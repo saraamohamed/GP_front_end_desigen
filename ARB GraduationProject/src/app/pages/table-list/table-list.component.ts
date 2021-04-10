@@ -5,6 +5,7 @@ import { ArbProjectService } from 'src/app/shared/arb-project.service';
 import { NgForm } from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
 import { ExamData,ClinicalInfo,GeneralInfo,FinalAssessment } from 'src/app/shared/arb-project.model';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,7 +15,11 @@ import { ExamData,ClinicalInfo,GeneralInfo,FinalAssessment } from 'src/app/share
 })
 export class TableListComponent implements OnInit {
 
-  constructor(private service:ArbProjectService  ,private http:HttpClient) { }
+  constructor(private service:ArbProjectService  ,private http:HttpClient, private router:Router) { }
+  onClick(route){
+    this.router.navigate([route])
+
+  }
   ExamData:ExamData = new ExamData();
   list:ExamData[]
   ngOnInit() {
