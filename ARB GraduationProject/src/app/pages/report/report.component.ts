@@ -2,9 +2,11 @@ import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angula
 import jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
 import { ArbProjectService } from 'src/app/shared/arb-project.service';
+import { ExamData,ClinicalInfo,GeneralInfo,FinalAssessment } from 'src/app/shared/arb-project.model';
 import { NgForm } from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
 import {FormControl} from '@angular/forms';
+import { Router } from '@angular/router';
 declare const google: any;
 // import WebViewer from '@pdftron/webviewer';
 
@@ -14,24 +16,16 @@ declare const google: any;
   styleUrls: ['./report.component.scss']
 })
 export class ReportComponent implements OnInit{
-  constructor(public service:ArbProjectService) { }
+  constructor(private service:ArbProjectService  ,private http:HttpClient, private router:Router) { }
+  ExamData:ExamData = new ExamData();
   ngOnInit() {
-    // this.service.generatePDF();
-    // generatePDF(){
-    //   var data = document.getElementById('contentToConvert') as HTMLCanvasElement;
-    // html2canvas(data).then(canvas => {
-    //   var imgWidth = 208;
-    //   var imgHeight = canvas.height * imgWidth / canvas.width;
-    //   const contentDataURL = canvas.toDataURL('image/png')
-    //   let pdf = new jspdf('p', 'mm', 'a4');
-    //   var position = 0;
-    //   pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
-    //   var blob = pdf.output("blob");
-    //   window.open(URL.createObjectURL(blob));
-    // });
-
-    // }
-   }
+    let doctorId = this.service.DoctorId;
+    this.service.getOne(doctorId,'examData/ExamDataOfDoctor').subscribe(res=>{this.service.list = res as ExamData[]})
+    if (this.service.DoctorId !=0)
+    {
+      console.log(this.service.DoctorId)
+    }
+  }
 
 
   generatePDF() {
