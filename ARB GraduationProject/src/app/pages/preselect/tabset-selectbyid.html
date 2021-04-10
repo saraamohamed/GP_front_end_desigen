@@ -190,7 +190,7 @@
                                 Age: <input type="text" id="TEXT_1450682011285" name="motherAge" data-field-type="TEXT"
                                     data-field-completion-action="NONE" #motherAge="ngModel"
                                     [(ngModel)]="service.Patient.GeneralInfo.motherAge"
-                                    style="width: 35px; height: 25px;" class="form-control " />
+                                    style="width: 40px; height: 25px;" class="form-control " placeholder="0" />
                             </td>
                             <th>
                                 <div class="form-group focused">
@@ -208,10 +208,10 @@
                                 </div>
                             </th>
                             <td>
-                                Age: <input type="text" id="TEXT_1450682011285" name="motherAge" data-field-type="TEXT"
-                                    data-field-completion-action="NONE" #motherAge="ngModel"
-                                    [(ngModel)]="service.Patient.GeneralInfo.motherAge"
-                                    style="width: 35px; height: 25px;" class="form-control " />
+                                Age: <input type="text" id="TEXT_1450682011285" name="sisterAge" data-field-type="TEXT"
+                                    data-field-completion-action="NONE" #sisterAge="ngModel"
+                                    [(ngModel)]="service.Patient.GeneralInfo.sisterAge"
+                                    style="width: 40px; height: 25px;" class="form-control " placeholder="0" />
                             </td>
                         </tr>
                         <tbody>
@@ -238,10 +238,10 @@
                                     </div>
                                 </th>
                                 <td>
-                                    Age: <input type="text" id="TEXT_1450682011285" name="motherAge"
-                                        data-field-type="TEXT" data-field-completion-action="NONE" #motherAge="ngModel"
-                                        [(ngModel)]="service.Patient.GeneralInfo.motherAge"
-                                        style="width: 35px; height: 25px;" class="form-control " />
+                                    Age: <input type="text" id="TEXT_1450682011285" name="daughterAge"
+                                        data-field-type="TEXT" data-field-completion-action="NONE" #daughterAge="ngModel"
+                                        [(ngModel)]="service.Patient.GeneralInfo.daughterAge"
+                                        style="width: 40px; height: 25px;" class="form-control " placeholder="0" />
 
 
                                 </td>
@@ -263,10 +263,10 @@
                                     </div>
                                 </td>
                                 <td>
-                                    Age: <input type="text" id="TEXT_1450682011285" name="motherAge"
-                                        data-field-type="TEXT" data-field-completion-action="NONE" #motherAge="ngModel"
-                                        [(ngModel)]="service.Patient.GeneralInfo.motherAge"
-                                        style="width: 35px; height: 25px;" class="form-control " />
+                                    Age: <input type="text" id="TEXT_1450682011285" name="grandmotherAge"
+                                        data-field-type="TEXT" data-field-completion-action="NONE" #grandmotherAge="ngModel"
+                                        [(ngModel)]="service.Patient.GeneralInfo.grandmotherAge"
+                                        style="width: 40px; height: 25px;" class="form-control " placeholder="0" />
                                 </td>
                             </tr>
                             <tr>
@@ -285,10 +285,10 @@
                                     </div>
                                 </th>
                                 <td>
-                                    Age: <input type="text" id="TEXT_1450682011285" name="motherAge"
-                                        data-field-type="TEXT" data-field-completion-action="NONE" #motherAge="ngModel"
-                                        [(ngModel)]="service.Patient.GeneralInfo.motherAge"
-                                        style="width: 35px; height: 25px;" class="form-control " />
+                                    Age: <input type="text" id="TEXT_1450682011285" name="auntAge"
+                                        data-field-type="TEXT" data-field-completion-action="NONE" #auntAge="ngModel"
+                                        [(ngModel)]="service.Patient.GeneralInfo.auntAge"
+                                        style="width: 40px; height: 25px;" class="form-control " placeholder="0" />
                                 </td>
                                 <td>
                                     <div class="form-group focused">
@@ -302,16 +302,17 @@
                                                     <span class="check"></span>
                                                 </span>
 
-                                                cousin
+                                                Cousin
                                             </h5>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    Age: <input type="text" id="TEXT_1450682011285" name="motherAge"
-                                        data-field-type="TEXT" data-field-completion-action="NONE" #motherAge="ngModel"
-                                        [(ngModel)]="service.Patient.GeneralInfo.motherAge"
-                                        style="width: 35px; height: 25px;" class="form-control " />
+                                    Age: <input type="text" id="TEXT_1450682011285" name="cousinAge"
+                                        data-field-type="TEXT" data-field-completion-action="NONE" #cousinAge="ngModel"
+                                        [(ngModel)]="service.Patient.GeneralInfo.cousinAge"
+                                        style="width: 40px; height: 25px;" class="form-control " placeholder="0"> 
+                                        
                                 </td>
                             </tr>
                         </tbody>
@@ -614,60 +615,9 @@
                       Masses</h3>
 
 
-                      <!----------------------------  Literality ---------------------------------- -->
-<!---
-
-                      <div class="row">
-                      <div class="col">
-                          <div class="form-group focused">
-                              <label class="form-control-label" for="Mammo-history"
-                                  style="margin-right: 15px; padding-top: 15px;">
-                                  <strong> Laterality</strong> </label>
-
-                              <input type="text" id="TEXT_1450682011285" name="laterality" data-field-type="TEXT"
-                                  data-field-completion-action="NONE" #laterality="ngModel"
-                                  [(ngModel)]="service.Patient.ClinicalInfo.massSpecifications[0].laterality"
-                                  style="width: 50px; height: 25px;" class="form-control" />
-                          </div>
-                      </div>
-                      </div>
-                      <br>
-                      <!-- Quadrant ..Done-->
-
- <!---                     <div class="row">
-                      <div class="col">
-                          <div class="form-group focused ">
-                              <label class="form-control-label" for="Mammo-history"
-                                  style="margin-right: 15px; padding-top: 15px;">
-                                  <strong> Quadrant </strong> </label>
-                              <select class="custom-select" name="quadrantId" #quadrantId="ngModel"
-                                  [(ngModel)]="service.Patient.ClinicalInfo.massSpecifications[0].quadrantId"
-                                  style="width:150px;">
-                                  <option value="0"> SELECT</option>
-                                  <option *ngFor="let item of Quadrants" value="{{item.id}}">{{item.name}}</option>
-                              </select>
-                          </div>
-                      </div>
-                      <!-- Clock Face ..Done-->
- <!---                     <div class="col">
-                          <div class="form-group focused ">
-                              <label class="form-control-label" for="Mammo-history"
-                                  style="margin-right: 15px; padding-top: 15px;"><strong> clock face</strong></label>
-                              <select class="custom-select" name="clockFaceId" #clockFaceId="ngModel"
-                                  [(ngModel)]="service.Patient.ClinicalInfo.massSpecifications[0].clockFaceId"
-                                  style="width:150px;">
-                                  <option value="0"> SELECT</option>
-                                  <option *ngFor="let item of ClockFaces" value="{{item.id}}">{{item.name}}</option>
-                              </select>
-                          </div>
-                      </div>
-                      </div>
-                      <br>
 
 
-                      <!--Depth  ..Done-->
 
-<!---
                       <div class="row">
                       <div class="col">
                           <div class="form-group focused">
@@ -926,9 +876,11 @@
               <button href="#!" type="submit" class="btn btn-sm btn-primary" >Add Final Assessment</button>
           </div> -->
               <div class="col-4" style="vertical-align:sub;">
+
+
                   <button href="#!" type="submit" class="btn btn-sm btn-primary">Save</button>
                   <!-- <button href="/dash/report" type="submit" class="btn btn-sm btn-primary">Show Report</button> -->
-                  <button routerLinkActive="active" [routerLink]="['/dash/report']"type="submit" class="btn btn-sm btn-primary">Show Report</button>
+                  <button type="submit" class="btn btn-sm btn-primary" (click)="onClick('/dash/report')">Show Report</button>
               </div>
           </ng-template>
       </ngb-tab>
