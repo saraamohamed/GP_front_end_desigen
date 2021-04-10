@@ -5,6 +5,7 @@ import { ArbProjectService } from 'src/app/shared/arb-project.service';
 import { NgForm } from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
 import { ClinicalInfo, GeneralInfo ,FinalAssessment} from 'src/app/shared/arb-project.model';
+import { SelectorContext } from '@angular/compiler';
 
 @Component({
   selector: 'app-mass',
@@ -16,7 +17,8 @@ export class MassComponent {
   testBoolean2 : Boolean = false;
   testBoolean3 : Boolean = false;
   compalinBoolean : Boolean = false;
-  tabs = ['Mass1'];
+  tabs = [];
+
   selected = new FormControl(0);
 
   onButtonClick1(){
@@ -32,16 +34,15 @@ export class MassComponent {
     this.compalinBoolean = !this.compalinBoolean;
 
   }
-  addTab(selectAfterAdding: boolean) {
-    this.tabs.push('Mass' + (this.tabs.length +1));
+  addTab() {
+    this.tabs.push('Mass' + (this.tabs.length+1));
 
-    if (selectAfterAdding) {
-      this.selected.setValue(this.tabs.length - 1);
-    }
+
   }
 
-  removeTab(index: number) {
-    this.tabs.splice(index, 1);
+  removeTab() {
+    this.tabs.splice((this.tabs.length-1), 1);
+
   }
 constructor(public service:ArbProjectService,private http:HttpClient) {
  }
