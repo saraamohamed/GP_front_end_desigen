@@ -1,15 +1,17 @@
 export class ExamData{
     id: number = 0;
+    doctorId:number=0;
     name: string= '';
-    mobileNumber: string= '';
     emailAddress: string= '';
+    mobileNumber: string= '';
+    
     patientID: string= '';
     address: string= '';
     modailty: string= '';
     referringDoctor: string= '';
     studyDate: string= '';
     lastOperation: string= '';
-    doctorId:number=0;
+    
 }
 export class GeneralInfo{
     id: number = 0;
