@@ -6,6 +6,9 @@ import { NgForm } from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
 import { ExamData,ClinicalInfo,GeneralInfo,FinalAssessment } from 'src/app/shared/arb-project.model';
 import { Router } from '@angular/router';
+import jspdf from 'jspdf';
+import html2canvas from 'html2canvas';
+import { PdfViewerComponent } from "ng2-pdf-viewer";
 
 
 @Component({
@@ -22,6 +25,7 @@ export class TableListComponent implements OnInit {
   }
   ExamData:ExamData = new ExamData();
   list:ExamData[]
+  pdfScr:string = '';
   ngOnInit() {
     let doctorId = this.service.DoctorId;
     this.service.getExamDataOfDoctor(doctorId,'examData/ExamDataOfDoctor').subscribe(res=>{this.service.list = res as ExamData[]})
@@ -29,6 +33,10 @@ export class TableListComponent implements OnInit {
     {
       console.log(this.service.DoctorId)
     }
+  }
+  PdfShow(name:string){
+    console.log(name);
+    this.pdfScr = `assets/${name}.pdf`;
   }
   preselect(id:number){
     this.service.PatientId = id;

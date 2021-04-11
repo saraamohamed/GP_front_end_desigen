@@ -109,7 +109,8 @@
                     <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
                       <a class="dropdown-item" href="javascript:void(0)" (click)= DeleteOn(pd.id)>Delete</a>
                       <a class="dropdown-item" href="/#/patient" (click) = patientForm(pd.id)>Edit</a>
-                      <a class="dropdown-item" href="/#/report">Report Review </a>
+                      <a class="dropdown-item" href="/#/" (click) = PdfShow(pd.name) >Report Review </a>
+                      <!-- <pdf-viewer  [src] = "pdfScr" [render-text] = "true" [show-all]= "true" style="display: block;"></pdf-viewer> -->
                     </div>
                   </div>
                 </td>

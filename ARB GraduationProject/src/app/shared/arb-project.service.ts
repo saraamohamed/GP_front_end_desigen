@@ -18,7 +18,7 @@ export class ArbProjectService {
       'Access-Control-Allow-Origin':'*'
     })
   };
-  readonly APIUrl = 'http://localhost:57645/api/';
+  readonly APIUrl = 'http://localhost:57645/api';
   readonly ComboUrl = 'http://localhost:57645/api/combobox';
   readonly  examDataUrl = 'http://localhost:57645/api/ExamData';
   
@@ -76,6 +76,8 @@ export class ArbProjectService {
   }
   
   getOne(id,APIUrl){
+    console.log("Marwa")
+    console.log(id)
     console.log(`${this.APIUrl}/${APIUrl}/${id}`)
     return (this.http.get(`${this.APIUrl}/${APIUrl}/${id}`));
   }

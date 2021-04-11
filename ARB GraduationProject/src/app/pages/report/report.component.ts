@@ -17,14 +17,16 @@ declare const google: any;
 })
 export class ReportComponent implements OnInit{
   constructor(private service:ArbProjectService  ,private http:HttpClient, private router:Router) { }
-  ExamData:ExamData = new ExamData();
+  hey:ExamData = new ExamData();
+  
   ngOnInit() {
-    let doctorId = this.service.DoctorId;
-    this.service.getOne(doctorId,'examData/ExamDataOfDoctor').subscribe(res=>{this.service.list = res as ExamData[]})
-    if (this.service.DoctorId !=0)
-    {
-      console.log(this.service.DoctorId)
-    }
+    console.log(this.hey)
+    let examDataId = 2;
+    this.service.getOne(examDataId,'examdata').subscribe(res=>{this.hey = res as ExamData ;
+      console.log(res);
+    })
+    // console.log(this.hey.name);
+    
   }
 
 
@@ -43,6 +45,7 @@ export class ReportComponent implements OnInit{
     });
     }
 }
+// <pdf-viewer  [src] = "pdfScr" [render-text] = "true" [show-all]= "true" style="display: block;"></pdf-viewer>
 
 // @ViewChild('viewer') viewerRef: ElementRef;
 //   ngAfterViewInit(): void {
