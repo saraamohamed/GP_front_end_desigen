@@ -28,7 +28,7 @@ export class TableListComponent implements OnInit {
   pdfScr:string = '';
   ngOnInit() {
     let doctorId = this.service.DoctorId;
-    this.service.getOne(doctorId,'examData/ExamDataOfDoctor').subscribe(res=>{this.service.list = res as ExamData[]})
+    this.service.getExamDataOfDoctor(doctorId,'examData/ExamDataOfDoctor').subscribe(res=>{this.service.list = res as ExamData[]})
     if (this.service.DoctorId !=0)
     {
       console.log(this.service.DoctorId)

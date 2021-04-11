@@ -427,8 +427,7 @@
 
         <!---------------------------- Clinical-tab ---------------------------------- -->
 
-        <ngb-tab id="Clinical-tab">
-            <ng-template ngbTabTitle>Clinical Information</ng-template>
+        <ngb-tab id="Clinical-tab" title="ClinicalInfo">
             <ng-template ngbTabContent>
                 <!-- <form  #form="ngForm" (submit)="OnSubmit(form,'ClinicalInfo')">
         <input name = "id" type="hidden" [value]="service.Patient.ClinicalInfo.id"/> -->
@@ -714,25 +713,26 @@
                     <table class="table" style="margin-left: 25px; text-align: center;">
                         <tr>
                             <th>
-                                <div class="form-group focused">
+                                <!-- <div class="form-group focused">
                                     <div class="form-check">
                                         <h5 class="form-control-label"
                                             for="Mammo-history style= margin-right: 15px; padding-top: 5px;">
 
 
                                             <input class="form-check-input" type="checkbox" name="skinRetraction"
-                                                #skinRetraction="ngModel"
-                                                [(ngModel)]="service.Patient.ClinicalInfo.features.skinRetraction">
+                                            #skinRetraction="ngModel"
+                                            [(ngModel)]="service.Patient.ClinicalInfo.features.skinRetraction">
                                             <span class="form-check-sign">
                                                 <span class="check"></span>
                                             </span>
+                                         
                                             Skin Retraction
                                         </h5>
                                     </div>
-                                </div>
+                                </div> -->
                             </th>
                             <th>
-                                <div class="form-group focused">
+                                <!-- <div class="form-group focused">
                                     <div class="form-check">
                                         <h5 class="form-control-label"
                                             for="Mammo-history style= margin-right: 15px; padding-top: 5px;">
@@ -749,7 +749,7 @@
                                             Nipple retraction
                                         </h5>
                                     </div>
-                                </div>
+                                </div> -->
                             </th>
                             <th>
                                 <div class="form-group focused">
@@ -761,7 +761,8 @@
 
                                             <input class="form-check-input" type="checkbox" name="skinThickening"
                                                 #skinThickening="ngModel"
-                                                [(ngModel)]="service.Patient.ClinicalInfo.features.skinThickening">
+                                                [(ngModel)]="service.Patient.ClinicalInfo.features">
+                                               
                                             <span class="form-check-sign">
                                                 <span class="check"></span>
                                             </span>
