@@ -20,10 +20,10 @@
               </div>
             </div>
           </div>
-          
-          
+
+
         </div>
-        
+
         <div class="table-responsive">
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
@@ -31,7 +31,7 @@
                 <!-- <th scope="col">Priority</th> -->
                 <th scope="col">Patient Name</th>
                 <th scope="col">Patient Id</th>
-                
+
                 <th scope="col">Modality </th>
                 <th scope="col">Study Datetime</th>
                 <th scope="col">Referring Doctor</th>
@@ -49,9 +49,9 @@
 
             <tbody>
               <tr *ngFor = "let pd of service.list" >
-                <td >
+                <!-- <td >
                     1
-                </td>
+                </td> -->
                   <th scope="row">
                       <div class="media-body">
                         <a class="mb-0 text-sm" href="#/dash/preselect" (click) = preselect(pd.id)>{{pd.name}}</a>
@@ -147,8 +147,8 @@
     </div>
   </div>
   <div class="row">
-  <button class="btn btn-primary my-4 " type="button" (click) ="onClick('/dash/patient')"
-  
+  <button class="btn btn-secondary" type="button" (click) ="onClick('/dash/patient')"
+
   >
     Add New Patiant
   </button>

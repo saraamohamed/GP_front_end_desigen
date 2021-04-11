@@ -1,16 +1,18 @@
-    <mat-form-field>
-        <mat-label>masses number</mat-label>
-        <input matInput type="number" [formControl]="selected">
+
+       <mat-form-field >
+
+      <tr><mat-label>Numer of Masses</mat-label></tr>
+        <input matInput readonly="readonly" type="text"  value={{tabs.length}}  [formControl]="selected">
     </mat-form-field>
 
-    <div>
-        <button mat-raised-button class="example-add-tab-button" (click)="addTab(selectAfterAdding.checked)">
-            Add new tab
+    <div class="clearfix">
+        <button class="btn btn-secondary"   (click)="addTab()" >
+            Add Mass
         </button>
-        <mat-checkbox #selectAfterAdding> Select mass after adding </mat-checkbox>
+
     </div>
 
-    <mat-tab-group [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)">
+    <mat-tab-group class="example-card" [selectedIndex]="selected.value" appearance="outline" >
         <mat-tab *ngFor="let tab of tabs; let index = index" [label]="tab">
             <h3 class="form-control-alternative"
                 style="margin-top: 18px; margin-left: 13px; background-color:gainsboro;">{{tab}} Spacifications
@@ -103,7 +105,7 @@
                     </div>
                 </div>
                 <h3 class="form-control-alternative" style="margin-top: 9px; background-color:gainsboro;">Location of
-                    Masses</h3>
+                  {{tab}}</h3>
 
 
                 <!----------------------------  Literality ---------------------------------- -->
@@ -194,10 +196,13 @@
             </div>
 
 
-
-            <button mat-raised-button class="example-delete-tab-button" [disabled]="tabs.length === 1"
-                (click)="removeTab(index)">
-                Delete Tab
-            </button>
         </mat-tab>
+
     </mat-tab-group>
+    <div class="clearfix">
+      <button class="btn btn-secondary float-right" [hidden]="tabs.length === 0"
+      (click)="removeTab()">
+      Delete Mass
+  </button>
+  </div>
+

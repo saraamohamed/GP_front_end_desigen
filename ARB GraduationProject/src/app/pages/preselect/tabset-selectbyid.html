@@ -80,11 +80,11 @@
                         <h3 for="exam-reason" id="examdate">
                             <span style="background-color: gainsboro">Exam Date</span>
                         </h3>
-         
+
                             <input class="form-control " type="datetime-local" id="DATE_1449431264015" name="examDate"
                                 data-field-type="DATE" data-field-completion-action="NONE" #examDate="ngModel" value=""
                                 [(ngModel)]="service.Patient.GeneralInfo.examDate" />
-                        
+
                     </div>
                 </div>
                 <!---------------------------- Exam history ---------------------------------- -->
@@ -154,7 +154,7 @@
 
                 <!---------------------------- Family history ---------------------------------- -->
 
-                
+
 
                 <h3 class="form-control-alternative" style="margin-top: 18px; background-color:gainsboro;">
                     <input class="form-control " name="Previous Mammogram" type="checkbox"
@@ -311,8 +311,8 @@
                                     Age: <input type="text" id="TEXT_1450682011285" name="cousinAge"
                                         data-field-type="TEXT" data-field-completion-action="NONE" #cousinAge="ngModel"
                                         [(ngModel)]="service.Patient.GeneralInfo.cousinAge"
-                                        style="width: 40px; height: 25px;" class="form-control " placeholder="0"> 
-                                        
+                                        style="width: 40px; height: 25px;" class="form-control " placeholder="0">
+
                                 </td>
                             </tr>
                         </tbody>
@@ -323,7 +323,7 @@
 
 
                 <h3 class="form-control-alternative" style="margin-top: 18px; background-color:gainsboro;">
-                    
+
                         <input class="form-control " type="checkbox" name="TakingHormones"
                             #TakingHormones="ngModel"
                             [(ngModel)]="service.Patient.GeneralInfo.TakingHormones" (click)="onHormoneClick()">
@@ -331,11 +331,11 @@
                                 <span class="check"></span>
                             </span>
                          Taking hormones
-                   
+
                 </h3>
 
                 <!-- <h3 class="form-control-alternative" style="margin-top: 18px; background-color:gainsboro;">
-                    
+
                         <input class="form-check-label " type="checkbox" name="TakingHormones"
                             #TakingHormones="ngModel"
                             [(ngModel)]="service.Patient.GeneralInfo.TakingHormones" (click)="onHormoneClick()">
@@ -343,11 +343,11 @@
                                 <span class="check"></span>
                             </span>
                          Taking hormones
-                   
+
                 </h3> -->
-                
-                    
-                    
+
+
+
                         <div class="form-group" *ngIf="hormoneBoolean == true " >
                             <label style="margin-right: 15px; padding-top: 9px;"><strong> For how long </strong>
                                 <input type="text" id="TEXT_1450682011285" name="HowlongTakingHormones"
@@ -358,8 +358,8 @@
                             </label>
 
                         </div>
-                    
-                
+
+
                 <!-- margin-top: 10px; -->
 
                 <!----------------------------  given birth ---------------------------------- -->
@@ -506,14 +506,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+
                   <h3 class="form-control-alternative" style="margin-top: 9px; background-color:gainsboro;">Masses
                         </h3>
 
                     <!--<th width="150px"><button type="button" (click)="addQuantity()" class="btn btn-primary">Add More</button></th>-->
 
 
-                </div>
                 <div class="col">
 
                     <app-mass></app-mass>
