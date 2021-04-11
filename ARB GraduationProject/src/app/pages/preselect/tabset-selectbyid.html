@@ -713,7 +713,7 @@
                     <table class="table" style="margin-left: 25px; text-align: center;">
                         <tr>
                             <th>
-                                <!-- <div class="form-group focused">
+                                <div class="form-group focused">
                                     <div class="form-check">
                                         <h5 class="form-control-label"
                                             for="Mammo-history style= margin-right: 15px; padding-top: 5px;">
@@ -729,10 +729,10 @@
                                             Skin Retraction
                                         </h5>
                                     </div>
-                                </div> -->
+                                </div>
                             </th>
                             <th>
-                                <!-- <div class="form-group focused">
+                                <div class="form-group focused">
                                     <div class="form-check">
                                         <h5 class="form-control-label"
                                             for="Mammo-history style= margin-right: 15px; padding-top: 5px;">
@@ -749,7 +749,7 @@
                                             Nipple retraction
                                         </h5>
                                     </div>
-                                </div> -->
+                                </div>
                             </th>
                             <th>
                                 <div class="form-group focused">
@@ -761,7 +761,7 @@
 
                                             <input class="form-check-input" type="checkbox" name="skinThickening"
                                                 #skinThickening="ngModel"
-                                                [(ngModel)]="service.Patient.ClinicalInfo.features">
+                                                [(ngModel)]="service.Patient.ClinicalInfo.features.skinThickening">
                                                
                                             <span class="form-check-sign">
                                                 <span class="check"></span>
@@ -786,18 +786,18 @@
               </div> -->
 
 
-              <!-- <div class="form-group focused">
-              <h5 class="form-control-label" for="Mammo-history style= margin-right: 15px; padding-top: 5px;"><b>Axillary adenopathy:</b></h5>
-              <div class="form-check" style="margin-left: 5px; padding-bottom: 20px ;" >
-              <label class="form-check-label">
-              <input class="form-check-input" type="checkbox" name="features" #axillaryAdenopathy ="ngModel"
-              [(ngModel)] = "service.Patient.ClinicalInfo.features.axillaryAdenopathy">
-              <span class="form-check-sign">
-                  <span class="check"></span>
-              </span>
-              </label>
-              </div>
-          </div> -->
+              <div class="form-group focused">
+                <h5 class="form-control-label" for="Mammo-history style= margin-right: 15px; padding-top: 5px;"><b>Axillary adenopathy:</b></h5>
+                <div class="form-check" style="margin-left: 5px; padding-bottom: 20px ;" >
+                <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" name="features" #axillaryAdenopathy ="ngModel"
+                [(ngModel)] = "service.Patient.ClinicalInfo.features.axillaryAdenopathy">
+                <span class="form-check-sign">
+                    <span class="check"></span>
+                </span>
+                </label>
+                </div>
+             </div>
 
 
               <!-- <div class="col-4 text-right">

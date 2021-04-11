@@ -72,7 +72,7 @@ export class ClinicalInfo{
     id: number = 0;
     numOfMass: number = 0;
     asymmetriesId: number = 0;
-    featuresId: number = 0;
+    featureId: number = 0;
     features:features=new features();
     massSpecifications:massSpecifications[]=[new massSpecifications()];
     typicallyBenignId: number = 0;
