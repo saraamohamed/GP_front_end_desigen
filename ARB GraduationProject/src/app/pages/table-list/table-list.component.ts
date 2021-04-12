@@ -20,7 +20,9 @@ export class TableListComponent implements OnInit {
   closeResult: string;
 
   constructor(private service:ArbProjectService  ,private http:HttpClient, private router:Router, private modalService: NgbModal) { }
-  open(content) {
+  open(content,name:string) {
+    console.log(name);
+    this.pdfScr = `assets/${name}.pdf`;
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = ` ${result}`;
     }, (reason) => {
@@ -53,11 +55,11 @@ export class TableListComponent implements OnInit {
       console.log(this.service.DoctorId)
     }
   }
-  PdfShow(name:string){
-    console.log(name);
-    this.pdfScr = `assets/${name}.pdf`;
+  // PdfShow(name:string){
+  //   console.log(name);
+  //   this.pdfScr = `assets/${name}.pdf`;
     
-  }
+  // }
   preselect(id:number){
     this.service.PatientId = id;
   }
