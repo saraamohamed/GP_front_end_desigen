@@ -37,6 +37,7 @@ export class TableListComponent implements OnInit {
   PdfShow(name:string){
     console.log(name);
     this.pdfScr = `assets/${name}.pdf`;
+    
   }
   preselect(id:number){
     this.service.PatientId = id;
