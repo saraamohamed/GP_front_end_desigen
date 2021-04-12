@@ -21,8 +21,6 @@ export class NgbdTabsetSelectbyid  implements OnInit{
 
 
 
-
-
   onButtonClick1(){
     this.testBoolean1 = !this.testBoolean1;
   }

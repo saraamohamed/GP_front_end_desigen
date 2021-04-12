@@ -1,6 +1,7 @@
 import {Component,OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import { ArbProjectService } from 'src/app/shared/arb-project.service';
+import { ClinicalInfo,Patient} from 'src/app/shared/arb-project.model';
 import {HttpClient} from "@angular/common/http";
 
 @Component({
@@ -12,7 +13,6 @@ export class MassComponent {
 
   tabs = [];
   selected = new FormControl(0);
-
   
   addTab() {
 
@@ -25,6 +25,19 @@ export class MassComponent {
 
   }
 constructor(public service:ArbProjectService,private http:HttpClient) {}
-
+MassMargin=[]
+MassDensities=[]
+Quadrants=[]
+ClockFaces=[]
+ngOnInit():void{
+      this.service.getCombo('GetMassMargin')
+      .subscribe(res => this.MassMargin = res as []);
+      this.service.getCombo('GetMassDensities')
+      .subscribe(res =>  this.MassDensities = res as []);
+      this.service.getCombo('GetQuadrants')
+      .subscribe(res =>  this.Quadrants = res as []);
+      this.service.getCombo('GetClockFaces')
+      .subscribe(res =>  this.ClockFaces = res as []);
+  }
 }
 
