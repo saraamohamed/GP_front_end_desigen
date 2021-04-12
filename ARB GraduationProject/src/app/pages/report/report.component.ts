@@ -21,7 +21,7 @@ export class ReportComponent implements OnInit{
   
   ngOnInit() {
     console.log(this.hey)
-    let examDataId = 2;
+    let examDataId = 4;
     this.service.getOne(examDataId,'examdata').subscribe(res=>{this.hey = res as ExamData ;
       console.log(res);
     })
