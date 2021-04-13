@@ -62,6 +62,7 @@ export class TableListComponent implements OnInit {
   // }
   preselect(id:number){
     this.service.PatientId = id;
+    console.log(this.service.PatientId)
   }
   patientForm(id:number){
     this.service.ExamData.id = id;

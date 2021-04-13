@@ -93,6 +93,8 @@ export class NgbdTabsetSelectbyid  implements OnInit{
   }
 
   OnSubmit(form:NgForm,data:string){
+
+    
     this.service.Patient.doctorId = this.service.DoctorId;
     this.service.Patient.examDataId = this.service.PatientId;
     this.service.Patient.ClinicalInfo.featureId = this.service.PatientId;
@@ -119,14 +121,16 @@ export class NgbdTabsetSelectbyid  implements OnInit{
   //     }
   // )
   }
+  passingPatienId(id:number)
+  {
+    this.service.examDataId = id;
+    console.log(this.service.examDataId)
+  }
   InsertFeatures(form:NgForm,data:string){
     this.service.Post(data).subscribe(
       res=>{
-        let data2 = res;
-      
-        console.log(data2[1].id);
-        this.service.PatientId = res[0].id;
-        console.log(res[0].id);
+        this.service.examDataId = res['id'];
+        console.log(this.service.examDataId)
         this.resetForm(form,data);
       },
       err=>{

@@ -19,13 +19,19 @@ export class ReportComponent implements OnInit{
   constructor(private service:ArbProjectService  ,private http:HttpClient, private router:Router) { }
   examData:ExamData = new ExamData();
   patient:Patient = new Patient();
-  
-  ngOnInit() {  
-    this.service.getOne(this.service.PatientId,'patient').subscribe(res=>{this.patient = res as Patient ;
+  examDataId:number = 0; 
+  ngOnInit() { 
+   
+    // console.log(this.service.PatientId) ;
+    this.service.getOne(this.service.examDataId,'patient').subscribe(res=>{this.patient = res as Patient ;
       console.log(res);
+      // this.examDataId = this.patient.examDataId
+      // console.log(this.examDataId);
     })
-    let examDataId = this.patient.examDataId;
-    this.service.getOne(examDataId,'examData').subscribe(res=>{this.examData = res as ExamData ;
+    // // let examDataId = this.patient.examDataId;
+    // console.log(this.patient.examDataId)
+    // console.log(this.examDataId)
+    this.service.getOne(this.service.PatientId,'examData').subscribe(res=>{this.examData = res as ExamData ;
       console.log(res);
     })
     
