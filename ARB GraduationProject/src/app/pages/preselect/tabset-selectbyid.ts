@@ -90,11 +90,11 @@ export class NgbdTabsetSelectbyid  implements OnInit{
   OnSubmit(form:NgForm,data:string){
 
     this.service.Patient.doctorId = this.service.DoctorId;
-    this.service.Patient.examDataId = this.service.examDataId;
-    this.service.Patient.clinicalInfo.featureId = this.service.PatientId;
+    // this.service.Patient.examDataId = this.service.examDataId;
+    // this.service.Patient.clinicalInfo.featureId = this.service.PatientId;
 
     // this.InsertFeatures(form,data);
-    
+    console.log(this.service.Patient.generalInfo.id,this.service.Patient.clinicalInfo.id,this.service.Patient.finalAssessment.id)
     if ((this.service.Patient.generalInfo.id == 0) && (this.service.Patient.clinicalInfo.id == 0) && (this.service.Patient.finalAssessment.id == 0)){
     
         this.InsertFeatures(form,data);

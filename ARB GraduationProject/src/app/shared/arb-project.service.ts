@@ -35,6 +35,7 @@ export class ArbProjectService {
   Patient:Patient = new Patient();
   Login:Login = new Login();
   features:features = new features()
+  index:number=0;
   whichVar(Name:string)
   {
     switch(Name){

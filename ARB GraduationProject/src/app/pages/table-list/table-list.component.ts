@@ -67,13 +67,13 @@ export class TableListComponent implements OnInit {
       if (res != null && res != "Not Found"){
       this.service.Patient = res as Patient
       this.service.PatientId = res['id'];
-      // this.service.Patient.generalInfo = res['generalInfo'];
-      // this.service.Patient.FinalAssessment = res['FinalAssessment'];
-      // this.service.Patient.ClinicalInfo = res['ClinicalInfo'];
       console.log(this.service.Patient);
+      console.log("gebto");
       this.router.navigate([this.redirectUrl]);
       this.redirectUrl = null;
           }
+       },err=>{
+         console.log(err);
        });
     
   }

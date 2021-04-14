@@ -10,26 +10,18 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./mass.component.css']
 })
 export class MassComponent {
-
-  tabs = [];
-  selected = new FormControl(0);
   
-  addTab() {
-
-    this.tabs.push('Mass' + (this.tabs.length+1));
-  }
-
-  removeTab() {
-
-    this.tabs.splice((this.tabs.length-1), 1);
-
-  }
 constructor(public service:ArbProjectService,private http:HttpClient) {}
 MassMargin=[]
 MassDensities=[]
 Quadrants=[]
 ClockFaces=[]
+
+tabs = [];
+selected = new FormControl(0);
 ngOnInit():void{
+  this.service.index = 0;
+  console.log(this.service.index);
       this.service.getCombo('GetMassMargin')
       .subscribe(res => this.MassMargin = res as []);
       this.service.getCombo('GetMassDensities')
@@ -38,6 +30,17 @@ ngOnInit():void{
       .subscribe(res =>  this.Quadrants = res as []);
       this.service.getCombo('GetClockFaces')
       .subscribe(res =>  this.ClockFaces = res as []);
+  }
+ 
+  addTab() {
+    this.service.index+=1;
+    this.tabs.push('Mass' + (this.tabs.length+1));
+  }
+
+  removeTab() {
+    this.service.index-=1;
+    this.tabs.splice((this.tabs.length-1), 1);
+
   }
 }
 
