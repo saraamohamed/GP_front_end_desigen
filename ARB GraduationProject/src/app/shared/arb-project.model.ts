@@ -95,9 +95,9 @@ export class FinalAssessment{
 export class Patient{
     id: number = 0;
     clinicalInfoId: number= 0;
-    ClinicalInfo:ClinicalInfo = new ClinicalInfo();
-    GeneralInfo:GeneralInfo = new GeneralInfo();
-    FinalAssessment:FinalAssessment = new FinalAssessment();
+    clinicalInfo:ClinicalInfo = new ClinicalInfo();
+    generalInfo:GeneralInfo = new GeneralInfo();
+    finalAssessment:FinalAssessment = new FinalAssessment();
     generalInfoId: number = 0;
     finalAssessmentId: number = 0;
     doctorId: number=0;

@@ -4,7 +4,7 @@ import {PatientComponent} from 'src/app/pages/patient/patient.component'
 import { ArbProjectService } from 'src/app/shared/arb-project.service';
 import { NgForm } from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
-import { ExamData,ClinicalInfo,GeneralInfo,FinalAssessment } from 'src/app/shared/arb-project.model';
+import { ExamData,ClinicalInfo,GeneralInfo,FinalAssessment,Patient} from 'src/app/shared/arb-project.model';
 import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal  } from '@ng-bootstrap/ng-bootstrap';
 import jspdf from 'jspdf';
@@ -18,6 +18,7 @@ import html2canvas from 'html2canvas';
 })
 export class TableListComponent implements OnInit {
   closeResult: string;
+  redirectUrl: string = '/dash/preselect';
 
   constructor(private service:ArbProjectService  ,private http:HttpClient, private router:Router, private modalService: NgbModal) { }
   open(content,name:string) {
@@ -61,11 +62,24 @@ export class TableListComponent implements OnInit {
     
   // }
   preselect(id:number){
-    this.service.PatientId = id;
-    console.log(this.service.PatientId)
+    this.service.examDataId = id;
+    this.service.getPatient(this.service.examDataId,'Patient','examId').subscribe(res =>{
+      if (res != null && res != "Not Found"){
+      this.service.Patient = res as Patient
+      this.service.PatientId = res['id'];
+      // this.service.Patient.generalInfo = res['generalInfo'];
+      // this.service.Patient.FinalAssessment = res['FinalAssessment'];
+      // this.service.Patient.ClinicalInfo = res['ClinicalInfo'];
+      console.log(this.service.Patient);
+      this.router.navigate([this.redirectUrl]);
+      this.redirectUrl = null;
+          }
+       });
+    
   }
   patientForm(id:number){
     this.service.ExamData.id = id;
+    
   }
 
   DeleteOn(id:number){

@@ -79,6 +79,10 @@ export class ArbProjectService {
   getOne(id,APIUrl){
     return (this.http.get(`${this.APIUrl}/${APIUrl}/${id}`));
   }
+  getPatient(id,APIUrl,name:string){
+    console.log(`${this.APIUrl}/${APIUrl}/${id}/"${name}"`);
+    return (this.http.get(`${this.APIUrl}/${APIUrl}/${id}/"${name}"`));
+  }
   getExamDataOfDoctor(id,APIUrl){
     console.log(`${this.APIUrl}/${APIUrl}/${id}`)
     return (this.http.get(`${this.APIUrl}/${APIUrl}/${id}`));
