@@ -14,29 +14,77 @@
   <div class="row">
     <div class="col-xl-8 mb-5 mb-xl-0">
       <div class="card  shadow">
-        <div class="card-header " id="contentToConvert">
-          <h1>Indication for examination:</h1>
+        <div class="card-header " id="contentToConvert"
+          style=" border: solid gray thin ; margin: 0ch; padding-bottom: 0.4cm;">
+
+
+          <table class="table">
+            <tbody>
+              <tr>
+                <th width="100px">
+                  <div class="row">
+                    <strong>PATIENT NAME:</strong>
+                  </div>
+                  <div class="row">
+                    <strong>AGE:</strong>
+                  </div>
+                </th>
+                <th width="100px">
+                  <div class="row">
+                    <strong>PATIENT ID:</strong>
+                  </div>
+                  <div class="row">
+                    <strong>DATE OF SERVICE:</strong>
+                  </div>
+                </th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-body " id="contentToConvert" style=" border: solid gray thin ; margin: 0ch;">
+          <h1 class="display-4">Report: -All Studies</h1>
+          <div class="pl-lg-4">
+            <h3 class="display-6"> <u>FULL FIELD DIGITAL MAMMOGRAPHY AND COMPLEMENTARY ULTRASOUND </u></h3>
+          </div>
+          <h1 class="display-4"><u>Indication:</u></h1>
+
           ExamReason ,Laterality ,ExamDate.
           Pervious Mammogram.
           Personal History.
           Pregnancy.
-          <h1>Findings:</h1>
+          <h1 class="display-4"><u>Findings:</u></h1>
           Mammography => Overall breast composition: “breastComposition”.
           Lateral in “Laterality” there is a mass with “Shape” shape and margin, “Margin”.
           The mass is “Density”.
-          Location: “Laterality”, “Clock” o'clock position, “Quad”. 
+          Location: “Laterality”, “Clock” o'clock position, “Quad”.
           Size: distance nibble …. and skin ……..
-          <h1>Assessment:</h1>
+          <h1 class="display-4"><u>Assessment:</u></h1>
           BI-RADS “Birads” (benign finding).
           <h1>Recommendation:</h1>
           <h1>Conclusion:</h1>
-          {{service.ExamData.name}}.....
-          {{service.ExamData.emailAddress}}.....
+          <!-- {{service.ExamData.name}}..... -->
+          <!-- {{service.ExamData.emailAddress}}..... -->
           <!-- {{examDate.ClacificationDistribution}}..... -->
-          {{service.Patient.finalAssessment.biRads.name}}.....
+          <!-- {{service.Patient.finalAssessment.biRads.name}}..... -->
         
+
+          <h1 class="display-4"><u>Recommendation:</u></h1>
+          <h1 class="display-4"><u>Conclusion:</u> </h1>
+          {{patient.name}}.....
+          {{patient.emailAddress}}.....
+          <!-- {{examDate.ClacificationDistribution}}..... -->
+          {{examDate.FinalAssessment.birads.name}}.....
+
+          <div class="card-footer " id="contentToConvert" style=" border: solid gray thin ; ">
+            <h3 class="display-6">Reported By, </h3>
+            <div class="pl-lg-4">
+              <h3 class="display-6">Dr: </h3>
+            </div>
+          </div>
+
         </div>
-        <button (click) = generatePDF()>Export PDF</button>
+
+        <button (click)=generatePDF()>Export PDF</button>
       </div>
     </div>
   </div>
