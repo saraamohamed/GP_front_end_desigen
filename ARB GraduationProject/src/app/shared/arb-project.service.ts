@@ -22,6 +22,7 @@ export class ArbProjectService {
   readonly ComboUrl = 'http://localhost:57645/api/combobox';
   readonly  examDataUrl = 'http://localhost:57645/api/ExamData';
   
+  examDataId:number = 0;
   PatientId:number = 0;
   DoctorId:number = 0;
   ExamData:ExamData = new ExamData();
@@ -76,9 +77,6 @@ export class ArbProjectService {
   }
   
   getOne(id,APIUrl){
-    console.log("Marwa")
-    console.log(id)
-    console.log(`${this.APIUrl}/${APIUrl}/${id}`)
     return (this.http.get(`${this.APIUrl}/${APIUrl}/${id}`));
   }
   getExamDataOfDoctor(id,APIUrl){

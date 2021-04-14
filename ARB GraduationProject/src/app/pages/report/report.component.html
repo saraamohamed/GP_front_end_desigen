@@ -60,13 +60,13 @@
           Size: distance nibble …. and skin ……..
           <h1 class="display-4"><u>Assessment:</u></h1>
           BI-RADS “Birads” (benign finding).
+
           <h1 class="display-4"><u>Recommendation:</u></h1>
           <h1 class="display-4"><u>Conclusion:</u> </h1>
-          {{hey.name}}
-          {{hey.id}}.....
-          {{hey.emailAddress}}.....
-          {{hey.mobileNumber}}.....
-          {{hey.patientID}}.....
+          {{patient.name}}.....
+          {{patient.emailAddress}}.....
+          <!-- {{examDate.ClacificationDistribution}}..... -->
+          {{examDate.FinalAssessment.birads.name}}.....
 
           <div class="card-footer " id="contentToConvert" style=" border: solid gray thin ; ">
             <h3 class="display-6">Reported By, </h3>
@@ -74,6 +74,7 @@
               <h3 class="display-6">Dr: </h3>
             </div>
           </div>
+
         </div>
 
         <button (click)=generatePDF()>Export PDF</button>

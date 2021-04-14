@@ -2,7 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angula
 import jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
 import { ArbProjectService } from 'src/app/shared/arb-project.service';
-import { ExamData,ClinicalInfo,GeneralInfo,FinalAssessment } from 'src/app/shared/arb-project.model';
+import { ExamData,ClinicalInfo,GeneralInfo,FinalAssessment,Patient } from 'src/app/shared/arb-project.model';
 import { NgForm } from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
 import {FormControl} from '@angular/forms';
@@ -17,15 +17,23 @@ declare const google: any;
 })
 export class ReportComponent implements OnInit{
   constructor(private service:ArbProjectService  ,private http:HttpClient, private router:Router) { }
-  hey:ExamData = new ExamData();
-  
-  ngOnInit() {
-    console.log(this.hey)
-    let examDataId = 4;
-    this.service.getOne(examDataId,'examdata').subscribe(res=>{this.hey = res as ExamData ;
+  examData:ExamData = new ExamData();
+  patient:Patient = new Patient();
+  examDataId:number = 0; 
+  ngOnInit() { 
+   
+    // console.log(this.service.PatientId) ;
+    this.service.getOne(this.service.examDataId,'patient').subscribe(res=>{this.patient = res as Patient ;
+      console.log(res);
+      // this.examDataId = this.patient.examDataId
+      // console.log(this.examDataId);
+    })
+    // // let examDataId = this.patient.examDataId;
+    // console.log(this.patient.examDataId)
+    // console.log(this.examDataId)
+    this.service.getOne(this.service.PatientId,'examData').subscribe(res=>{this.examData = res as ExamData ;
       console.log(res);
     })
-    // console.log(this.hey.name);
     
   }
 
