@@ -187,10 +187,10 @@
                                 </div>
                             </th>
                             <td>
-                                Age: <input type="text" id="TEXT_1450682011285" name="motherAge" data-field-type="TEXT"
+                                Age: <input type="number" id="TEXT_1450682011285" name="motherAge" data-field-type="Number"
                                     data-field-completion-action="NONE" #motherAge="ngModel"
-                                    [(ngModel)]="service.Patient.GeneralInfo.motherAge"
-                                    style="width: 40px; height: 25px;" class="form-control " placeholder="0" />
+                                    [(ngModel)]="service.Patient.GeneralInfo.motherAge" min="0" max="100"
+                                    style="width: 50px; height: 25px;" class="form-control " placeholder="0" />
                             </td>
                             <th>
                                 <div class="form-group focused">
@@ -208,10 +208,10 @@
                                 </div>
                             </th>
                             <td>
-                                Age: <input type="text" id="TEXT_1450682011285" name="sisterAge" data-field-type="TEXT"
+                                Age: <input type="number" id="TEXT_1450682011285" name="sisterAge" data-field-type="Number"
                                     data-field-completion-action="NONE" #sisterAge="ngModel"
-                                    [(ngModel)]="service.Patient.GeneralInfo.sisterAge"
-                                    style="width: 40px; height: 25px;" class="form-control " placeholder="0" />
+                                    [(ngModel)]="service.Patient.GeneralInfo.sisterAge" min="0" max="100"
+                                    style="width: 50px; height: 25px;" class="form-control " placeholder="0" />
                             </td>
                         </tr>
                         <tbody>
@@ -238,10 +238,10 @@
                                     </div>
                                 </th>
                                 <td>
-                                    Age: <input type="text" id="TEXT_1450682011285" name="daughterAge"
-                                        data-field-type="TEXT" data-field-completion-action="NONE" #daughterAge="ngModel"
-                                        [(ngModel)]="service.Patient.GeneralInfo.daughterAge"
-                                        style="width: 40px; height: 25px;" class="form-control " placeholder="0" />
+                                    Age: <input type="number" id="TEXT_1450682011285" name="daughterAge"
+                                        data-field-type="Number" data-field-completion-action="NONE" #daughterAge="ngModel"
+                                        [(ngModel)]="service.Patient.GeneralInfo.daughterAge" min="0" max="100"
+                                        style="width:  50px; height: 25px;" class="form-control " placeholder="0" />
 
 
                                 </td>
@@ -263,10 +263,10 @@
                                     </div>
                                 </td>
                                 <td>
-                                    Age: <input type="text" id="TEXT_1450682011285" name="grandmotherAge"
-                                        data-field-type="TEXT" data-field-completion-action="NONE" #grandmotherAge="ngModel"
-                                        [(ngModel)]="service.Patient.GeneralInfo.grandmotherAge"
-                                        style="width: 40px; height: 25px;" class="form-control " placeholder="0" />
+                                    Age: <input type="number" id="TEXT_1450682011285" name="grandmotherAge"
+                                        data-field-type="Number" data-field-completion-action="NONE" #grandmotherAge="ngModel"
+                                        [(ngModel)]="service.Patient.GeneralInfo.grandmotherAge" min="0" max="100"
+                                        style="width:  50px; height: 25px;" class="form-control " placeholder="0" />
                                 </td>
                             </tr>
                             <tr>
@@ -285,10 +285,10 @@
                                     </div>
                                 </th>
                                 <td>
-                                    Age: <input type="text" id="TEXT_1450682011285" name="auntAge"
-                                        data-field-type="TEXT" data-field-completion-action="NONE" #auntAge="ngModel"
-                                        [(ngModel)]="service.Patient.GeneralInfo.auntAge"
-                                        style="width: 40px; height: 25px;" class="form-control " placeholder="0" />
+                                    Age: <input type="number" id="TEXT_1450682011285" name="auntAge"
+                                        data-field-type="Number" data-field-completion-action="NONE" #auntAge="ngModel"
+                                        [(ngModel)]="service.Patient.GeneralInfo.auntAge" min="0" max="100"
+                                        style="width:  50px; height: 25px;" class="form-control " placeholder="0" />
                                 </td>
                                 <td>
                                     <div class="form-group focused">
@@ -308,10 +308,10 @@
                                     </div>
                                 </td>
                                 <td>
-                                    Age: <input type="text" id="TEXT_1450682011285" name="cousinAge"
-                                        data-field-type="TEXT" data-field-completion-action="NONE" #cousinAge="ngModel"
-                                        [(ngModel)]="service.Patient.GeneralInfo.cousinAge"
-                                        style="width: 40px; height: 25px;" class="form-control " placeholder="0">
+                                    Age: <input type="number" id="TEXT_1450682011285" name="cousinAge"
+                                        data-field-type="Number" data-field-completion-action="NONE" #cousinAge="ngModel"
+                                        [(ngModel)]="service.Patient.GeneralInfo.cousinAge" min="0" max="100"
+                                        style="width: 50px; height: 25px;" class="form-control " placeholder="0">
 
                                 </td>
                             </tr>
@@ -325,7 +325,7 @@
                 <h3 class="form-control-alternative" style="margin-top: 18px; background-color:gainsboro;">
 
                         <input class="form-control " type="checkbox" name="TakingHormones"
-                            #TakingHormones="ngModel"
+                            #TakingHormones="ngModel" 
                             [(ngModel)]="service.Patient.GeneralInfo.TakingHormones" (click)="onHormoneClick()">
                             <span class="form-check-sign">
                                 <span class="check"></span>
