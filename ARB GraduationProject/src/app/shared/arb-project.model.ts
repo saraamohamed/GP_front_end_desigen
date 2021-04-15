@@ -38,7 +38,7 @@ export class GeneralInfo{
     cousin: boolean = false;
     takingHormones: boolean = false;
     howlongTakingHormones: string = '';
-    pregnancyHistory: boolean = false;
+    pergnancyHistory: boolean = false;
     menopause: boolean = false;
     pregnant: boolean = false;
     gravida: number = 0;
