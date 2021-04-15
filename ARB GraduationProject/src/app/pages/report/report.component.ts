@@ -33,6 +33,8 @@ export class ReportComponent implements OnInit{
     // // console.log(this.examDataId)
     this.service.getOne(this.service.examDataId,'examData').subscribe(res=>{this.examData = res as ExamData ;
       console.log(res);
+    // this.service.getOne(this.service.examDataId,'examData').subscribe(res=>{this.service.ExamData = res as ExamData ;
+    //   console.log(this.service.ExamData,this.service.Patient);
     })
     
     
