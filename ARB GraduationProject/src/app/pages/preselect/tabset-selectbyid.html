@@ -144,7 +144,7 @@
                         <div class="form-group">
                             <label style="margin-right: 15px;"> Findings</label>
                             <textarea rows="2" cols="50" class="form-control "
-                                placeholder="A few words about your complain ..." name="HistoryOfMammogram"
+                                placeholder="A few words about your complain ..." name="historyOfMammogram"
                                 #HistoryOfMammogram="ngModel"
                                 [(ngModel)]="service.Patient.generalInfo.historyOfMammogram"></textarea>
                         </div>
@@ -158,7 +158,7 @@
 
 
                 <h3 class="form-control-alternative" style="margin-top: 18px; background-color:gainsboro;">
-                    <input class="form-control "  [(ngModel)]="service.Patient.generalInfo.PersonalHistoryOfBreastCancer" name="Previous Mammogram" type="checkbox"
+                    <input class="form-control "  [(ngModel)]="service.Patient.generalInfo.personalHistoryOfBreastCancer" name="Previous Mammogram" type="checkbox"
                         (click)="onButtonClick2()">
                     <span class="form-check-sign">
                         <span class="check"></span>
@@ -328,7 +328,7 @@
 
                 <h3 class="form-control-alternative" style="margin-top: 18px; background-color:gainsboro;">
 
-                        <input class="form-control " type="checkbox" name="TakingHormones"
+                        <input class="form-control " type="checkbox" name="takingHormones"
                             #TakingHormones="ngModel" 
                             [(ngModel)]="service.Patient.generalInfo.takingHormones" (click)="onHormoneClick()">
                             <span class="form-check-sign">
@@ -354,7 +354,7 @@
 
                         <div class="form-group" *ngIf="hormoneBoolean == true " >
                             <label style="margin-right: 15px; padding-top: 9px;"><strong> For how long </strong>
-                                <input type="text" id="TEXT_1450682011285" name="HowlongTakingHormones"
+                                <input type="text" id="TEXT_1450682011285" name="howlongTakingHormones"
                                     data-field-type="TEXT" data-field-completion-action="NONE"
                                     #HowlongTakingHormones="ngModel"
                                     [(ngModel)]="service.Patient.generalInfo.howlongTakingHormones"
