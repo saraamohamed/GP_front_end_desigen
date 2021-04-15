@@ -23,7 +23,9 @@
               <tr>
                 <th width="100px">
                   <div class="row">
-                    <strong>PATIENT NAME:</strong>
+                    <strong>PATIENT NAME: <div *ngIf="examData.name==='sherif'; then thenBlock  else elseBlock"></div></strong>
+                    <ng-template #thenBlock>Sherif Essam Abdelrahman</ng-template>
+                    <ng-template #elseBlock>AyhagaMshfar2a</ng-template>
                   </div>
                   <div class="row">
                     <strong>AGE:</strong>
@@ -71,10 +73,10 @@
 
           <h1 class="display-4"><u>Recommendation:</u></h1>
           <h1 class="display-4"><u>Conclusion:</u> </h1>
-          <!-- {{patient.name}}.....
-          {{patient.emailAddress}}.....
-          {{examDate.ClacificationDistribution}}..... -->
-          <!-- {{examDate.finalAssessment.biRads.name}}..... -->
+          {{examData.name}}.....
+          {{examData.emailAddress}}.....
+          <!-- {{examDate.ClacificationDistribution}}..... -->
+          <!-- {{examDate.FinalAssessment.birads.name}}..... -->
 
           <div class="card-footer " id="contentToConvert" style=" border: solid gray thin ; ">
             <h3 class="display-6">Reported By, </h3>
