@@ -23,22 +23,25 @@ export class ReportComponent implements OnInit{
   ngOnInit() { 
    
     // // console.log(this.service.PatientId) ;
+<<<<<<< HEAD
     // this.service.getPatient(this.service.PatientId,'patient').subscribe(res=>{this.patient = res as Patient ;
+=======
+    // this.service.getOne(this.service.PatientId,'patient').subscribe(res=>{this.patient = res as Patient ;
+>>>>>>> 9f3b7bbc2927e62f7c17befb63142d7d099f0f89
     //   console.log(res);
     //   // this.examDataId = this.patient.examDataId
     //   // console.log(this.examDataId);
     // })
-    // // // // let examDataId = this.patient.examDataId;
-    // // // console.log(this.patient.examDataId)
-    // // // console.log(this.examDataId)
+    // // // let examDataId = this.patient.examDataId;
+    // // console.log(this.patient.examDataId)
+    // // console.log(this.examDataId)
     // this.service.getOne(this.service.examDataId,'examData').subscribe(res=>{this.examData = res as ExamData ;
     //   console.log(res);
-    // // this.service.getOne(this.service.examDataId,'examData').subscribe(res=>{this.service.ExamData = res as ExamData ;
-    // //   console.log(this.service.ExamData,this.service.Patient);
-    // })
     this.service.getOne(this.service.examDataId,'examData').subscribe(res=>{this.service.ExamData = res as ExamData ;
       console.log(this.service.ExamData,this.service.Patient);
-    })
+    });
+    
+    
   }
 
 

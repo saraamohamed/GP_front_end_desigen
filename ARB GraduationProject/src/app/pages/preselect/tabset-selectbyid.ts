@@ -89,15 +89,17 @@ export class NgbdTabsetSelectbyid  implements OnInit{
 
   OnSubmit(form:NgForm,data:string){
 
+  
     this.service.Patient.doctorId = this.service.DoctorId;
-    // this.service.Patient.examDataId = this.service.examDataId;
-    // this.service.Patient.clinicalInfo.featureId = this.service.PatientId;
+    this.service.Patient.examDataId = this.service.examDataId;
+    this.service.Patient.clinicalInfo.featureId = this.service.PatientId;
 
     // this.InsertFeatures(form,data);
-    console.log(this.service.Patient.generalInfo.id,this.service.Patient.clinicalInfo.id,this.service.Patient.finalAssessment.id)
+    console.log(this.service.Patient.generalInfo,this.service.Patient.clinicalInfo,this.service.Patient.finalAssessment);
     if ((this.service.Patient.generalInfo.id == 0) && (this.service.Patient.clinicalInfo.id == 0) && (this.service.Patient.finalAssessment.id == 0)){
     
         this.InsertFeatures(form,data);
+        
      
     }
     else {
@@ -105,17 +107,19 @@ export class NgbdTabsetSelectbyid  implements OnInit{
     }
  
   }
+
   passingPatienId(id:number)
   {
     this.service.PatientId = id;
-    console.log(this.service.examDataId)
+    console.log("YARAAAB",this.service.examDataId)
   }
   InsertFeatures(form:NgForm,data:string){
     this.service.Post(data).subscribe(
       res=>{
         this.service.PatientId = res['id'];
         console.log(res);
-        this.resetForm(form,data);
+        console.log("ANAA 3MLT INSERT")
+        // this.resetForm(form,data);
       },
       err=>{
         console.log(err);
@@ -134,15 +138,6 @@ export class NgbdTabsetSelectbyid  implements OnInit{
   }
   resetForm(form: NgForm,data:string) {
     form.form.reset();
-    // if (data='GeneralInfo'){
-    //   this.service.GeneralInfo = new GeneralInfo();
-    // }
-    // if (data='FianlAssessment'){
-    //   this.service.FinalAssessment = new FinalAssessment();
-    // }
-    // if (data='ClinicalInfo'){
-    //   this.service.ClinicalInfo = new ClinicalInfo();
-    // }
     this.service.GeneralInfo = new GeneralInfo();
     this.service.FinalAssessment = new FinalAssessment();
     this.service.ClinicalInfo = new ClinicalInfo();

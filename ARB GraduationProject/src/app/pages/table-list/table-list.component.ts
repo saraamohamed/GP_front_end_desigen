@@ -72,11 +72,10 @@ export class TableListComponent implements OnInit {
       this.router.navigate([this.redirectUrl]);
       this.redirectUrl = null;
           }
-          else{
-            console.log(this.service.Patient);
-          }
        },err=>{
-         console.log(err);
+        this.service.Patient = new Patient();
+        this.router.navigate([this.redirectUrl]);
+        
        });
        
     
