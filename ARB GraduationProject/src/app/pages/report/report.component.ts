@@ -33,25 +33,38 @@ export class ReportComponent implements OnInit{
 
 
   generatePDF() {
-    console.log("kher")
-    var data = document.getElementById('contentToConvert') as HTMLCanvasElement;
+    
+    var data = document.getElementById('Please') as HTMLCanvasElement;
+    console.log(data)
     html2canvas(data).then(canvas => {
-      console.log(canvas.height)
-      console.log(canvas.width)
-      var imgWidth = 208;
-      var imgHeight = canvas.height * imgWidth / canvas.width;
-      // var imgHeight = 500
-      // console.log()
+      var imgWidth = 208;   
+      var pageHeight = 1080;    
+      var imgHeight = canvas.height * imgWidth / canvas.width;  
+      var heightLeft = imgHeight;  
       console.log(imgWidth)
       const contentDataURL = canvas.toDataURL('image/png')
-      let pdf = new jspdf('p', 'mm', 'a4');
-      var position = -70;
-      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
+      let pdf = new jspdf('p', 'mm', 'a4', true);
+      var position = 0;
+      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight+ 25);
+      heightLeft -= pageHeight;
+
+      while (heightLeft >= 0) {
+      position = heightLeft - imgHeight;
+      pdf.addPage();
+      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight+ 25);
+      heightLeft -= pageHeight;
+      }
       var blob = pdf.output("blob");
       window.open(URL.createObjectURL(blob));
     });
     }
 }
+
+// pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight ,undefined,'FAST')
+
+
+
+
 // <pdf-viewer  [src] = "pdfScr" [render-text] = "true" [show-all]= "true" style="display: block;"></pdf-viewer>
 
 // @ViewChild('viewer') viewerRef: ElementRef;
