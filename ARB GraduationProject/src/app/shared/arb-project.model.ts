@@ -22,8 +22,8 @@ export class GeneralInfo{
     hadAMammogram: boolean = false;
     whenHadAMammogram: string = '';
     whereHadAMammogram: string = '';
-    HistoryOfMammogram: string = '';
-    PersonalHistoryOfBreastCancer: boolean = false;
+    historyOfMammogram: string = '';
+    personalHistoryOfBreastCancer: boolean = false;
     motherAge: number = 0;
     mother: boolean = false;
     sisterAge: number = 0;
@@ -36,8 +36,9 @@ export class GeneralInfo{
     aunt: boolean = false;
     cousinAge: number = 0;
     cousin: boolean = false;
-    TakingHormones: boolean = false;
-    HowlongTakingHormones: string = '';
+    takingHormones: boolean = false;
+    howlongTakingHormones: string = '';
+    pregnancyHistory: boolean = false;
     menopause: boolean = false;
     pregnant: boolean = false;
     gravida: number = 0;

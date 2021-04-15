@@ -22,22 +22,23 @@ export class ReportComponent implements OnInit{
   examDataId:number = 0; 
   ngOnInit() { 
    
-    // console.log(this.service.PatientId) ;
-    this.service.getOne(this.service.PatientId,'patient').subscribe(res=>{this.patient = res as Patient ;
-      console.log(res);
-      // this.examDataId = this.patient.examDataId
-      // console.log(this.examDataId);
+    // // console.log(this.service.PatientId) ;
+    // this.service.getPatient(this.service.PatientId,'patient').subscribe(res=>{this.patient = res as Patient ;
+    //   console.log(res);
+    //   // this.examDataId = this.patient.examDataId
+    //   // console.log(this.examDataId);
+    // })
+    // // // // let examDataId = this.patient.examDataId;
+    // // // console.log(this.patient.examDataId)
+    // // // console.log(this.examDataId)
+    // this.service.getOne(this.service.examDataId,'examData').subscribe(res=>{this.examData = res as ExamData ;
+    //   console.log(res);
+    // // this.service.getOne(this.service.examDataId,'examData').subscribe(res=>{this.service.ExamData = res as ExamData ;
+    // //   console.log(this.service.ExamData,this.service.Patient);
+    // })
+    this.service.getOne(this.service.examDataId,'examData').subscribe(res=>{this.service.ExamData = res as ExamData ;
+      console.log(this.service.ExamData,this.service.Patient);
     })
-    // // // let examDataId = this.patient.examDataId;
-    // // console.log(this.patient.examDataId)
-    // // console.log(this.examDataId)
-    this.service.getOne(this.service.examDataId,'examData').subscribe(res=>{this.examData = res as ExamData ;
-      console.log(res);
-    // this.service.getOne(this.service.examDataId,'examData').subscribe(res=>{this.service.ExamData = res as ExamData ;
-    //   console.log(this.service.ExamData,this.service.Patient);
-    })
-    
-    
   }
 
 
@@ -45,11 +46,16 @@ export class ReportComponent implements OnInit{
     console.log("kher")
     var data = document.getElementById('contentToConvert') as HTMLCanvasElement;
     html2canvas(data).then(canvas => {
+      console.log(canvas.height)
+      console.log(canvas.width)
       var imgWidth = 208;
       var imgHeight = canvas.height * imgWidth / canvas.width;
+      // var imgHeight = 500
+      // console.log()
+      console.log(imgWidth)
       const contentDataURL = canvas.toDataURL('image/png')
       let pdf = new jspdf('p', 'mm', 'a4');
-      var position = 0;
+      var position = -70;
       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
       var blob = pdf.output("blob");
       window.open(URL.createObjectURL(blob));

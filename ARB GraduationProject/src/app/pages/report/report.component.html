@@ -10,33 +10,34 @@
     </div>
   </div>
 </div> -->
-<div class="container mt--7">
+<div class="container mt--7" >
   <div class="row">
-    <div class="col-xl-8 mb-5 mb-xl-0">
-      <div class="card  shadow">
-        <div class="card-header " id="contentToConvert"
+    <div class="col-xl-8 mb-5 mb-xl-0" id="contentToConvert" border="1" height="30px" style="display: inline-block;">
+      <div class="card  shadow" >
+        <div class="card-header " 
           style=" border: solid gray thin ; margin: 0ch; padding-bottom: 0.4cm;">
 
-
+          <!-- <div *ngIf="examData.name==='sherif'; then thenBlock  else elseBlock"></div>
+          <ng-template #thenBlock>Sherif Essam Abdelrahman</ng-template>
+                    <ng-template #elseBlock>AyhagaMshfar2a</ng-template> -->
           <table class="table">
             <tbody>
               <tr>
                 <th width="100px">
                   <div class="row">
-                    <strong>PATIENT NAME: <div *ngIf="examData.name==='sherif'; then thenBlock  else elseBlock"></div></strong>
-                    <ng-template #thenBlock>Sherif Essam Abdelrahman</ng-template>
-                    <ng-template #elseBlock>AyhagaMshfar2a</ng-template>
+                    <strong>PATIENT NAME: {{service.ExamData.name}} </strong>
+                    
                   </div>
                   <div class="row">
-                    <strong>AGE:</strong>
+                    <strong>Email Address: {{service.ExamData.emailAddress}}</strong>
                   </div>
                 </th>
                 <th width="100px">
                   <div class="row">
-                    <strong>PATIENT ID:</strong>
+                    <strong>PATIENT ID: {{service.ExamData.patientID}} </strong>
                   </div>
                   <div class="row">
-                    <strong>DATE OF SERVICE:</strong>
+                    <strong>DATE OF SERVICE: {{service.ExamData.studyDate |date:'dd.MM.yyyy'}}</strong>
                   </div>
                 </th>
               </tr>
@@ -48,31 +49,82 @@
           <div class="pl-lg-4">
             <h3 class="display-6"> <u>FULL FIELD DIGITAL MAMMOGRAPHY AND COMPLEMENTARY ULTRASOUND </u></h3>
           </div>
-          <h1 class="display-4"><u>Indication:</u></h1>
-
-          ExamReason ,Laterality ,ExamDate.
-          Pervious Mammogram.
-          Personal History.
-          Pregnancy.
-          <h1 class="display-4"><u>Findings:</u></h1>
-          Mammography => Overall breast composition: “breastComposition”.
-          Lateral in “Laterality” there is a mass with “Shape” shape and margin, “Margin”.
-          The mass is “Density”.
-          Location: “Laterality”, “Clock” o'clock position, “Quad”.
-          Size: distance nibble …. and skin ……..
-          <h1 class="display-4"><u>Assessment:</u></h1>
-          BI-RADS “Birads” (benign finding).
-          <h1>Recommendation:</h1>
-          <h1>Conclusion:</h1>
+          <h1 class="display-4"><u>Indication for Examination:</u></h1>
+          <div>
+            The Reason is {{service.Patient.generalInfo.examReason}}
+            <div *ngIf="service.Patient.generalInfo.examReason==='Complain'; then thenBlockComplain  else elseBlockComplain"></div>
+            <ng-template #thenBlockComplain> : {{service.Patient.generalInfo.complain}}, </ng-template>
+            <ng-template #elseBlockComplain>,  </ng-template>
+          </div>
           
-          {{service.ExamData.name}}
-          {{service.ExamData.emailAddress}}
-          {{service.Patient.clinicalInfo.distribution.name}}
-          {{service.Patient.finalAssessment.biRads.name}}
-        
+          <div>
+             <!-- salma el laterality -->
+          Lateral in {{service.Patient.clinicalInfo.massSpecifications.laterality}} breast, at {{service.Patient.generalInfo.examDate}}, 
+          </div>
+         
+          <div>
+            <div *ngIf="(service.Patient.generalInfo.hadAMammogram==true); then thenBlockHadMammogram  else elseBlockHadMammogram"></div>
+          <ng-template #thenBlockHadMammogram>The Modality is {{service.Patient.generalInfo.modalityType}} in {{service.Patient.generalInfo.whereHadAMammogram}}
+            at {{service.Patient.generalInfo.whenHadAMammogram}} and The Findings were {{service.Patient.generalInfo.historyOfMammogram}}, 
+          </ng-template>
+          <ng-template #elseBlockHadMammogram> No Pervious Mammogram, </ng-template>
+          </div>
+            
+          <div>
+            <div *ngIf="(service.Patient.generalInfo.personalHistoryOfBreastCancer==true); then thenBlockPersonal  else elseBlockPersonal"></div>
+          <ng-template #thenBlockPersonal> 
+            <div *ngIf="(service.Patient.generalInfo.mother==true)">Mother At Age {{service.Patient.generalInfo.motherAge}}</div>
+            <div *ngIf="(service.Patient.generalInfo.sister==true)">Sister At Age {{service.Patient.generalInfo.sisterAge}}</div>
+            <div *ngIf="(service.Patient.generalInfo.daughter==true)">Daughter At Age {{service.Patient.generalInfo.daughterAge}}</div>
+            <div *ngIf="(service.Patient.generalInfo.grandmother==true)">Grandmother At Age {{service.Patient.generalInfo.grandmotherAge}}</div>
+            <div *ngIf="(service.Patient.generalInfo.aunt==true)">Aunt At Age {{service.Patient.generalInfo.auntAge}}</div>
+            <div *ngIf="(service.Patient.generalInfo.cousin==true)">Cousin At Age {{service.Patient.generalInfo.cousinAge}}</div>
+          </ng-template>
+          <ng-template #elseBlockPersonal> No Personal History </ng-template>
+          </div>
+          
+          <div>
+            <div *ngIf="(service.Patient.generalInfo.takingHormones==true); then thenBlockHormones  else elseBlockHormones"></div>
+            <ng-template #thenBlockHormones> Taking Hormones for {{service.Patient.generalInfo.howlongTakingHormones}} Years</ng-template>
+            <ng-template #elseBlockHormones> No Hormones is Taken</ng-template>
+          </div>
+          <div>
+
+            <div *ngIf="(service.Patient.generalInfo.pregnancyHistory==true); then thenBlockPregnancy  else elseBlockPregnancy"></div>
+            <ng-template #thenBlockPregnancy>
+              <div *ngIf="service.Patient.generalInfo.menopause==true">Menopause, </div>
+            <div *ngIf="service.Patient.generalInfo.pregnant==true">Pregnant, </div>
+            Gravida = {{service.Patient.generalInfo.gravida}} and Para = {{service.Patient.generalInfo.para}}
+            and LMP is {{service.Patient.generalInfo.lmp |date:'dd.MM.yyyy'}}
+            </ng-template>
+            <ng-template #elseBlockPregnancy> No Prgnancy History</ng-template>
+
+          
+          </div>
+
+          
+          <h1 class="display-4"><u>Findings:</u></h1>
+          
+          <h1 class="display-4"><u>Assessment:</u></h1>
+          BI-RADS '{{service.Patient.finalAssessment.biRads.name}}'
+          <div *ngIf="service.Patient.finalAssessment.biRads.name==='0'">(Incomplete.)</div>
+          <div *ngIf="service.Patient.finalAssessment.biRads.name==='1'">(Negative.)</div>
+          <div *ngIf="service.Patient.finalAssessment.biRads.name==='2'">(Benign.)</div>
+          <div *ngIf="service.Patient.finalAssessment.biRads.name==='3'">(Probably Benign.)</div>
+          <div *ngIf="service.Patient.finalAssessment.biRads.name==='4'">(Suspicious for Malignancy.)</div>
+          <div *ngIf="service.Patient.finalAssessment.biRads.name==='4a'">(Low Suspicion for Malignancy (2-9%).)</div>
+          <div *ngIf="service.Patient.finalAssessment.biRads.name==='4b'">(Moderate Suspicion for Malignancy (10-49%).)</div>
+          <div *ngIf="service.Patient.finalAssessment.biRads.name==='4c'">(High Suspicion for Malignancy (50-94%).)</div>
+          <div *ngIf="service.Patient.finalAssessment.biRads.name==='5'">(Highly Suggestive of Malignancy.)</div>
+          <div *ngIf="service.Patient.finalAssessment.biRads.name==='6'">(Known Biopsy-Proven Malignancy.)</div>
 
           <h1 class="display-4"><u>Recommendation:</u></h1>
+          {{service.Patient.finalAssessment.recommendation.name}} 
+          <!-- "hena el mfrod tab l taht dh satr w dh satr" -->
+          Other Recommendation: {{service.Patient.finalAssessment.recommendationText}}
+
           <h1 class="display-4"><u>Conclusion:</u> </h1>
+          {{service.Patient.finalAssessment.conc}}
           <!-- {{examData.name}}.....
           {{examData.emailAddress}}..... -->
           <!-- {{examDate.ClacificationDistribution}}..... -->
