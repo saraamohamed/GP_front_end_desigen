@@ -42,6 +42,7 @@ export class TableListComponent implements OnInit {
   }
   
   onClick(route){
+    this.service.ExamData = new ExamData();
     this.router.navigate([route])
 
   }

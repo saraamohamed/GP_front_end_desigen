@@ -36,6 +36,7 @@ export class ArbProjectService {
   Login:Login = new Login();
   features:features = new features()
   index:number=0;
+  tabs = [];
   whichVar(Name:string)
   {
     switch(Name){
