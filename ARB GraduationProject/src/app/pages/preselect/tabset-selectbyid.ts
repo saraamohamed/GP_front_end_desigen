@@ -114,6 +114,7 @@ export class NgbdTabsetSelectbyid  implements OnInit{
     this.service.Post(data).subscribe(
       res=>{
         this.service.PatientId = res['id'];
+        console.log(res);
         this.resetForm(form,data);
       },
       err=>{

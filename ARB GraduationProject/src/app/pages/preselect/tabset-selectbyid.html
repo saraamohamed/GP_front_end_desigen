@@ -4,7 +4,7 @@
 </div>
 
 <form #form="ngForm" name="campaignForm" >
-    <input name="id" type="hidden" [value]="service.Patient.id" />
+    <input name="id" type="hidden" [value]="service.Patient.id" (submit)="OnSubmit(form,'Patient')"/>
     <ngb-tabset #t="ngbTabset">
 
         <ngb-tab id="General-tab" title="General Information">
@@ -1007,7 +1007,7 @@
               <div class="col-4" style="vertical-align:sub;">
 
 
-                  <button href="#!" type="submit"   (click) = "OnSubmit(form,'Patient')" class="btn btn-sm btn-primary">Save</button>
+                  <button href="#!" type="submit"   (click) = "passingPatienId(service.Patient.id)" class="btn btn-sm btn-primary">Save</button>
                   <!-- <button href="/dash/report" type="submit" class="btn btn-sm btn-primary">Show Report</button> -->
                   <button type="submit" class="btn btn-sm btn-primary" (click)="onClick('/dash/report',service.Patient.id)">Show Report</button>
               </div>
