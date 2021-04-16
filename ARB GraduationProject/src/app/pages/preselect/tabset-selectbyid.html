@@ -165,6 +165,7 @@
                     Personal history of breast cancer
                 </h3>
 
+
                 <div class="row justify-content-center" *ngIf="testBoolean2 == true ">
 
 
@@ -436,45 +437,50 @@
                     <div class="col">
 
                         <!-- <input name = "id" type="hidden" [value]="service.Patient.GeneralInfo.id"/>    -->
-                        <h3 for="breast-composition">
-                            Breast Compostion
+                          <div class="form-group focused">
+                                  <label class="form-control-label" for="breast-composition">
+                                      <strong style="margin-right: 15px;"> Breast Compostion </strong>
 
+                                  </label>
+                              </div>
                             <ul style="list-style-type:none; margin-top: 5px;">
                                 <li>
-                                    <h4 class="form-group focused">
+                                    <h5 class="form-group focused">
                                         <input type="radio" name="breastCompostion" value="a"
                                             [(ngModel)]="service.Patient.ClinicalInfo.breastCompostion" style="margin-right: 6px;">
                                         <span class="checkmark">a. The Breasts are almost entirely fatty</span>
-                                    </h4>
+                                    </h5>
                                 </li><br>
 
                                 <li>
 
-                                    <h4 class="form-group focused">
+                                    <h5 class="form-group focused">
                                         <input type="radio" name="breastCompostion" value="b"
                                             [(ngModel)]="service.Patient.ClinicalInfo.breastCompostion" style="margin-right: 6px;">
                                         <span class="checkmark">b. There are scattered areas of fibroglandular
                                             density</span>
-                                    </h4>
+                                    </h5>
                                 </li><br>
                                 <li>
-
+                                  <h5 class="form-group focused">
                                     <input type="radio" name="breastCompostion" value="c"
                                         [(ngModel)]="service.Patient.ClinicalInfo.breastCompostion" style="margin-right: 6px;">
                                     <span class="checkmark">c. The breasts are heterogeneously dense, which may obscure
                                         small masses</span>
+                                  </h5>
                                 </li><br>
                                 <li>
-
+                                  <h5 class="form-group focused">
                                     <input type="radio" name="breastCompostion" value="d"
                                         [(ngModel)]="service.Patient.ClinicalInfo.breastCompostion" style="margin-right: 6px;">
                                     <span class="checkmark">d. The breasts are extremely dense, which lowers the
                                         sensitivity of
                                         mammography</span>
+                                    </h5>
                                 </li>
                             </ul>
 
-                        </h3>
+
 
                     </div>
                 </div>
@@ -494,17 +500,18 @@
                             </label>
                         </div>
                     </div>
-                    <div class="col">
+                   <!-- <div class="col">
                         <!----------------------------  Asymmetries ---------------------------------- -->
                         <!-- numberOfMassess..Done -->
-                        <div class="form-group focused ">
+                        <!---->
+                       <!-- <div class="form-group focused ">
                             <label style="margin-right: 10px;"><strong> Numer of Mass(es)</strong>
                             </label>
                             <input type="text" name="numOfMass" value="numOfMass"
                                 [(ngModel)]="service.Patient.ClinicalInfo.numOfMass" class="form-control">
 
                         </div>
-                    </div>
+                    </div>-->
                 </div>
 
                   <h3 class="form-control-alternative" style="margin-top: 9px; background-color:gainsboro;">Masses
@@ -725,7 +732,7 @@
                                             <span class="form-check-sign">
                                                 <span class="check"></span>
                                             </span>
-                                         
+
                                             Skin Retraction
                                         </h5>
                                     </div>
@@ -762,7 +769,7 @@
                                             <input class="form-check-input" type="checkbox" name="skinThickening"
                                                 #skinThickening="ngModel"
                                                 [(ngModel)]="service.Patient.ClinicalInfo.features.skinThickening">
-                                               
+
                                             <span class="form-check-sign">
                                                 <span class="check"></span>
                                             </span>
@@ -787,12 +794,12 @@
 
 
               <div class="form-group focused">
-                <h5 class="form-control-label" for="Mammo-history style= margin-right: 15px; padding-top: 5px;"><b>Axillary adenopathy:</b></h5>
-                <div class="form-check" style="margin-left: 5px; padding-bottom: 20px ;" >
+                <h5 class="form-control-label" for="Mammo-history style= margin-right: 15px; padding-bottom: 5px;"><b>Axillary adenopathy:</b></h5>
+                <div class="form-check" style="margin-left: 5px; padding: bottom 20px; ;" >
                 <label class="form-check-label">
                 <input class="form-check-input" type="checkbox" name="features" #axillaryAdenopathy ="ngModel"
                 [(ngModel)] = "service.Patient.ClinicalInfo.features.axillaryAdenopathy">
-                <span class="form-check-sign">
+                <span class="form-check-signs" style="margin-left: 20px; padding-top: 5px ;">
                     <span class="check"></span>
                 </span>
                 </label>
@@ -813,75 +820,116 @@
           <ng-template ngbTabContent>
               <!-- <form #form="ngForm" (submit)="OnSubmit(form,'FinalAssessment')">
           <input name = "id" type="hidden" [value]="service.Patient.FinalAssessment.id"/>   -->
-              <div class="row">
-                  <div class="col">
-                      <div class="form-group focused">
+              <div class="col">
+                  <div class="row ">
 
+
+                    <div class=" col col-lg-6">
+                      <div class="form-group focused">
+                        <div class='col-sm-12 pb-3'>
+
+                        </div>
                           <h5 class="form-control-label" for="Mammo-history"
                               style="margin-right: 15px; padding-top: 15px;">
                               BIRADS Categories</h5>
 
                           <!-- name = "radAiId" #radAiId = "ngModel" [(ngModel)] = "service.Patient.FinalAssessment.radAiId" -->
-                          <select class="custom-select" name="biRadsId" #biRadsId="ngModel"
+                          <div class="col col-lg-6">
+                          <select class="custom-select floa" name="biRadsId" #biRadsId="ngModel"
                               [(ngModel)]="service.Patient.FinalAssessment.biRadsId" style="width: 150px;">
                               <option value="0"> SELECT</option>
                               <option *ngFor="let item of BiRadslist" value="{{item.id}}">{{item.name}}</option>
                           </select>
+                          </div>
                       </div>
+                    </div>
                   </div>
-                  <div class="col">
-                      <div class="form-group focused">
-                          <h5 class="form-control-label" for="Mammo-history"
-                              style="margin-right: 15px; padding-top: 15px;">
-                              Recommendation</h5>
-                          <select class="custom-select" name="recommendationId" #recommendationId="ngModel"
-                              [(ngModel)]="service.Patient.FinalAssessment.recommendationId" style="width: 150px;">
 
 
-                              <option value="0"> SELECT</option>
-                              <option *ngFor="let item of RecommendationList" value="{{item.id}}">{{item.name}}
-                              </option>
-                          </select>
+                  <div class='col-sm-12 pb-3'>
 
-                      </div>
-                  </div>
-              </div>
+                </div>
 
-              <div class="row" style="margin-top: 9px;">
-                  <div class="col">
-                      <div class="form-group focused" style="margin-top: 10px;">
+
+
+                    <div class=" col">
+                      <div class="form-group focused ">
                           <h5 class="form-control-label" for="Mammo-history"
                               style="margin-right: 15px; padding-top: 15px;">
                               Conclusion</h5>
 
-                          <textarea rows="4" class="form-control form-control-alternative"
-                              placeholder=" Conclusion  ..." name="conc" #conc="ngModel"
-                              [(ngModel)]="service.Patient.FinalAssessment.conc" style="border: 1ch;"></textarea>
+                              <div class="col co-lg-6">
+                                <div class="input-group">
+                                  <textarea  class="form-control"
+                                        placeholder=" Conclusion  ..." name="conc" #conc="ngModel"
+                                        [(ngModel)]="service.Patient.FinalAssessment.conc" ></textarea>
+                                  </div>
+                              </div>
+
                       </div>
+                    </div>
+
+                    <div class='col-sm-12 pb-3'>
+
+                    </div>
+                  <div class=" col col-lg-6">
+                    <div class="form-group focused">
+                        <h5 class="form-control-label" for="Mammo-history"
+                            style="margin-right: 15px; padding-top: 15px;">
+                            Recommendation</h5>
+                        <select select class="custom-select floa"  name="recommendationId" #recommendationId="ngModel"
+                            [(ngModel)]="service.Patient.FinalAssessment.recommendationId" style="width: 150px;">
+
+
+                            <option value="0"> SELECT</option>
+                            <option *ngFor="let item of RecommendationList" value="{{item.id}}">{{item.name}}
+                            </option>
+                        </select>
+
+                    </div>
                   </div>
-                  <div class="col">
-                      <textarea rows="4" class="form-control form-control-alternative"
+                  <div class='col-sm-12 pb-3'>
+
+                  </div>
+
+                    <div class="col co-lg-6">
+                      <div class="input-group">
+
+                        <textarea class="form-control"  placeholder=" Other Recommendations ..." name="recommendationText"
+                        #recommendationText="ngModel"
+                        [(ngModel)]="service.Patient.FinalAssessment.recommendationText" aria-label="With textarea"></textarea>
+                      </div>
+
+                     <!-- <textarea rows="4" class="form-control form-control-alternative"
                           placeholder=" Other Recommendations ..." name="recommendationText"
                           #recommendationText="ngModel"
                           [(ngModel)]="service.Patient.FinalAssessment.recommendationText"
-                          style="border: 1ch;"></textarea>
+                          style="border: 1ch;"></textarea>-->
+
                   </div>
-              </div>
-
-
+                </div>
 
 
 
               <!-- <div class="col-4 text-right">
               <button href="#!" type="submit" class="btn btn-sm btn-primary" >Add Final Assessment</button>
           </div> -->
-              <div class="col-4" style="vertical-align:sub;">
 
 
-                  <button href="#!" type="submit" class="btn btn-sm btn-primary">Save</button>
-                  <!-- <button href="/dash/report" type="submit" class="btn btn-sm btn-primary">Show Report</button> -->
-                  <button type="submit" class="btn btn-sm btn-primary" (click)="onClick('/dash/report')">Show Report</button>
-              </div>
+          <div class='col-sm-12 pb-3'>
+
+          </div>
+
+              <div class="clearfix">
+                <button href="#!" type="submit" class="btn btn-link float-right">Save</button>
+                <!-- <button href="/dash/report" type="submit" class="btn btn-sm btn-primary">Show Report</button> -->
+
+                <button type="submit" class="btn btn-link float-right" (click)="onClick('/dash/report')">Show Report</button>
+            </div>
+
+
+
+
           </ng-template>
       </ngb-tab>
 

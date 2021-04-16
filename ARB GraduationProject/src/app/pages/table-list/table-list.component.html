@@ -7,9 +7,9 @@
       <div class="card shadow">
         <div class="card-header border-0">
           <div class="col">
-            <h3 class=" mb-0">WORKLIST</h3>
+            <h3 class=" mb-2">WORKLIST</h3>
           </div>
-          <div class="col">
+          <div class="row">
             <div class=" form-group mb-0" [ngClass]="{ 'focused': focus === true }">
               <div class="input-group input-group-alternative">
                 <div class="input-group-prepend">
@@ -18,8 +18,17 @@
                 <input class="form-control" placeholder="Search" type="text" (focus)="focus = true"
                 (blur)="focus = false">
               </div>
+
             </div>
+            <div class="bg-info clearfix col-md-4 offset-md-5">
+              <button class="btn btn-secondary float-right" type="button" (click) ="onClick('/dash/patient')"
+
+              >
+                Add New Patiant
+              </button>
+              </div>
           </div>
+
 
 
         </div>
@@ -102,17 +111,30 @@
                  </td>
 
                 <td class="text-right">
+                  <div class="col col-lg-2">
+                    <button class="btn btn-sm" href="/#/patient" (click) = patientForm(pd.id) data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-sm" href="/#/" (click) = PdfShow(pd.name) data-toggle="tooltip" data-placement="top" title="Report Review"><i class="far fa-file-pdf"></i></button>
+                    <button class="btn btn-sm" href="javascript:void(0)" (click)= DeleteOn(pd.id) data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa-trash-alt"></i></button>
+
+                  </div>
+
+                  >
+                  <!--
                   <div ngbDropdown placement="bottom-right">
                     <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
                       <i class="fas fa-ellipsis-v"></i>
                     </a>
                     <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                      <button type="button" class="btn btn-default btn-lg">
+                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
+                      </button>
                       <a class="dropdown-item" href="javascript:void(0)" (click)= DeleteOn(pd.id)>Delete</a>
                       <a class="dropdown-item" href="/#/patient" (click) = patientForm(pd.id)>Edit</a>
                       <a class="dropdown-item" href="/#/" (click) = PdfShow(pd.name) >Report Review </a>
                       <!-- <pdf-viewer  [src] = "pdfScr" [render-text] = "true" [show-all]= "true" style="display: block;"></pdf-viewer> -->
-                    </div>
+                 <!--</div>
                   </div>
+                -->
                 </td>
               </tr>
 
@@ -147,13 +169,7 @@
       </div>
     </div>
   </div>
-  <div class="row">
-  <button class="btn btn-secondary" type="button" (click) ="onClick('/dash/patient')"
 
-  >
-    Add New Patiant
-  </button>
-  </div>
 </div>
 
 
