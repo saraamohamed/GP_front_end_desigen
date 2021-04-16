@@ -19,8 +19,8 @@ import html2canvas from 'html2canvas';
 export class TableListComponent implements OnInit {
   closeResult: string;
   redirectUrl: string = '/dash/preselect';
-
   constructor(private service:ArbProjectService  ,private http:HttpClient, private router:Router, private modalService: NgbModal) { }
+  
   open(content,name:string) {
     console.log(name);
     this.pdfScr = `assets/${name}.pdf`;
@@ -64,11 +64,13 @@ export class TableListComponent implements OnInit {
   // }
   preselect(id:number){
     this.service.examDataId = id;
+    this.service.index = 0;
     this.service.getPatient(this.service.examDataId,'Patient','examId').subscribe(res =>{
       if (res != null && res != "Not Found"){
       this.service.Patient = res as Patient
       this.service.PatientId = res['id'];
-      console.log(this.service.Patient);
+      this.service.index = this.service.Patient.clinicalInfo.massSpecifications.length;
+      console.log(this.service.Patient,"index of tabs", this.service.index);
       console.log("gebto");
       this.router.navigate([this.redirectUrl]);
       this.redirectUrl = null;
