@@ -89,24 +89,33 @@ export class TableListComponent implements OnInit {
     this.service.ExamData.id = id;
     
   }
-
+  resetForm(form: NgForm,data:string) {
+    form.form.reset();
+    this.service.list = [];
+  
+  }
   DeleteOn(id:number){
+   
     if (confirm('Are You Sure You Want To Delete?'))
     {
-      //       this.service.Delete('ExamData',id)
-
       this.service.Delete('ExamData',id)
       .subscribe(
       res =>{
+        this.service.list = [];
         this.refreshList();
-        
+       
       },
       err =>{console.log(err)}
     )
+    
     }
   }
 
   refreshList() {
-    this.service.getExamData();
+    this.service.getExamDataOfDoctor(this.service.DoctorId,'examData/ExamDataOfDoctor').subscribe(res=>{
+      this.service.list = res as ExamData[]
+    })
+    
+
   }
 }
