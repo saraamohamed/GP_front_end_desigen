@@ -104,6 +104,7 @@ export class NgbdTabsetSelectbyid  implements OnInit{
     }
     else {
         this.UpdateFeatures(form,data);
+        console.log("B3DEL FEEH NOW");
     }
  
   }
@@ -129,6 +130,7 @@ export class NgbdTabsetSelectbyid  implements OnInit{
     this.service.Put(data).subscribe(
       res=>{
         this.resetForm(form,data);
+        console.log("Put Req",res);
         // this.refreshList();
       },
       err=>{

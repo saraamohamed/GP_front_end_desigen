@@ -90,6 +90,7 @@ export class PatientComponent implements OnInit {
 insertRecord(form:NgForm,data:string){
   this.service.Post(data).subscribe(
     res=>{
+      this.service.index = 0;
       this.resetForm(form);
     },
     err=>{
