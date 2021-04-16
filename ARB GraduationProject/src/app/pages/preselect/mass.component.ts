@@ -16,10 +16,10 @@ MassMargin=[]
 MassDensities=[]
 Quadrants=[]
 ClockFaces=[]
-tabs = [];
+tabs=[]
 selected = new FormControl(0);
 ngOnInit():void{
-
+  
   console.log(this.service.index);
       this.service.getCombo('GetMassMargin')
       .subscribe(res => this.MassMargin = res as []);
@@ -32,11 +32,11 @@ ngOnInit():void{
   }
  
   addTab() { 
-    console.log(this.service.Patient);
+    console.log("index",this.service.index);
     this.service.Patient.clinicalInfo.massSpecifications[this.service.index] = new massSpecifications();
-    this.service.tabs.push('Mass' + (this.service.index+1));
+    this.tabs.push('Mass' + (this.service.index+1));
     this.service.index+=1;
-    console.log(this.service.index);
+  
   }
 
   removeTab() {

@@ -60,18 +60,24 @@ export class TableListComponent implements OnInit {
  
   preselect(id:number){
     this.service.examDataId = id;
-    this.service.index = 0;
+    this.service.tabs = [];
     this.service.getPatient(this.service.examDataId,'Patient','examId').subscribe(res =>{
       if (res != null && res != "Not Found"){
       this.service.Patient = res as Patient
       this.service.PatientId = res['id'];
-      this.service.index = this.service.Patient.clinicalInfo.massSpecifications.length;
-      console.log(this.service.Patient,"index of tabs", this.service.index);
-      console.log("gebto");
+      console.log("gbtha");
+      this.service.index = this.service.Patient.clinicalInfo.massSpecifications.length ;
+      for (let i = 1 ; i <= this.service.index; i++){
+        this.service.tabs.push('Mass' + i);
+      }
+      console.log(this.service.tabs);
       this.router.navigate([this.redirectUrl]);
       this.redirectUrl = null;
-          }
+    
+    }  
        },err=>{
+        this.service.index = 0;
+        console.log(err);
         this.service.Patient = new Patient();
         this.router.navigate([this.redirectUrl]);
         
