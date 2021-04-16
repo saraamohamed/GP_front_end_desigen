@@ -1,30 +1,42 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import { ExamData, Patient , Doctor , GeneralInfo ,ClinicalInfo ,FinalAssessment} from './arb-project.model';
+import { ExamData, Patient , Doctor , 
+  GeneralInfo ,ClinicalInfo ,FinalAssessment , Login, features} from './arb-project.model';
 import {HttpHeaders} from "@angular/common/http";
+import jspdf from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArbProjectService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient ) { }
   httpOptions={
     headers: new HttpHeaders({
       'Content-type':'applicaion/json',
       'Access-Control-Allow-Origin':'*'
     })
   };
-  readonly APIUrl = 'http://localhost:57645/api/';
+  readonly APIUrl = 'http://localhost:57645/api';
   readonly ComboUrl = 'http://localhost:57645/api/combobox';
   readonly  examDataUrl = 'http://localhost:57645/api/ExamData';
-  readonly  generalInfoUrl = 'http://localhost:57645/api/generalinfo';
   
+  examDataId:number = 0;
+  PatientId:number = 0;
+  DoctorId:number = 0;
   ExamData:ExamData = new ExamData();
   GeneralInfo:GeneralInfo = new GeneralInfo();
+  Doctor:Doctor = new Doctor();
+  general:GeneralInfo[]
   list:ExamData[];
   FinalAssessment:FinalAssessment = new FinalAssessment();
   ClinicalInfo:ClinicalInfo = new ClinicalInfo();
+  Patient:Patient = new Patient();
+  Login:Login = new Login();
+  features:features = new features()
+  index:number=0;
+  tabs = [];
   whichVar(Name:string)
   {
     switch(Name){
@@ -36,46 +48,66 @@ export class ArbProjectService {
         return(this.ClinicalInfo);
       case 'ExamData':
         return(this.ExamData);
+      case 'Patient':
+        return(this.Patient);
+      case 'Doctor':
+        return(this.Doctor);
+     
     }
   }
-
+  PostLogin(){
+    let APIUrl = "Doctor/LoginOfTheDoctor";
+    return(this.http.post(`${this.APIUrl}/${APIUrl}`,this.Login));
+  }
   Post(APIUrl){
     let variableName = this.whichVar(APIUrl);
+    console.log(variableName);
     return(this.http.post(`${this.APIUrl}/${APIUrl}`,variableName));
 
   }
   Put(APIUrl){
     let variableName = this.whichVar(APIUrl);
-    return (this.http.put(`${this.APIUrl}/${APIUrl}/${variableName.id}`,variableName));
+      return (this.http.put(`${this.APIUrl}/${APIUrl}/${variableName.id}`,variableName));
   }
   Delete(APIUrl,id)
   {
     return (this.http.delete(`${this.APIUrl}/${APIUrl}/${id}`)); 
   }
 
-  getBiRadsCombo(){
-    return (this.http.get(`${this.ComboUrl}/getbirads`));
+  getCombo(comboboxName:string){
+    return (this.http.get(`${this.ComboUrl}/${comboboxName}`));
   }
-  getRecommendationCombo(){
-    return (this.http.get(`${this.ComboUrl}/getrecommendation`));
+  
+  getOne(id,APIUrl){
+    return (this.http.get(`${this.APIUrl}/${APIUrl}/${id}`));
   }
-
+  getPatient(id,APIUrl,name:string){
+    console.log(`${this.APIUrl}/${APIUrl}/${id}/"${name}"`);
+    return (this.http.get(`${this.APIUrl}/${APIUrl}/${id}/"${name}"`));
+  }
+  getExamDataOfDoctor(id,APIUrl){
+    console.log(`${this.APIUrl}/${APIUrl}/${id}`)
+    return (this.http.get(`${this.APIUrl}/${APIUrl}/${id}`));
+  }
   getExamData(){
     this.http.get(this.examDataUrl).toPromise().then(
       res => {this.list = res as ExamData[]});
   }
-  // // PostExamData(){
-  // //   return (this.http.post(this.examDataUrl,this.ExamData));
-  // // }
-  // // deleteExamData(id:number){
-  // //   return (this.http.delete(`${this.examDataUrl}/${id}` ));
-  // // } 
-  // // putExamData(){
-  // //   return (this.http.put(`${this.examDataUrl}/${this.ExamData.id}`,this.ExamData));
-  // // }
-  // PostGeneralInfo(){
-  //   return (this.http.post(this.generalInfoUrl,this.GeneralInfo));
-  // }
+
+  generatePDF() {
+    console.log("kher")
+    // var data = document.getElementById('contentToConvert') as HTMLCanvasElement;
+    // html2canvas(data).then(canvas => {
+    //   var imgWidth = 208;
+    //   var imgHeight = canvas.height * imgWidth / canvas.width;
+    //   const contentDataURL = canvas.toDataURL('image/png')
+    //   let pdf = new jspdf('p', 'mm', 'a4');
+    //   var position = 0;
+    //   pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
+    //   var blob = pdf.output("blob");
+    //   window.open(URL.createObjectURL(blob));
+    // });
+    }
 
   
   // refreshList() {

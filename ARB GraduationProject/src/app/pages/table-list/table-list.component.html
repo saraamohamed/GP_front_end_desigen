@@ -6,22 +6,50 @@
     <div class="col">
       <div class="card shadow">
         <div class="card-header border-0">
-          <h3 class="mb-0">WORKLIST</h3>
+          <div class="col">
+            <h3 class=" mb-2">WORKLIST</h3>
+          </div>
+          <div class="row">
+            <div class=" form-group mb-0" [ngClass]="{ 'focused': focus === true }">
+              <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-search"></i></span>
+                </div>
+                <input class="form-control" placeholder="Search" type="text" (focus)="focus = true"
+                (blur)="focus = false">
+              </div>
+
+            </div>
+            <div class="bg-info clearfix col-md-4 offset-md-5">
+              <button class="btn btn-secondary float-right" type="button" (click) ="onClick('/dash/patient')"
+
+              >
+                Add New Patiant
+              </button>
+              </div>
+          </div>
+
+
+
         </div>
+
         <div class="table-responsive">
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
               <tr>
-                <th scope="col">Priority</th>
+                <!-- <th scope="col">Priority</th> -->
                 <th scope="col">Patient Name</th>
                 <th scope="col">Patient Id</th>
-                <!-- <th scope="col">Birthdate</th> -->
-                <!-- <th scope="col">Status</th> -->
-                <!-- <th scope="col"> Performance</th> -->
+
                 <th scope="col">Modality </th>
                 <th scope="col">Study Datetime</th>
                 <th scope="col">Referring Doctor</th>
                 <th scope="col"> Action</th>
+                <th hidden scope="col">Email Address</th>
+                <th hidden scope="col">mobile number</th>
+                <th hidden scope="col"> address</th>
+                <th hidden scope="col"> Last Operation</th>
+
 
 
 
@@ -29,13 +57,13 @@
             </thead>
 
             <tbody>
-              <tr *ngFor = "let pd of service.list">
-                <td >
+              <tr *ngFor = "let pd of service.list" >
+                <!-- <td >
                     1
-                </td>
+                </td> -->
                   <th scope="row">
                       <div class="media-body">
-                        <span class="mb-0 text-sm">{{pd.name}}</span>
+                        <a class="mb-0 text-sm" href="#/dash/preselect" (click) = preselect(pd.id)>{{pd.name}}</a>
                       </div>
                   </th>
                 <td >
@@ -69,18 +97,45 @@
                 <td><!--Referring Doctor -->
                  {{pd.referringDoctor}}
                 </td>
+                <td hidden><!--Modality -->
+                  {{pd.mobileNumber}}
+                </td>
+                <td hidden><!--Study Datetime -->
+                  {{pd.emailAddress}}
+                </td>
+                <td hidden><!--Referring Doctor -->
+                 {{pd.address}}
+                </td>
+                <td hidden><!--Referring Doctor -->
+                  {{pd.lastOperation}}
+                 </td>
 
                 <td class="text-right">
+                  <div class="col col-lg-2">
+                    <button class="btn btn-sm" href="/#/patient" (click) = patientForm(pd.id) data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-sm" href="/#/" (click) = PdfShow(pd.name) data-toggle="tooltip" data-placement="top" title="Report Review"><i class="far fa-file-pdf"></i></button>
+                    <button class="btn btn-sm" href="javascript:void(0)" (click)= DeleteOn(pd.id) data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa-trash-alt"></i></button>
+
+                  </div>
+
+                  >
+                  <!--
                   <div ngbDropdown placement="bottom-right">
                     <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
                       <i class="fas fa-ellipsis-v"></i>
                     </a>
                     <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                      <!-- <a class="dropdown-item"  (click) = PdfShow(pd.name) >Report Review </a> -->
                       <a class="dropdown-item" href="javascript:void(0)" (click)= DeleteOn(pd.id)>Delete</a>
-                      <a class="dropdown-item" href="/#/patient" (click)= populateForm(pd)>Edit</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Mark as done </a>
-                    </div>
+
+                      <a class="dropdown-item" href="/#/dash/preselect" (click) = patientForm(pd.id)>Edit</a>
+                      <!-- <a class="dropdown-item" href="/#/patient" (click) = patientForm(pd.id)>Edit</a> -->
+                      <!-- <a class="dropdown-item" (click) = PdfShow(pd.name) >Report Review </a> -->
+                      <a class="dropdown-item" (click) ="open(content,pd.name)" >Report Review </a>
+                      <!-- <pdf-viewer  [src] = "pdfScr" [render-text] = "true" [show-all]= "true" style="display: block;"></pdf-viewer> -->
+                 <!--</div>
                   </div>
+                -->
                 </td>
               </tr>
 
@@ -115,11 +170,24 @@
       </div>
     </div>
   </div>
-  <div class="row">
-  <button class="btn btn-primary my-4 " type="button">
-    Add New Patiant
-  </button>
-  </div>
 </div>
+<ng-template #content let-modal>
+
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">PDF</h4>
+
+  </div>
+  <div class="modal-body" >
+
+
+    <pdf-viewer  [src] = "pdfScr" [render-text] = "true" [show-all]= "true" style="display: block;"></pdf-viewer>
+
+  </div>
+
+
+</ng-template>
+
+<!-- <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button> -->
+
 
 

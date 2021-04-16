@@ -4,7 +4,7 @@ import {FormControl} from '@angular/forms';
 import { ArbProjectService } from 'src/app/shared/arb-project.service';
 import { NgForm } from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
-import { GeneralInfo } from 'src/app/shared/arb-project.model';
+import { ClinicalInfo, FinalAssessment, GeneralInfo } from 'src/app/shared/arb-project.model';
 
 @Component({
   selector: 'preselect-icons',
@@ -52,9 +52,10 @@ export class PreselectComponent implements OnInit {
   }
   resetForm(form: NgForm,data:string) {
     form.form.reset();
-    if (data='GeneralInfo'){
-      this.service.GeneralInfo = new GeneralInfo();
-    }
+    this.service.GeneralInfo = new GeneralInfo();
+    this.service.FinalAssessment = new FinalAssessment();
+    this.service.ClinicalInfo = new ClinicalInfo();
+
   }
 
 }

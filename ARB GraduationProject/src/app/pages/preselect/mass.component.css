@@ -1,0 +1,9 @@
+.example-input-label,
+.example-add-tab-button,
+.example-delete-tab-button {
+  margin: 8px;
+}
+.example-card {
+  max-width: 800px;
+  border: 1.5px solid #c3c3c3;
+}

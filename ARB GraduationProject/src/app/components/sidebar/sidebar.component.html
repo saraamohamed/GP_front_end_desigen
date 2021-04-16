@@ -6,7 +6,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <!-- Brand -->
-    <h3 class="display-2 text-white">ARB</h3>
+    <h3 class="display-2 ">ARB</h3>
     <!-- User -->
     <ul class="nav align-items-center d-md-none">
       <li class="nav-item" ngbDropdown placement="bottom-right">
@@ -80,7 +80,7 @@
       <!-- Navigation ITEMS -->
       <ul class="navbar-nav">
           <li *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
-              <a routerLinkActive="active" [routerLink]="[menuItem.path]" class="nav-link">
+              <a routerLinkActive="active" [routerLink]="[menuItem.path]" class="nav-link" style="margin-top: 0.4cm;">
                   <i class="ni {{menuItem.icon}}"></i>
                   {{menuItem.title}}
               </a>
