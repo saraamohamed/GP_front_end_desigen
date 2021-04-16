@@ -22,6 +22,7 @@ export class ArbProjectService {
   readonly ComboUrl = 'http://localhost:57645/api/combobox';
   readonly  examDataUrl = 'http://localhost:57645/api/ExamData';
   
+  examDataId:number = 0;
   PatientId:number = 0;
   DoctorId:number = 0;
   ExamData:ExamData = new ExamData();
@@ -34,6 +35,8 @@ export class ArbProjectService {
   Patient:Patient = new Patient();
   Login:Login = new Login();
   features:features = new features()
+  index:number=0;
+  tabs = [];
   whichVar(Name:string)
   {
     switch(Name){
@@ -76,10 +79,11 @@ export class ArbProjectService {
   }
   
   getOne(id,APIUrl){
-    console.log("Marwa")
-    console.log(id)
-    console.log(`${this.APIUrl}/${APIUrl}/${id}`)
     return (this.http.get(`${this.APIUrl}/${APIUrl}/${id}`));
+  }
+  getPatient(id,APIUrl,name:string){
+    console.log(`${this.APIUrl}/${APIUrl}/${id}/"${name}"`);
+    return (this.http.get(`${this.APIUrl}/${APIUrl}/${id}/"${name}"`));
   }
   getExamDataOfDoctor(id,APIUrl){
     console.log(`${this.APIUrl}/${APIUrl}/${id}`)

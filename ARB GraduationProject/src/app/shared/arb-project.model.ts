@@ -22,8 +22,8 @@ export class GeneralInfo{
     hadAMammogram: boolean = false;
     whenHadAMammogram: string = '';
     whereHadAMammogram: string = '';
-    HistoryOfMammogram: string = '';
-    PersonalHistoryOfBreastCancer: boolean = false;
+    historyOfMammogram: string = '';
+    personalHistoryOfBreastCancer: boolean = false;
     motherAge: number = 0;
     mother: boolean = false;
     sisterAge: number = 0;
@@ -36,8 +36,9 @@ export class GeneralInfo{
     aunt: boolean = false;
     cousinAge: number = 0;
     cousin: boolean = false;
-    TakingHormones: boolean = false;
-    HowlongTakingHormones: string = '';
+    takingHormones: boolean = false;
+    howlongTakingHormones: string = '';
+    pergnancyHistory: boolean = false;
     menopause: boolean = false;
     pregnant: boolean = false;
     gravida: number = 0;
@@ -95,9 +96,9 @@ export class FinalAssessment{
 export class Patient{
     id: number = 0;
     clinicalInfoId: number= 0;
-    ClinicalInfo:ClinicalInfo = new ClinicalInfo();
-    GeneralInfo:GeneralInfo = new GeneralInfo();
-    FinalAssessment:FinalAssessment = new FinalAssessment();
+    clinicalInfo:ClinicalInfo = new ClinicalInfo();
+    generalInfo:GeneralInfo = new GeneralInfo();
+    finalAssessment:FinalAssessment = new FinalAssessment();
     generalInfoId: number = 0;
     finalAssessmentId: number = 0;
     doctorId: number=0;

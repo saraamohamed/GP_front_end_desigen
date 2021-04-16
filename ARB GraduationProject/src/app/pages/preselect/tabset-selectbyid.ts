@@ -4,7 +4,7 @@ import {FormControl} from '@angular/forms';
 import { ArbProjectService } from 'src/app/shared/arb-project.service';
 import { NgForm } from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
-import { ClinicalInfo, GeneralInfo ,FinalAssessment,features} from 'src/app/shared/arb-project.model';
+import { ClinicalInfo, GeneralInfo ,FinalAssessment,Patient} from 'src/app/shared/arb-project.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,8 +18,6 @@ export class NgbdTabsetSelectbyid  implements OnInit{
   testBoolean3 : Boolean = false;
   compalinBoolean : Boolean = false;
   hormoneBoolean : Boolean = false;
-
-
 
 
 
@@ -45,12 +43,13 @@ export class NgbdTabsetSelectbyid  implements OnInit{
 
   
   constructor(public service:ArbProjectService,private http:HttpClient,  private router:Router) {}
-  onClick(route){
+  onClick(route,id:number){
     this.router.navigate([route])
   }
 
   ClinicalInfo:ClinicalInfo = new ClinicalInfo();
   GeneralInfo:GeneralInfo= new GeneralInfo();
+  Patient:Patient = new Patient();
   general : GeneralInfo[]
   BiRadslist=[]
   RecommendationList=[]
@@ -64,11 +63,8 @@ export class NgbdTabsetSelectbyid  implements OnInit{
   ClacificationDistribution=[]
 
   ngOnInit(): void {
-    // if(this.service.PatientId !== 0){
-    //   this.service.getOne(this.service.PatientId,'GeneralInfo').subscribe(res => this.service.Patient.GeneralInfo = res as GeneralInfo);
-    //   this.service.getOne(this.service.PatientId,'FinalAssessment').subscribe(res => this.service.Patient.FinalAssessment = res as FinalAssessment);
-    //   this.service.getOne(this.service.PatientId,'ClinicalInfo').subscribe(res => this.service.Patient.ClinicalInfo = res as ClinicalInfo);
-    // }
+  
+    console.log(this.service.Patient.clinicalInfo);
     this.service.getCombo('GetBiRads')
     .subscribe(res => this.BiRadslist = res as []);
     this.service.getCombo('GetRecommendation')
@@ -92,32 +88,38 @@ export class NgbdTabsetSelectbyid  implements OnInit{
   }
 
   OnSubmit(form:NgForm,data:string){
-    this.service.Patient.doctorId = this.service.DoctorId;
-    this.service.Patient.examDataId = this.service.PatientId;
-    this.service.Patient.ClinicalInfo.featureId = this.service.PatientId;
-    this.InsertFeatures(form,data);
-    // if ((this.service.Patient.GeneralInfo.id == 0) && (this.service.Patient.ClinicalInfo.id == 0) && (this.service.Patient.FinalAssessment.id == 0)){
-     
-    // }
-    // else {
-    //   this.UpdateFeatures(form,data);
-    // }
-  //   console.log(data);
 
-  //   console.log(form);
-  //   this.service.Post(data).subscribe(
-  //     res=>{
-  //       this.resetForm(form,data);
-  //     },
-  //     err=>{
-  //       console.log(err);
-  //     }
-  // )
+  
+    this.service.Patient.doctorId = this.service.DoctorId;
+    this.service.Patient.examDataId = this.service.examDataId;
+    this.service.Patient.clinicalInfo.featureId = this.service.PatientId;
+
+    // this.InsertFeatures(form,data);
+    console.log(this.service.Patient.generalInfo,this.service.Patient.clinicalInfo,this.service.Patient.finalAssessment);
+    if ((this.service.Patient.generalInfo.id == 0) && (this.service.Patient.clinicalInfo.id == 0) && (this.service.Patient.finalAssessment.id == 0)){
+    
+        this.InsertFeatures(form,data);
+        
+     
+    }
+    else {
+        this.UpdateFeatures(form,data);
+    }
+ 
+  }
+
+  passingPatienId(id:number)
+  {
+    this.service.PatientId = id;
+    console.log("YARAAAB",this.service.examDataId)
   }
   InsertFeatures(form:NgForm,data:string){
     this.service.Post(data).subscribe(
       res=>{
-        this.resetForm(form,data);
+        this.service.PatientId = res['id'];
+        console.log(res);
+        console.log("ANAA 3MLT INSERT")
+        // this.resetForm(form,data);
       },
       err=>{
         console.log(err);
@@ -136,15 +138,6 @@ export class NgbdTabsetSelectbyid  implements OnInit{
   }
   resetForm(form: NgForm,data:string) {
     form.form.reset();
-    // if (data='GeneralInfo'){
-    //   this.service.GeneralInfo = new GeneralInfo();
-    // }
-    // if (data='FianlAssessment'){
-    //   this.service.FinalAssessment = new FinalAssessment();
-    // }
-    // if (data='ClinicalInfo'){
-    //   this.service.ClinicalInfo = new ClinicalInfo();
-    // }
     this.service.GeneralInfo = new GeneralInfo();
     this.service.FinalAssessment = new FinalAssessment();
     this.service.ClinicalInfo = new ClinicalInfo();
