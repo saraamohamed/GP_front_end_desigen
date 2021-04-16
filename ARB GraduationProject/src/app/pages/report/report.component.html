@@ -13,7 +13,7 @@
 <div class="container mt--7" >
   <div class="row" >
     <div class="col-xl-8 mb-5 mb-xl-0"  >
-      <div id="Please" border="1" width="100%">
+      <div id="contentToConvert" border="1" width="100%">
       <div class="card  shadow" >
         <div class="card-header " 
           style=" border: solid gray thin ; margin: 0ch; padding-bottom: 0.4cm;">
@@ -53,25 +53,24 @@
           <h1 class="display-4"><u>Indication for Examination:</u></h1>
           <div>
             The Reason is {{service.Patient.generalInfo.examReason}}
-            <div *ngIf="service.Patient.generalInfo.examReason==='Complain'; then thenBlockComplain  else elseBlockComplain"></div>
+            <div *ngIf="service.Patient.generalInfo.examReason==='Complain'; then thenBlockComplain  else elseBlockComplain"></div> Lateral in {{service.Patient.clinicalInfo.massSpecifications[0].laterality}} breast,
             <ng-template #thenBlockComplain> : {{service.Patient.generalInfo.complain}}, </ng-template>
             <ng-template #elseBlockComplain>,  </ng-template>
           </div>
+          <!-- at {{service.Patient.generalInfo.examDate |date:'dd.MM.yyyy'}},  -->
           
-          <div>
-             <!-- salma el laterality -->
-          Lateral in {{service.Patient.clinicalInfo.massSpecifications.laterality}} breast, at {{service.Patient.generalInfo.examDate}}, 
-          </div>
          
           <div>
+            <h3>Pervious Mammogram</h3>
             <div *ngIf="(service.Patient.generalInfo.hadAMammogram==true); then thenBlockHadMammogram  else elseBlockHadMammogram"></div>
           <ng-template #thenBlockHadMammogram>The Modality is {{service.Patient.generalInfo.modalityType}} in {{service.Patient.generalInfo.whereHadAMammogram}}
-            at {{service.Patient.generalInfo.whenHadAMammogram}} and The Findings were {{service.Patient.generalInfo.historyOfMammogram}}, 
+            since {{service.Patient.generalInfo.whenHadAMammogram}} Years ago and The Findings were {{service.Patient.generalInfo.historyOfMammogram}}, 
           </ng-template>
           <ng-template #elseBlockHadMammogram> No Pervious Mammogram, </ng-template>
           </div>
             
           <div>
+            <h3>Personal History</h3>
             <div *ngIf="(service.Patient.generalInfo.personalHistoryOfBreastCancer==true); then thenBlockPersonal  else elseBlockPersonal"></div>
           <ng-template #thenBlockPersonal> 
             <div *ngIf="(service.Patient.generalInfo.mother==true)">Mother At Age {{service.Patient.generalInfo.motherAge}}</div>
@@ -85,12 +84,13 @@
           </div>
           
           <div>
+            <h3>Hormones</h3>
             <div *ngIf="(service.Patient.generalInfo.takingHormones==true); then thenBlockHormones  else elseBlockHormones"></div>
             <ng-template #thenBlockHormones> Taking Hormones for {{service.Patient.generalInfo.howlongTakingHormones}} Years</ng-template>
             <ng-template #elseBlockHormones> No Hormones is Taken</ng-template>
           </div>
           <div>
-
+            <h3>Pergnancy History</h3>
             <div *ngIf="(service.Patient.generalInfo.pergnancyHistory==true); then thenBlockPregnancy  else elseBlockPregnancy"></div>
             <ng-template #thenBlockPregnancy>
               <div *ngIf="service.Patient.generalInfo.menopause==true">Menopause, </div>
@@ -106,21 +106,116 @@
           
           <h1 class="display-4"><u>Findings:</u></h1>
           
+           
+          <div *ngIf="(service.Patient.clinicalInfo.breastCompostion==='a')">OverAll Breast Composition: .a The Breasts are almost entirely fatty</div>
+          <div *ngIf="(service.Patient.clinicalInfo.breastCompostion==='b')">OverAll Breast Composition: .b There are scattered areas of fibroglandular density</div>
+          <div *ngIf="(service.Patient.clinicalInfo.breastCompostion==='c')">OverAll Breast Composition: .c The breasts are heterogeneously dense, which may obscure small masses</div>
+          <div *ngIf="(service.Patient.clinicalInfo.breastCompostion==='d')">OverAll Breast Composition: .d The breasts are extremely dense, which lowers the sensitivity of mammography</div>
+          <div>
+            <h3>Mass Shape</h3>
+            <table >
+              
+              <thead>
+                <tr>
+                  <th>
+                    Number
+                  </th>
+                  <th>
+                    Mass Shape
+                  </th>
+                  <th>
+                    Mass Margin
+                  </th>
+                  <th>
+                    Mass Density
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor = "let pd of massSpecifications ;let i = index">
+                  <td>
+                    {{i+1}}
+                  </td>
+                  <td>
+                    {{pd.massShape}}
+                  </td>
+                  <td>
+                    {{pd.massMarginId}}
+                  </td>
+                  <td>
+                    {{pd.massDensityId}}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <h3>Mass Location</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>
+                    Number
+                  </th>
+                  <th>
+                    laterality
+                  </th>
+                  <th>
+                    O'Clock Position
+                  </th>
+                  <th>
+                    Quadrant
+                  </th>
+                  <th>
+                    Depth
+                  </th>
+                  <th>
+                    Distance From Nipple
+                  </th>
+                </tr>
+                
+              </thead>
+              <tbody>
+                <tr *ngFor = "let list of massSpecifications; let i = index">
+                  <td>
+                    {{i+1}}
+                  </td>
+                  <td>
+                    {{list.laterality}}
+                  </td>
+                  <td>
+                    {{list.quadrantId}}
+                  </td>
+                  <td>
+                    {{list.clockFaceId}}
+                  </td>
+                  <td>
+                    {{list.depth}}
+                  </td>
+                  <td>
+                    {{list.distanceFromTheNipple}}
+                  </td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+
+
           <h1 class="display-4"><u>Assessment:</u></h1>
-          BI-RADS '{{service.Patient.finalAssessment.biRads.name}}'
-          <div *ngIf="service.Patient.finalAssessment.biRads.name==='0'">(Incomplete.)</div>
-          <div *ngIf="service.Patient.finalAssessment.biRads.name==='1'">(Negative.)</div>
-          <div *ngIf="service.Patient.finalAssessment.biRads.name==='2'">(Benign.)</div>
-          <div *ngIf="service.Patient.finalAssessment.biRads.name==='3'">(Probably Benign.)</div>
-          <div *ngIf="service.Patient.finalAssessment.biRads.name==='4'">(Suspicious for Malignancy.)</div>
-          <div *ngIf="service.Patient.finalAssessment.biRads.name==='4a'">(Low Suspicion for Malignancy (2-9%).)</div>
-          <div *ngIf="service.Patient.finalAssessment.biRads.name==='4b'">(Moderate Suspicion for Malignancy (10-49%).)</div>
-          <div *ngIf="service.Patient.finalAssessment.biRads.name==='4c'">(High Suspicion for Malignancy (50-94%).)</div>
-          <div *ngIf="service.Patient.finalAssessment.biRads.name==='5'">(Highly Suggestive of Malignancy.)</div>
-          <div *ngIf="service.Patient.finalAssessment.biRads.name==='6'">(Known Biopsy-Proven Malignancy.)</div>
+          <div *ngIf="service.Patient.finalAssessment.biRads.name==='0'">BI-RADS '{{service.Patient.finalAssessment.biRads.name}}' (Incomplete.)</div>
+          <div *ngIf="service.Patient.finalAssessment.biRads.name==='1'">BI-RADS '{{service.Patient.finalAssessment.biRads.name}}' (Negative.)</div>
+          <div *ngIf="service.Patient.finalAssessment.biRads.name==='2'">BI-RADS '{{service.Patient.finalAssessment.biRads.name}}' (Benign.)</div>
+          <div *ngIf="service.Patient.finalAssessment.biRads.name==='3'">BI-RADS '{{service.Patient.finalAssessment.biRads.name}}' (Probably Benign.)</div>
+          <div *ngIf="service.Patient.finalAssessment.biRads.name==='4'">BI-RADS '{{service.Patient.finalAssessment.biRads.name}}' (Suspicious for Malignancy.)</div>
+          <div *ngIf="service.Patient.finalAssessment.biRads.name==='4a'">BI-RADS '{{service.Patient.finalAssessment.biRads.name}}' (Low Suspicion for Malignancy (2-9%).)</div>
+          <div *ngIf="service.Patient.finalAssessment.biRads.name==='4b'">BI-RADS '{{service.Patient.finalAssessment.biRads.name}}' (Moderate Suspicion for Malignancy (10-49%).)</div>
+          <div *ngIf="service.Patient.finalAssessment.biRads.name==='4c'">BI-RADS '{{service.Patient.finalAssessment.biRads.name}}' (High Suspicion for Malignancy (50-94%).)</div>
+          <div *ngIf="service.Patient.finalAssessment.biRads.name==='5'">BI-RADS '{{service.Patient.finalAssessment.biRads.name}}' (Highly Suggestive of Malignancy.)</div>
+          <div *ngIf="service.Patient.finalAssessment.biRads.name==='6'">BI-RADS '{{service.Patient.finalAssessment.biRads.name}}' (Known Biopsy-Proven Malignancy.)</div>
 
           <h1 class="display-4"><u>Recommendation:</u></h1>
-          {{service.Patient.finalAssessment.recommendation.name}} 
+          {{service.Patient.finalAssessment.recommendation.name}} <br>
           <!-- "hena el mfrod tab l taht dh satr w dh satr" -->
           Other Recommendation: {{service.Patient.finalAssessment.recommendationText}}
 
@@ -134,7 +229,7 @@
           <div class="card-footer "  style=" border: solid gray thin ; ">
             <h3 class="display-6">Reported By, </h3>
             <div class="pl-lg-4">
-              <h3 class="display-6">Dr: </h3>
+              <h3 class="display-6">Dr: {{service.Doctor.name}}</h3>
             </div>
           </div>
 
@@ -143,7 +238,7 @@
         
       </div>
     </div>
-      <button type="submit" (click)=generatePDF()>Export PDF</button>
+      <button (click)=generatePDF()>Export PDF</button>
     </div>
     
   </div>
