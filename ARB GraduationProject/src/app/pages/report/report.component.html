@@ -140,10 +140,10 @@
                     {{pd.massShape}}
                   </td>
                   <td>
-                    {{pd.massMargin.name}}
+                    {{pd.massMarginId}}
                   </td>
                   <td>
-                    {{pd.massDensity.name}}
+                    {{pd.massDensityId}}
                   </td>
                 </tr>
               </tbody>
@@ -184,10 +184,10 @@
                     {{list.laterality}}
                   </td>
                   <td>
-                    {{list.clockFace.name}}
+                    {{list.clockFaceId}}
                   </td>
                   <td>
-                    {{list.quadrant.name}}
+                    {{list.quadrantId}}
                     
                   </td>
                   <td>
@@ -204,6 +204,9 @@
 
 
           <h1 class="display-4"><u>Assessment:</u></h1>
+
+          <!-- {{eh hasal}} -->
+
           <div *ngIf="service.Patient.finalAssessment.biRads.name==='0'">BI-RADS '{{service.Patient.finalAssessment.biRads.name}}' (Incomplete.)</div>
           <div *ngIf="service.Patient.finalAssessment.biRads.name==='1'">BI-RADS '{{service.Patient.finalAssessment.biRads.name}}' (Negative.)</div>
           <div *ngIf="service.Patient.finalAssessment.biRads.name==='2'">BI-RADS '{{service.Patient.finalAssessment.biRads.name}}' (Benign.)</div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ArbProjectService } from 'src/app/shared/arb-project.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(public service:ArbProjectService) { }
 
   ngOnInit() {
   }

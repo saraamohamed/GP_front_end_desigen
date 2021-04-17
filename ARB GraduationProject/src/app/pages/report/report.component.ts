@@ -16,7 +16,7 @@ declare const google: any;
   styleUrls: ['./report.component.scss']
 })
 export class ReportComponent implements OnInit{
-  constructor(private service:ArbProjectService  ,private http:HttpClient, private router:Router) { }
+  constructor(public service:ArbProjectService  ,private http:HttpClient, private router:Router) { }
   massSpecifications :massSpecifications[] = this.service.Patient.clinicalInfo.massSpecifications;
   
   examData:ExamData = new ExamData();

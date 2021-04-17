@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
           default:
             {
             console.log(res['id']);
+            this.service.Doctor = res as Doctor
             this.service.DoctorId = res['id'];
             this.router.navigate([this.redirectUrl]);
             this.redirectUrl = null;
