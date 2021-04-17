@@ -111,8 +111,31 @@
           <div *ngIf="(service.Patient.clinicalInfo.breastCompostion==='b')">OverAll Breast Composition: .b There are scattered areas of fibroglandular density</div>
           <div *ngIf="(service.Patient.clinicalInfo.breastCompostion==='c')">OverAll Breast Composition: .c The breasts are heterogeneously dense, which may obscure small masses</div>
           <div *ngIf="(service.Patient.clinicalInfo.breastCompostion==='d')">OverAll Breast Composition: .d The breasts are extremely dense, which lowers the sensitivity of mammography</div>
+
+          <!-- <div>
+            <tr *ngFor = "let pd of massSpecifications ;let i = index">
+              <thead>
+                <th>
+                  Mass {{i+1}}
+                </th>
+                <th>
+                  Mass Shape
+                </th>
+                <th>
+                  Mass Location
+                </th>
+              </thead>
+              <tbody>
+                <td>
+                  Mass Shape
+                </td>
+              </tbody>
+              
+            </tr>
+          </div> -->
+
           <div>
-            <h3>Mass Shape</h3>
+            <h3>Mass Description</h3>
             <table >
               
               <thead>
@@ -128,6 +151,22 @@
                   </th>
                   <th>
                     Mass Density
+                  </th>
+                  
+                  <th>
+                    laterality
+                  </th>
+                  <th>
+                    O'Clock Position
+                  </th>
+                  <th>
+                    Quadrant
+                  </th>
+                  <th>
+                    Depth
+                  </th>
+                  <th>
+                    Distance From Nipple
                   </th>
                 </tr>
               </thead>
@@ -145,12 +184,28 @@
                   <td>
                     {{pd.massDensityId}}
                   </td>
+                  <td>
+                    {{pd.laterality}}
+                  </td>
+                  <td>
+                    {{pd.clockFaceId}}
+                  </td>
+                  <td>
+                    {{pd.quadrantId}}
+                    
+                  </td>
+                  <td>
+                    {{pd.depth}}
+                  </td>
+                  <td>
+                    {{pd.distanceFromTheNipple}}
+                  </td>
                 </tr>
               </tbody>
             </table>
           </div>
           <div>
-            <h3>Mass Location</h3>
+            <!-- <h3>Mass Location</h3>
             <table>
               <thead>
                 <tr>
@@ -199,7 +254,7 @@
                 </tr>
                 
               </tbody>
-            </table>
+            </table> -->
           </div>
 
 
