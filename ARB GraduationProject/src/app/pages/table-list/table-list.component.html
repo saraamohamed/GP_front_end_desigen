@@ -112,27 +112,27 @@
 
                 <td class="text-right">
                   <div class="col col-lg-2">
-                    <button class="btn btn-sm" href="/#/patient" (click) = patientForm(pd.id) data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-sm"  (click) = patientForm(pd.id) data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-edit"></i></button>
                     <button class="btn btn-sm" href="/#/" (click) = PdfShow(pd.name) data-toggle="tooltip" data-placement="top" title="Report Review"><i class="far fa-file-pdf"></i></button>
                     <button class="btn btn-sm" href="javascript:void(0)" (click)= DeleteOn(pd.id) data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa-trash-alt"></i></button>
 
                   </div>
 
-                  >
+          
                   <!--
                   <div ngbDropdown placement="bottom-right">
                     <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
                       <i class="fas fa-ellipsis-v"></i>
                     </a>
                     <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                      <!-- <a class="dropdown-item"  (click) = PdfShow(pd.name) >Report Review </a> -->
+                      <a class="dropdown-item"  (click) = PdfShow(pd.name) >Report Review </a> 
                       <a class="dropdown-item" href="javascript:void(0)" (click)= DeleteOn(pd.id)>Delete</a>
 
-                      <a class="dropdown-item" href="/#/dash/preselect" (click) = patientForm(pd.id)>Edit</a>
-                      <!-- <a class="dropdown-item" href="/#/patient" (click) = patientForm(pd.id)>Edit</a> -->
-                      <!-- <a class="dropdown-item" (click) = PdfShow(pd.name) >Report Review </a> -->
+                      <a class="dropdown-item"  (click) = patientForm(pd.id)>Edit</a>
+                      <a class="dropdown-item" href="/#/patient" (click) = patientForm(pd.id)>Edit</a>
+                       <a class="dropdown-item" (click) = PdfShow(pd.name) >Report Review </a>
                       <a class="dropdown-item" (click) ="open(content,pd.name)" >Report Review </a>
-                      <!-- <pdf-viewer  [src] = "pdfScr" [render-text] = "true" [show-all]= "true" style="display: block;"></pdf-viewer> -->
+                      <pdf-viewer  [src] = "pdfScr" [render-text] = "true" [show-all]= "true" style="display: block;"></pdf-viewer> -->
                  <!--</div>
                   </div>
                 -->

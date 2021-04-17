@@ -87,13 +87,14 @@ export class TableListComponent implements OnInit {
   }
   patientForm(id:number){
     this.service.ExamData.id = id;
-    
+    this.service.getExamDataOfDoctor(id,'examData').subscribe(res=>{
+      this.service.ExamData = res as ExamData
+      console.log(res);
+    })
+    console.log("eeeh p2a mna fe el edit ahw");
+    this.router.navigate(['dash/patient']);
   }
-  resetForm(form: NgForm,data:string) {
-    form.form.reset();
-    this.service.list = [];
-  
-  }
+
   DeleteOn(id:number){
    
     if (confirm('Are You Sure You Want To Delete?'))
