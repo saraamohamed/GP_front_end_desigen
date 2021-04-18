@@ -497,7 +497,58 @@
           <div class="container">
 
             <app-mass></app-mass>
+            <h3 class="form-control-alternative" style="margin-top: 14px; background-color:gainsboro;">
+                Clacifications</h3>
 
+
+
+
+            <div class="row">
+
+                <div class="col-sm">
+                    <div class="form-group focused">
+                        <h5 class="form-control-label" for="Mammo-history"
+                            style="margin-right: 15px; padding-top: 15px;">
+                            Typically benign</h5>
+                        <select class="custom-select" name="typicallyBenignId" #typicallyBenignId="ngModel"
+                            [(ngModel)]="service.Patient.clinicalInfo.typicallyBenignId" style="width:110px;">
+                            <option value="0"> SELECT</option>
+                            <option *ngFor="let item of ClacificationTypicallyBenign" value="{{item.id}}">
+                                {{item.name}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="form-group focused">
+                        <h5 class="form-control-label" for="Mammo-history"
+                            style="margin-right: 10px; padding-top: 15px;">
+                            Suspicious morphology</h5>
+                        <select class="custom-select" name="suspiciousMorphologyId"
+                            #suspiciousMorphologyId="ngModel"
+                            [(ngModel)]="service.Patient.clinicalInfo.suspiciousMorphologyId" style="width:100px;">
+                            <option value="0"> SELECT</option>
+                            <option *ngFor="let item of ClacificationSuspiciousMorphology" value="{{item.id}}">
+                                {{item.name}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm">
+
+                    <div class="form-group focused">
+                        <h5 class="form-control-label" for="Mammo-history"
+                            style="margin-right: 10px; margin-left: 10px; padding-top: 15px;">
+                            Distribution</h5>
+                        <select class="custom-select" name="distributionId" #suspiciousMorphologyId="ngModel"
+                            [(ngModel)]="service.Patient.clinicalInfo.distributionId" style="width:100px;">
+                            <option value="0"> SELECT</option>
+                            <option *ngFor="let item of ClacificationDistribution" value="{{item.id}}">{{item.name}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>    
 
         </div>
         <h3 class="form-control-alternative" style="margin-top: 9px; background-color:gainsboro;">Features</h3>
