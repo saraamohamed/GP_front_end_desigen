@@ -113,7 +113,7 @@
                 <td class="text-right">
                   <div class="col col-lg-2">
                     <button class="btn btn-sm"  (click) = patientForm(pd.id) data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-edit"></i></button>
-                    <button class="btn btn-sm" href="/#/" (click) = PdfShow(pd.name) data-toggle="tooltip" data-placement="top" title="Report Review"><i class="far fa-file-pdf"></i></button>
+                    <button class="btn btn-sm" href="/#/" (click) = open(content,pd.patientID) data-toggle="tooltip" data-placement="top" title="Report Review"><i class="far fa-file-pdf"></i></button>
                     <button class="btn btn-sm" href="javascript:void(0)" (click)= DeleteOn(pd.id) data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa-trash-alt"></i></button>
 
                   </div>

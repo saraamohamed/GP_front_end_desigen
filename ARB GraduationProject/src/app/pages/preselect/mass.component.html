@@ -31,7 +31,7 @@
 
                                           <th style="vertical-align: top;">
                                               <h3 for="Shape" class="form-group focused">
-                                                  <label>Shape</label>
+                                                  <label><strong>Shape</strong></label>
                                               </h3>
                                           </th>
                                           <th>
@@ -45,7 +45,7 @@
                                                               [(ngModel)]="pd.massShape"
                                                           >
 
-                                                          <span class="checkmark">oval</span>
+                                                          <span class="checkmark">Oval</span>
                                                       </h4>
                                                   </li><br>
 
@@ -172,7 +172,7 @@
                               <input type="text" id="TEXT_1450682011285" name="depth" data-field-type="TEXT"
                                   data-field-completion-action="NONE" #depth="ngModel"
                                   [(ngModel)]="service.Patient.clinicalInfo.massSpecifications[i].depth"
-                                  class="form-control" />
+                                  class="form-control" />(Cm)
 
 
                           </div>
@@ -186,7 +186,7 @@
                                   data-field-type="TEXT" data-field-completion-action="NONE"
                                   #distanceFromTheNipple="ngModel"
                                   [(ngModel)]="service.Patient.clinicalInfo.massSpecifications[i].distanceFromTheNipple"
-                                  class="form-control" />
+                                  class="form-control" />(Cm)
 
 
                           </div>
