@@ -367,8 +367,8 @@
               <!----------------------------  given birth ---------------------------------- -->
               <h3 class="form-control-alternative" style="margin-top: 18px; background-color:gainsboro;">
                   <!-- <i class="ni ni-bold-right"></i> -->
-                  <input  [(ngModel)]="service.Patient.generalInfo.pergnancyHistory"
-                      name="Previous Mammogram" type="checkbox" (click)="onButtonClick3()">
+                  <input class="form-check-label " name="pergnancyHistory" #pergnancyHistory="ngModel"
+                                              [(ngModel)]="service.Patient.generalInfo.pergnancyHistory" type="checkbox">
                   <span class="form-check-sign">
                       <span class="check"></span>
                   </span>
