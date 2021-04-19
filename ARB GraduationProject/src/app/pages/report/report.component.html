@@ -46,10 +46,10 @@
           </table>
         </div>
         <div class="card-body "  style=" border: solid gray thin ; margin: 0ch;">
-          <h1 class="display-4">Report: -All Studies</h1>
+          <!-- <h1 class="display-4">Report: -All Studies</h1>
           <div class="pl-lg-4">
             <h3 class="display-6"> <u>FULL FIELD DIGITAL MAMMOGRAPHY AND COMPLEMENTARY ULTRASOUND </u></h3>
-          </div>
+          </div> -->
           <h1 class="display-4"><u>Indication for Examination:</u></h1>
           <div>
             The Reason is {{service.Patient.generalInfo.examReason}}
@@ -141,32 +141,32 @@
               <thead>
                 <tr>
                   <th>
-                    Number
+                    No.
                   </th>
                   <th>
-                    Mass Shape
+                    Shape
                   </th>
                   <th>
-                    Mass Margin
+                    Margin
                   </th>
                   <th>
-                    Mass Density
+                    Density
                   </th>
                   
                   <th>
                     laterality
                   </th>
                   <th>
-                    O'Clock Position
+                    O'Clock <br> Face
                   </th>
                   <th>
                     Quadrant
                   </th>
                   <th>
-                    Depth
+                    Depth<br>(Cm)
                   </th>
                   <th>
-                    Distance From Nipple
+                    D.F.N<br>(Cm)
                   </th>
                 </tr>
               </thead>
@@ -179,19 +179,19 @@
                     {{pd.massShape}}
                   </td>
                   <td>
-                    {{pd.massMarginId}}
+                    {{pd.massMargin.name}}
                   </td>
                   <td>
-                    {{pd.massDensityId}}
+                    {{pd.massDensity.name}}
                   </td>
                   <td>
                     {{pd.laterality}}
                   </td>
                   <td>
-                    {{pd.clockFaceId}}
+                    {{pd.clockFace.name}}
                   </td>
                   <td>
-                    {{pd.quadrantId}}
+                    {{pd.quadrant.name}}
                     
                   </td>
                   <td>

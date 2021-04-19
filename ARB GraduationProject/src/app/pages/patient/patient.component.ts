@@ -101,6 +101,7 @@ insertRecord(form:NgForm,data:string){
 updateRecord(form:NgForm,data:string){
   this.service.Put(data).subscribe(
     res=>{
+      console.log(res)
       this.resetForm(form);
       this.refreshList();
     },
