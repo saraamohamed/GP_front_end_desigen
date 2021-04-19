@@ -365,44 +365,83 @@
                     Pregnancy History
                 </h3>
                 <div *ngIf="testBoolean3 == true ">
+                    <table class="table" style="margin-left: 25px; text-align: center;">
+                        <tr>
+
+                            <td>
+                                <div class="form-group focused">
+                                    <div class="form-check">
+
+                                        <h5 class="form-control-label" for="Mammo-history">
+                                            <input class="form-check-label" name="menopause" #menopause="ngModel"
+                                                [(ngModel)]="service.Patient.generalInfo.menopause" type="checkbox">
+                                            <span class="form-check-sign">
+                                                <span class="check"></span>
+                                            </span>
+                                            Menopause
+                                        </h5>
+                                    </div>
+                                </div>
+
+                            </td>
+
+                            <td>
+                                <div class="form-group focused">
+                                    <div class="form-check">
+
+                                        <h5 class="form-control-label" for="Mammo-history">
+                                            <input class="form-check-label" name="pregnant" #pregnant="ngModel"
+                                                [(ngModel)]="service.Patient.generalInfo.pregnant" type="checkbox">
+                                            <span class="form-check-sign">
+                                                <span class="check"></span>
+                                            </span>
+                                            Pregnant
+                                        </h5>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tbody>
+                            <tr>
+
+                                <td>
+                                    <!-- Age: <input type="text" id="TEXT_1450682011285" name="gravida"
+                                        data-field-type="TEXT" data-field-completion-action="NONE"
+                                        #gravida="ngModel" [(ngModel)]="service.Patient.generalInfo.gravida"
+                                        min="0" max="100" style="width: 50px; height: 25px;" class="form-control "
+                                        placeholder="0" /> -->
+                                    <div class="form-group focused">
+                                        <h5 class="form-control-label" style="margin-right: 15px;  padding-top: 5px;"> Gravida </h5>
+                                        <input type="text" id="TEXT_1450682011285" name="gravida" data-field-type="TEXT"
+                                            data-field-completion-action="NONE" #gravida="ngModel"
+                                            [(ngModel)]="service.Patient.generalInfo.gravida" min="0" max="100"
+                                            style="width: 50px; height: 25px;" class="form-control " placeholder="0" />
+                                    </div>
 
 
-                    <div class="form-group focused">
-                        <div class="form-check" style="margin-left: 5px; vertical-align: 5px; padding-bottom: 20px ;">
-                            <label class="form-check-label">
-                                <input class="form-check-input" name="menopause" #menopause="ngModel"
-                                    [(ngModel)]="service.Patient.generalInfo.menopause" type="checkbox">
-                                <span class="form-check-sign">
-                                    <span class="check"></span>
-                                </span>
-                            </label>
-                            <h5 class="form-control-label" for="Mammo-history">Menopause</h5>
-                        </div>
-                    </div>
-                    <div class="form-group focused">
-                        <div class="form-check" style="margin-left: 5px; vertical-align: 5px; padding-bottom: 20px ;">
-                            <label class="form-check-label">
-                                <input class="form-check-input" name="pregnant" #pregnant="ngModel"
-                                    [(ngModel)]="service.Patient.generalInfo.pregnant" type="checkbox">
-                                <span class="form-check-sign">
-                                    <span class="check"></span>
-                                </span>
-                            </label>
-                            <h5 class="form-control-label" for="Mammo-history">Pregnant</h5>
-                        </div>
-                    </div>
-                    <div class="form-group focused">
-                        <h5 style="margin-right: 15px; margin-left: 20px; padding-top: 5px;"> Gravida </h5>
-                        <input type="text" id="TEXT_1450682011285" name="gravida" data-field-type="TEXT"
-                            data-field-completion-action="NONE" #gravida="ngModel"
-                            [(ngModel)]="service.Patient.generalInfo.gravida" style="width: 30px; height: 25px; ;" />
-                    </div>
-                    <div class="form-group focused">
-                        <h5 style="margin-right: 15px; margin-left: 20px; padding-top: 5px;"> Para </h5>
-                        <input type="text" id="TEXT_1450682011285" name="para" data-field-type="TEXT"
-                            data-field-completion-action="NONE" #para="ngModel"
-                            [(ngModel)]="service.Patient.generalInfo.para" style="width: 30px; height: 25px; ;" />
-                    </div>
+                                </td>
+
+                                <td>
+                                    <!-- Age: <input type="text" id="TEXT_1450682011285" name="para"
+                                        data-field-type="TEXT" data-field-completion-action="NONE"
+                                        #para="ngModel"
+                                        [(ngModel)]="service.Patient.generalInfo.para" min="0" max="100"
+                                        style="width: 45px; height: 25px;" class="form-control " placeholder="0" /> -->
+                                    <div class="form-group focused">
+                                        <h5 class="form-control-label" style="margin-right: 15px; ; padding-top: 5px;"> Para </h5>
+                                        <input type="text" id="TEXT_1450682011285" name="para"
+                                        data-field-type="TEXT" data-field-completion-action="NONE"
+                                        #para="ngModel"
+                                        [(ngModel)]="service.Patient.generalInfo.para" min="0" max="100"
+                                        style="width: 45px; height: 25px;" class="form-control " placeholder="0" />
+                                    </div>
+
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
                     <div class="form-group focused">
                         <h5 class="form-control-label" for="exam-date" style="margin-right: 15px; padding-top: 15px;">
                             LMP
@@ -421,60 +460,77 @@
         <!---------------------------- Clinical-tab ---------------------------------- -->
 
         <ngb-tab id="Clinical-tab" title="Clinical Information">
-          <ng-template ngbTabContent>
-            <br>
-            <div class="row form-group focused">
-                <div class="col">
+            <ng-template ngbTabContent>
+                <br>
+                <div class="row form-group focused">
+                    <div class="col">
 
-                  <div class="form-group focused">
-                    <label class="form-control-label" for="breast-composition">
-                        <strong style="margin-right: 15px;"> Breast Compostion </strong>
+                        <div class="form-group focused">
+                            <label class="form-control-label" for="breast-composition">
+                                <strong style="margin-right: 15px;"> Breast Compostion </strong>
 
-                    </label>
+                            </label>
+                        </div>
+
+                        <ul style="list-style-type:none; margin-top: 5px;">
+                            <li>
+                                <h5 class="form-group focused">
+                                    <input type="radio" name="breastCompostion" value="a"
+                                        [(ngModel)]="service.Patient.clinicalInfo.breastCompostion"
+                                        style="margin-right: 6px;">
+                                    <span class="checkmark">a. The Breasts are almost entirely fatty</span>
+                                </h5>
+                            </li><br>
+
+                            <li>
+
+                                <h5 class="form-group focused">
+                                    <input type="radio" name="breastCompostion" value="b"
+                                        [(ngModel)]="service.Patient.clinicalInfo.breastCompostion"
+                                        style="margin-right: 6px;">
+                                    <span class="checkmark">b. There are scattered areas of fibroglandular
+                                        density</span>
+                                </h5>
+                            </li><br>
+                            <li>
+                                <h5>
+                                    <input type="radio" name="breastCompostion" value="c"
+                                        [(ngModel)]="service.Patient.clinicalInfo.breastCompostion"
+                                        style="margin-right: 6px;">
+                                    <span class="checkmark">c. The breasts are heterogeneously dense, which may obscure
+                                        small masses</span>
+                                </h5>
+                            </li><br>
+                            <li>
+                                <h5>
+                                    <input type="radio" name="breastCompostion" value="d"
+                                        [(ngModel)]="service.Patient.clinicalInfo.breastCompostion"
+                                        style="margin-right: 6px;">
+                                    <span class="checkmark">d. The breasts are extremely dense, which lowers the
+                                        sensitivity of
+                                        mammography</span>
+                                </h5>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group focused">
+                            <label class="form-control-label" for="Mammo-history">
+                                <strong style="margin-right: 15px;"> Asymmetries </strong>
+                                <select class="custom-select" name="asymmetriesId" #asymmetriesId="ngModel"
+                                    [(ngModel)]="service.Patient.clinicalInfo.asymmetriesId" style="width:150px;">
+                                    <option value="0"> SELECT</option>
+                                    <option *ngFor="let item of Asymmetries" value="{{item.id}}">{{item.name}}</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
                 </div>
 
-                    <ul style="list-style-type:none; margin-top: 5px;">
-                        <li>
-                            <h5 class="form-group focused">
-                                <input type="radio" name="breastCompostion" value="a"
-                                    [(ngModel)]="service.Patient.clinicalInfo.breastCompostion"
-                                    style="margin-right: 6px;">
-                                <span class="checkmark">a. The Breasts are almost entirely fatty</span>
-                            </h5>
-                        </li><br>
-
-                        <li>
-
-                            <h5 class="form-group focused">
-                                <input type="radio" name="breastCompostion" value="b"
-                                    [(ngModel)]="service.Patient.clinicalInfo.breastCompostion"
-                                    style="margin-right: 6px;">
-                                <span class="checkmark">b. There are scattered areas of fibroglandular
-                                    density</span>
-                            </h5>
-                        </li><br>
-                        <li>
-                            <h5>
-                                <input type="radio" name="breastCompostion" value="c"
-                                    [(ngModel)]="service.Patient.clinicalInfo.breastCompostion"
-                                    style="margin-right: 6px;">
-                                <span class="checkmark">c. The breasts are heterogeneously dense, which may obscure
-                                    small masses</span>
-                            </h5>
-                        </li><br>
-                        <li>
-                            <h5>
-                                <input type="radio" name="breastCompostion" value="d"
-                                    [(ngModel)]="service.Patient.clinicalInfo.breastCompostion"
-                                    style="margin-right: 6px;">
-                                <span class="checkmark">d. The breasts are extremely dense, which lowers the
-                                    sensitivity of
-                                    mammography</span>
-                            </h5>
-                        </li>
-                    </ul>
-
-                </div>
             </div>
             <hr>
             <div class="row">
@@ -511,6 +567,7 @@
             <app-mass></app-mass>
             <h3 class="form-control-alternative" style="margin-top: 14px; background-color:gainsboro;">
                 Clacifications</h3>
+
 
 
 
@@ -562,208 +619,215 @@
                 </div>
             </div>
 
-        </div>
-        <h3 class="form-control-alternative" style="margin-top: 9px; background-color:gainsboro;">Features</h3>
+                </div>
+                <h3 class="form-control-alternative" style="margin-top: 9px; background-color:gainsboro;">Features</h3>
 
 
 
-        <div class="row">
+                <div class="row">
 
-            <table class="table table-sm" style="table-layout:fixed; width: 100%; margin-right:75px; text-align:left;">
-                <tr>
-                    <th>
-                        <div class="form-group focused">
-                            <div class="form-check">
-                                <h5 class="form-control-label"
-                                    for="Mammo-history style= margin-right: 15px; padding-top: 5px;">
-
-
-                                    <input class="form-check-input" type="checkbox" name="skinRetraction"
-                                    #skinRetraction="ngModel" *ngIf="service.Patient.clinicalInfo.features"
-                                    [(ngModel)]="service.Patient.clinicalInfo.features.skinRetraction">
-                                    <span class="form-check-sign">
-                                        <span class="check"></span>
-                                    </span>
-
-                                    Skin Retraction
-                                </h5>
-                            </div>
-                        </div>
-                    </th>
-                    <th>
-                        <div class="form-group focused">
-                            <div class="form-check">
-                                <h5 class="form-control-label"
-                                    for="Mammo-history style= margin-right: 15px; padding-top: 5px;">
+                    <table class="table table-sm"
+                        style="table-layout:fixed; width: 100%; margin-right:75px; text-align:left;">
+                        <tr>
+                            <th>
+                                <div class="form-group focused">
+                                    <div class="form-check">
+                                        <h5 class="form-control-label"
+                                            for="Mammo-history style= margin-right: 15px; padding-top: 5px;">
 
 
+                                            <input class="form-check-input" type="checkbox" name="skinRetraction"
+                                                #skinRetraction="ngModel" *ngIf="service.Patient.clinicalInfo.features"
+                                                [(ngModel)]="service.Patient.clinicalInfo.features.skinRetraction">
+                                            <span class="form-check-sign">
+                                                <span class="check"></span>
+                                            </span>
 
-                                    <input class="form-check-input" type="checkbox" name="nippleRetraction"
-                                        #nippleRetraction="ngModel"  *ngIf="service.Patient.clinicalInfo.features"
-                                        [(ngModel)]="service.Patient.clinicalInfo.features.nippleRetraction">
-
-                                    <span class="form-check-sign">
-                                        <span class="check"></span>
-                                    </span>
-                                    Nipple retraction
-                                </h5>
-                            </div>
-                        </div>
-                    </th>
-                    <th>
-                        <div class="form-group focused">
-                            <div class="form-check">
-                                <h5 class="form-control-label"
-                                    for="Mammo-history style= margin-right: 15px; padding-top: 5px;">
+                                            Skin Retraction
+                                        </h5>
+                                    </div>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="form-group focused">
+                                    <div class="form-check">
+                                        <h5 class="form-control-label"
+                                            for="Mammo-history style= margin-right: 15px; padding-top: 5px;">
 
 
 
-                                    <input class="form-check-input" type="checkbox" name="skinThickening"
-                                        #skinThickening="ngModel"  *ngIf="service.Patient.clinicalInfo.features"
-                                        [(ngModel)]="service.Patient.clinicalInfo.features.skinThickening">
+                                            <input class="form-check-input" type="checkbox" name="nippleRetraction"
+                                                #nippleRetraction="ngModel"
+                                                *ngIf="service.Patient.clinicalInfo.features"
+                                                [(ngModel)]="service.Patient.clinicalInfo.features.nippleRetraction">
 
-                                    <span class="form-check-sign">
-                                        <span class="check"></span>
-                                    </span>
-                                    Skin thickening
-                                </h5>
-                            </div>
-                        </div>
-                    </th>
-
-                  </tr>
-                 <tr>
-
-                     <th>
-                        <div class="form-group focused">
-                            <div class="form-check">
-                                <h5 class="form-control-label"
-                                    for="Mammo-history style= margin-right: 15px; padding-top: 5px;">
+                                            <span class="form-check-sign">
+                                                <span class="check"></span>
+                                            </span>
+                                            Nipple retraction
+                                        </h5>
+                                    </div>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="form-group focused">
+                                    <div class="form-check">
+                                        <h5 class="form-control-label"
+                                            for="Mammo-history style= margin-right: 15px; padding-top: 5px;">
 
 
 
-                                    <input class="form-check-input" type="checkbox" name="ArchitecturalDistortion"
-                                        #ArchitecturalDistortion="ngModel"  *ngIf="service.Patient.clinicalInfo.features"
-                                        [(ngModel)]="service.Patient.clinicalInfo.features.ArchitecturalDistortion">
+                                            <input class="form-check-input" type="checkbox" name="skinThickening"
+                                                #skinThickening="ngModel" *ngIf="service.Patient.clinicalInfo.features"
+                                                [(ngModel)]="service.Patient.clinicalInfo.features.skinThickening">
 
-                                    <span class="form-check-sign">
-                                        <span class="check"></span>
-                                    </span>
-                                    Architectural Distortion
-                                </h5>
-                            </div>
-                        </div>
-                     </th>
-                     <th>
-                        <div class="form-group focused">
-                            <div class="form-check">
-                                <h5 class="form-control-label"
-                                    for="Mammo-history style= margin-right: 15px; padding-top: 5px;">
+                                            <span class="form-check-sign">
+                                                <span class="check"></span>
+                                            </span>
+                                            Skin thickening
+                                        </h5>
+                                    </div>
+                                </div>
+                            </th>
 
+                        </tr>
+                        <tr>
 
-
-                                    <input class="form-check-input" type="checkbox" name="SkinLesion"
-                                        #SkinLesion="ngModel"  *ngIf="service.Patient.clinicalInfo.features"
-                                        [(ngModel)]="service.Patient.clinicalInfo.features.SkinLesion">
-
-                                    <span class="form-check-sign">
-                                        <span class="check"></span>
-                                    </span>
-                                    Skin Lesion
-                                </h5>
-                            </div>
-                        </div>
-                     </th>
-                     <th>
-                        <div class="form-group focused" >
-                            <div class="form-check">
-                                <h5 class="form-control-label"
-                                    for="Mammo-history style= margin-right: 15px; padding-top: 5px;">
+                            <th>
+                                <div class="form-group focused">
+                                    <div class="form-check">
+                                        <h5 class="form-control-label"
+                                            for="Mammo-history style= margin-right: 15px; padding-top: 5px;">
 
 
 
-                                    <input class="form-check-input" type="checkbox" name="IntramammaryLymphNode"
-                                        #IntramammaryLymphNode="ngModel"  *ngIf="service.Patient.clinicalInfo.features"
-                                        [(ngModel)]="service.Patient.clinicalInfo.features.IntramammaryLymphNode">
+                                            <input class="form-check-input" type="checkbox"
+                                                name="ArchitecturalDistortion" #ArchitecturalDistortion="ngModel"
+                                                *ngIf="service.Patient.clinicalInfo.features"
+                                                [(ngModel)]="service.Patient.clinicalInfo.features.ArchitecturalDistortion">
 
-                                    <span class="form-check-sign">
-                                        <span class="check"></span>
-                                    </span>
-                                    Intramammary LymphNode
-                                </h5>
-                            </div>
-                        </div>
-                     </th>
-
-                 </tr>
-                 <tr>
-                    <th>
-                        <div class="form-group focused">
-                            <div class="form-check">
-                                <h5 class="form-control-label"
-                                    for="Mammo-history style= margin-right: 15px; padding-top: 5px;">
+                                            <span class="form-check-sign">
+                                                <span class="check"></span>
+                                            </span>
+                                            Architectural Distortion
+                                        </h5>
+                                    </div>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="form-group focused">
+                                    <div class="form-check">
+                                        <h5 class="form-control-label"
+                                            for="Mammo-history style= margin-right: 15px; padding-top: 5px;">
 
 
 
-                                    <input class="form-check-input" type="checkbox" name="TrabecularThickening"
-                                        #TrabecularThickening="ngModel"  *ngIf="service.Patient.clinicalInfo.features"
-                                        [(ngModel)]="service.Patient.clinicalInfo.features.TrabecularThickening">
+                                            <input class="form-check-input" type="checkbox" name="SkinLesion"
+                                                #SkinLesion="ngModel" *ngIf="service.Patient.clinicalInfo.features"
+                                                [(ngModel)]="service.Patient.clinicalInfo.features.SkinLesion">
 
-                                    <span class="form-check-sign">
-                                        <span class="check"></span>
-                                    </span>
-                                    TrabecularThickening
-                                </h5>
-                            </div>
-                        </div>
-                     </th>
-                     <th>
-                        <div class="form-group focused">
-                            <div class="form-check">
-                                <h5 class="form-control-label"
-                                    for="Mammo-history style= margin-right: 15px; padding-top: 5px;">
-
-
-
-                                    <input class="form-check-input" type="checkbox" name="SolitaryDilatedDuct"
-                                        #SolitaryDilatedDuct="ngModel"  *ngIf="service.Patient.clinicalInfo.features"
-                                        [(ngModel)]="service.Patient.clinicalInfo.features.SolitaryDilatedDuct">
-
-                                    <span class="form-check-sign">
-                                        <span class="check"></span>
-                                    </span>
-                                    SolitaryDilatedDuct
-                                </h5>
-                            </div>
-                        </div>
-                     </th>
-                     <th>
-                        <div class="form-group focused">
-                            <div class="form-check">
-                                <h5 class="form-control-label"
-                                    for="Mammo-history style= margin-right: 15px; padding-top: 5px;">
-
-                                    <input class="form-check-input" type="checkbox" name="AxillaryAdenopathy"
-                                        #AxillaryAdenopathy="ngModel"  *ngIf="service.Patient.clinicalInfo.features"
-                                        [(ngModel)]="service.Patient.clinicalInfo.features.AxillaryAdenopathy">
-
-                                    <span class="form-check-sign">
-                                        <span class="check"></span>
-                                    </span>
-                                    AxillaryAdenopathy
-                                </h5>
-                            </div>
-                        </div>
-                     </th>
-                 </tr>
+                                            <span class="form-check-sign">
+                                                <span class="check"></span>
+                                            </span>
+                                            Skin Lesion
+                                        </h5>
+                                    </div>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="form-group focused">
+                                    <div class="form-check">
+                                        <h5 class="form-control-label"
+                                            for="Mammo-history style= margin-right: 15px; padding-top: 5px;">
 
 
-          </table>
 
-      </div>
+                                            <input class="form-check-input" type="checkbox" name="IntramammaryLymphNode"
+                                                #IntramammaryLymphNode="ngModel"
+                                                *ngIf="service.Patient.clinicalInfo.features"
+                                                [(ngModel)]="service.Patient.clinicalInfo.features.IntramammaryLymphNode">
+
+                                            <span class="form-check-sign">
+                                                <span class="check"></span>
+                                            </span>
+                                            Intramammary LymphNode
+                                        </h5>
+                                    </div>
+                                </div>
+                            </th>
+
+                        </tr>
+                        <tr>
+                            <th>
+                                <div class="form-group focused">
+                                    <div class="form-check">
+                                        <h5 class="form-control-label"
+                                            for="Mammo-history style= margin-right: 15px; padding-top: 5px;">
 
 
-          </ng-template>
+
+                                            <input class="form-check-input" type="checkbox" name="TrabecularThickening"
+                                                #TrabecularThickening="ngModel"
+                                                *ngIf="service.Patient.clinicalInfo.features"
+                                                [(ngModel)]="service.Patient.clinicalInfo.features.TrabecularThickening">
+
+                                            <span class="form-check-sign">
+                                                <span class="check"></span>
+                                            </span>
+                                            TrabecularThickening
+                                        </h5>
+                                    </div>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="form-group focused">
+                                    <div class="form-check">
+                                        <h5 class="form-control-label"
+                                            for="Mammo-history style= margin-right: 15px; padding-top: 5px;">
+
+
+
+                                            <input class="form-check-input" type="checkbox" name="SolitaryDilatedDuct"
+                                                #SolitaryDilatedDuct="ngModel"
+                                                *ngIf="service.Patient.clinicalInfo.features"
+                                                [(ngModel)]="service.Patient.clinicalInfo.features.SolitaryDilatedDuct">
+
+                                            <span class="form-check-sign">
+                                                <span class="check"></span>
+                                            </span>
+                                            SolitaryDilatedDuct
+                                        </h5>
+                                    </div>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="form-group focused">
+                                    <div class="form-check">
+                                        <h5 class="form-control-label"
+                                            for="Mammo-history style= margin-right: 15px; padding-top: 5px;">
+
+                                            <input class="form-check-input" type="checkbox" name="AxillaryAdenopathy"
+                                                #AxillaryAdenopathy="ngModel"
+                                                *ngIf="service.Patient.clinicalInfo.features"
+                                                [(ngModel)]="service.Patient.clinicalInfo.features.AxillaryAdenopathy">
+
+                                            <span class="form-check-sign">
+                                                <span class="check"></span>
+                                            </span>
+                                            AxillaryAdenopathy
+                                        </h5>
+                                    </div>
+                                </div>
+                            </th>
+                        </tr>
+
+
+                    </table>
+
+                </div>
+
+
+            </ng-template>
         </ngb-tab>
 
         <!---------------------------- Final Assesment ---------------------------------- -->
@@ -775,24 +839,25 @@
 
 
 
-                      <div class=" col col-lg-6">
+                        <div class=" col col-lg-6">
 
-                        <div class="form-group focused">
-                            <div class='col-sm-12 pb-3'>
+                            <div class="form-group focused">
+                                <div class='col-sm-12 pb-3'>
 
-                            </div>
+                                </div>
 
-                              <h5 class="form-control-label" for="Mammo-history"
-                                  style="margin-right: 15px; padding-top: 15px;">
-                                  BIRADS Categories
-                              </h5>
+                                <h5 class="form-control-label" for="Mammo-history"
+                                    style="margin-right: 15px; padding-top: 15px;">
+                                    BIRADS Categories
+                                </h5>
 
                                 <div class="col col-lg-6">
 
                                     <select class="custom-select floa" name="biRadsId" #biRadsId="ngModel"
                                         [(ngModel)]="service.Patient.finalAssessment.biRadsId" style="width: 150px;">
                                         <option value="0"> SELECT</option>
-                                        <option *ngFor="let item of BiRadslist" value="{{item.id}}">{{item.name}}</option>
+                                        <option *ngFor="let item of BiRadslist" value="{{item.id}}">{{item.name}}
+                                        </option>
                                     </select>
                                 </div>
                             </div>
@@ -815,21 +880,19 @@
                                 <option *ngFor="let item of RecommendationList" value="{{item.id}}">{{item.name}}
                                 </option>
                             </select>
-                </div>
-              </div>
-              <div class='col-sm-12 pb-3'>
-
-              </div>
-
-              <div class="col co-lg-6">
-                <div class="input-group">
-                        <textarea  class="form-control"
-                            placeholder=" Other Recommendations ..." rows="4" name="recommendationText"
-                            #recommendationText="ngModel"
-                            [(ngModel)]="service.Patient.finalAssessment.recommendationText"
-                            ></textarea>
+                        </div>
                     </div>
-                </div>
+                    <div class='col-sm-12 pb-3'>
+
+                    </div>
+
+                    <div class="col co-lg-6">
+                        <div class="input-group">
+                            <textarea class="form-control" placeholder=" Other Recommendations ..." rows="4"
+                                name="recommendationText" #recommendationText="ngModel"
+                                [(ngModel)]="service.Patient.finalAssessment.recommendationText"></textarea>
+                        </div>
+                    </div>
 
                 <div class='col-sm-12 pb-3'>
 
@@ -860,12 +923,12 @@
                     <div class="clearfix">
 
 
-                        <button href="#!" type="submit" (click)="OnSubmit(form,'Patient')"
-                            class="btn btn-link float-right">Save</button>
-                        <!-- <button href="/dash/report" type="submit" class="btn btn-sm btn-primary">Show Report</button> -->
-                        <button type="submit" class="btn btn-link float-right"
-                            (click)="onClick('/dash/report',service.Patient.id)">Show Report</button>
-                    </div>
+                            <button href="#!" type="submit" (click)="OnSubmit(form,'Patient')"
+                                class="btn btn-link float-right">Save</button>
+                            <!-- <button href="/dash/report" type="submit" class="btn btn-sm btn-primary">Show Report</button> -->
+                            <button type="submit" class="btn btn-link float-right"
+                                (click)="onClick('/dash/report',service.Patient.id)">Show Report</button>
+                        </div>
                     </div>
 
                 </div>
