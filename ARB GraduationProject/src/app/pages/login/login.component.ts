@@ -5,12 +5,12 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 // import { first } from 'rxjs/operators';
 
 import { Router } from '@angular/router';
-import {FormControl} from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { ArbProjectService } from 'src/app/shared/arb-project.service';
 import { NgForm } from '@angular/forms';
-import {HttpClient} from "@angular/common/http";
-import { Doctor, Login} from 'src/app/shared/arb-project.model';
-import { ModalDismissReasons, NgbModal  } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClient } from "@angular/common/http";
+import { Doctor, Login } from 'src/app/shared/arb-project.model';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-login',
@@ -21,10 +21,10 @@ import { ModalDismissReasons, NgbModal  } from '@ng-bootstrap/ng-bootstrap';
 export class LoginComponent implements OnInit {
   closeResult: string;
   public redirectUrl: string = 'dash/table-list';
-  constructor(public service:ArbProjectService,private http:HttpClient,private router: Router, private modalService: NgbModal) {}
+  constructor(public service: ArbProjectService, private http: HttpClient, private router: Router, private modalService: NgbModal) { }
   open(content) {
     console.log(name);
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = ` ${result}`;
     }, (reason) => {
       this.closeResult = ` ${this.getDismissReason(reason)}`;
@@ -40,34 +40,39 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  Doctor:Doctor = new Doctor();
-  Login:Login = new Login();
+  Doctor: Doctor = new Doctor();
+  Login: Login = new Login();
+  flag: boolean = true;
 
   ngOnInit() {
   }
-  OnSubmit(form:NgForm){
+  OnSubmit(form: NgForm) {
     this.service.PostLogin().subscribe(
-      res=>{
+      res => {
         console.log(res);
-        switch(res){
+        switch (res) {
           case "wrong password":
-            return(open("#content"));
+            this.flag = false
+            return (open("#content"));
           case "Not Found":
-            return("Not Found")
+            this.flag = false
+            return ("Not Found")
           default:
             {
-            console.log(res['id']);
-            this.service.Doctor = res as Doctor
-            this.service.DoctorId = res['id'];
-            this.router.navigate([this.redirectUrl]);
-            this.redirectUrl = null;
-            // get request to get all ExamData of doctor of Id
+              console.log(res['id']);
+              this.service.Doctor = res as Doctor
+              this.service.DoctorId = res['id'];
+              this.router.navigate([this.redirectUrl]);
+              this.redirectUrl = null;
+              // get request to get all ExamData of doctor of Id
             }
-        }      
+
+        }
+        this.flag = true;
       },
-      err=>{
+      err => {
         console.log("Not found send error msg");
       })
-    };
+  };
 
-  }
+}
