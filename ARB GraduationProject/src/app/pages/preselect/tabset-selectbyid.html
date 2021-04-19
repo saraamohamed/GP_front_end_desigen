@@ -517,22 +517,8 @@
                     </div>
                 </div>
                 <hr>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group focused">
-                            <label class="form-control-label" for="Mammo-history">
-                                <strong style="margin-right: 15px;"> Asymmetries </strong>
-                                <select class="custom-select" name="asymmetriesId" #asymmetriesId="ngModel"
-                                    [(ngModel)]="service.Patient.clinicalInfo.asymmetriesId" style="width:150px;">
-                                    <option value="0"> SELECT</option>
-                                    <option *ngFor="let item of Asymmetries" value="{{item.id}}">{{item.name}}</option>
-                                </select>
-                            </label>
-                        </div>
-                    </div>
               
-                </div>
-                <hr>
+            
                 <div class="row">
                     <div class="col">
                         <div class="form-group focused">
@@ -544,11 +530,17 @@
                                     <option *ngFor="let item of Asymmetries" value="{{item.id}}">{{item.name}}</option>
                                 </select>
                             </label>
-                            <label>
-                                <tr>Numer of Masses</tr> {{service.index}}
-                            </label>
+                           
+                        </div>
+                        <div class="col">
+                            <div class="form-group focused ">
+                                <label class="form-control-label" for="Mammo-history"
+                                    style="margin-right: 15px; margin-top: 15px; "><strong> Numer of Masses {{service.index}}</strong></label>
+                            </div>
                         </div>
                     </div>
+                   
+        
                 </div>
                 <h3 class="form-control-alternative" style="margin-top: 9px; background-color:gainsboro;">Masses
                 </h3>
@@ -861,28 +853,9 @@
 
                     </div>
 
-                    <div class=" col">
-                        <div class="form-group focused ">
-
-                            <h5 class="form-control-label" for="Mammo-history"
-                                style="margin-right: 15px; padding-top: 15px;">
-                                Conclusion</h5>
-                            <div class="col co-lg-6">
-                                <div class="input-group">
-
-
-                                    <textarea class="form-control" placeholder=" Conclusion  ..." rows="4" name="conc"
-                                        #conc="ngModel" [(ngModel)]="service.Patient.finalAssessment.conc"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='col-sm-12 pb-3'>
-
-                    </div>
-                    <div class=" col col-lg-6">
-                        <div class="form-group focused">
-                            <h5 class="form-control-label" for="Mammo-history"
+              <div class=" col col-lg-6">
+                <div class="form-group focused">
+                  <h5 class="form-control-label" for="Mammo-history"
                                 style="margin-right: 15px; padding-top: 15px;">
                                 Recommendation</h5>
                             <select class="custom-select floa" name="recommendationId" #recommendationId="ngModel"
@@ -907,8 +880,33 @@
                         </div>
                     </div>
 
-                    <div class='col-sm-12 pb-3'>
-                        <div class="clearfix">
+                <div class='col-sm-12 pb-3'>
+
+                </div>
+
+            <div class=" col">
+              <div class="form-group focused ">
+
+                <h5 class="form-control-label" for="Mammo-history"
+                    style="margin-right: 15px; padding-top: 15px;">
+                    Conclusion</h5>
+                    <div class="col co-lg-6">
+                      <div class="input-group">
+
+
+                        <textarea class="form-control"
+                        placeholder=" Conclusion  ..." rows="4" name="conc" #conc="ngModel"
+                            [(ngModel)]="service.Patient.finalAssessment.conc"></textarea>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class='col-sm-12 pb-3'>
+
+            </div>
+
+                <div class='col-sm-12 pb-3'>
+                    <div class="clearfix">
 
 
                             <button href="#!" type="submit" (click)="OnSubmit(form,'Patient')"
@@ -918,6 +916,7 @@
                                 (click)="onClick('/dash/report',service.Patient.id)">Show Report</button>
                         </div>
                     </div>
+
                 </div>
             </ng-template>
         </ngb-tab>
