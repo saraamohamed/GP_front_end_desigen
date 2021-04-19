@@ -4,11 +4,14 @@ import {PatientComponent} from 'src/app/pages/patient/patient.component'
 import { ArbProjectService } from 'src/app/shared/arb-project.service';
 import { NgForm } from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
+import { Observable, throwError ,of } from 'rxjs';
+import { catchError, retry ,map } from 'rxjs/operators';
 import { ExamData,ClinicalInfo,GeneralInfo,FinalAssessment,Patient} from 'src/app/shared/arb-project.model';
 import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal  } from '@ng-bootstrap/ng-bootstrap';
 import jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
+import { content } from 'html2canvas/dist/types/css/property-descriptors/content';
 
 
 @Component({
@@ -21,14 +24,49 @@ export class TableListComponent implements OnInit {
   redirectUrl: string = '/dash/preselect';
   constructor(private service:ArbProjectService  ,private http:HttpClient, private router:Router, private modalService: NgbModal) { }
   
-  open(content,name:string) {
+  fileExists(url: string): Observable<string> {
+    const folderPath = url;
+    return this.http.get(url, { observe: 'response', responseType: 'blob' }).pipe(map(
+      res => {
+        return folderPath;
+      }),
+    catchError(error => {
+      return of(error);
+    })
+    )}
+
+  open(content1,content2,name:string) {
     console.log(name);
-    this.pdfScr = `assets/${name}.pdf`;
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = ` ${result}`;
-    }, (reason) => {
-      this.closeResult = ` ${this.getDismissReason(reason)}`;
+    this.pdfScr = '';
+    this.Test = `assets/${name}.pdf`;
+    this.fileExists(this.Test).subscribe(res=> {
+      let result = res as string;
+      if (result == this.Test){
+        console.log("leh yarab")  
+        this.pdfScr = this.Test
+        this.modalService.open(content1, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+          this.closeResult = ` ${result}`;
+        }, (reason) => {
+          this.closeResult = ` ${this.getDismissReason(reason)}`;
+        });
+        
+      }
+      else{
+        console.log("kher")
+        this.modalService.open(content2, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+          this.closeResult = ` ${result}`;
+        }, (reason) => {
+          this.closeResult = ` ${this.getDismissReason(reason)}`;
+        });
+
+      }
     });
+    
+    // this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    //   this.closeResult = ` ${result}`;
+    // }, (reason) => {
+    //   this.closeResult = ` ${this.getDismissReason(reason)}`;
+    // });
   }
 
   private getDismissReason(reason: any): string {
@@ -49,6 +87,7 @@ export class TableListComponent implements OnInit {
   ExamData:ExamData = new ExamData();
   list:ExamData[]
   pdfScr:string = '';
+  Test:string = '';
   ngOnInit() {
     let doctorId = this.service.DoctorId;
     this.service.getExamDataOfDoctor(doctorId,'examData/ExamDataOfDoctor').subscribe(res=>{this.service.list = res as ExamData[]})
