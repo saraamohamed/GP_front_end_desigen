@@ -118,6 +118,7 @@ export class NgbdTabsetSelectbyid  implements OnInit{
     this.service.Post(data).subscribe(
       res=>{
         this.service.PatientId = res['id'];
+        this.service.Patient = res as Patient;
         console.log(res);
         console.log("ANAA 3MLT INSERT")
         // this.resetForm(form,data);
@@ -131,6 +132,7 @@ export class NgbdTabsetSelectbyid  implements OnInit{
       res=>{
         this.resetForm(form,data);
         console.log("Put Req",res);
+        this.service.Patient = res as Patient; 
         // this.refreshList();
       },
       err=>{
