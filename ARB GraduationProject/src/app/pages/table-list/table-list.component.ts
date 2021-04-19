@@ -42,7 +42,7 @@ export class TableListComponent implements OnInit {
     this.fileExists(this.Test).subscribe(res=> {
       let result = res as string;
       if (result == this.Test){
-        console.log("leh yarab")
+        console.log("leh yarab")  
         this.pdfScr = this.Test
         this.modalService.open(content1, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
           this.closeResult = ` ${result}`;
