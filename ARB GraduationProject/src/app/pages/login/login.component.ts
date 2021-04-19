@@ -10,7 +10,7 @@ import { ArbProjectService } from 'src/app/shared/arb-project.service';
 import { NgForm } from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
 import { Doctor, Login} from 'src/app/shared/arb-project.model';
-
+import { ModalDismissReasons, NgbModal  } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-login',
@@ -19,8 +19,26 @@ import { Doctor, Login} from 'src/app/shared/arb-project.model';
 })
 
 export class LoginComponent implements OnInit {
+  closeResult: string;
   public redirectUrl: string = 'dash/table-list';
-  constructor(public service:ArbProjectService,private http:HttpClient,private router: Router) {}
+  constructor(public service:ArbProjectService,private http:HttpClient,private router: Router, private modalService: NgbModal) {}
+  open(content) {
+    console.log(name);
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = ` ${result}`;
+    }, (reason) => {
+      this.closeResult = ` ${this.getDismissReason(reason)}`;
+    });
+  }
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return '';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return '';
+    } else {
+      return ` ${reason}`;
+    }
+  }
 
   Doctor:Doctor = new Doctor();
   Login:Login = new Login();
@@ -33,7 +51,7 @@ export class LoginComponent implements OnInit {
         console.log(res);
         switch(res){
           case "wrong password":
-            return("WRONG PASS NOTIFICATION");
+            return(open("#content"));
           case "Not Found":
             return("Not Found")
           default:
