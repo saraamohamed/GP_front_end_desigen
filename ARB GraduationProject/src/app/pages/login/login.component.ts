@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
 
   Doctor:Doctor = new Doctor();
   Login:Login = new Login();
-
+  flag:boolean = true;
   ngOnInit() {
   }
   OnSubmit(form:NgForm){
@@ -53,8 +53,10 @@ export class LoginComponent implements OnInit {
         console.log(res);
         switch(res){
           case "wrong password":
-            return(open("#content"));
+            this.flag = true;
+            return("wrong password");
           case "Not Found":
+            this.flag = true;
             return("Not Found")
           default:
             {
