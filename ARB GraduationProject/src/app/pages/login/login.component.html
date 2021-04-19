@@ -56,11 +56,13 @@
 
               </div>
             </div>
+            <h1 *ngIf="flag === false " class="text-danger form-control-label" style="font-family: 'Times New Roman', Times, serif;"><strong> Wrong Email or Password! </strong></h1>
             <div class="custom-control custom-control-alternative custom-checkbox">
               <input class="custom-control-input" id=" customCheckLogin" type="checkbox"
               name="RememberMe" #RememberMe="ngModel"  value = "" [(ngModel)] = "service.Login.RememberMe" required>
-
               
+
+
               <!-- <label class="custom-control-label" for=" customCheckLogin">
                 <span class="text-muted" >Remember me</span>
               </label> -->
@@ -70,6 +72,7 @@
               routerLinkActive="active" [routerLink]="['/dash']" type="submit">Sign in</button> -->
               <!-- <button href="/#/dash/table-list" type="submit" class="btn btn-sm btn-primary"  >Sign in</button> -->
               <div *ngIf="flag === false " class="p-3 mb-2 bg-danger text-white" class="text-danger">  Wrong Email or Password! </div>
+              <!-- <div *ngIf="flag === false " class="text-danger form-control-label"> Wrong Email or Password! </div> -->
               <button href="/#/dash/table-list" type="submit" class="btn btn-sm btn-primary"  >Sign in</button>
               
 
@@ -101,7 +104,7 @@
     </p>
 
 
-    
+
 
   </div>
 

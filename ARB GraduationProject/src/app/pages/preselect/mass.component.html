@@ -2,7 +2,7 @@
        <!-- <mat-form-field >
 
         <tr><mat-label>Numer of Masses</mat-label></tr>
-                {{service.index}} 
+                {{service.index}}
       </mat-form-field> -->
 
       <div class="clearfix">
@@ -172,7 +172,8 @@
                               <input type="text" id="TEXT_1450682011285" name="depth" data-field-type="TEXT"
                                   data-field-completion-action="NONE" #depth="ngModel"
                                   [(ngModel)]="service.Patient.clinicalInfo.massSpecifications[i].depth"
-                                  class="form-control" />(Cm)
+                                  class="form-control" />
+                                  <p  style="margin-right:15;"><strong>(cm)</strong></p>
 
 
                           </div>
@@ -186,14 +187,14 @@
                                   data-field-type="TEXT" data-field-completion-action="NONE"
                                   #distanceFromTheNipple="ngModel"
                                   [(ngModel)]="service.Patient.clinicalInfo.massSpecifications[i].distanceFromTheNipple"
-                                  class="form-control" />(Cm)
+                                  class="form-control" />(cm)
 
 
                           </div>
                       </div>
 
 
-              
+
               </div>
 <br>
           </mat-tab>

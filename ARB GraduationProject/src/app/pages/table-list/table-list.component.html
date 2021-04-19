@@ -1,6 +1,24 @@
-<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8"></div>
+<div class="header  pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+  style="min-height: 300px; background-image: url(assets/img/theme/patient-cover.jpg); background-size: cover; background-position: center top;">
+  <!-- Mask -->
+  <span class="mask bg-gradient-danger opacity-8"></span>
+  <!-- Header container -->
+  <div class="container-fluid mt--7">
+    <div class="row">
+      <div class="col-lg-7 col-md-10">
+        <h1 class="display-2 text-white">Hello DR {{service.Doctor.name}}</h1>
+        <p class="text-white mt-0 mb-5">This is the WORKLIST page. You can see the patient's records you've made with your work
+          and manage their reports and Worksheets</p>
+        <!-- <a href="#!" class="btn btn-secondary">Edit profile</a> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <!--Page content -->
 <div class="container-fluid mt--7">
+  
   <!-- Table -->
   <div class="row">
     <div class="col">
@@ -16,17 +34,15 @@
                   <span class="input-group-text"><i class="fas fa-search"></i></span>
                 </div>
                 <input class="form-control" placeholder="Search" type="text" (focus)="focus = true"
-                (blur)="focus = false">
+                  (blur)="focus = false">
               </div>
 
             </div>
             <div class="bg-info clearfix col-md-4 offset-md-5">
-              <button class="btn btn-secondary float-right" type="button" (click) ="onClick('/dash/patient')"
-
-              >
+              <button class="btn btn-secondary float-right" type="button" (click)="onClick('/dash/patient')">
                 Add New Patiant
               </button>
-              </div>
+            </div>
           </div>
 
 
@@ -57,17 +73,17 @@
             </thead>
 
             <tbody>
-              <tr *ngFor = "let pd of service.list" >
+              <tr *ngFor="let pd of service.list">
                 <!-- <td >
                     1
                 </td> -->
-                  <th scope="row">
-                      <div class="media-body">
-                        <a class="mb-0 text-sm" href="#/dash/preselect" (click) = preselect(pd.id)>{{pd.name}}</a>
-                      </div>
-                  </th>
-                <td >
-                    {{pd.patientID}}
+                <th scope="row">
+                  <div class="media-body">
+                    <a class="mb-0 text-sm" href="#/dash/preselect" (click)=preselect(pd.id)>{{pd.name}}</a>
+                  </div>
+                </th>
+                <td>
+                  {{pd.patientID}}
                 </td>
                 <!-- <td >
                   38
@@ -88,37 +104,48 @@
                   </div>
                 </td> -->
 
-                <td><!--Modality -->
+                <td>
+                  <!--Modality -->
                   {{pd.modailty}}
                 </td>
-                <td><!--Study Datetime -->
+                <td>
+                  <!--Study Datetime -->
                   {{pd.studyDate | date:'dd//MM/yyyy'}}
                 </td>
-                <td><!--Referring Doctor -->
-                 {{pd.referringDoctor}}
+                <td>
+                  <!--Referring Doctor -->
+                  {{pd.referringDoctor}}
                 </td>
-                <td hidden><!--Modality -->
+                <td hidden>
+                  <!--Modality -->
                   {{pd.mobileNumber}}
                 </td>
-                <td hidden><!--Study Datetime -->
+                <td hidden>
+                  <!--Study Datetime -->
                   {{pd.emailAddress}}
                 </td>
-                <td hidden><!--Referring Doctor -->
-                 {{pd.address}}
+                <td hidden>
+                  <!--Referring Doctor -->
+                  {{pd.address}}
                 </td>
-                <td hidden><!--Referring Doctor -->
+                <td hidden>
+                  <!--Referring Doctor -->
                   {{pd.lastOperation}}
-                 </td>
+                </td>
 
                 <td class="text-right">
                   <div class="col col-lg-2">
-                    <button class="btn btn-sm"  (click) = patientForm(pd.id) data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-edit"></i></button>
-                    <button class="btn btn-sm" href="/#/" (click) = "open(content,pd.id)" data-toggle="tooltip" data-placement="top" title="Report Review"><i class="far fa-file-pdf"></i></button>
-                    <button class="btn btn-sm" href="javascript:void(0)" (click)= DeleteOn(pd.id) data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                    <button class="btn btn-sm" (click)=patientForm(pd.id) data-toggle="tooltip" data-placement="bottom"
+                      title="Edit"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-sm" href="/#/" (click)=open(content,emptycontent,pd.patientID)
+                      data-toggle="tooltip" data-placement="top" title="Report Review"><i
+                        class="far fa-file-pdf"></i></button>
+                    <button class="btn btn-sm" href="javascript:void(0)" (click)=DeleteOn(pd.id) data-toggle="tooltip"
+                      data-placement="top" title="Delete"><i class="fas fa-trash-alt"></i></button>
 
                   </div>
 
-          
+
                   <!--
                   <div ngbDropdown placement="bottom-right">
                     <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
@@ -177,14 +204,31 @@
     <h4 class="modal-title" id="modal-basic-title">PDF</h4>
 
   </div>
-  <div class="modal-body" >
+  <div class="modal-body">
 
 
-    <pdf-viewer  [src] = "pdfScr" [render-text] = "true" [show-all]= "true" style="display: block;"></pdf-viewer>
+    <pdf-viewer [src]="pdfScr" [render-text]="true" [show-all]="true" style="display: block;"></pdf-viewer>
 
   </div>
 
 
 </ng-template>
 
-<!-- <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button> -->
+<ng-template #emptycontent let-modal>
+
+  <div class="modal-header">
+    <!-- <h4 class="modal-title" id="modal-basic-title">PDF</h4> -->
+
+  </div>
+  <div class="modal-body">
+    <div class="text-center">Nothing to View</div>
+
+
+
+  </div>
+
+
+</ng-template>
+
+
+<!-- <button class="btn btn-lg btn-outline-primary" (click)="open(emptycontent,)">Launch demo modal</button> -->
