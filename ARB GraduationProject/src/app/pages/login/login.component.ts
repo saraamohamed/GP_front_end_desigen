@@ -11,6 +11,7 @@ import { NgForm } from '@angular/forms';
 import { HttpClient } from "@angular/common/http";
 import { Doctor, Login } from 'src/app/shared/arb-project.model';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { content } from 'html2canvas/dist/types/css/property-descriptors/content';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,14 @@ export class LoginComponent implements OnInit {
   public redirectUrl: string = 'dash/table-list';
   constructor(public service: ArbProjectService, private http: HttpClient, private router: Router, private modalService: NgbModal) { }
   onClick(route,id:number){
-    this.router.navigate([route])
+    if (this.flag === false){
+      open('content')
+
+    }
+    else{
+      this.router.navigate([route])
+    }
+    
   }
   open(content) {
     console.log(name);
