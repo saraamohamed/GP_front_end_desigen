@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal  } from '@ng-bootstrap/ng-bootstrap';
 import jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
+import { content } from 'html2canvas/dist/types/css/property-descriptors/content';
 
 
 @Component({
@@ -34,7 +35,7 @@ export class TableListComponent implements OnInit {
     })
     )}
 
-  open(content,name:string) {
+  open(content1,content2,name:string) {
     console.log(name);
     this.pdfScr = '';
     this.Test = `assets/${name}.pdf`;
@@ -43,17 +44,29 @@ export class TableListComponent implements OnInit {
       if (result == this.Test){
         console.log("leh yarab")
         this.pdfScr = this.Test
+        this.modalService.open(content1, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+          this.closeResult = ` ${result}`;
+        }, (reason) => {
+          this.closeResult = ` ${this.getDismissReason(reason)}`;
+        });
+        
       }
       else{
         console.log("kher")
+        this.modalService.open(content2, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+          this.closeResult = ` ${result}`;
+        }, (reason) => {
+          this.closeResult = ` ${this.getDismissReason(reason)}`;
+        });
+
       }
     });
     
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = ` ${result}`;
-    }, (reason) => {
-      this.closeResult = ` ${this.getDismissReason(reason)}`;
-    });
+    // this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    //   this.closeResult = ` ${result}`;
+    // }, (reason) => {
+    //   this.closeResult = ` ${this.getDismissReason(reason)}`;
+    // });
   }
 
   private getDismissReason(reason: any): string {

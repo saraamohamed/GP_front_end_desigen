@@ -23,16 +23,16 @@ export class LoginComponent implements OnInit {
   closeResult: string;
   public redirectUrl: string = 'dash/table-list';
   constructor(public service: ArbProjectService, private http: HttpClient, private router: Router, private modalService: NgbModal) { }
-  onClick(route,id:number){
-    if (this.flag === false){
-      open('content')
+  // onClick(route,id:number){
+  //   if (this.flag === false){
+  //     open('content')
 
-    }
-    else{
-      this.router.navigate([route])
-    }
+  //   }
+  //   else{
+  //     this.router.navigate([route])
+  //   }
 
-  }
+  // }
   open(content) {
     console.log(name);
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
