@@ -95,7 +95,8 @@
                   </span>
                   Previous Mammogram
               </h3>
-              <div *ngIf="testBoolean1 == true ">
+              <!-- <div *ngIf="testBoolean1 == true "> -->
+              <div >
                   <div class="form-row" style="margin-bottom: 2px;">
 
                       <div class="form-group col-md-5">
@@ -164,7 +165,8 @@
                   Personal history of breast cancer
               </h3>
 
-              <div class="row justify-content-center" *ngIf="testBoolean2 == true ">
+              <div class="row justify-content-center" >
+              <!-- <div class="row justify-content-center" *ngIf="testBoolean2 == true "> -->
 
 
 
@@ -340,7 +342,16 @@
 
 
 
-              <div class="form-group" *ngIf="hormoneBoolean == true ">
+              <!-- <div class="form-group" *ngIf="hormoneBoolean == true ">
+                  <label style="margin-right: 15px; padding-top: 9px;"><strong> For how long </strong>
+                      <input type="text" id="TEXT_1450682011285" name="howlongTakingHormones" data-field-type="TEXT"
+                          data-field-completion-action="NONE" #HowlongTakingHormones="ngModel"
+                          [(ngModel)]="service.Patient.generalInfo.howlongTakingHormones"
+                          style="width: 60px; height: 25px; margin-left: 10px;" class="form-control " />(Year)
+                  </label>
+
+              </div> -->
+              <div class="form-group" >
                   <label style="margin-right: 15px; padding-top: 9px;"><strong> For how long </strong>
                       <input type="text" id="TEXT_1450682011285" name="howlongTakingHormones" data-field-type="TEXT"
                           data-field-completion-action="NONE" #HowlongTakingHormones="ngModel"
@@ -363,7 +374,8 @@
                   </span>
                   Pregnancy History
               </h3>
-              <div *ngIf="testBoolean3 == true ">
+              <div >
+              <!-- <div *ngIf="testBoolean3 == true "> -->
                   <table class="table" style="margin-left: 25px; text-align: center;">
                       <tr>
 
