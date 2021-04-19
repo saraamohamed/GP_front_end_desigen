@@ -53,10 +53,10 @@ export class LoginComponent implements OnInit {
         console.log(res);
         switch(res){
           case "wrong password":
-            this.flag = true;
+            this.flag = false;
             return("wrong password");
           case "Not Found":
-            this.flag = true;
+            this.flag = false;
             return("Not Found")
           default:
             {
