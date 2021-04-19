@@ -34,14 +34,14 @@ export class NgbdTabsetSelectbyid  implements OnInit{
     this.compalinBoolean = !this.compalinBoolean;
 
   }
-  onHormoneClick(){ 
+  onHormoneClick(){
     this.hormoneBoolean = !this.hormoneBoolean;
 
   }
 
- 
 
-  
+
+
   constructor(public service:ArbProjectService,private http:HttpClient,  private router:Router) {}
   onClick(route,id:number){
     this.router.navigate([route])
@@ -63,7 +63,7 @@ export class NgbdTabsetSelectbyid  implements OnInit{
   ClacificationDistribution=[]
 
   ngOnInit(): void {
-  
+
     console.log(this.service.Patient.clinicalInfo);
     this.service.getCombo('GetBiRads')
     .subscribe(res => this.BiRadslist = res as []);
@@ -89,7 +89,7 @@ export class NgbdTabsetSelectbyid  implements OnInit{
 
   OnSubmit(form:NgForm,data:string){
 
-  
+
     this.service.Patient.doctorId = this.service.DoctorId;
     this.service.Patient.examDataId = this.service.examDataId;
     this.service.Patient.clinicalInfo.featureId = this.service.PatientId;
@@ -97,16 +97,16 @@ export class NgbdTabsetSelectbyid  implements OnInit{
     // this.InsertFeatures(form,data);
     console.log(this.service.Patient.generalInfo,this.service.Patient.clinicalInfo,this.service.Patient.finalAssessment);
     if ((this.service.Patient.generalInfo.id == 0) && (this.service.Patient.clinicalInfo.id == 0) && (this.service.Patient.finalAssessment.id == 0)){
-    
+
         this.InsertFeatures(form,data);
-        
-     
+
+
     }
     else {
         this.UpdateFeatures(form,data);
         console.log("B3DEL FEEH NOW");
     }
- 
+
   }
 
   passingPatienId(id:number)

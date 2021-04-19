@@ -28,6 +28,7 @@ import {MatSelectModule} from '@angular/material/select';
 // import { GalleryComponent } from 'app/gallery/gallery.component';
 import {NgxGalleryModule} from '@kolkov/ngx-gallery';
 import{MassComponent}from'../../pages/preselect/mass.component'
+
 // >>>>>>> cde56dd2872e3efe439ddf2794a0f44d04832a84
 // import { FooterComponent } from '../../components/footer/footer.component';
 // import { NavbarComponent } from '../../components/navbar/navbar.component';
