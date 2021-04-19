@@ -69,7 +69,9 @@
               <!-- <button  class="btn btn-primary my-4"
               routerLinkActive="active" [routerLink]="['/dash']" type="submit">Sign in</button> -->
               <!-- <button href="/#/dash/table-list" type="submit" class="btn btn-sm btn-primary"  >Sign in</button> -->
-              <button href="/#/dash/table-list" type="submit" class="btn btn-sm btn-primary" *ngIf="flag == false? open(#content):onClick('/dash')  " >Sign in</button>
+              <button href="/#/dash/table-list" type="submit" class="btn btn-sm btn-primary"  >Sign in</button>
+              <div *ngIf="flag === false "> Wrong Password or Email</div>
+
              <!--- <button  type="submit" class="btn btn-sm btn-primary" >Sign in</button>-->
 
             </div>
