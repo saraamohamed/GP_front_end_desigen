@@ -51,7 +51,5 @@ export class LoginComponent implements OnInit {
         console.log("Not found send error msg");
       })
     };
-    // SuccessLogin(Id:number){
-    //   this.   
-    // }
+
   }

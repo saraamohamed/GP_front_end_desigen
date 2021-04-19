@@ -38,13 +38,11 @@ ngOnInit():void{
     this.service.Patient.clinicalInfo.massSpecifications[this.service.index] = new massSpecifications();
     this.service.tabs.push('Mass' + (this.service.index+1));
     this.service.index+=1;
-  
   }
 
   removeTab() {
-    this.service.index-=1;
     this.service.tabs.splice((this.service.index-1), 1);
-
+    this.service.index-=1;
   }
 }
 
