@@ -488,6 +488,9 @@
                               <option *ngFor="let item of Asymmetries" value="{{item.id}}">{{item.name}}</option>
                           </select>
                       </label>
+                      <label>
+                        <tr>Numer of Masses</tr> {{service.index}} 
+                      </label>
                   </div>
               </div>
           </div>
@@ -495,7 +498,8 @@
           </h3>
 
           <div class="container">
-
+           
+            
             <app-mass></app-mass>
             <h3 class="form-control-alternative" style="margin-top: 14px; background-color:gainsboro;">
                 Clacifications</h3>
