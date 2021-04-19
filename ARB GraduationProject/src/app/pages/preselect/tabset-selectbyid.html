@@ -516,6 +516,8 @@
                     </div>
                 </div>
                 <hr>
+
+
                 <div class="row">
                     <div class="col">
                         <div class="form-group focused">
@@ -527,36 +529,21 @@
                                     <option *ngFor="let item of Asymmetries" value="{{item.id}}">{{item.name}}</option>
                                 </select>
                             </label>
+
+                        </div>
+                        <div class="col">
+                            <div class="form-group focused ">
+                                <label class="form-control-label" for="Mammo-history"
+                                    style="margin-right: 15px; margin-top: 15px; "><strong> Numer of Masses {{service.index}}</strong></label>
+                            </div>
                         </div>
                     </div>
+
+
                 </div>
 
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col">
-                  <div class="form-group focused">
-                      <label class="form-control-label" for="Mammo-history">
-                          <strong style="margin-right: 15px;"> Asymmetries </strong>
-                          <select class="custom-select" name="asymmetriesId" #asymmetriesId="ngModel"
-                              [(ngModel)]="service.Patient.clinicalInfo.asymmetriesId" style="width:150px;">
-                              <option value="0"> SELECT</option>
-                              <option *ngFor="let item of Asymmetries" value="{{item.id}}">{{item.name}}</option>
-                          </select>
-                      </label>
-                     <!--- <label>
-                        <tr>Numer of Masses</tr> {{service.index}}
-                      </label>-->
-                  </div>
-              </div>
-              <div class="col">
-                <div class="form-group focused ">
-                    <label class="form-control-label" for="Mammo-history"
-                        style="margin-right: 15px; margin-top: 15px; "><strong> Numer of Masses {{service.index}}</strong></label>
-                </div>
-            </div>
 
-          </div>
+         
 
           <h3 class="form-control-alternative" style="margin-top: 9px; background-color:gainsboro;">Masses
           </h3>

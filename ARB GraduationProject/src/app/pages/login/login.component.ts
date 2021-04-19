@@ -8,9 +8,10 @@ import { Router } from '@angular/router';
 import {FormControl} from '@angular/forms';
 import { ArbProjectService } from 'src/app/shared/arb-project.service';
 import { NgForm } from '@angular/forms';
-import {HttpClient} from "@angular/common/http";
-import { Doctor, Login} from 'src/app/shared/arb-project.model';
-import { ModalDismissReasons, NgbModal  } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClient } from "@angular/common/http";
+import { Doctor, Login } from 'src/app/shared/arb-project.model';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { content } from 'html2canvas/dist/types/css/property-descriptors/content';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,17 @@ import { ModalDismissReasons, NgbModal  } from '@ng-bootstrap/ng-bootstrap';
 export class LoginComponent implements OnInit {
   closeResult: string;
   public redirectUrl: string = 'dash/table-list';
-  constructor(public service:ArbProjectService,private http:HttpClient,private router: Router, private modalService: NgbModal) {}
+  constructor(public service: ArbProjectService, private http: HttpClient, private router: Router, private modalService: NgbModal) { }
+  onClick(route,id:number){
+    if (this.flag === false){
+      open('content')
+
+    }
+    else{
+      this.router.navigate([route])
+    }
+
+  }
   open(content) {
     console.log(name);
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -63,13 +74,13 @@ export class LoginComponent implements OnInit {
             this.redirectUrl = null;
             // get request to get all ExamData of doctor of Id
             }
-        }      
+        }
       },
       err=>{
         console.log("Not found send error msg");
       })
     };
     // SuccessLogin(Id:number){
-    //   this.   
+    //   this.
     // }
   }
