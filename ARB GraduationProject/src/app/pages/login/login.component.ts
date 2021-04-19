@@ -22,6 +22,9 @@ export class LoginComponent implements OnInit {
   closeResult: string;
   public redirectUrl: string = 'dash/table-list';
   constructor(public service: ArbProjectService, private http: HttpClient, private router: Router, private modalService: NgbModal) { }
+  onClick(route,id:number){
+    this.router.navigate([route])
+  }
   open(content) {
     console.log(name);
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
@@ -53,7 +56,7 @@ export class LoginComponent implements OnInit {
         switch (res) {
           case "wrong password":
             this.flag = false
-            return (open("#content"));
+            return ("false");
           case "Not Found":
             this.flag = false
             return ("Not Found")
