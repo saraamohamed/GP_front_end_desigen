@@ -43,7 +43,9 @@ ngOnInit():void{
 
   removeTab() {
     this.service.index-=1;
-    this.service.tabs.splice((this.service.index-1), 1);
+    this.service.Patient.clinicalInfo.massSpecifications.pop();
+   // this.service.tabs.splice((this.service.index-1), 1);
+   this.service.tabs.pop();
 
   }
 }
