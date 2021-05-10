@@ -4,12 +4,7 @@
   <span class="mask bg-gradient-danger opacity-8"></span>
   <!-- Header container -->
 </div>
-<!-- <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
-  <div class="container-fluid">
-    <div class="header-body">
-    </div>
-  </div>
-</div> -->
+
 <div class="container mt--7" >
   <div class="row" >
     <div class="col-xl-8 mb-5 mb-xl-0"  >
@@ -18,9 +13,6 @@
         <div class="card-header " 
           style=" border: solid gray thin ; margin: 0ch; padding-bottom: 0.4cm;">
 
-          <!-- <div *ngIf="examData.name==='sherif'; then thenBlock  else elseBlock"></div>
-          <ng-template #thenBlock>Sherif Essam Abdelrahman</ng-template>
-                    <ng-template #elseBlock>AyhagaMshfar2a</ng-template> -->
           <table class="table" >
             <tbody>
               <tr>
@@ -46,10 +38,7 @@
           </table>
         </div>
         <div class="card-body "  style=" border: solid gray thin ; margin: 0ch;">
-          <!-- <h1 class="display-4">Report: -All Studies</h1>
-          <div class="pl-lg-4">
-            <h3 class="display-6"> <u>FULL FIELD DIGITAL MAMMOGRAPHY AND COMPLEMENTARY ULTRASOUND </u></h3>
-          </div> -->
+          
           <h1 class="display-4"><u>Indication for Examination:</u></h1>
           <div>
             The Reason is {{service.Patient.generalInfo.examReason}}
@@ -57,7 +46,6 @@
             <ng-template #thenBlockComplain> : {{service.Patient.generalInfo.complain}}, </ng-template>
             <ng-template #elseBlockComplain>,  </ng-template>
           </div>
-          <!-- at {{service.Patient.generalInfo.examDate |date:'dd.MM.yyyy'}},  -->
           
          
           <div>
@@ -112,28 +100,7 @@
           <div *ngIf="(service.Patient.clinicalInfo.breastCompostion==='c')">OverAll Breast Composition: .c The breasts are heterogeneously dense, which may obscure small masses</div>
           <div *ngIf="(service.Patient.clinicalInfo.breastCompostion==='d')">OverAll Breast Composition: .d The breasts are extremely dense, which lowers the sensitivity of mammography</div>
 
-          <!-- <div>
-            <tr *ngFor = "let pd of massSpecifications ;let i = index">
-              <thead>
-                <th>
-                  Mass {{i+1}}
-                </th>
-                <th>
-                  Mass Shape
-                </th>
-                <th>
-                  Mass Location
-                </th>
-              </thead>
-              <tbody>
-                <td>
-                  Mass Shape
-                </td>
-              </tbody>
-              
-            </tr>
-          </div> -->
-
+          
           <div>
             <h3>Mass Description</h3>
             <table >
@@ -204,63 +171,11 @@
               </tbody>
             </table>
           </div>
-          <div>
-            <!-- <h3>Mass Location</h3>
-            <table>
-              <thead>
-                <tr>
-                  <th>
-                    Number
-                  </th>
-                  <th>
-                    laterality
-                  </th>
-                  <th>
-                    O'Clock Position
-                  </th>
-                  <th>
-                    Quadrant
-                  </th>
-                  <th>
-                    Depth
-                  </th>
-                  <th>
-                    Distance From Nipple
-                  </th>
-                </tr>
-                
-              </thead>
-              <tbody>
-                <tr *ngFor = "let list of massSpecifications; let i = index">
-                  <td>
-                    {{i+1}}
-                  </td>
-                  <td>
-                    {{list.laterality}}
-                  </td>
-                  <td>
-                    {{list.clockFaceId}}
-                  </td>
-                  <td>
-                    {{list.quadrantId}}
-                    
-                  </td>
-                  <td>
-                    {{list.depth}}
-                  </td>
-                  <td>
-                    {{list.distanceFromTheNipple}}
-                  </td>
-                </tr>
-                
-              </tbody>
-            </table> -->
-          </div>
+          
 
 
           <h1 class="display-4"><u>Assessment:</u></h1>
 
-          <!-- {{eh hasal}} -->
 
           <div *ngIf="service.Patient.finalAssessment.biRads.name==='0'">BI-RADS '{{service.Patient.finalAssessment.biRads.name}}' (Incomplete.)</div>
           <div *ngIf="service.Patient.finalAssessment.biRads.name==='1'">BI-RADS '{{service.Patient.finalAssessment.biRads.name}}' (Negative.)</div>
@@ -280,10 +195,6 @@
 
           <h1 class="display-4"><u>Conclusion:</u> </h1>
           {{service.Patient.finalAssessment.conc}}
-          <!-- {{examData.name}}.....
-          {{examData.emailAddress}}..... -->
-          <!-- {{examDate.ClacificationDistribution}}..... -->
-          <!-- {{examDate.FinalAssessment.birads.name}}..... -->
 
           <div class="card-footer "  style=" border: solid gray thin ; ">
             <h3 class="display-6">Reported By, </h3>
@@ -297,7 +208,7 @@
         
       </div>
     </div>
-      <button (click)=generatePDF()>Export PDF</button>
+      <button class="btn btn-secondary float-left" (click)=generatePDF()>Export Pdf</button>
     </div>
     
   </div>

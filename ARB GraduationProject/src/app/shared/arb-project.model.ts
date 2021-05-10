@@ -24,25 +24,25 @@ export class GeneralInfo{
     whereHadAMammogram: string = '';
     historyOfMammogram: string = '';
     personalHistoryOfBreastCancer: boolean = false;
-    motherAge: number = 0;
+    motherAge: number;
     mother: boolean = false;
-    sisterAge: number = 0;
+    sisterAge: number;
     sister: boolean = false;
-    daughterAge: number = 0;
+    daughterAge: number;
     daughter: boolean = false;
-    grandmotherAge: number = 0;
+    grandmotherAge: number;
     grandmother: boolean = false;
-    auntAge: number = 0;
+    auntAge: number ;
     aunt: boolean = false;
-    cousinAge: number = 0;
+    cousinAge: number;
     cousin: boolean = false;
     takingHormones: boolean = false;
     howlongTakingHormones: string = '';
     pergnancyHistory: boolean = false;
     menopause: boolean = false;
     pregnant: boolean = false;
-    gravida: number = 0;
-    para: number= 0;
+    gravida: number;
+    para: number;
     lmp:string='';
 }
 export class features{
