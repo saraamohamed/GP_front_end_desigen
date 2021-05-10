@@ -54,11 +54,11 @@
                                               <h4 class="form-group focused"><input type="radio" name="examReason"
                                                       value="Complain"
                                                       [(ngModel)]="service.Patient.generalInfo.examReason"
-                                                      class="form-control " (click)="oncomplainClick()"
+                                                      class="form-control " 
                                                       style="margin-right: 5px;">
                                                   Complain<span class="checkmark"></span>
                                               </h4>
-                                              <input *ngIf="compalinBoolean == true " type="text"
+                                              <input *ngIf="service.Patient.generalInfo.examReason === 'Complain'" type="text"
                                                   id="TEXT_1450682011285" name="complain" data-field-type="TEXT"
                                                   data-field-completion-action="NONE" #complain="ngModel"
                                                   [(ngModel)]="service.Patient.generalInfo.complain"
@@ -86,16 +86,17 @@
                   </div>
               </div>
 
+              
               <!---------------------------- Exam history ---------------------------------- -->
               <h3 class="form-control-alternative" style="background-color:gainsboro;">
-                  <input [(ngModel)]="service.Patient.generalInfo.hadAMammogram"
-                      name="Previous Mammogram" type="checkbox" (click)="onButtonClick1()">
+                  <input name="hadAMammogram" #hadAMammogram = "ngModel" [(ngModel)]="service.Patient.generalInfo.hadAMammogram"
+                       type="checkbox">
                   <span class="form-check-sign">
                       <span class="check"></span>
                   </span>
                   Previous Mammogram
               </h3>
-              <!-- <div *ngIf="testBoolean1 == true "> -->
+              <div *ngIf="service.Patient.generalInfo.hadAMammogram == true">
               <div >
                   <div class="form-row" style="margin-bottom: 2px;">
 
@@ -151,22 +152,22 @@
                   </div>
               </div>
 
-
+            </div>
               <!---------------------------- Family history ---------------------------------- -->
 
 
 
               <h3 class="form-control-alternative" style="margin-top: 18px; background-color:gainsboro;">
                   <input  [(ngModel)]="service.Patient.generalInfo.personalHistoryOfBreastCancer"
-                      name="Previous Mammogram" type="checkbox" (click)="onButtonClick2()">
+                      name="Previous Mammogram" type="checkbox">
                   <span class="form-check-sign">
                       <span class="check"></span>
                   </span>
                   Personal history of breast cancer
               </h3>
 
-              <div class="row justify-content-center" >
-              <!-- <div class="row justify-content-center" *ngIf="testBoolean2 == true "> -->
+              <!-- <div class="row justify-content-center" > -->
+              <div class="row justify-content-center" *ngIf="service.Patient.generalInfo.personalHistoryOfBreastCancer == true">
 
 
 
@@ -332,7 +333,7 @@
               <h3 class="form-control-alternative" style="margin-top: 18px; background-color:gainsboro;">
 
                   <input type="checkbox" name="takingHormones" #TakingHormones="ngModel"
-                      [(ngModel)]="service.Patient.generalInfo.takingHormones" (click)="onHormoneClick()">
+                      [(ngModel)]="service.Patient.generalInfo.takingHormones" >
                   <span class="form-check-sign">
                       <span class="check"></span>
                   </span>
@@ -342,16 +343,7 @@
 
 
 
-              <!-- <div class="form-group" *ngIf="hormoneBoolean == true ">
-                  <label style="margin-right: 15px; padding-top: 9px;"><strong> For how long </strong>
-                      <input type="text" id="TEXT_1450682011285" name="howlongTakingHormones" data-field-type="TEXT"
-                          data-field-completion-action="NONE" #HowlongTakingHormones="ngModel"
-                          [(ngModel)]="service.Patient.generalInfo.howlongTakingHormones"
-                          style="width: 60px; height: 25px; margin-left: 10px;" class="form-control " />(Year)
-                  </label>
-
-              </div> -->
-              <div class="form-group" >
+              <div class="form-group" *ngIf="service.Patient.generalInfo.takingHormones == true">
                   <label style="margin-right: 15px; padding-top: 9px;"><strong> For how long </strong>
                       <input type="text" id="TEXT_1450682011285" name="howlongTakingHormones" data-field-type="TEXT"
                           data-field-completion-action="NONE" #HowlongTakingHormones="ngModel"
@@ -360,6 +352,15 @@
                   </label>
 
               </div>
+              <!-- <div class="form-group" >
+                  <label style="margin-right: 15px; padding-top: 9px;"><strong> For how long </strong>
+                      <input type="text" id="TEXT_1450682011285" name="howlongTakingHormones" data-field-type="TEXT"
+                          data-field-completion-action="NONE" #HowlongTakingHormones="ngModel"
+                          [(ngModel)]="service.Patient.generalInfo.howlongTakingHormones"
+                          style="width: 60px; height: 25px; margin-left: 10px;" class="form-control " />(Year)
+                  </label>
+
+              </div> -->
 
 
               <!-- margin-top: 10px; -->
@@ -374,8 +375,9 @@
                   </span>
                   Pregnancy History
               </h3>
+              <div *ngIf="service.Patient.generalInfo.pergnancyHistory">
               <div >
-              <!-- <div *ngIf="testBoolean3 == true "> -->
+              
                   <table class="table" style="margin-left: 25px; text-align: center;">
                       <tr>
 
@@ -452,15 +454,16 @@
 
                       </tbody>
                   </table>
-
-                  <div class="form-group focused">
-                      <h5 class="form-control-label" for="exam-date" style="margin-right: 15px; padding-top: 15px;">
-                          LMP
-                      </h5>
-                      <input class="form-control " type="datetime-local" id="DATE_1449431264015" name="lmp" data-field-type="DATE"
-                      data-field-completion-action="NONE" #lmp="ngModel"
-                      [(ngModel)]="service.Patient.generalInfo.lmp" />
+                  
                   </div>
+                  <div class="form-group focused">
+                    <h5 class="form-control-label" for="exam-date" style="margin-right: 15px; padding-top: 15px;">
+                        LMP
+                    </h5>
+                    <input class="form-control " type="datetime-local" id="DATE_1449431264015" name="lmp" data-field-type="DATE"
+                    data-field-completion-action="NONE" #lmp="ngModel"
+                    [(ngModel)]="service.Patient.generalInfo.lmp" />
+                </div>
               </div>
               <br>
               <!-- </form> -->

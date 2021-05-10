@@ -13,34 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./tabset-selectbyid.css']
 })
 export class NgbdTabsetSelectbyid  implements OnInit{
-  testBoolean1 : Boolean = false;
-  testBoolean2 : Boolean = false;
-  testBoolean3 : Boolean = false;
-  compalinBoolean : Boolean = false;
-  hormoneBoolean : Boolean = false;
-
-
-
-  onButtonClick1(){
-    this.testBoolean1 = !this.testBoolean1;
-  }
-  onButtonClick2(){
-    this.testBoolean2 = !this.testBoolean2;
-  }
-  onButtonClick3(){
-    this.testBoolean3 = !this.testBoolean3;
-  }
-  oncomplainClick(){
-    this.compalinBoolean = !this.compalinBoolean;
-
-  }
-  onHormoneClick(){
-    this.hormoneBoolean = !this.hormoneBoolean;
-
-  }
-
-
-
+ 
 
   constructor(public service:ArbProjectService,private http:HttpClient,  private router:Router) {}
   onClick(route,id:number){
@@ -63,8 +36,7 @@ export class NgbdTabsetSelectbyid  implements OnInit{
   ClacificationDistribution=[]
 
   ngOnInit(): void {
-
-    console.log(this.service.Patient.clinicalInfo);
+    
     this.service.getCombo('GetBiRads')
     .subscribe(res => this.BiRadslist = res as []);
     this.service.getCombo('GetRecommendation')
@@ -86,7 +58,7 @@ export class NgbdTabsetSelectbyid  implements OnInit{
     this.service.getCombo('GetClacificationDistribution')
     .subscribe(res =>  this.ClacificationDistribution = res as []);
   }
-
+  
   OnSubmit(form:NgForm,data:string){
 
 
