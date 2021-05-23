@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import { ExamData, Patient , Doctor , 
-  GeneralInfo ,ClinicalInfo ,FinalAssessment , Login, features} from './arb-project.model';
+  GeneralInfo ,ClinicalInfo ,FinalAssessment , Login, features , PatientTest} from './arb-project.model';
 import {HttpHeaders} from "@angular/common/http";
 import jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
@@ -33,6 +33,7 @@ export class ArbProjectService {
   FinalAssessment:FinalAssessment = new FinalAssessment();
   ClinicalInfo:ClinicalInfo = new ClinicalInfo();
   Patient:Patient = new Patient();
+  PatientTest:PatientTest = new PatientTest();
   Login:Login = new Login();
   features:features = new features()
   index:number=0;
@@ -49,7 +50,7 @@ export class ArbProjectService {
       case 'ExamData':
         return(this.ExamData);
       case 'Patient':
-        return(this.Patient);
+        return(this.PatientTest);
       case 'Doctor':
         return(this.Doctor);
      

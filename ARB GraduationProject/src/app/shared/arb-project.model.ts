@@ -104,6 +104,16 @@ export class Patient{
     doctorId: number=0;
     examDataId: number = 0;
 }
+
+export class PatientTest{
+    id:number=0;
+    clinicalInfoId: number= 0;
+    generalInfoId: number = 0;
+    finalAssessmentId: number = 0;
+    doctorId: number=0;
+    examDataId: number = 0;
+}
+
 export class Doctor{
     id: number = 0;
     name:String='';

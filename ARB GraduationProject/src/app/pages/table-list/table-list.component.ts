@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js';
-import {PatientComponent} from 'src/app/pages/patient/patient.component'
+import { PatientComponent } from 'src/app/pages/patient/patient.component'
 import { ArbProjectService } from 'src/app/shared/arb-project.service';
 import { NgForm } from '@angular/forms';
-import {HttpClient} from "@angular/common/http";
-import { Observable, throwError ,of } from 'rxjs';
-import { catchError, retry ,map } from 'rxjs/operators';
-import { ExamData,ClinicalInfo,GeneralInfo,FinalAssessment,Patient} from 'src/app/shared/arb-project.model';
+import { HttpClient } from "@angular/common/http";
+import { Observable, throwError, of } from 'rxjs';
+import { catchError, retry, map } from 'rxjs/operators';
+import { ExamData, ClinicalInfo, GeneralInfo, FinalAssessment, Patient, PatientTest } from 'src/app/shared/arb-project.model';
 import { Router } from '@angular/router';
-import { ModalDismissReasons, NgbModal  } from '@ng-bootstrap/ng-bootstrap';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
 import { content } from 'html2canvas/dist/types/css/property-descriptors/content';
@@ -22,38 +22,39 @@ import { content } from 'html2canvas/dist/types/css/property-descriptors/content
 export class TableListComponent implements OnInit {
   closeResult: string;
   redirectUrl: string = '/dash/preselect';
-  constructor(private service:ArbProjectService  ,private http:HttpClient, private router:Router, private modalService: NgbModal) { }
-  
+  constructor(private service: ArbProjectService, private http: HttpClient, private router: Router, private modalService: NgbModal) { }
+
   fileExists(url: string): Observable<string> {
     const folderPath = url;
     return this.http.get(url, { observe: 'response', responseType: 'blob' }).pipe(map(
       res => {
         return folderPath;
       }),
-    catchError(error => {
-      return of(error);
-    })
-    )}
+      catchError(error => {
+        return of(error);
+      })
+    )
+  }
 
-  open(content1,content2,name:string) {
+  open(content1, content2, name: string) {
     console.log(name);
     this.pdfScr = '';
     this.Test = `assets/${name}.pdf`;
-    this.fileExists(this.Test).subscribe(res=> {
+    this.fileExists(this.Test).subscribe(res => {
       let result = res as string;
-      if (result == this.Test){
-        console.log("leh yarab")  
+      if (result == this.Test) {
+        console.log("leh yarab")
         this.pdfScr = this.Test
-        this.modalService.open(content1, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+        this.modalService.open(content1, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
           this.closeResult = ` ${result}`;
         }, (reason) => {
           this.closeResult = ` ${this.getDismissReason(reason)}`;
         });
-        
+
       }
-      else{
+      else {
         console.log("kher")
-        this.modalService.open(content2, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+        this.modalService.open(content2, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
           this.closeResult = ` ${result}`;
         }, (reason) => {
           this.closeResult = ` ${this.getDismissReason(reason)}`;
@@ -61,7 +62,7 @@ export class TableListComponent implements OnInit {
 
       }
     });
-    
+
     // this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
     //   this.closeResult = ` ${result}`;
     // }, (reason) => {
@@ -78,55 +79,66 @@ export class TableListComponent implements OnInit {
       return ` ${reason}`;
     }
   }
-  
-  onClick(route){
+
+  onClick(route) {
     this.service.ExamData = new ExamData();
     this.router.navigate([route])
 
   }
-  ExamData:ExamData = new ExamData();
-  list:ExamData[]
-  pdfScr:string = '';
-  Test:string = '';
+  ExamData: ExamData = new ExamData();
+  list: ExamData[]
+  pdfScr: string = '';
+  Test: string = '';
   ngOnInit() {
     let doctorId = this.service.DoctorId;
-    this.service.getExamDataOfDoctor(doctorId,'examData/ExamDataOfDoctor').subscribe(res=>{this.service.list = res as ExamData[]})
-    if (this.service.DoctorId !=0)
-    {
+    this.service.getExamDataOfDoctor(doctorId, 'examData/ExamDataOfDoctor').subscribe(res => { this.service.list = res as ExamData[] })
+    if (this.service.DoctorId != 0) {
       console.log(this.service.DoctorId)
     }
   }
- 
-  preselect(id:number){
+
+  preselect(id: number) {
     this.service.examDataId = id;
     this.service.tabs = [];
-    this.service.getPatient(this.service.examDataId,'Patient','examId').subscribe(res =>{
-      if (res != null && res != "Not Found"){
-      this.service.Patient = res as Patient
-      this.service.PatientId = res['id'];
-      console.log("gbtha");
-      this.service.index = this.service.Patient.clinicalInfo.massSpecifications.length ;
-      for (let i = 1 ; i <= this.service.index; i++){
-        this.service.tabs.push('Mass' + i);
-      }
-      console.log(this.service.tabs);
-      this.router.navigate([this.redirectUrl]);
-      this.redirectUrl = null;
-    
-    }  
-       },err=>{
-        this.service.index = 0;
-        console.log(err);
-        this.service.Patient = new Patient();
-        this.router.navigate([this.redirectUrl]);
+    this.service.getPatient(this.service.examDataId, 'Patient', 'examId').subscribe(res => {
+      if (res != null && res != "Not Found") {
+        // this.service.Patient = res as Patient
+        this.service.PatientTest = res as PatientTest
+        this.service.PatientId = res['id'];
+        this.getPatientInfo(this.service.PatientTest.clinicalInfoId,
+                        this.service.PatientTest.generalInfoId,
+                        this.service.PatientTest.finalAssessmentId);
         
-       });
-       
-    
+        this.service.index = this.service.Patient.clinicalInfo.massSpecifications.length;
+        for (let i = 1; i <= this.service.index; i++) {
+          this.service.tabs.push('Mass' + i);
+        }
+        console.log(this.service.tabs);
+        this.router.navigate([this.redirectUrl]);
+        this.redirectUrl = null;
+
+      }
+    }, err => {
+      console.log('newPatient');
+      this.service.index = 0;
+      this.service.Patient = new Patient();
+      this.service.PatientTest = new PatientTest();
+      this.router.navigate([this.redirectUrl]);
+
+
+    });
+
   }
-  patientForm(id:number){
+
+  getPatientInfo(clinicalId:number,generalInfoId:number,finalAssessmentId){
+    this.service.getOne(generalInfoId,"generalInfo").subscribe(res=> this.service.Patient.generalInfo = res as GeneralInfo);
+    this.service.getOne(clinicalId,"clinicalInfo").subscribe(res=> this.service.Patient.clinicalInfo = res as ClinicalInfo);
+    this.service.getOne(finalAssessmentId,"finalAssessment").subscribe(res=> this.service.Patient.finalAssessment = res as FinalAssessment);
+  }
+
+  patientForm(id: number) {
     this.service.ExamData.id = id;
-    this.service.getExamDataOfDoctor(id,'examData').subscribe(res=>{
+    this.service.getExamDataOfDoctor(id, 'examData').subscribe(res => {
       this.service.ExamData = res as ExamData
       console.log(res);
     })
@@ -134,28 +146,27 @@ export class TableListComponent implements OnInit {
     this.router.navigate(['dash/patient']);
   }
 
-  DeleteOn(id:number){
-   
-    if (confirm('Are You Sure You Want To Delete?'))
-    {
-      this.service.Delete('ExamData',id)
-      .subscribe(
-      res =>{
-        this.service.list = [];
-        this.refreshList();
-       
-      },
-      err =>{console.log(err)}
-    )
-    
+  DeleteOn(id: number) {
+
+    if (confirm('Are You Sure You Want To Delete?')) {
+      this.service.Delete('ExamData', id)
+        .subscribe(
+          res => {
+            this.service.list = [];
+            this.refreshList();
+
+          },
+          err => { console.log(err) }
+        )
+
     }
   }
 
   refreshList() {
-    this.service.getExamDataOfDoctor(this.service.DoctorId,'examData/ExamDataOfDoctor').subscribe(res=>{
+    this.service.getExamDataOfDoctor(this.service.DoctorId, 'examData/ExamDataOfDoctor').subscribe(res => {
       this.service.list = res as ExamData[]
     })
-    
+
 
   }
 }
