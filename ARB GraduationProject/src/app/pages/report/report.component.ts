@@ -34,15 +34,15 @@ export class ReportComponent implements OnInit{
   }
 
   generatePDF() {
-    console.log("kher")
     var data = document.getElementById('contentToConvert') as HTMLCanvasElement;
+    console.log(data)
     html2canvas(data).then(canvas => {
-      var imgWidth = 208;
-      var imgHeight = canvas.height * imgWidth / canvas.width;
+      // var imgWidth = 208;
+      // var imgHeight = canvas.height * imgWidth / canvas.width;
       const contentDataURL = canvas.toDataURL('image/png')
-      let pdf = new jspdf('p', 'mm', 'a4');
-      var position = 0;
-      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
+      let pdf = new jspdf('p', 'in', [21.5,25]);
+      // var position = 0;
+      pdf.addImage(contentDataURL, 'PNG', 0, 0, 21.5, 15.7)
       var blob = pdf.output("blob");
       window.open(URL.createObjectURL(blob));
     });

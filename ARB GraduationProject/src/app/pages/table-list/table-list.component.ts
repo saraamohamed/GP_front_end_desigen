@@ -42,31 +42,21 @@ export class TableListComponent implements OnInit {
     this.fileExists(this.Test).subscribe(res=> {
       let result = res as string;
       if (result == this.Test){
-        console.log("leh yarab")  
         this.pdfScr = this.Test
         this.modalService.open(content1, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
           this.closeResult = ` ${result}`;
         }, (reason) => {
           this.closeResult = ` ${this.getDismissReason(reason)}`;
         });
-        
       }
       else{
-        console.log("kher")
         this.modalService.open(content2, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
           this.closeResult = ` ${result}`;
         }, (reason) => {
           this.closeResult = ` ${this.getDismissReason(reason)}`;
         });
-
       }
     });
-    
-    // this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-    //   this.closeResult = ` ${result}`;
-    // }, (reason) => {
-    //   this.closeResult = ` ${this.getDismissReason(reason)}`;
-    // });
   }
 
   private getDismissReason(reason: any): string {
