@@ -31,9 +31,15 @@
           <hr>
         </div>
         <div class="container-fluid">
-          <button *ngIf="!createProduct" (click)="onCreateProduct()" class="btn btn-link float-right" >Add New Image</button>
-          <app-product *ngIf="createProduct" (close)="onProductSubmit($event)"></app-product>
+          <!-- <button *ngIf="!createProduct" (click)="onCreateProduct()" class="btn btn-link float-right" >Add New Image</button>
+          <app-product *ngIf="createProduct" (close)="onProductSubmit($event)"></app-product> -->
+          
 
+          <div>
+            <img *ngFor="let url of urls" [src]="url" class="rounded mb-3" width="180">
+            <button class="btn btn-link float-right" >SAVE</button>
+          </div>
+          <input type="file" value="Add to favorites" multiple (change)="detectFiles($event)">
         </div>
 
         <!--<p>
