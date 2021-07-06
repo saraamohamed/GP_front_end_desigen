@@ -91,7 +91,7 @@ export class ReportComponent implements OnInit {
       console.log(canvas.width)
       const fileWidth = 203;
       const fileHeight = canvas.height * fileWidth / canvas.width;
-      console.log(fileHeight)
+      console.log(fileHeight) 
       const fileURI = canvas.toDataURL()
       const PDF = new jspdf('p', 'mm', [225,505]);
       const position = 0;
