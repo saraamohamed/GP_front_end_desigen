@@ -29,13 +29,16 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
     RouterModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    
+
+
+
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
     
+
 
 
 

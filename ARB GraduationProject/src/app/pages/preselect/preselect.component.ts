@@ -15,6 +15,19 @@ export class PreselectComponent implements OnInit {
   tabs = ['General Information', 'Clinical Information', 'Final Assesment'];
   selected = new FormControl(0);
   tabtitle:string = '';
+  createProduct: boolean;
+  message: string;
+  onCreateProduct() {
+    this.createProduct = true;
+    this.message = '';
+  }
+
+  onProductSubmit(data) {
+    this.createProduct = false;
+    this.message = data.message;
+  }
+
+
 
   // addTab(selectAfterAdding: boolean) {
 
