@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import { ExamData, Patient , Doctor , 
-  GeneralInfo ,ClinicalInfo ,FinalAssessment , Login, features , PatientTest} from './arb-project.model';
+  GeneralInfo ,ClinicalInfo ,FinalAssessment , Login, features} from './arb-project.model';
 import {HttpHeaders} from "@angular/common/http";
 import jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
@@ -30,10 +30,10 @@ export class ArbProjectService {
   Doctor:Doctor = new Doctor();
   general:GeneralInfo[]
   list:ExamData[];
+  // console.log(list)
   FinalAssessment:FinalAssessment = new FinalAssessment();
   ClinicalInfo:ClinicalInfo = new ClinicalInfo();
   Patient:Patient = new Patient();
-  PatientTest:PatientTest = new PatientTest();
   Login:Login = new Login();
   features:features = new features()
   index:number=0;
@@ -50,7 +50,7 @@ export class ArbProjectService {
       case 'ExamData':
         return(this.ExamData);
       case 'Patient':
-        return(this.PatientTest);
+        return(this.Patient);
       case 'Doctor':
         return(this.Doctor);
      
@@ -95,26 +95,5 @@ export class ArbProjectService {
       res => {this.list = res as ExamData[]});
   }
 
-  generatePDF() {
-    console.log("kher")
-    // var data = document.getElementById('contentToConvert') as HTMLCanvasElement;
-    // html2canvas(data).then(canvas => {
-    //   var imgWidth = 208;
-    //   var imgHeight = canvas.height * imgWidth / canvas.width;
-    //   const contentDataURL = canvas.toDataURL('image/png')
-    //   let pdf = new jspdf('p', 'mm', 'a4');
-    //   var position = 0;
-    //   pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
-    //   var blob = pdf.output("blob");
-    //   window.open(URL.createObjectURL(blob));
-    // });
-    }
-
-  
-  // refreshList() {
-  //   this.http.get(this.baseUrl)
-  //     .toPromise()
-  //     .then(res =>this.list = res as test[]);
-  // }
 
 }

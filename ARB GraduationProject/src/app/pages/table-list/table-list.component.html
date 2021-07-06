@@ -154,7 +154,6 @@
                     <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
                       <a class="dropdown-item"  (click) = PdfShow(pd.name) >Report Review </a> 
                       <a class="dropdown-item" href="javascript:void(0)" (click)= DeleteOn(pd.id)>Delete</a>
-
                       <a class="dropdown-item"  (click) = patientForm(pd.id)>Edit</a>
                       <a class="dropdown-item" href="/#/patient" (click) = patientForm(pd.id)>Edit</a>
                        <a class="dropdown-item" (click) = PdfShow(pd.name) >Report Review </a>
@@ -207,7 +206,8 @@
   <div class="modal-body">
 
 
-    <pdf-viewer [src]="pdfScr" [render-text]="true" [show-all]="true" style="display: block;"></pdf-viewer>
+    <pdf-viewer [src]="pdfScr" [render-text]="true" [show-all]="true" style="display: block;" [fit-to-page]='true' [autoresize]="true"
+    [original-size]='true'></pdf-viewer>
 
   </div>
 
@@ -218,17 +218,11 @@
 
   <div class="modal-header">
     <!-- <h4 class="modal-title" id="modal-basic-title">PDF</h4> -->
-
   </div>
   <div class="modal-body">
     <div class="text-center">Nothing to View</div>
-
-
-
   </div>
 
 
 </ng-template>
 
-
-<!-- <button class="btn btn-lg btn-outline-primary" (click)="open(emptycontent,)">Launch demo modal</button> -->
