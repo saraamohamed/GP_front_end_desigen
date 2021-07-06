@@ -4,7 +4,7 @@
   </div>
   
   <form #form="ngForm" name="campaignForm">
-    <input name="id" type="hidden" [value]="service.Patient.id" (submit)="OnSubmit(form,'Patient')" />
+    <input name="id" type="hidden" [value]="service.Patient.id" (submit)="OnSubmit(form,'patient')" />
     <ngb-tabset #t="ngbTabset">
   
         <ngb-tab id="General-tab" title="General Information">

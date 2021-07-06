@@ -1,12 +1,12 @@
 import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
-import domtoimage from 'dom-to-image';
+// import domtoimage from 'dom-to-image';
 import { ArbProjectService } from 'src/app/shared/arb-project.service';
 import { ExamData, ClinicalInfo, GeneralInfo, FinalAssessment, Patient, massSpecifications } from 'src/app/shared/arb-project.model';
-import { NgForm } from '@angular/forms';
+// import { NgForm } from '@angular/forms';
 import { HttpClient } from "@angular/common/http";
-import { FormControl } from '@angular/forms';
+// import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 declare const google: any;
 // import WebViewer from '@pdftron/webviewer';

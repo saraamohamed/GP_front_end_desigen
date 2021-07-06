@@ -76,7 +76,8 @@ export class NgbdTabsetSelectbyid  implements OnInit{
     }
     else {
         this.UpdateFeatures(form,data);
-        console.log("B3DEL FEEH NOW");
+        let mass_Spec = this.service.Patient.clinicalInfo.massSpecifications['id'];
+        console.log("B3DEL FEEH NOW",mass_Spec);
     }
 
   }
@@ -106,6 +107,7 @@ export class NgbdTabsetSelectbyid  implements OnInit{
         console.log("Put Req",res);
         this.service.Patient = res as Patient; 
         // this.refreshList();
+        console.log(this.service.Patient);
       },
       err=>{
         console.log(err);

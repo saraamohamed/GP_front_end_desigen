@@ -35,8 +35,10 @@ ngOnInit():void{
     console.log("index",this.service.index);
 
     this.service.Patient.clinicalInfo.massSpecifications[this.service.index] = new massSpecifications();
+    this.service.Patient.clinicalInfo.massSpecifications[this.service.index].clinicalInfoId = this.service.Patient.id;
     this.service.tabs.push('Mass' + (this.service.index+1));
     this.service.index+=1;
+    console.log("Tabs:",this.service.index);
 
   }
 
