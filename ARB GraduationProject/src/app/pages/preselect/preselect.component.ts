@@ -26,7 +26,10 @@ export class PreselectComponent implements OnInit {
   THEfile: File =null ;
   fileToUploads =new Array<File>();
   sanitization: any;
-  
+  urls = new Array<string>();
+  files = new Array<File>();
+  FilesToRemove = new Array<File>();
+  try: File =null ;
   onCreateProduct() {
     this.createProduct = true;
     this.message = '';
@@ -52,22 +55,20 @@ export class PreselectComponent implements OnInit {
   
   
 
-  urls = new Array<string>();
-  files = new Array<File>();
+  
 
   handleFileInput(event){
     this.urls = [];
     this.fileToUploads = event.target.files;
     console.log(this.fileToUploads)
-    for(var file of this.fileToUploads){
-      this.files.push(file);
-    }
-    
     if(this.fileToUploads){
       for (this.THEfile of this.fileToUploads){
+        this.files.push(this.THEfile);
         var reader = new FileReader();
         reader.onload = (event:any)=>{
           this.urls.push(event.target.result);
+          this.FilesToRemove = this.files;
+          
           // this.ImageURL = event.target.result;
         }
         reader.readAsDataURL(this.THEfile);
@@ -81,6 +82,7 @@ export class PreselectComponent implements OnInit {
   OnSubmitImage(Image){
     for (this.file of this.files){
       this.postFile(this.file).subscribe(data=>{console.log(data)});
+      
     }
     // this.postFile(this.fileToUpload).subscribe(data=>{console.log(data)});
   }
@@ -94,9 +96,25 @@ export class PreselectComponent implements OnInit {
     return this.http
       .post(endpoint, formData);
   }
+
   
 
-
+  private deleteImage(url: any , i:number): void {
+    console.log(i)
+    if (url.length > 10000){
+      this.urls = this.urls.filter((a) => a !== url);
+      this.try = this.files[i];
+      this.files = this.files.filter((a) => a!==this.try);
+    }
+    else{
+      var array = url.split("\\",8)
+      console.log(array[7])
+      this.http.delete("http://localhost:57645/api/deleteImage/"+array[7]).subscribe(res => {
+        console.log(res)
+      })
+    }
+    
+  }
   
 
 
