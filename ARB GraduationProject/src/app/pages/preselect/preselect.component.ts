@@ -5,6 +5,7 @@ import { ArbProjectService } from 'src/app/shared/arb-project.service';
 import { NgForm } from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
 import { ClinicalInfo, FinalAssessment, GeneralInfo } from 'src/app/shared/arb-project.model';
+import { event } from 'jquery';
 
 @Component({
   selector: 'preselect-icons',
@@ -15,6 +16,23 @@ export class PreselectComponent implements OnInit {
   tabs = ['General Information', 'Clinical Information', 'Final Assesment'];
   selected = new FormControl(0);
   tabtitle:string = '';
+  createProduct: boolean;
+  message: string;  
+  url: string;
+  url1: string;
+  
+  onCreateProduct() {
+    this.createProduct = true;
+    this.message = '';
+  }
+
+  onProductSubmit(data) {
+    this.createProduct = false;
+    this.message = data.message;
+    console.log(this.message)
+  }
+
+
 
   // addTab(selectAfterAdding: boolean) {
 
@@ -38,6 +56,34 @@ export class PreselectComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  urls = new Array<string>();
+
+  detectFiles(event) {
+    
+    this.urls = [];
+    let files = event.target.files;
+    if (files) {
+      for (let file of files) {
+        let reader = new FileReader();
+        reader.onload = (e: any) => {
+          this.urls.push(e.target.result);
+          localStorage.setItem("imgData", this.urls[0]);
+          console.log(localStorage.getItem("imgData"))
+          // const fd = new FormData();
+          // fd.append('image',this.urls[0])
+          // this.http.post("G:\SBME\GP\GP\GP_front_end_desigen\ARB GraduationProject\src\assets",fd).subscribe(res => console.log(res));
+         
+        }
+        
+       
+        reader.readAsDataURL(file);
+      }
+    }
+  }
+
+
+
 
   OnSubmit(form:NgForm,data:string){
 

@@ -40,13 +40,15 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
     MatMenuModule,
     MatButtonModule,
     MatIconModule,
-    MatDividerModule
+    MatDividerModule,
+
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
     
+
 
 
 

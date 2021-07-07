@@ -31,54 +31,21 @@
           <hr>
         </div>
         <div class="container-fluid">
+          <!-- <button *ngIf="!createProduct" (click)="onCreateProduct()" class="btn btn-link float-right" >Add New Image</button>
+          <app-product *ngIf="createProduct" (close)="onProductSubmit($event)"></app-product> -->
+          
 
-          <div class="row">
-            <div class="column">
-              <img
-                src="https://www.itnonline.com/sites/default/files/field/image/IBMStudyBreastCancerMammographyAI.jpg">
-              <img
-                src="https://www.annsaudimed.net/cms/asset/4ee9d33d-122d-4da5-b6f0-d73ac508576c/0256-4947.2019.236-fig1.gif" />
-              <img src="http://rad.desk.nl/data/bin/w440/a53de9343ad54d_10a-composition.jpg" />
-              <img
-                src="https://d3i71xaburhd42.cloudfront.net/2152564cdaaebe8fbf8d0ba815b70d00ac4539d5/4-Figure1-1.png" />
-              <img
-                src="https://news.mit.edu/sites/default/files/styles/news_article__image_gallery/public/images/201810/MIT-Mammogram-AI-02.jpg?itok=56RP0i4x" />
-            </div>
-            <div class="column">
-              <img
-                src="https://d3i71xaburhd42.cloudfront.net/2152564cdaaebe8fbf8d0ba815b70d00ac4539d5/4-Figure1-1.png" />
-              <img
-                src="https://news.mit.edu/sites/default/files/styles/news_article__image_gallery/public/images/201810/MIT-Mammogram-AI-02.jpg?itok=56RP0i4x">
-              <img
-                src="https://www.itnonline.com/sites/default/files/field/image/IBMStudyBreastCancerMammographyAI.jpg">
-              <img src="http://rad.desk.nl/data/bin/w440/a53de9343ad54d_10a-composition.jpg" />
-              <img
-                src="https://www.annsaudimed.net/cms/asset/4ee9d33d-122d-4da5-b6f0-d73ac508576c/0256-4947.2019.236-fig1.gif" />
-            </div>
-            <div class="column">
-
-              <img
-                src="https://www.itnonline.com/sites/default/files/field/image/IBMStudyBreastCancerMammographyAI.jpg">
-              <img
-                src="https://d3i71xaburhd42.cloudfront.net/2152564cdaaebe8fbf8d0ba815b70d00ac4539d5/4-Figure1-1.png" />
-              <img
-                src="https://news.mit.edu/sites/default/files/styles/news_article__image_gallery/public/images/201810/MIT-Mammogram-AI-02.jpg?itok=56RP0i4x">
-              <img
-                src="https://www.annsaudimed.net/cms/asset/4ee9d33d-122d-4da5-b6f0-d73ac508576c/0256-4947.2019.236-fig1.gif" />
-              <img src="http://rad.desk.nl/data/bin/w440/a53de9343ad54d_10a-composition.jpg" />
-
-
-            </div>
+          <div>
+            <img *ngFor="let url of urls" src={{url}} class="img" width="180">
+            <button class="btn btn-link float-right" >SAVE</button>
           </div>
-
-
-
+          <input type="file" value="Add to favorites" multiple (change)="detectFiles($event)">
         </div>
 
-        <p>
+        <!--<p>
           <button class="btn btn-link float-right" (click)="t.select('select image')">Add new Image</button>
         </p>
-
+      -->
       </div>
     </div>
   </div>

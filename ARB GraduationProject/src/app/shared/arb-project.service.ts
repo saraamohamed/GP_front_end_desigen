@@ -30,6 +30,7 @@ export class ArbProjectService {
   Doctor:Doctor = new Doctor();
   general:GeneralInfo[]
   list:ExamData[];
+  // console.log(list)
   FinalAssessment:FinalAssessment = new FinalAssessment();
   ClinicalInfo:ClinicalInfo = new ClinicalInfo();
   Patient:Patient = new Patient();
@@ -94,26 +95,5 @@ export class ArbProjectService {
       res => {this.list = res as ExamData[]});
   }
 
-  generatePDF() {
-    console.log("kher")
-    // var data = document.getElementById('contentToConvert') as HTMLCanvasElement;
-    // html2canvas(data).then(canvas => {
-    //   var imgWidth = 208;
-    //   var imgHeight = canvas.height * imgWidth / canvas.width;
-    //   const contentDataURL = canvas.toDataURL('image/png')
-    //   let pdf = new jspdf('p', 'mm', 'a4');
-    //   var position = 0;
-    //   pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
-    //   var blob = pdf.output("blob");
-    //   window.open(URL.createObjectURL(blob));
-    // });
-    }
-
-  
-  // refreshList() {
-  //   this.http.get(this.baseUrl)
-  //     .toPromise()
-  //     .then(res =>this.list = res as test[]);
-  // }
 
 }

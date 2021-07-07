@@ -80,7 +80,7 @@ export class TableListComponent implements OnInit {
   Test:string = '';
   ngOnInit() {
     let doctorId = this.service.DoctorId;
-    this.service.getExamDataOfDoctor(doctorId,'examData/ExamDataOfDoctor').subscribe(res=>{this.service.list = res as ExamData[]})
+    this.service.getExamDataOfDoctor(doctorId,'examData/ExamDataOfDoctor').subscribe(res=>{this.service.list = res as ExamData[],console.log(res)})
     if (this.service.DoctorId !=0)
     {
       console.log(this.service.DoctorId)
@@ -88,7 +88,8 @@ export class TableListComponent implements OnInit {
   }
  
   preselect(id:number){
-    this.service.examDataId = id;
+    console.log(this.list)
+    this.service.examDataId = id ;
     this.service.tabs = [];
     this.service.getPatient(this.service.examDataId,'Patient','examId').subscribe(res =>{
       if (res != null && res != "Not Found"){
