@@ -39,7 +39,7 @@
              
             </div>
             <input type="file" #image value="Add to favorites" multiple (change)="detectFiles($event)"> -->
-
+            <!-- *ngFor="let url of urls" src={{url}} -->
             <form #imageForm = ngForm (ngSubmit)="OnSubmitImage(Image)">
               <img *ngFor="let url of urls" src={{url}}  width="180">
               <input type="file" #Image value="Add Pictures" multiple (change)="handleFileInput($event)">

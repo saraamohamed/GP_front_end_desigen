@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ElementRef, ViewChild} from '@angular/core';
+import { DomSanitizer} from '@angular/platform-browser';
 import {FormControl} from '@angular/forms';
 import { ArbProjectService } from 'src/app/shared/arb-project.service';
 import { NgForm } from '@angular/forms';
@@ -24,6 +25,7 @@ export class PreselectComponent implements OnInit {
   file: File =null ;
   THEfile: File =null ;
   fileToUploads =new Array<File>();
+  sanitization: any;
   
   onCreateProduct() {
     this.createProduct = true;
@@ -36,47 +38,23 @@ export class PreselectComponent implements OnInit {
     console.log(this.message)
   }
 
-
-
-  // addTab(selectAfterAdding: boolean) {
-
-  //   if(this.tabtitle != ''){
-  //       this.tabs.push(this.tabtitle);
-  //   }else{
-  //       this.tabs.push('New');
-  //   }
-
-  //   this.tabtitle = '';
-
-  //   if (selectAfterAdding) {
-  //     this.selected.setValue(this.tabs.length - 1);
-  //   }
-  // }
-
-  // removeTab(index: number) {
-  //   this.tabs.splice(index, 1);
-  // }
-  constructor(public service:ArbProjectService,private http:HttpClient) { }
+  constructor(public service:ArbProjectService,private http:HttpClient,private sanitizer:DomSanitizer) { }
 
   ngOnInit(): void {
+    this.http.get('http://localhost:57645/api/image/'+2).subscribe(res=> {
+      
+      this.urls.push(res as string);
+      // this.ImageURL = res as string;
+      console.log(this.urls);
+    });
+  
   }
+  
+  
 
   urls = new Array<string>();
   files = new Array<File>();
 
-  // detectFiles(event) {
-  //   this.urls = [];
-  //   this.fileToUpload = event.target.files;
-  //   if (this.fileToUpload) {
-  //     for (let file  of this.fileToUpload) {
-  //       let reader = new FileReader();
-  //       reader.onload = (e: any) => {
-  //         this.urls.push(e.target.result);
-  //       }
-  //       reader.readAsDataURL(file as string);
-  //     }
-  //   }
-  // }
   handleFileInput(event){
     this.urls = [];
     this.fileToUploads = event.target.files;
@@ -97,18 +75,7 @@ export class PreselectComponent implements OnInit {
     }
     
   }
-  // handleFileInput(event){
-  //   this.urls = [];
-  //   this.fileToUpload = event.target.files.item(0);
-  //   this.files.push(this.fileToUpload);
-    
-  //       var reader = new FileReader();
-  //       reader.onload = (event:any)=>{
-  //         this.urls.push(event.target.result);
-  //       }
-  //       reader.readAsDataURL(this.fileToUpload);
-  //     }
-    
+  
     
 
   OnSubmitImage(Image){
@@ -154,3 +121,26 @@ export class PreselectComponent implements OnInit {
   }
 
 }
+
+
+
+
+
+  // addTab(selectAfterAdding: boolean) {
+
+  //   if(this.tabtitle != ''){
+  //       this.tabs.push(this.tabtitle);
+  //   }else{
+  //       this.tabs.push('New');
+  //   }
+
+  //   this.tabtitle = '';
+
+  //   if (selectAfterAdding) {
+  //     this.selected.setValue(this.tabs.length - 1);
+  //   }
+  // }
+
+  // removeTab(index: number) {
+  //   this.tabs.splice(index, 1);
+  // }
