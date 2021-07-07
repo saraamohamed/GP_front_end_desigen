@@ -60,6 +60,7 @@ export class PreselectComponent implements OnInit {
   urls = new Array<string>();
 
   detectFiles(event) {
+    
     this.urls = [];
     let files = event.target.files;
     if (files) {
@@ -67,7 +68,15 @@ export class PreselectComponent implements OnInit {
         let reader = new FileReader();
         reader.onload = (e: any) => {
           this.urls.push(e.target.result);
+          localStorage.setItem("imgData", this.urls[0]);
+          console.log(localStorage.getItem("imgData"))
+          // const fd = new FormData();
+          // fd.append('image',this.urls[0])
+          // this.http.post("G:\SBME\GP\GP\GP_front_end_desigen\ARB GraduationProject\src\assets",fd).subscribe(res => console.log(res));
+         
         }
+        
+       
         reader.readAsDataURL(file);
       }
     }

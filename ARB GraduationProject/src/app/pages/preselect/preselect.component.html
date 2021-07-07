@@ -36,7 +36,7 @@
           
 
           <div>
-            <img *ngFor="let url of urls" [src]="url" class="rounded mb-3" width="180">
+            <img *ngFor="let url of urls" src={{url}} class="img" width="180">
             <button class="btn btn-link float-right" >SAVE</button>
           </div>
           <input type="file" value="Add to favorites" multiple (change)="detectFiles($event)">
