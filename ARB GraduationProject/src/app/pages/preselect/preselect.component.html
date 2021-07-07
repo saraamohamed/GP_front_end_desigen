@@ -34,11 +34,20 @@
           <!-- <button *ngIf="!createProduct" (click)="onCreateProduct()" class="btn btn-link float-right" >Add New Image</button>
           <app-product *ngIf="createProduct" (close)="onProductSubmit($event)"></app-product> -->
           
-            <div>
+            <!-- <div>
               <img *ngFor="let url of urls" src={{url}} class="img" width="180">
-              <!-- <button type = "submit"class="btn btn-link float-right" >SAVE</button> -->
+             
             </div>
-            <input type="file" #image value="Add to favorites" multiple (change)="detectFiles($event)">
+            <input type="file" #image value="Add to favorites" multiple (change)="detectFiles($event)"> -->
+
+            <form #imageForm = ngForm (ngSubmit)="OnSubmitImage(Image)">
+              <img *ngFor="let url of urls" src={{url}}  width="180">
+              <input type="file" #Image value="Add Pictures" multiple (change)="handleFileInput($event)">
+              <button type = "submit" class="btn-large btn-submit">Submit</button>
+
+            </form>  
+
+
           </div>
           
         

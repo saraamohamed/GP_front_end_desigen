@@ -19,9 +19,11 @@ export class PreselectComponent implements OnInit {
   tabtitle:string = '';
   createProduct: boolean;
   message: string;  
-  url: string;
-  url1: string;
+  ImageURL: string = null;
   fileToUpload: File | null = null;
+  file: File =null ;
+  THEfile: File =null ;
+  fileToUploads =new Array<File>();
   
   onCreateProduct() {
     this.createProduct = true;
@@ -60,31 +62,72 @@ export class PreselectComponent implements OnInit {
   }
 
   urls = new Array<string>();
+  files = new Array<File>();
 
-  detectFiles(event) {
+  // detectFiles(event) {
+  //   this.urls = [];
+  //   this.fileToUpload = event.target.files;
+  //   if (this.fileToUpload) {
+  //     for (let file  of this.fileToUpload) {
+  //       let reader = new FileReader();
+  //       reader.onload = (e: any) => {
+  //         this.urls.push(e.target.result);
+  //       }
+  //       reader.readAsDataURL(file as string);
+  //     }
+  //   }
+  // }
+  handleFileInput(event){
     this.urls = [];
-    let files = event.target.files;
-    if (files) {
-      for (let file of files) {
-        let reader = new FileReader();
-        reader.onload = (e: any) => {
-          this.urls.push(e.target.result);
+    this.fileToUploads = event.target.files;
+    console.log(this.fileToUploads)
+    for(var file of this.fileToUploads){
+      this.files.push(file);
+    }
+    
+    if(this.fileToUploads){
+      for (this.THEfile of this.fileToUploads){
+        var reader = new FileReader();
+        reader.onload = (event:any)=>{
+          this.urls.push(event.target.result);
+          // this.ImageURL = event.target.result;
         }
-        reader.readAsDataURL(file);
+        reader.readAsDataURL(this.THEfile);
       }
     }
+    
+  }
+  // handleFileInput(event){
+  //   this.urls = [];
+  //   this.fileToUpload = event.target.files.item(0);
+  //   this.files.push(this.fileToUpload);
+    
+  //       var reader = new FileReader();
+  //       reader.onload = (event:any)=>{
+  //         this.urls.push(event.target.result);
+  //       }
+  //       reader.readAsDataURL(this.fileToUpload);
+  //     }
+    
+    
+
+  OnSubmitImage(Image){
+    for (this.file of this.files){
+      this.postFile(this.file).subscribe(data=>{console.log(data)});
+    }
+    // this.postFile(this.fileToUpload).subscribe(data=>{console.log(data)});
   }
 
-  // postFile( fileToUpload: File) {
-  //   const endpoint = 'http://localhost:57645/api/UploadImage';
-  //   const formData: FormData = new FormData();
-  //   formData.append('Image', fileToUpload, fileToUpload.name);
-  //   return this.http
-  //     .post(endpoint, formData);
-  // }
-  // OnSubmitImage(Image){
-  //   this.postFile().subscribe(data=>{console.log(data)})
-  // }
+  postFile( fileToUpload: File) {
+
+    const endpoint = 'http://localhost:57645/api/UploadImage';
+    const formData: FormData = new FormData();
+    formData.append('Image', fileToUpload, fileToUpload.name);
+    console.log(fileToUpload.name);
+    return this.http
+      .post(endpoint, formData);
+  }
+  
 
 
   
