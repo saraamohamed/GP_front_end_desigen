@@ -10,6 +10,13 @@ import { AppComponent } from './app.component';
 // import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule} from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
@@ -29,8 +36,11 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
     RouterModule,
     AppRoutingModule,
     ReactiveFormsModule,
-
-
+    FlexLayoutModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDividerModule,
 
   ],
   declarations: [

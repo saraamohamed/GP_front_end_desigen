@@ -696,9 +696,9 @@ $dropdown-box-shadow:            0 50px 100px rgba(50, 50, 93, .1), 0 15px 35px 
 
 $nav-link-padding-y:                .25rem !default;
 $nav-link-padding-x:                .75rem !default;
-$nav-link-color:                    $gray-700 !default;
+$nav-link-color:                    navy !default;
 $nav-link-hover-color:              theme-color("primary") !default;
-$nav-link-disabled-color:           #dddde2  !default;
+$nav-link-disabled-color:           navy  !default;
 
 $nav-pills-padding-y:               .75rem !default;
 $nav-pills-padding-x:               1rem !default;
@@ -719,8 +719,8 @@ $nav-pills-box-shadow:              $btn-box-shadow !default;
 // Navbar
 
 $navbar-transition:                 all .15s linear !default;
-$navbar-padding-y:                  1rem !default;
-$navbar-padding-x:                  1rem !default;
+$navbar-padding-y:                  0.8rem !default;
+$navbar-padding-x:                  0.8rem !default;
 
 $navbar-nav-link-padding-x:         1rem !default;
 $navbar-nav-link-padding-y:         1rem !default;
@@ -740,7 +740,7 @@ $navbar-search-border-width:        2px !default;
 $navbar-dark-bg:                    transparent !default;
 $navbar-dark-hover-bg:              rgba(255, 255, 255, .1) !default;
 $navbar-dark-active-bg:             rgba(255, 255, 255, .1) !default;
-$navbar-dark-color:                 rgba($white, .95) !default;
+$navbar-dark-color:                 rgba(navy, .95) !default;
 $navbar-dark-hover-color:           rgba($white, .65) !default;
 $navbar-dark-active-color:          rgba($white, .65) !default;
 $navbar-dark-disabled-color:        rgba($white, .25) !default;
@@ -755,7 +755,7 @@ $navbar-light-bg:                   transparent !default;
 $navbar-light-hover-bg:             rgba(0, 0, 0, .1) !default;
 $navbar-light-active-bg:            rgba(0, 0, 0, .1) !default;
 $navbar-light-border-color:         $gray-100 !default;
-$navbar-light-color:                rgba($black, .5) !default;
+$navbar-light-color:               #2e3192;
 $navbar-light-hover-color:          rgba($black, .7) !default;
 $navbar-light-active-color:         rgba($black, .9) !default;
 $navbar-light-disabled-color:       rgba($black, .3) !default;
