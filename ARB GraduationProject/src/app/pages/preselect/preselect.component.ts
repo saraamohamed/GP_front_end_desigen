@@ -3,6 +3,7 @@ import { ElementRef, ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import { ArbProjectService } from 'src/app/shared/arb-project.service';
 import { NgForm } from '@angular/forms';
+import html2canvas from 'html2canvas';
 import {HttpClient} from "@angular/common/http";
 import { ClinicalInfo, FinalAssessment, GeneralInfo } from 'src/app/shared/arb-project.model';
 import { event } from 'jquery';
@@ -20,6 +21,7 @@ export class PreselectComponent implements OnInit {
   message: string;  
   url: string;
   url1: string;
+  fileToUpload: File | null = null;
   
   onCreateProduct() {
     this.createProduct = true;
@@ -60,7 +62,6 @@ export class PreselectComponent implements OnInit {
   urls = new Array<string>();
 
   detectFiles(event) {
-    
     this.urls = [];
     let files = event.target.files;
     if (files) {
@@ -68,20 +69,25 @@ export class PreselectComponent implements OnInit {
         let reader = new FileReader();
         reader.onload = (e: any) => {
           this.urls.push(e.target.result);
-          localStorage.setItem("imgData", this.urls[0]);
-          console.log(localStorage.getItem("imgData"))
-          // const fd = new FormData();
-          // fd.append('image',this.urls[0])
-          // this.http.post("G:\SBME\GP\GP\GP_front_end_desigen\ARB GraduationProject\src\assets",fd).subscribe(res => console.log(res));
-         
         }
-        
-       
         reader.readAsDataURL(file);
       }
     }
   }
 
+  // postFile( fileToUpload: File) {
+  //   const endpoint = 'http://localhost:57645/api/UploadImage';
+  //   const formData: FormData = new FormData();
+  //   formData.append('Image', fileToUpload, fileToUpload.name);
+  //   return this.http
+  //     .post(endpoint, formData);
+  // }
+  // OnSubmitImage(Image){
+  //   this.postFile().subscribe(data=>{console.log(data)})
+  // }
+
+
+  
 
 
 
