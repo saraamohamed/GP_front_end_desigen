@@ -650,7 +650,7 @@ p {
 }
 
 .navbar-brand {
-  background-color:steelblue;
+  background-color:transparent;
   box-shadow:2px;
   color: navy;
   padding-top: 20px !important;
