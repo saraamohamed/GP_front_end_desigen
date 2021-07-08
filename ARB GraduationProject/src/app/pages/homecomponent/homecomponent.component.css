@@ -50,7 +50,9 @@ body {
   color: #FFFFFF;
   box-shadow: none;
 }
-
+.a{
+  font-family: "Lucida Console", "Courier New", monospace;
+}
 .btn:hover,
 .navbar .navbar-nav>a.btn:hover {
   box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.17);
@@ -301,7 +303,7 @@ body {
 
 .input-group .input-group-text+.form-control,
 .input-group .input-group-text~.form-control {
-  padding: 10px 19px 11px 16px;
+  padding: 10px 19px 11px 12px;
 }
 
 .input-group.no-border .form-control,
@@ -498,7 +500,7 @@ p {
   display: inline-block;
   font: normal normal normal 14px/1 'Nucleo Outline';
   font-size: inherit;
-  speak: none;
+  /* speak: none; */
   text-transform: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -555,10 +557,10 @@ p {
 }
 
 .navbar {
-  padding-top: 0.625rem;
-  padding-bottom: 0.625rem;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
   min-height: 53px;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
 }
 
@@ -567,7 +569,7 @@ p {
 }
 
 .navbar a:not(.btn):not(.dropdown-item) {
-  color: #FFFFFF;
+  color:navy;
 }
 
 .navbar p {
@@ -609,14 +611,14 @@ p {
 
 .navbar .navbar-nav .nav-link:not(.btn) i.now-ui-icons {
   top: 4px;
-  font-size: 16px;
+  font-size: 12px;
 }
 
 .navbar .navbar-nav .nav-item .nav-link:not(.btn):focus,
 .navbar .navbar-nav .nav-item .nav-link:not(.btn):hover,
 .navbar .navbar-nav .nav-item .nav-link:not(.btn):active {
   background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 0.1875rem;
+  border-radius:0cm;
 }
 
 .navbar .navbar-brand {
@@ -647,10 +649,10 @@ p {
   width: 17px;
 }
 
-.navbar.navbar-transparent {
-  background-color: transparent !important;
-  box-shadow: none;
-  color: #FFFFFF;
+.navbar-brand {
+  background-color:transparent;
+  box-shadow:2px;
+  color: navy;
   padding-top: 20px !important;
 }
 
@@ -762,7 +764,7 @@ img {
 
 .footer nav {
   display: inline-block;
-  float: left;
+  /* float: left; */
 }
 
 .footer ul {

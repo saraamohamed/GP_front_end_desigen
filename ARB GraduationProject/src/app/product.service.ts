@@ -10,7 +10,7 @@ import { ajax } from 'rxjs/ajax';
 })
 export class ProductService {
 
-  apiUrl = 'http://localhost/dash/preselect';
+  apiUrl = 'http://localhost:57645/';
 
   constructor(private http: HttpClient) { }
 
@@ -26,7 +26,7 @@ export class ProductService {
   }
 
   saveProduct(formData) {
-    return this.http.post<any>(`${this.apiUrl}api/saveProduct`, formData)
+    return this.http.post<any>(`${this.apiUrl}api/UploadImage`, formData)
     .pipe(
       catchError(this.handleError)
     );

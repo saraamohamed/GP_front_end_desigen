@@ -34,18 +34,33 @@
           <!-- <button *ngIf="!createProduct" (click)="onCreateProduct()" class="btn btn-link float-right" >Add New Image</button>
           <app-product *ngIf="createProduct" (close)="onProductSubmit($event)"></app-product> -->
           
+            <!-- <div>
+              <img *ngFor="let url of urls" src={{url}} class="img" width="180">
+             
+            </div>
+            <input type="file" #image value="Add to favorites" multiple (change)="detectFiles($event)"> -->
+            <!-- *ngFor="let url of urls" src={{url}} -->
+            <form #imageForm = ngForm (ngSubmit)="OnSubmitImage(Image)">
+              <div *ngFor="let url of urls ; let i = index">
+                <img  [src]="url"  width="180"><span class="delete-entry" style="cursor: pointer;" (click)="deleteImage(url,i)">x</span>
+              </div>
+              
+              <input type="file" #Image value="Add Pictures" multiple (change)="handleFileInput($event)">
+              <button type = "submit" class="btn-large btn-submit">Submit</button>
+            </form>  
+              <!-- <div class="Upcard" >
+                <img [src]="url"><span class="delete-entry" style="cursor: pointer;" (click)="deleteImage(url)">x</span>
+            </div> -->
 
-          <div>
-            <img *ngFor="let url of urls" [src]="url" class="rounded mb-3" width="180">
-            <button class="btn btn-link float-right" >SAVE</button>
           </div>
-          <input type="file" value="Add to favorites" multiple (change)="detectFiles($event)">
-        </div>
+          
+        
+          
 
-        <!--<p>
+        <!-- <p>
           <button class="btn btn-link float-right" (click)="t.select('select image')">Add new Image</button>
-        </p>
-      -->
+        </p> -->
+     
       </div>
     </div>
   </div>
