@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import { ExamData, Patient , Doctor , 
+import { ExamData, Patient , Doctor , image,
   GeneralInfo ,ClinicalInfo ,FinalAssessment , Login, features} from './arb-project.model';
 import {HttpHeaders} from "@angular/common/http";
 import jspdf from 'jspdf';

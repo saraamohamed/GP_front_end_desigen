@@ -6,7 +6,8 @@ import { ArbProjectService } from 'src/app/shared/arb-project.service';
 import { NgForm } from '@angular/forms';
 import html2canvas from 'html2canvas';
 import {HttpClient} from "@angular/common/http";
-import { ClinicalInfo, FinalAssessment, GeneralInfo } from 'src/app/shared/arb-project.model';
+import { ExamData, Patient , Doctor , image,
+  GeneralInfo ,ClinicalInfo ,FinalAssessment , Login, features} from 'src/app/shared/arb-project.model';
 import { event } from 'jquery';
 
 @Component({
@@ -18,6 +19,7 @@ export class PreselectComponent implements OnInit {
   tabs = ['General Information', 'Clinical Information', 'Final Assesment'];
   selected = new FormControl(0);
   tabtitle:string = '';
+  image = new image();
   createProduct: boolean;
   message: string;  
   ImageURL: string = null;
@@ -44,7 +46,7 @@ export class PreselectComponent implements OnInit {
   constructor(public service:ArbProjectService,private http:HttpClient,private sanitizer:DomSanitizer) { }
 
   ngOnInit(): void {
-    this.http.get('http://localhost:57645/api/image/'+2).subscribe(res=> {
+    this.http.get('http://localhost:57645/api/image/'+1).subscribe(res=> {
       
       this.urls.push(res as string);
       // this.ImageURL = res as string;
@@ -87,11 +89,17 @@ export class PreselectComponent implements OnInit {
     // this.postFile(this.fileToUpload).subscribe(data=>{console.log(data)});
   }
 
-  postFile( fileToUpload: File) {
-
-    const endpoint = 'http://localhost:57645/api/UploadImage';
+  postFile( fileToUpload: File ) {
+    let no:number = this.service.examDataId;
+    const endpoint = 'http://localhost:57645/api/image';
     const formData: FormData = new FormData();
-    formData.append('Image', fileToUpload, fileToUpload.name);
+    var array = fileToUpload.name.split(".",2)
+    console.log(array)
+    formData.append('Image', fileToUpload, array[0]+`_${no}.`+array[1]);
+    // formData.append('id', no as string);
+    this.image.patientId = no;
+    this.image.imageName = fileToUpload.name;
+    // this.image.imageFile = fileToUpload;
     console.log(fileToUpload.name);
     return this.http
       .post(endpoint, formData);
@@ -109,7 +117,7 @@ export class PreselectComponent implements OnInit {
     else{
       var array = url.split("\\",8)
       console.log(array[7])
-      this.http.delete("http://localhost:57645/api/deleteImage/"+array[7]).subscribe(res => {
+      this.http.delete("http://localhost:57645/api/deleteImage/"+url).subscribe(res => {
         console.log(res)
       })
     }
