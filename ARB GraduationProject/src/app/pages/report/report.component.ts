@@ -4,9 +4,9 @@ import html2canvas from 'html2canvas';
 // import domtoimage from 'dom-to-image';
 import { ArbProjectService } from 'src/app/shared/arb-project.service';
 import { ExamData, ClinicalInfo, GeneralInfo, FinalAssessment, Patient, massSpecifications } from 'src/app/shared/arb-project.model';
-import { NgForm } from '@angular/forms';
+// import { NgForm } from '@angular/forms';
 import { HttpClient } from "@angular/common/http";
-import { FormControl } from '@angular/forms';
+// import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 declare const google: any;
 // import WebViewer from '@pdftron/webviewer';
@@ -25,8 +25,8 @@ export class ReportComponent implements OnInit {
   lenght: number = 0;
   ngOnInit() {
 
-    console.log(this.massSpecifications.length)
-
+    console.log(this.service.Patient);
+    
     this.service.getOne(this.service.examDataId, 'examData').subscribe(res => {
       this.service.ExamData = res as ExamData;
       console.log(this.service.ExamData, this.service.Patient);

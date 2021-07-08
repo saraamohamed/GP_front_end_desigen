@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import { ExamData, Patient , Doctor , 
+import { ExamData, Patient , Doctor , image,
   GeneralInfo ,ClinicalInfo ,FinalAssessment , Login, features} from './arb-project.model';
 import {HttpHeaders} from "@angular/common/http";
 import jspdf from 'jspdf';
@@ -94,6 +94,5 @@ export class ArbProjectService {
     this.http.get(this.examDataUrl).toPromise().then(
       res => {this.list = res as ExamData[]});
   }
-
 
 }

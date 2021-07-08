@@ -24,26 +24,32 @@ export class GeneralInfo{
     whereHadAMammogram: string = '';
     historyOfMammogram: string = '';
     personalHistoryOfBreastCancer: boolean = false;
-    motherAge: number;
+    motherAge: number = 0;
     mother: boolean = false;
-    sisterAge: number;
+    sisterAge: number = 0;
     sister: boolean = false;
-    daughterAge: number;
+    daughterAge: number = 0;
     daughter: boolean = false;
-    grandmotherAge: number;
+    grandmotherAge: number = 0;
     grandmother: boolean = false;
-    auntAge: number ;
+    auntAge: number = 0;
     aunt: boolean = false;
-    cousinAge: number;
+    cousinAge: number = 0;
     cousin: boolean = false;
     takingHormones: boolean = false;
     howlongTakingHormones: string = '';
     pergnancyHistory: boolean = false;
     menopause: boolean = false;
     pregnant: boolean = false;
-    gravida: number;
-    para: number;
+    gravida: number = 0;
+    para: number= 0;
     lmp:string='';
+}
+export class image{
+    id:number=0;
+    patientId:number=0;
+    imageName:string="";
+    imagePath:string="";
 }
 export class features{
     id:number=0;
@@ -104,6 +110,16 @@ export class Patient{
     doctorId: number=0;
     examDataId: number = 0;
 }
+
+export class PatientTest{
+    id:number=0;
+    clinicalInfoId: number= 0;
+    generalInfoId: number = 0;
+    finalAssessmentId: number = 0;
+    doctorId: number=0;
+    examDataId: number = 0;
+}
+
 export class Doctor{
     id: number = 0;
     name:String='';
