@@ -318,7 +318,7 @@ $shape-height-xl:              1.5 !default;
 $shape-height-lg:              1.5 !default;
 $shape-height-sm:              1.5 !default;
 
-$border-width:                1px !default;
+$border-width:                0.5px !default;
 $border-color:                $gray-200 !default;
 
 $border-radius:               .375rem !default;
@@ -721,7 +721,7 @@ $nav-pills-box-shadow:              $btn-box-shadow !default;
 // Navbar
 
 $navbar-transition:                 all .15s linear !default;
-$navbar-padding-y:                  0.8rem !default;
+$navbar-padding-y:                  0.2rem !default;
 $navbar-padding-x:                  0.8rem !default;
 
 $navbar-nav-link-padding-x:         1rem !default;
@@ -916,7 +916,7 @@ $pagination-disabled-border-color:  $gray-300 !default;
 
 $card-spacer-y:                     1.25rem !default;
 $card-spacer-x:                     1.5rem !default;
-$card-border-width:                 $border-width !default;
+$card-border-width:                 0rem !default;
 $card-border-radius:                $border-radius !default;
 $card-border-color:                 rgba($black, .05) !default;
 $card-inner-border-radius:          calc(#{$card-border-radius} - #{$card-border-width}) !default;
