@@ -45,12 +45,7 @@ export class GeneralInfo{
     para: number= 0;
     lmp:string='';
 }
-export class image{
-    id:number=0;
-    patientId:number=0;
-    imageName:string="";
-    imagePath:string="";
-}
+
 export class features{
     id:number=0;
     skinRetraction: boolean = false;
@@ -124,11 +119,24 @@ export class Doctor{
     id: number = 0;
     name:String='';
     email:string='';
-    password:string=''
+    password:string='';
+    mobilePhone: null;
+    specialization: string = '';
+    location:string = '';
+    city:string = '';
+    country:string = '';
+    patients:Patient[]=[new Patient()];
 }
 
 export class Login{
     email:string='';
     password:string='';
     RememberMe:boolean=false
+}
+
+export class image{
+    id:number=0;
+    patientId:number=0;
+    imageName:string="";
+    imagePath:string="";
 }

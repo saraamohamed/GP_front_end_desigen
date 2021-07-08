@@ -14,7 +14,7 @@
     </div>
   </div>
 </div>
-<form>
+<form   >
   <div class="container-fluid mt--7">
     <div class="row">
 
@@ -66,7 +66,7 @@
 
           </div>
           <div class="card-body">
-            <form>
+            <form  #form="ngForm" (submit)="OnSubmit(form,'Doctor')">
 
               <h6 class="heading-small text-muted mb-4">Dr information</h6>
               <div class="pl-lg-4">
@@ -94,8 +94,8 @@
                               Number</label>
                           <input type="text" id="input-mobilenumber"
                               class="form-control form-control-alternative"
-                              placeholder="Mobile Number" name="mobileNumber"
-                              #mobileNumber="ngModel" [(ngModel)]="service.ExamData.mobileNumber">
+                              placeholder="Mobile Number" name="mobilePhone"
+                              #mobilePhone="ngModel" [(ngModel)]="service.Doctor.mobilePhone">
                       </div>
                   </div>
                   <div class="col-lg-6">
@@ -104,8 +104,8 @@
                               </label>
                           <input type="text" id="input-specialization"
                               class="form-control form-control-alternative"
-                              placeholder="Specialization " name="Specialization" #specialization="ngModel"
-                              [(ngModel)]="service.ExamData.Specialization">
+                              placeholder="Specialization " name="specialization" #specialization="ngModel"
+                              [(ngModel)]="service.Doctor.specialization">
                       </div>
                   </div>
               </div>
@@ -119,6 +119,8 @@
                     <div class="form-group">
                       <label class="form-control-label" for="input-location">Location</label>
                       <input id="input-location" class="form-control form-control-alternative" placeholder="Home Address"
+                      name="location" #location="ngModel"
+                      [(ngModel)]="service.Doctor.location"
                         value="15 may Cairo, nr. 2 Bl 1, Sc 1, Ap 09" type="text">
                     </div>
                   </div>
@@ -128,6 +130,9 @@
                     <div class="form-group">
                       <label class="form-control-label" for="input-city">City</label>
                       <input type="text" id="input-city" class="form-control form-control-alternative"
+                      name="city" #city="ngModel"
+                      [(ngModel)]="service.Doctor.city"
+
                         placeholder="City" value="Cairo">
                     </div>
                   </div>
@@ -135,6 +140,9 @@
                     <div class="form-group">
                       <label class="form-control-label" for="input-country">Country</label>
                       <input type="text" id="input-country" class="form-control form-control-alternative"
+                      name="country" #country="ngModel"
+                      [(ngModel)]="service.Doctor.country"
+
                         placeholder="Country" value="Egypt">
                     </div>
                   </div>
@@ -150,17 +158,18 @@
                     placeholder="A few words about you ...">say something a bout yourself.</textarea>
                 </div>
               </div> -->
+              <div class="card-footer text-muted">
+                <button href="#!" type="submit" class="btn btn-secondary float-right "
+                id="right" style="color:white;"> Save
+                  </button>
+                <!-- <div class="col align-self-end">
+                  <button type="button" class="btn btn-primary">Save</button>
+                </div> -->
+              </div>
+
             </form>
           </div>
-          <div class="card-footer text-muted">
-            <button class="btn btn-primary btn-lg float-right"
-                    id="right" style="color:white;">
-                Save
-            </button>
-            <!-- <div class="col align-self-end">
-              <button type="button" class="btn btn-primary">Save</button>
-            </div> -->
-          </div>
+         
         </div>
       </div>
     </div>
