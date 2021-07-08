@@ -96,6 +96,7 @@ export class TableListComponent implements OnInit {
       this.service.Patient = res as Patient
       this.service.PatientId = res['id'];
       console.log("gbtha");
+      console.log(this.service.Patient.clinicalInfo.massSpecifications);
       this.service.index = this.service.Patient.clinicalInfo.massSpecifications.length ;
       for (let i = 1 ; i <= this.service.index; i++){
         this.service.tabs.push('Mass' + i);

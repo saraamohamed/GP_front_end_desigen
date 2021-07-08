@@ -95,5 +95,4 @@ export class ArbProjectService {
       res => {this.list = res as ExamData[]});
   }
 
-
 }

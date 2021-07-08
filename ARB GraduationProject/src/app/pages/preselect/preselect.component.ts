@@ -7,9 +7,7 @@ import { NgForm } from '@angular/forms';
 import html2canvas from 'html2canvas';
 import {HttpClient} from "@angular/common/http";
 import { ExamData, Patient , Doctor , image,
-  GeneralInfo ,ClinicalInfo ,FinalAssessment , Login, features} from 'src/app/shared/arb-project.model';
-import { event } from 'jquery';
-import { toBase64String } from '@angular/compiler/src/output/source_map';
+GeneralInfo ,ClinicalInfo ,FinalAssessment , Login, features} from 'src/app/shared/arb-project.model';
 
 @Component({
   selector: 'preselect-icons',
@@ -141,7 +139,7 @@ export class PreselectComponent implements OnInit {
     else{
       var array = url.split("\\",8)
       console.log(array[7])
-      this.http.delete("http://localhost:57645/api/deleteImage/"+url]).subscribe(res => {
+      this.http.delete("http://localhost:57645/api/deleteImage/"+url).subscribe(res => {
         console.log(res)
       })
     }
