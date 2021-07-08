@@ -5,7 +5,7 @@ import { ArbProjectService } from 'src/app/shared/arb-project.service';
 import { NgForm } from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
 import { ClinicalInfo, FinalAssessment, GeneralInfo } from 'src/app/shared/arb-project.model';
-import { event } from 'jquery';
+// import { event } from 'jquery';
 
 @Component({
   selector: 'preselect-icons',

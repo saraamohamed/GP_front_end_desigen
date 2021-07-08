@@ -16,7 +16,9 @@ export class NgbdTabsetSelectbyid  implements OnInit{
  
 
   constructor(public service:ArbProjectService,private http:HttpClient,  private router:Router) {}
+  
   onClick(route,id:number){
+    console.log(this.service.Patient);
     this.router.navigate([route])
   }
 
@@ -115,7 +117,7 @@ export class NgbdTabsetSelectbyid  implements OnInit{
   );
   }
   resetForm(form: NgForm,data:string) {
-    form.form.reset();
+    // form.form.reset();
     this.service.GeneralInfo = new GeneralInfo();
     this.service.FinalAssessment = new FinalAssessment();
     this.service.ClinicalInfo = new ClinicalInfo();
