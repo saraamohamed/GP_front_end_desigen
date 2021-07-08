@@ -45,6 +45,12 @@ export class GeneralInfo{
     para: number= 0;
     lmp:string='';
 }
+export class image{
+    id:number=0;
+    patientId:number=0;
+    imageName:string="";
+    imagePath:string="";
+}
 export class features{
     id:number=0;
     skinRetraction: boolean = false;

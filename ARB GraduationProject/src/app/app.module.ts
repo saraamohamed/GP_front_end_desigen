@@ -42,6 +42,7 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
     MatIconModule,
     MatDividerModule,
 
+
   ],
   declarations: [
     AppComponent,
