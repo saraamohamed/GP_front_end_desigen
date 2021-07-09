@@ -20,6 +20,7 @@ import { content } from 'html2canvas/dist/types/css/property-descriptors/content
   styleUrls: ['./table-list.component.scss']
 })
 export class TableListComponent implements OnInit {
+  name : string;
   closeResult: string;
   redirectUrl: string = '/dash/preselect';
   constructor(private service:ArbProjectService  ,private http:HttpClient, private router:Router, private modalService: NgbModal) { }
@@ -125,7 +126,18 @@ export class TableListComponent implements OnInit {
     console.log("eeeh p2a mna fe el edit ahw");
     this.router.navigate(['dash/patient']);
   }
+  Search(){
+    if(this.name != ""){
+      this.service.list = this.service.list.filter(res =>{
+        return res.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+      });
 
+    }else if(this.name == ""){
+      this.ngOnInit();
+
+    }
+    
+  }
   DeleteOn(id:number){
    
     if (confirm('Are You Sure You Want To Delete?'))

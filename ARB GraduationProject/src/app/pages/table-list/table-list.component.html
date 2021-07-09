@@ -18,7 +18,7 @@
 
 <!--Page content -->
 <div class="container-fluid mt--7">
-  
+
   <!-- Table -->
   <div class="row">
     <div class="col">
@@ -33,21 +33,19 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fas fa-search"></i></span>
                 </div>
-                <input class="form-control" placeholder="Search" type="text" (focus)="focus = true"
-                  (blur)="focus = false">
+                <input class="form-control" placeholder="Search" type="text" (focus)="focus = true" name="searchterm"  [(ngModel)]="name"
+                  (blur)="focus = false"  (input) = "Search()" >
               </div>
 
             </div>
             <div class="bg-info clearfix col-md-4 offset-md-5">
-              <button class="btn btn-secondary float-right" type="button" (click)="onClick('/dash/patient')">
+              <button class="btn btn-primary float-right" type="button" (click)="onClick('/dash/patient')">
                 Add New Patiant
               </button>
             </div>
           </div>
-
-
-
         </div>
+        <!-- ==================================== Table ============================================= -->
 
         <div class="table-responsive">
           <table class="table align-items-center table-flush">
@@ -61,14 +59,10 @@
                 <th scope="col">Study Datetime</th>
                 <th scope="col">Referring Doctor</th>
                 <th scope="col"> Action</th>
-                <th hidden scope="col">Email Address</th>
+                <!-- <th hidden scope="col">Email Address</th>
                 <th hidden scope="col">mobile number</th>
                 <th hidden scope="col"> address</th>
-                <th hidden scope="col"> Last Operation</th>
-
-
-
-
+                <th hidden scope="col"> Last Operation</th> -->
               </tr>
             </thead>
 
@@ -85,25 +79,6 @@
                 <td>
                   {{pd.patientID}}
                 </td>
-                <!-- <td >
-                  38
-                </td> -->
-                <!-- <td>
-                  <span class="badge badge-dot mr-4">
-                    <i class="bg-warning"></i> pending
-                  </span>
-                </td> -->
-                <!-- <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">60%</span>
-                    <div>
-                      <div class="progress">
-                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
-                      </div>
-                    </div>
-                  </div>
-                </td> -->
-
                 <td>
                   <!--Modality -->
                   {{pd.modailty}}
@@ -206,8 +181,8 @@
   <div class="modal-body">
 
 
-    <pdf-viewer [src]="pdfScr" [render-text]="true" [show-all]="true" style="display: block;" [fit-to-page]='true' [autoresize]="true"
-    [original-size]='true'></pdf-viewer>
+    <pdf-viewer [src]="pdfScr" [render-text]="true" [show-all]="true" style="display: block;" [fit-to-page]='true'
+      [autoresize]="true" [original-size]='true'></pdf-viewer>
 
   </div>
 

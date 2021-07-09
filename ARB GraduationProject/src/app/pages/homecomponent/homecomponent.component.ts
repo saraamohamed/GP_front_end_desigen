@@ -12,7 +12,8 @@ import * as Rellax from 'rellax';
     ngb-progressbar {
         margin-top: 5rem;
     }
-    `]
+    `],
+  styleUrls: ['./homecomponent.component.css']
 })
 // export class HomecomponentComponent implements OnInit {
 
