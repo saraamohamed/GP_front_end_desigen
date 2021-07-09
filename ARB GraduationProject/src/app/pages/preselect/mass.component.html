@@ -1,210 +1,205 @@
-
-       <!-- <mat-form-field >
+<!-- <mat-form-field >
 
         <tr><mat-label>Numer of Masses</mat-label></tr>
                 {{service.index}}
       </mat-form-field> -->
 
-      <div class="clearfix">
-          <button class="btn btn-secondary"   (click)="addTab()" >
-              Add Mass
-          </button>
+<div class="clearfix">
+    <button class="btn btn-primary" (click)="addTab()">
+        Add Mass
+    </button>
 
-      </div>
-      <mat-tab-group class="example-card" [selectedIndex]="selected.value" appearance="outline" >
-          <mat-tab  *ngFor = "let pd of service.Patient.clinicalInfo.massSpecifications ;let i = index" [label]="service.tabs[i]"
-          style="margin-top: 18px; margin-left: 13px; background-color:rgb(186, 173, 173);"
-          >
-              <h3 class="form-control-alternative"
-                  style="margin-top: 18px; margin-left: 13px; background-color:rgb(206, 201, 211);"> {{service.tabs[i]}} Spacifications
-              </h3>
+</div>
+<mat-tab-group class="example-card" [selectedIndex]="selected.value" appearance="outline">
+    <mat-tab *ngFor="let pd of service.Patient.clinicalInfo.massSpecifications ;let i = index" [label]="service.tabs[i]"
+        style="margin-top: 18px; margin-left: 13px; background-color:rgb(186, 173, 173);">
+        <h3 class="form-control-alternative"
+            style="margin-top: 18px; margin-left: 13px; box-shadow: gray; "> {{service.tabs[i]}}
+            Specifications
+        </h3>
 
-              <div class="col">
-                  <div class="row">
+        <div class="col">
+            <div class="row">
 
-                      <div class="col-sm">
-                          <div class="form-group focused">
+                <div class="col">
+                    <div class="form-group focused">
 
-                              <table>
-                                  <thead>
-                                      <tr>
+                        <table style="border: 0ch;">
+                            <thead>
+                                <tr>
 
-                                          <th style="vertical-align: top;">
-                                              <h3 for="Shape" class="form-group focused">
-                                                  <label><strong>Shape</strong></label>
-                                              </h3>
-                                          </th>
-                                          <th>
+                                    <th style="vertical-align: top; padding-top: 15px;">
+                                        <h3 for="Shape" class="form-group focused">
+                                            <label><strong>Shape</strong></label>
+                                        </h3>
+                                    </th>
+                                    <th>
+                                        <ul style="list-style-type:none;padding-top: 15px;">
+                                            <li>
+                                                <h4 class="form-group focused">
+                                                    <input type="radio" name="massShape" value="Oval" id=i
+                                                        [(ngModel)]="pd.massShape" class="form-control ">
 
-                                              <ul style="list-style-type:none;">
-                                                  <li>
-                                                      <h4 class="form-group focused">
-                                                          <input type="radio" name="massShape" value="Oval" id = i
+                                                    <span class="checkmark">Oval</span>
+                                                </h4>
+                                            </li>
+                                            <li>
+                                                <h4 class="form-group focused">
+                                                    <input type="radio" name="massShape" value="Round" id=i
+                                                        [checked]=" service.Patient.clinicalInfo.massSpecifications[i].massShape == Round? true: false"
+                                                        [(ngModel)]="pd.massShape" class="form-control ">
+                                                    <span class="checkmark">Round</span>
+                                                </h4>
+                                            </li>
+                                            <li>
 
-
-                                                              [(ngModel)]="pd.massShape"
-                                                          >
-
-                                                          <span class="checkmark">Oval</span>
-                                                      </h4>
-                                                  </li><br>
-
-                                                  <li>
-
-                                                      <h4 class="form-group focused">
-                                                          <input type="radio" name="massShape" value="Round" id = i
-                                                          [checked]=" service.Patient.clinicalInfo.massSpecifications[i].massShape == Round? true: false"
-                                                              [(ngModel)]="pd.massShape">
-                                                          <span class="checkmark">Round</span>
-                                                      </h4>
-                                                  </li><br>
-                                                  <li>
-
-                                                      <input type="radio" name="massShape" value="Irregular" id = i
-                                                      [checked]=" (service.Patient.clinicalInfo.massSpecifications[i].massShape == Irregular)"
-
-                                                          [(ngModel)]="pd.massShape">
-                                                      <span class="checkmark">Irregular</span>
-                                                  </li><br>
-
-                                              </ul>
-                                          </th>
-                                      </tr>
-                                  </thead>
-                              </table>
-                          </div>
-                      </div>
+                                                <input type="radio" name="massShape" value="Irregular" id=i
+                                                    [checked]=" (service.Patient.clinicalInfo.massSpecifications[i].massShape == Irregular)"
+                                                    [(ngModel)]="pd.massShape" class="form-control ">
+                                                <span class="checkmark">Irregular</span>
+                                            </li><br>
+                                        </ul>
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
 
 
-                      <div class="col-sm">
-                          <div class="form-group focused ">
-                              <h3 class="form-control-label" for="Mammo-history"
-                                  style="margin-right: 15px; padding-top: 15px;">
-                                  <strong>Margin</strong>
-                              </h3>
-                              <select class="custom-select" name="massMarginId" #massMarginId="ngModel"
-                                  [(ngModel)]="service.Patient.clinicalInfo.massSpecifications[i].massMarginId"
-                                  style="width:150px;">
-                                  <option value="0"> SELECT</option>
-                                  <option *ngFor="let item of MassMargin" value="{{item.id}}">{{item.name}}</option>
-                              </select>
+                <div class="col">
+                    <div class="form-group focused ">
+                        <h3 class="form-control-label" for="Mammo-history"
+                            style="margin-right: 15px; padding-top: 15px;">
+                            <strong>Margin</strong>
+                        </h3>
+                        <select class="custom-select" name="massMarginId" #massMarginId="ngModel"
+                            [(ngModel)]="service.Patient.clinicalInfo.massSpecifications[i].massMarginId"
+                            style="width:150px;">
+                            <option value="0"> SELECT</option>
+                            <option *ngFor="let item of MassMargin" value="{{item.id}}">{{item.name}}</option>
+                        </select>
 
 
-                          </div>
-                      </div>
-                      <div class="col-sm">
-                          <div class="form-group focused ">
-                              <h5 class="form-control-label" for="Mammo-history"
-                                  style="margin-right: 15px; padding-top: 15px;">
-                                  Density </h5>
-                              <select class="custom-select" name="massDensityId" #massDensityId="ngModel"
-                                  [(ngModel)]="service.Patient.clinicalInfo.massSpecifications[i].massDensityId"
-                                  style="width:150px;">
-                                  <option value="0"> SELECT</option>
-                                  <option *ngFor="let item of MassDensities" value="{{item.id}}">{{item.name}}</option>
-                              </select>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group focused ">
+                        <h5 class="form-control-label" for="Mammo-history"
+                            style="margin-right: 15px; padding-top: 15px;">
+                            Density </h5>
+                        <select class="custom-select" name="massDensityId" #massDensityId="ngModel"
+                            [(ngModel)]="service.Patient.clinicalInfo.massSpecifications[i].massDensityId"
+                            style="width:150px;">
+                            <option value="0"> SELECT</option>
+                            <option *ngFor="let item of MassDensities" value="{{item.id}}">{{item.name}}
+                            </option>
+                        </select>
 
 
 
-                          </div>
-                      </div>
-                  </div>
-                  <h3 class="form-control-alternative" style="margin-top: 9px; background-color:gainsboro;">Location of
-                    {{tab}}</h3>
+                    </div>
+                </div>
+            </div>
+            <h3 class="form-control-alternative" style="margin-top: 9px;  ">Location
+                {{tab}}</h3>
 
 
-                  <!----------------------------  Literality ---------------------------------- -->
+            <!----------------------------  Literality ---------------------------------- -->
 
 
-                  <div class="row">
-                      <div class="col">
-                          <div class="form-group focused">
-                              <label class="form-control-label" for="Mammo-history"
-                                  style="margin-right: 15px; padding-bottom:20 px;">
-                                  <strong> Laterality</strong> </label>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group focused">
+                        <label class="form-control-label" for="Mammo-history"
+                            style="margin-right: 15px; padding-bottom:20 px;">
+                            <strong> Laterality</strong> </label>
 
-                              <input type="text" id="TEXT_1450682011285" name="laterality" data-field-type="TEXT"
-                                  data-field-completion-action="NONE" #laterality="ngModel"
-                                  [(ngModel)]="service.Patient.clinicalInfo.massSpecifications[i].laterality"
-                                  style="width: 150px; height: 50px;" class="form-control" />
-                          </div>
-                      </div>
-                  </div>
-                  <br>
-                  <!-- Quadrant ..Done-->
+                        <input type="text" id="TEXT_1450682011285" name="laterality" data-field-type="TEXT"
+                            data-field-completion-action="NONE" #laterality="ngModel"
+                            [(ngModel)]="service.Patient.clinicalInfo.massSpecifications[i].laterality"
+                            style="width: 150px; height: 50px;" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <br>
+            <!-- Quadrant ..Done-->
 
-                  <div class="row">
-                      <div class="col">
-                          <div class="form-group focused ">
-                              <label class="form-control-label" for="Mammo-history"
-                                  style="margin-right: 15px; padding-bottom: 10px;">
-                                  <strong> Quadrant </strong> </label>
-                              <select class="custom-select" name="quadrantId" #quadrantId="ngModel"
-                                  [(ngModel)]="service.Patient.clinicalInfo.massSpecifications[i].quadrantId"
-                                  style="width:150px;">
-                                  <option value="0"> SELECT</option>
-                                  <option *ngFor="let item of Quadrants" value="{{item.id}}">{{item.name}}</option>
-                              </select>
-                          </div>
-                      </div>
-                      <!-- Clock Face ..Done-->
-                      <div class="col">
-                          <div class="form-group focused ">
-                              <label class="form-control-label" for="Mammo-history"
-                                  style="margin-right: 15px;  padding-bottom: 10px;"><strong> Clock face</strong></label>
-                              <select class="custom-select" name="clockFaceId" #clockFaceId="ngModel"
-                                  [(ngModel)]="service.Patient.clinicalInfo.massSpecifications[i].clockFaceId"
-                                  style="width:150px;">
-                                  <option value="0"> SELECT</option>
-                                  <option *ngFor="let item of ClockFaces" value="{{item.id}}">{{item.name}}</option>
-                              </select>
-                          </div>
-                      </div>
-                  </div>
-                  <br>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group focused ">
+                        <label class="form-control-label" for="Mammo-history"
+                            style="margin-right: 15px; padding-bottom: 10px;">
+                            <strong> Quadrant </strong> </label>
+                        <select class="custom-select" name="quadrantId" #quadrantId="ngModel"
+                            [(ngModel)]="service.Patient.clinicalInfo.massSpecifications[i].quadrantId"
+                            style="width:150px;">
+                            <option value="0"> SELECT</option>
+                            <option *ngFor="let item of Quadrants" value="{{item.id}}">{{item.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Clock Face ..Done-->
+                <div class="col">
+                    <div class="form-group focused ">
+                        <label class="form-control-label" for="Mammo-history"
+                            style="margin-right: 15px;  padding-bottom: 10px;"><strong> Clock
+                                face</strong></label>
+                        <select class="custom-select" name="clockFaceId" #clockFaceId="ngModel"
+                            [(ngModel)]="service.Patient.clinicalInfo.massSpecifications[i].clockFaceId"
+                            style="width:150px;">
+                            <option value="0"> SELECT</option>
+                            <option *ngFor="let item of ClockFaces" value="{{item.id}}">{{item.name}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br>
 
-                  <!--Depth  ..Done-->
+            <!--Depth  ..Done-->
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group focused">
 
-                      <div class="col">
-                          <div class="form-group focused">
-
-                              <label style="margin-right: 15px; padding-top: 9px;"><strong> Depth</strong> </label>
-                              <input type="text" id="TEXT_1450682011285" name="depth" data-field-type="TEXT"
-                                  data-field-completion-action="NONE" #depth="ngModel"
-                                  [(ngModel)]="service.Patient.clinicalInfo.massSpecifications[i].depth"
-                                  class="form-control" />
-                                  <p  style="margin-right:15;"><strong>(cm)</strong></p>
-
-
-                          </div>
-                      </div>
-                      <br>
-                      <div class="col">
-                          <div class="form-group focused">
-                              <label style="margin-right: 15px; padding-top: 9px;"><strong>Distance from the
-                                      nipple</strong></label>
-                              <input type="text" id="TEXT_1450682011285" name="distanceFromTheNipple"
-                                  data-field-type="TEXT" data-field-completion-action="NONE"
-                                  #distanceFromTheNipple="ngModel"
-                                  [(ngModel)]="service.Patient.clinicalInfo.massSpecifications[i].distanceFromTheNipple"
-                                  class="form-control" />(cm)
+                        <label class="form-control-label" style="margin-right: 15px; padding-top: 9px;"><strong>
+                                Depth:</strong> </label>
+                        <input type="text" id="TEXT_1450682011285" name="depth" data-field-type="TEXT"
+                            data-field-completion-action="NONE" #depth="ngModel" style="width: 50px; height:30px;"
+                            [(ngModel)]="service.Patient.clinicalInfo.massSpecifications[i].depth"
+                            class="form-control" />
+                        (cm)
 
 
-                          </div>
-                      </div>
+                    </div>
+                </div>
+                <!-- <br> -->
+                <div class="col-6">
+                    <div class="form-group focused">
+                        <label class="form-control-label" style="margin-right: 15px; padding-top: 9px;"><strong>Distance
+                                from the
+                                nipple:</strong></label>
+                        <input type="text" id="TEXT_1450682011285" name="distanceFromTheNipple" data-field-type="TEXT"
+                            data-field-completion-action="NONE" #distanceFromTheNipple="ngModel"
+                            style="width:50px; height:30px;"
+                            [(ngModel)]="service.Patient.clinicalInfo.massSpecifications[i].distanceFromTheNipple"
+                            class="form-control" />(cm)
+
+
+                    </div>
+                </div>
+            </div>
 
 
 
-              </div>
+
+        </div>
+        <br>
+    </mat-tab>
+
+</mat-tab-group>
 <br>
-          </mat-tab>
-
-      </mat-tab-group>
-      <br>
-      <div class="clearfix">
-        <button class="btn btn-secondary float-right" [hidden]="service.tabs.length === 0"
-        (click)="removeTab()">
+<div class="clearfix">
+    <button class="btn btn-secondary float-right" [hidden]="service.tabs.length === 0" (click)="removeTab()">
         Delete Mass
     </button>
-    </div>
-
+</div>

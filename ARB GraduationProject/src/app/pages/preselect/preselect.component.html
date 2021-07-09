@@ -46,9 +46,9 @@
                 (click)="deleteImage(url,i)">x</span>
             </div>
 
-            <input type="file" #Image value="Add Pictures" multiple (change)="handleFileInput($event)" style="background-color: royalblue;">
+            <input type="file" class="choosefile" #Image value="Add Pictures" multiple (change)="handleFileInput($event)" >
             
-            <button class="btn btn-primary btn-sm btn-submit float-right" type="submit" id="right" style="color:white;">
+            <button class="btn btn-primary btn-sm btn-submit " type="submit" id="right" style="color:white;">
               Submit
             </button>
             <!-- <button type = "submit" class="btn-large btn-submit">Submit</button> -->

@@ -1,11 +1,11 @@
-.example-input-label,
+/* .example-input-label,
 .example-add-tab-button,
 .example-delete-tab-button {
   margin: 8px;
-}
-.example-card {
-  border: 1.5px solid #c3c3c3;
-}
+} */
+/* .example-card {
+  border: 1.5px solid navy;
+} */
 /*
 /deep/.mat-tab-label, /deep/.mat-tab-label-active{
   min-width: 0!important;
@@ -13,3 +13,20 @@
   margin: 3px!important;
  }
 */
+/* #massgroup{
+  border: 15px;
+  border-color: navy;
+} */
+/* .mat-tab-label {
+  padding: 5px;
+} */
+.clearfix{
+  height: 30px;
+}
+.mat-tab-label,.mat-tab-label-active{
+  /* min-width: 0!important;
+  padding: 3px!important;
+  margin: 3px!important; */
+  background-color: navy;
+ }
+ 
