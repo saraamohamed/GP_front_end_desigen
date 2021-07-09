@@ -21,12 +21,13 @@
   padding: 5px;
 } */
 .clearfix{
-  height: 30px;
+  height: 38px;
 }
 .mat-tab-label,.mat-tab-label-active{
-  /* min-width: 0!important;
+  min-width: 0!important;
   padding: 3px!important;
-  margin: 3px!important; */
+  margin: 3px!important;
+  margin-top: 4px;
   background-color: navy;
  }
  

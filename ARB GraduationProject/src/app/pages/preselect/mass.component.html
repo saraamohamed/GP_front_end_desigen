@@ -5,16 +5,15 @@
       </mat-form-field> -->
 
 <div class="clearfix">
-    <button class="btn btn-primary" (click)="addTab()">
+    <button class="btn btn-primary" (click)="addTab()" style="margin-bottom: 5px;">
         Add Mass
     </button>
-
 </div>
 <mat-tab-group class="example-card" [selectedIndex]="selected.value" appearance="outline">
     <mat-tab *ngFor="let pd of service.Patient.clinicalInfo.massSpecifications ;let i = index" [label]="service.tabs[i]"
         style="margin-top: 18px; margin-left: 13px; background-color:rgb(186, 173, 173);">
-        <h3 class="form-control-alternative"
-            style="margin-top: 18px; margin-left: 13px; box-shadow: gray; "> {{service.tabs[i]}}
+        <h3 class="form-control-alternative" style="margin-top: 18px; margin-left: 13px; box-shadow: gray; ">
+            {{service.tabs[i]}}
             Specifications
         </h3>
 
