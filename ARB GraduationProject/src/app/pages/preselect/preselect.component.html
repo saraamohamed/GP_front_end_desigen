@@ -42,9 +42,11 @@
           <!-- *ngFor="let url of urls" src={{url}} -->
           <form #imageForm=ngForm (ngSubmit)="OnSubmitImage(Image)">
             <div *ngFor="let url of urls ; let i = index">
-              <img [src]="url" width="180"><span class="delete-entry" style="cursor: pointer;"
+              <img  style="float: left" [src]="url" width="180"><span class="delete-entry" style="cursor: pointer;"
                 (click)="deleteImage(url,i)">x</span>
             </div>
+
+            
 
             <input type="file" class="choosefile" #Image value="Add Pictures" multiple (change)="handleFileInput($event)" >
             
