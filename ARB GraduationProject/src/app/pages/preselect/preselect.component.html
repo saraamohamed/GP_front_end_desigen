@@ -41,14 +41,14 @@
             <input type="file" #image value="Add to favorites" multiple (change)="detectFiles($event)"> -->
           <!-- *ngFor="let url of urls" src={{url}} -->
           <form #imageForm=ngForm (ngSubmit)="OnSubmitImage(Image)">
-            <div *ngFor="let url of urls ; let i = index">
-              <img  style="float: left" [src]="url" width="180">
-              <span class="delete-entry" style="cursor: pointer;"(click)="deleteImage(url,i)">x</span>
+            <div class="row">
+              <div *ngFor="let url of urls ; let i = index" class="col-md-6 img-container">
+                <img  style="float: left" [src]="url" width="180">
+                <span class="delete-entry" style="cursor: pointer;"(click)="deleteImage(url,i)">x</span>
+              </div>
             </div>
-
-            
-
-            <input type="file" class="choosefile" #Image value="Add Pictures" multiple (change)="handleFileInput($event)" >
+            <input style="display: none;" type="file" class="choosefile" #Image value="Add Pictures" multiple (change)="handleFileInput($event)" >
+            <button type="button" class="btn btn-primary" (click)="Image.click()"><strong> Pick Image</strong> </button>
             
             <button class="btn btn-primary btn-sm btn-submit " type="submit" id="right" style="color:white;">
               Submit

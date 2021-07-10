@@ -62,3 +62,23 @@ body {
 // .choosefile{
 //   background: lightblue;
 // }
+.img-container {
+  display:flex;
+  flex-wrap: wrap;
+  align-content: space-evenly;
+  }
+.img-container img{
+  width:120%;
+  }
+
+  // .img-container {
+  //   display: flex;
+  //   flex-wrap: wrap;
+  // }
+  
+  // .img-container>div {
+  //   flex: 0 50%;
+  //   /*demo*/
+  //   border: red solid;
+  //   box-sizing:border-box
+  // }
