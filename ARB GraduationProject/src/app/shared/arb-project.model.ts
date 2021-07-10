@@ -4,7 +4,6 @@ export class ExamData{
     name: string= '';
     emailAddress: string= '';
     mobileNumber: string= '';
-    
     patientID: string= '';
     address: string= '';
     modailty: string= '';
@@ -13,6 +12,7 @@ export class ExamData{
     lastOperation: string= '';
     
 }
+
 export class GeneralInfo{
     id: number = 0;
     examDate: string = '';
@@ -83,16 +83,28 @@ export class ClinicalInfo{
     suspiciousMorphologyId: number = 0;
     distributionId: number = 0;  
     breastCompostion: string = '';
-    // distribution: string = '';
+
     laterality: string = '';
 
 }
+
 export class FinalAssessment{
     id: number = 0;
     recommendationId: number = 0;
     biRadsId: number = 0;
+    recommendation:Recommendation = new Recommendation();
+    biRads:BiRads = new BiRads();
     recommendationText: string = '';
     conc: string = '';
+}
+
+export class BiRads{
+    id:number = 0;
+    name:string='';
+}
+export class Recommendation{
+    id:number = 0;
+    name:string = '';
 }
 export class Patient{
     id: number = 0;

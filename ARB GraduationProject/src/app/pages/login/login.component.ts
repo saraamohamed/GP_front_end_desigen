@@ -23,7 +23,14 @@ export class LoginComponent implements OnInit {
   closeResult: string;
   public redirectUrl: string = 'dash/table-list';
   constructor(public service: ArbProjectService, private http: HttpClient, private router: Router, private modalService: NgbModal) { }
-
+  
+  Doctor: Doctor = new Doctor();
+  Login: Login = new Login();
+  flag: boolean = true;
+  
+  ngOnInit() {
+  }
+  
   open(content) {
     console.log(name);
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
@@ -32,6 +39,7 @@ export class LoginComponent implements OnInit {
       this.closeResult = ` ${this.getDismissReason(reason)}`;
     });
   }
+ 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return '';
@@ -42,12 +50,9 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  Doctor: Doctor = new Doctor();
-  Login: Login = new Login();
-  flag: boolean = true;
-  ngOnInit() {
-  }
-  OnSubmit(form: NgForm) {
+
+ 
+  OnSubmit(form: NgForm,data:string) {
     this.service.PostLogin().subscribe(
       res => {
         console.log(res);
