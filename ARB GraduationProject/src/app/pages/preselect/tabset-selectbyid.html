@@ -3,7 +3,7 @@
 
 </div>
 
-<form #form="ngForm" name="campaignForm">
+<form #form="ngForm" name="campaignForm" (ngSubmit)="OnSubmit(form,'patient')">
     <input name="id" type="hidden" [value]="service.Patient.id" (submit)="OnSubmit(form,'patient')" />
     <ngb-tabset #t="ngbTabset">
 
@@ -24,9 +24,10 @@
                                 <tr>
 
                                     <th style="vertical-align: top;">
-                                        <h3 class="form-control-alternative" for="exam-reason">
+                                        <h3 class="form-control-alternative" for="exam-reason" name="examReason">
                                             Exam Reason
                                         </h3>
+
                                     </th>
                                     <th>
                                         <ul style="list-style-type:none;">
@@ -35,8 +36,9 @@
                                                     <input type="radio" name="examReason" value="Screaning"
                                                         *ngIf="service.Patient.generalInfo"
                                                         [(ngModel)]="service.Patient.generalInfo.examReason"
-                                                        class="form-control " style="margin-right: 5px;">
-                                                    Screaning<span class="checkmark"></span>
+                                                        class="form-control " style="margin-right: 5px;"
+                                                        #screening="ngModel" required>
+                                                    Screening<span class="checkmark"></span>
                                                 </h4>
                                             </li>
 
@@ -44,16 +46,18 @@
                                                 <h4 class="form-group focused">
                                                     <input type="radio" name="examReason" value="Follow Up"
                                                         [(ngModel)]="service.Patient.generalInfo.examReason"
-                                                        class="form-control " style="margin-right: 5px;">
+                                                        class="form-control " style="margin-right: 5px;"
+                                                        #follow="ngModel" required>
                                                     Follow Up<span class="checkmark"></span>
                                                 </h4>
 
                                             </li>
                                             <li>
-                                                <h4 class="form-group focused"><input type="radio" name="examReason"
-                                                        value="Complain"
+                                                <h4 class="form-group focused">
+                                                    <input type="radio" name="examReason" value="Complain"
                                                         [(ngModel)]="service.Patient.generalInfo.examReason"
-                                                        class="form-control " style="margin-right: 5px;">
+                                                        class="form-control " style="margin-right: 5px;" 
+                                                        #complain="ngModel" required>
                                                     Complain<span class="checkmark"></span>
                                                 </h4>
                                                 <input *ngIf="service.Patient.generalInfo.examReason === 'Complain'"
@@ -66,23 +70,28 @@
                                             </li><br>
 
                                         </ul>
+                                        <!-- <div *ngIf = "form.submitted && .errors?.required" class="text text-danger pl-2 pr-2"></div> -->
                                     </th>
                                 </tr>
                             </thead>
                         </table>
-
+                        <div *ngIf="form.submitted && screening.errors?.required" class="text-sm text-danger pl-2 pr-2">
+                            Choose Exam Reason !!</div>
+                        
                     </div>
 
                     <div class="col">
-                        <h3 class="form-control-alternative" for="exam-reason" id="examdate" style="width: 3cm;">
+                        <h3 class="form-control-alternative" for="exam-reason" id="examdate" style="width: 3.2cm;">
                             Exam Date
                         </h3>
 
                         <input class="form-control " type="datetime-local" id="DATE_1449431264015" name="examDate"
                             data-field-type="DATE" data-field-completion-action="NONE" #examDate="ngModel" value=""
-                            [(ngModel)]="service.Patient.generalInfo.examDate" />
+                            [(ngModel)]="service.Patient.generalInfo.examDate" required />
 
                     </div>
+                    <div *ngIf="form.submitted && examDate.errors?.required" class="text-sm text-red pl-2 pr-2">
+                        Enter Exam Date</div>
                 </div>
 
 
@@ -841,32 +850,32 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group focused">
-                                <h5 class="form-control-alternative" for="Mammo-history"
-                                    style="margin-right: 15px;">
+                                <h5 class="form-control-alternative" for="Mammo-history" style="margin-right: 15px;">
                                     BIRADS Categories
                                 </h5>
                                 <select class="custom-select floa" name="biRadsId" #biRadsId="ngModel"
-                                    [(ngModel)]="service.Patient.finalAssessment.biRadsId" style="width: 250px;">
+                                    [(ngModel)]="service.Patient.finalAssessment.biRadsId" style="width: 250px;" required>
                                     <option value="0"> SELECT</option>
                                     <option *ngFor="let item of BiRadslist" value="{{item.id}}">{{item.name}}
                                     </option>
                                 </select>
-
+                                <div *ngIf="form.submitted && biRadsId.errors?.required" class="text-sm text-red pl-2 pr-2">
+                                    Please select Birads</div>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group focused">
-                                <h5 class="form-control-alternative" for="Mammo-history"
-                                    style="margin-right: 15px;">
+                                <h5 class="form-control-alternative" for="Mammo-history" style="margin-right: 15px;">
                                     Recommendation</h5>
                                 <select class="custom-select floa" name="recommendationId" #recommendationId="ngModel"
-                                    [(ngModel)]="service.Patient.finalAssessment.recommendationId"
-                                    style="width: 250px;">
+                                    [(ngModel)]="service.Patient.finalAssessment.recommendationId" 
+                                    style="width: 250px;" required>
                                     <option value="0"> SELECT</option>
                                     <option *ngFor="let item of RecommendationList" value="{{item.id}}">{{item.name}}
                                     </option>
                                 </select>
-
+                                <div *ngIf="form.submitted && recommendationId.errors?.required" class="text-sm text-red pl-2 pr-2">
+                                    Please select your Recommendation</div>
                             </div>
                         </div>
                     </div>
@@ -876,9 +885,11 @@
                             <div class="form-group focused">
                                 <div class="input-group flex-fill">
                                     <textarea class="form-control" placeholder=" Other Recommendations ..." rows=4
-                                        name="recommendationText" #recommendationText="ngModel" 
-                                        [(ngModel)]="service.Patient.finalAssessment.recommendationText"></textarea>
+                                        name="recommendationText" #recommendationText="ngModel"
+                                        [(ngModel)]="service.Patient.finalAssessment.recommendationText" ></textarea>
                                 </div>
+                                <!-- <div *ngIf="form.submitted && recommendationText.errors?.required" class="text-sm text-red pl-2 pr-2">
+                                    Please select Birads</div> -->
                             </div>
                         </div>
                     </div>
@@ -886,27 +897,30 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group focused ">
-                                <h5 class="form-control-alternative" for="Mammo-history"
-                                    style="margin-right: 10px;">
+                                <h5 class="form-control-alternative" for="Mammo-history" style="margin-right: 10px;">
                                     Conclusion : </h5>
                                 <div class="col">
                                     <div class="input-group">
                                         <textarea class="form-control" placeholder=" Conclusion..." rows="4" name="conc"
-                                            #conc="ngModel" [(ngModel)]="service.Patient.finalAssessment.conc"></textarea>
+                                            #conc="ngModel"
+                                            [(ngModel)]="service.Patient.finalAssessment.conc"></textarea>
                                     </div>
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
                     <br>
-   
-                    <div class='col-sm-12 pb-3'>
+
+                    <div class="card-footer text-muted">
                         <div class="clearfix">
-                            <button href="#!" type="submit" (click)="OnSubmit(form,'Patient')"
-                                class="btn btn-primary float-right">Save</button>
-                            <!-- <button href="/dash/report" type="submit" class="btn btn-sm btn-primary">Show Report</button> -->
-                            <button type="submit" class="btn btn-primary float-right"
-                                (click)="onClick('/dash/report',service.Patient.id)">Show Report</button>
+                            <div class=" col-md-12 bg-light text-right">
+                                <button href="#!" type="submit" (click)="OnSubmit(form,'Patient')"
+                                    class="btn btn-primary btn-sm float-right ml-2">Save</button>
+                                <!-- <button href="/dash/report" type="submit" class="btn btn-sm btn-primary">Show Report</button> -->
+                                <button type="submit" class="btn btn-sm btn-primary float-right "
+                                    (click)="onClick('/dash/report',service.Patient.id)">Show Report</button>
+                            </div>
                         </div>
                     </div>
                 </div>

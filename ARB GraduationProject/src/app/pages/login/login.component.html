@@ -4,7 +4,7 @@
       <div class="row justify-content-center">
         <div class="col-lg-5 col-md-6">
           <h1 class="text-white">Welcome!</h1>
-          <p class="text-lead text-light">Please enter your username and password  </p>
+          <p class="text-lead text-light">Please enter your username and password </p>
         </div>
       </div>
     </div>
@@ -24,44 +24,43 @@
           <div class="text-center text-muted mb-4">
             <small>sign in with credentials</small>
           </div>
-            <form  #form="ngForm" name="campaignForm" (submit)="OnSubmit(form,'doctor/LoginOfTheDoctor')">
-
+          <form #form="ngForm" name="campaignForm" (submit)="OnSubmit(form,'doctor/LoginOfTheDoctor')">
             <div class="form-group mb-3">
               <label for="username">Email</label>
               <div class="input-group input-group-alternative">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                 </div>
-
-                <input class="form-control" placeholder="Email" type="email"
-
-                name="email" #email="ngModel" value = "" [(ngModel)] = "service.Login.email">
-
+                <input class="form-control myinput" placeholder="Email" type="email" name="email" #email="ngModel" value=""
+                  [(ngModel)]="service.Login.email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
                 <!-- name="email" #email="ngModel" value = "" [(ngModel)] = "Doctor.email"> -->
-
               </div>
+              <div *ngIf="form.submitted && email.errors?.required" class="text-sm text-red pl-2 pr-2">
+                Please enter Email Address</div>
+              <div *ngIf="form.submitted && email.errors?.pattern" class="text-sm text-red pl-2 pr-2">
+                Enter a Valid Email Address</div>
             </div>
             <div class="form-group">
               <label for="password">Password</label>
               <div class="input-group input-group-alternative">
-                <div class="input-group-prepend">
+                <div class="input-group-prepend inputgp">
                   <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                 </div>
-
-                <input class="form-control" placeholder="Password" type="password"
-                name="password" #password="ngModel"  value = "" [(ngModel)] = "service.Login.password" required>
+                <input class="form-control myinput" placeholder="Password" type="password" name="password" #password="ngModel"
+                  value="" [(ngModel)]="service.Login.password" #password="ngModel" required>
                 <!-- name="password" #password="ngModel"  value = "" [(ngModel)] = "Doctor.password"> -->
-
-
-
               </div>
+              <div *ngIf="form.submitted && password.errors?.required" class="text-sm text-danger pl-2 pr-2"> Password
+                is Required !!</div>
             </div>
-            <h1 *ngIf="flag === false " class="text-danger form-control-label" style="font-family: 'Times New Roman', Times, serif;"><strong> Wrong Email or Password! </strong></h1>
+
+            <!-- <h1 *ngIf="flag === false " class="text-danger form-control-label"
+              style="font-family: 'Times New Roman', Times, serif;"><strong> Wrong Email or Password! </strong></h1> -->
             <div class="custom-control custom-control-alternative custom-checkbox">
-              <input class="custom-control-input" id=" customCheckLogin" type="checkbox"
-              name="RememberMe" #RememberMe="ngModel"  value = "" [(ngModel)] = "service.Login.RememberMe" required>
-              
-              <button href="/#/dash/table-list" type="submit" class="btn btn-sm btn-primary"  >Sign in</button>
+              <input class="custom-control-input" id=" customCheckLogin" type="checkbox" name="RememberMe"
+                #RememberMe="ngModel" value="" [(ngModel)]="service.Login.RememberMe" required>
+
+              <button href="/#/dash/table-list" type="submit" class="btn btn-sm btn-primary">Sign in</button>
 
 
               <!-- <label class="custom-control-label" for=" customCheckLogin">
@@ -69,14 +68,14 @@
               </label> -->
             </div>
             <div class="text-center">
-              <button  class="btn btn-primary my-4"
-              routerLinkActive="active" [routerLink]="['/dash']" type="submit">Sign in</button>
+              <button class="btn btn-primary my-4" routerLinkActive="active" [routerLink]="['/dash']" type="submit">Sign
+                in</button>
               <!-- <button href="/#/dash/table-list" type="submit" class="btn btn-sm btn-primary"  >Sign in</button> -->
               <!-- <div *ngIf="flag === false " class="p-3 mb-2 bg-danger text-white" class="text-danger">  Wrong Email or Password! </div> -->
               <!-- <div *ngIf="flag === false " class="text-danger form-control-label"> Wrong Email or Password! </div> -->
-              
 
-             <!--- <button  type="submit" class="btn btn-sm btn-primary" >Sign in</button>-->
+
+              <!--- <button  type="submit" class="btn btn-sm btn-primary" >Sign in</button>-->
 
             </div>
           </form>
@@ -99,7 +98,7 @@
     <h4 class="modal-title" id="modal-basic-title">PDF</h4>
 
   </div>
-  <div class="modal-body" >
+  <div class="modal-body">
     <p>Username or password is incorrect
     </p>
 
@@ -110,4 +109,3 @@
 
 
 </ng-template>
-

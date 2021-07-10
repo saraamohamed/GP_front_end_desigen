@@ -1,5 +1,5 @@
 .body {
-  margin: 0;
+  margin: 1;
   font-family: Open Sans, sans-serif;
   font-size: 1rem;
   font-weight: 400;
@@ -22,4 +22,7 @@ input::-webkit-inner-spin-button {
 }
 .example-card {
   border: 1.5px solid navy;
+}
+.ml-2, .mx-2{
+  margin-left: 2px;
 }
