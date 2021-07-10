@@ -5,11 +5,11 @@
   <!-- Header container -->
 </div>
 
-<div class="container mt--7 " >
+<div class="container-fluid mt--7 " >
   <div class="row" >
-    <div class="col-xl-8 mb-5 mb-xl-0"  >
+    <div  class="col-xl-8 m-auto order-xl-1">
       <div id="contentToConvert" >
-      <div class="card " >
+      <div class="card shadow" >
         <div class="card-header " 
           style=" border: solid gray thin ; margin: 0ch; padding-bottom: 0.4cm;">
 
@@ -25,7 +25,7 @@
                     
                   </div>
                   <div class="row">
-                    <strong>Email Address: {{service.ExamData.emailAddress}}</strong>
+                    <strong>EMAIL ADDRESS: {{service.ExamData.emailAddress}}</strong>
                   </div>
                 </th>
                 <th width="100px">
@@ -45,7 +45,9 @@
           <div class="pl-lg-4">
             <h3 class="display-6"> <u>FULL FIELD DIGITAL MAMMOGRAPHY AND COMPLEMENTARY ULTRASOUND </u></h3>
           </div> -->
-          <h1 class="display-4"><u>Indication for Examination:</u></h1>
+          <!-- <h3 class="form-control-alternative" style="margin-top: 9px;  ">Location
+            {{tab}}</h3> -->
+          <h1 class="display-4 form-control-alternative">Indication for Examination:</h1>
           <div>
             The Reason is {{service.Patient.generalInfo.examReason}}
             <div *ngIf="service.Patient.generalInfo.examReason==='Complain'; then thenBlockComplain  else elseBlockComplain"></div> Lateral in {{service.Patient.clinicalInfo.massSpecifications[0].laterality}} breast,
@@ -99,7 +101,7 @@
           </div>
 
           
-          <h1 class="display-4"><u>Findings:</u></h1>
+          <h1 class="display-4 form-control-alternative">Findings:</h1>
           
            
           <div *ngIf="(service.Patient.clinicalInfo.breastCompostion==='a')">OverAll Breast Composition: .a The Breasts are almost entirely fatty</div>
@@ -253,7 +255,7 @@
           </div>
 
 
-          <h1 class="display-4"><u>Assessment:</u></h1>
+          <h1 class="display-4 form-control-alternative">Assessment:</h1>
 
           <!-- {{eh hasal}} -->
 
@@ -268,12 +270,12 @@
           <div *ngIf="service.Patient.finalAssessment.biRads.name==='5'">BI-RADS '{{service.Patient.finalAssessment.biRads.name}}' (Highly Suggestive of Malignancy.)</div>
           <div *ngIf="service.Patient.finalAssessment.biRads.name==='6'">BI-RADS '{{service.Patient.finalAssessment.biRads.name}}' (Known Biopsy-Proven Malignancy.)</div>
 
-          <h1 class="display-4"><u>Recommendation:</u></h1>
+          <h1 class="display-4 form-control-alternative">Recommendation:</h1>
           {{service.Patient.finalAssessment.recommendation.name}} <br>
           <!-- "hena el mfrod tab l taht dh satr w dh satr" -->
           Other Recommendation: {{service.Patient.finalAssessment.recommendationText}}
 
-          <h1 class="display-4"><u>Conclusion:</u> </h1>
+          <h1 class="display-4 form-control-alternative">Conclusion: </h1>
           {{service.Patient.finalAssessment.conc}}
           <!-- {{examData.name}}.....
           {{examData.emailAddress}}..... -->
@@ -292,7 +294,7 @@
         
       </div>
     </div>
-      <button (click)=generatePDF()>Export PDF</button>
+      <button class="btn btn-primary float-right" (click)=generatePDF()>Export PDF</button>
     </div>
     
   </div>

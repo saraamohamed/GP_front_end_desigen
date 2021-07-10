@@ -10,21 +10,34 @@
 .card-header {
   padding: 5px 5px;
   margin-bottom: 0;
-  background-color: #fff;
+  // background: linear-gradient(87deg, #b4cce1 0, adjust-hue( #2e3192, 25%) 100%);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  background-color: white;
+
 }
 .card-body {
   flex: 1 1 auto;
   min-height: 1px;
   padding: 5px;
+  color: #6c757d;
+  border: 2px;
+  border-color: black;
+  background-color: white;
 }
 .DocumentContainer {
   border-right: 3px violet;
 }
 table, th, td {
   border: 1px solid black;
+  font-size: large;
 }
 h1{
   color: black;
   font-family: 'Times New Roman', Times, serif;
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  color: black;
+}
+.body{
+  background: transparent;
 }
