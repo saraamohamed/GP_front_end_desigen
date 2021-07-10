@@ -88,10 +88,14 @@ export class PreselectComponent implements OnInit {
   handleFileInput(event){
     this.urls = [];
     this.fileToUploads = event.target.files;
-    console.log(this.fileToUploads)
     if(this.fileToUploads){
-      for (this.THEfile of this.fileToUploads){
-        this.files.push(this.THEfile);
+      for (var image of this.fileToUploads){
+        this.files.push(image);
+      }
+    }
+    if(this.fileToUploads){
+      for (this.THEfile of this.files){
+        
         var reader = new FileReader();
         reader.onload = (event:any)=>{
           this.urls.push(event.target.result);

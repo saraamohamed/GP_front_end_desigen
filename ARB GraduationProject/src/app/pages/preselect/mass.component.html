@@ -37,7 +37,8 @@
                                             <li>
                                                 <h4 class="form-group focused">
                                                     <input type="radio" name="massShape" value="Oval" id=i
-                                                        [(ngModel)]="pd.massShape" class="form-control ">
+                                                    [checked]=" service.Patient.clinicalInfo.massSpecifications[i].massShape == Oval? true: false"
+                                                     [(ngModel)]="pd.massShape" class="form-control ">
 
                                                     <span class="checkmark">Oval</span>
                                                 </h4>
@@ -51,11 +52,12 @@
                                                 </h4>
                                             </li>
                                             <li>
-
+                                                <h4 class="form-group focused">
                                                 <input type="radio" name="massShape" value="Irregular" id=i
                                                     [checked]=" (service.Patient.clinicalInfo.massSpecifications[i].massShape == Irregular)"
                                                     [(ngModel)]="pd.massShape" class="form-control ">
                                                 <span class="checkmark">Irregular</span>
+                                            </h4>
                                             </li><br>
                                         </ul>
                                     </th>
@@ -106,6 +108,8 @@
 
             <!----------------------------  Literality ---------------------------------- -->
 
+
+            
 
             <div class="row">
                 <div class="col">
