@@ -23,7 +23,7 @@ export class TableListComponent implements OnInit {
   name : string;
   closeResult: string;
   redirectUrl: string = '/dash/preselect';
-  constructor(private service:ArbProjectService  ,private http:HttpClient, private router:Router, private modalService: NgbModal) { }
+  constructor(public service:ArbProjectService  ,private http:HttpClient, private router:Router, private modalService: NgbModal) { }
   
   fileExists(url: string): Observable<string> {
     const folderPath = url;
@@ -79,6 +79,7 @@ export class TableListComponent implements OnInit {
   list:ExamData[]
   pdfScr:string = '';
   Test:string = '';
+  focus:Boolean = false;
   ngOnInit() {
     let doctorId = this.service.DoctorId;
     this.service.getExamDataOfDoctor(doctorId,'examData/ExamDataOfDoctor').subscribe(res=>{this.service.list = res as ExamData[],console.log(res)})
