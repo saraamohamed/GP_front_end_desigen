@@ -1,3 +1,16 @@
 // .bg-primary {
 //     background-color: #e3f2fd !important;
 // }
+#navbar-main{
+    background: linear-gradient(87deg, #b4cce1 0, adjust-hue(#6adaff, 25%) 100%);
+}
+body {
+    margin: 0;
+    font-family: Times New Roman, serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.5;
+    color: #525f7f;
+    text-align: left;
+    background: linear-gradient(87deg, #b4cce1 0, adjust-hue(#6adaff, 25%) 100%);
+}

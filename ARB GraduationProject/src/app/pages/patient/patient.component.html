@@ -31,11 +31,16 @@
 
                                                 <label class="form-control-label" for="input-username">Patient
                                                     Name</label>
-
-                                                <input type="text" id="input-username"
-                                                    class="form-control form-control-alternative" placeholder="Username"
-                                                    name="name" #name="ngModel" [(ngModel)]="service.ExamData.name"
-                                                    required>
+                                                <div class="input-group input-group-alternative">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i
+                                                                class="fas fa-user"></i></span>
+                                                    </div>
+                                                    <input type="text" id="input-username"
+                                                        class="form-control form-control-alternative"
+                                                        placeholder="Username" name="name" #name="ngModel"
+                                                        [(ngModel)]="service.ExamData.name" required>
+                                                </div>
                                                 <div *ngIf="form.submitted && name.errors?.required"
                                                     class="text-sm text-red pl-2 pr-2">
                                                     Please enter Patient name</div>
@@ -44,13 +49,20 @@
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
+
                                                 <label class="form-control-label" for="input-email">Email
                                                     address</label>
-                                                <input type="email" id="input-email"
-                                                    class="form-control form-control-alternative"
-                                                    placeholder="Mohamed@example.com" name="email" #email="ngModel"
-                                                    [(ngModel)]="service.ExamData.emailAddress"
-                                                    pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                                                <div class="input-group input-group-alternative">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i
+                                                                class="ni ni-email-83"></i></span>
+                                                    </div>
+                                                    <input type="email" id="input-email"
+                                                        class="form-control form-control-alternative"
+                                                        placeholder="Mohamed@example.com" name="email" #email="ngModel"
+                                                        [(ngModel)]="service.ExamData.emailAddress"
+                                                        pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                                                </div>
                                                 <div *ngIf="form.submitted && email.errors?.required"
                                                     class="text-sm text-red pl-2 pr-2">
                                                     Please enter Email Address</div>
@@ -65,12 +77,18 @@
                                             <div class="form-group focused">
                                                 <label class="form-control-label" for="input-first-name">Mopile
                                                     Number</label>
-                                                <input type="text" id="input-first-name"
-                                                    class="form-control form-control-alternative"
-                                                    placeholder="Mobile Number" name="mobileNumber"
-                                                    #mobileNumber="ngModel" [(ngModel)]="service.ExamData.mobileNumber"
-                                                    pattern = "^\d{11}$" required>
-
+                                                <div class="input-group input-group-alternative">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i
+                                                                class="ni ni-mobile-button"></i></span>
+                                                    </div>
+                                                    <input type="text" id="input-first-name"
+                                                        class="form-control form-control-alternative"
+                                                        placeholder="Mobile Number" name="mobileNumber"
+                                                        #mobileNumber="ngModel"
+                                                        [(ngModel)]="service.ExamData.mobileNumber" pattern="^\d{11}$"
+                                                        required>
+                                                </div>
                                                 <div *ngIf="form.submitted && mobileNumber.errors?.required"
                                                     class="text-sm text-red pl-2 pr-2">
                                                     Enter Mobile Number</div>
@@ -83,11 +101,17 @@
                                             <div class="form-group focused">
                                                 <label class="form-control-label" for="input-last-name">Patient
                                                     ID</label>
-                                                <input type="text" id="input-last-name"
-                                                    class="form-control form-control-alternative"
-                                                    placeholder="Patient Id" name="patientID" #patientID="ngModel"
-                                                    [(ngModel)]="service.ExamData.patientID" pattern = "^\d{11}$" required>
-
+                                                <div class="input-group input-group-alternative">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i
+                                                                class="far fa-id-badge"></i></span>
+                                                    </div>
+                                                    <input type="text" id="input-last-name"
+                                                        class="form-control form-control-alternative"
+                                                        placeholder="Patient Id" name="patientID" #patientID="ngModel"
+                                                        [(ngModel)]="service.ExamData.patientID" pattern="^\d{11}$"
+                                                        required>
+                                                </div>
                                                 <div *ngIf="form.submitted && patientID.errors?.required"
                                                     class="text-sm text-red pl-2 pr-2">
                                                     Enter Patient ID</div>
@@ -102,9 +126,16 @@
                                         <div class="col-md-12">
                                             <div class="form-group focused">
                                                 <label class="form-control-label" for="input-address">Address</label>
-                                                <input id="input-address" class="form-control form-control-alternative"
-                                                    placeholder="Home Address" name="address" #address="ngModel"
-                                                    [(ngModel)]="service.ExamData.address" type="text">
+                                                <div class="input-group input-group-alternative">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i
+                                                                class="ni ni-square-pin"></i></span>
+                                                    </div>
+                                                    <input id="input-address"
+                                                        class="form-control form-control-alternative"
+                                                        placeholder="Home Address" name="address" #address="ngModel"
+                                                        [(ngModel)]="service.ExamData.address" type="text">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -118,11 +149,17 @@
                                         <div class="col-lg-4">
                                             <div class="form-group focused">
                                                 <label class="form-control-label" for="input-city">Modality</label>
-                                                <input type="text" id="input-city"
-                                                    class="form-control form-control-alternative" placeholder="ex: MRI"
-                                                    name="modality" #modality="ngModel"
-                                                    [(ngModel)]="service.ExamData.modailty" required>
-                                            
+                                                <div class="input-group input-group-alternative">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i
+                                                                class="fas fa-x-ray"></i></span>
+                                                    </div>
+                                                    <input type="text" id="input-city"
+                                                        class="form-control form-control-alternative"
+                                                        placeholder="ex: MRI" name="modality" #modality="ngModel"
+                                                        [(ngModel)]="service.ExamData.modailty" required>
+                                                </div>
+
                                                 <div *ngIf="form.submitted && modality.errors?.required"
                                                     class="text-sm text-red pl-2 pr-2">
                                                     Enter Modality name</div>
@@ -136,11 +173,17 @@
                                             <div class="form-group focused">
                                                 <label class="form-control-label" for="input-city">Referring
                                                     Doctor</label>
-                                                <input type="text" id="input-city"
-                                                    class="form-control form-control-alternative"
-                                                    placeholder="ex: Mohamed" name="referringDoctor"
-                                                    #referringDoctor="ngModel"
-                                                    [(ngModel)]="service.ExamData.referringDoctor" required>
+                                                <div class="input-group input-group-alternative">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i
+                                                                class="fas fa-user-md"></i></span>
+                                                    </div>
+                                                    <input type="text" id="input-city"
+                                                        class="form-control form-control-alternative"
+                                                        placeholder="ex: Mohamed" name="referringDoctor"
+                                                        #referringDoctor="ngModel"
+                                                        [(ngModel)]="service.ExamData.referringDoctor" required>
+                                                </div>
 
                                                 <div *ngIf="form.submitted && referringDoctor.errors?.required"
                                                     class="text-sm text-red pl-2 pr-2">
@@ -152,11 +195,17 @@
                                             <div class="form-group focused">
                                                 <label class="form-control-label" for="input-country">Study
                                                     Date</label><br>
-                                                <input class="form-control form-control-alternative"
-                                                    type="datetime-local" value="" id="DATE_1449431264015"
-                                                    data-field-type="DATE" data-field-completion-action="NONE"
-                                                    name="studyDate" #studyDate="ngModel"
-                                                    [(ngModel)]="service.ExamData.studyDate" required>
+                                                <div class="input-group input-group-alternative">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i
+                                                                class="ni ni-calendar-grid-58"></i></span>
+                                                    </div>
+                                                    <input class="form-control form-control-alternative"
+                                                        type="datetime-local" value="" id="DATE_1449431264015"
+                                                        data-field-type="DATE" data-field-completion-action="NONE"
+                                                        name="studyDate" #studyDate="ngModel"
+                                                        [(ngModel)]="service.ExamData.studyDate" required>
+                                                </div>
 
                                                 <div *ngIf="form.submitted && studyDate.errors?.required"
                                                     class="text-sm text-red pl-2 pr-2">
