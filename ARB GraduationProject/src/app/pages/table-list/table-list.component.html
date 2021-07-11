@@ -67,78 +67,126 @@
             </thead>
 
             <tbody>
-              <tr *ngFor="let pd of service.list">
-                <!-- <td >
+              <tr>
+                <td>
                     1
-                </td> -->
-                <th scope="row">
-                  <div class="media-body">
-                    <a class="mb-0 text-sm" href="#/dash/preselect" (click)=preselect(pd.id)>{{pd.name}}</a>
-                  </div>
-                </th>
-                <td>
-                  {{pd.patientID}}
                 </td>
                 <td>
-                  <!--Modality -->
-                  {{pd.modailty}}
+                    Dakota Rice
                 </td>
                 <td>
-                  <!--Study Datetime -->
-                  {{pd.studyDate | date:'dd//MM/yyyy'}}
+                    Niger
                 </td>
                 <td>
-                  <!--Referring Doctor -->
-                  {{pd.referringDoctor}}
+                    Oud-Turnhout
                 </td>
-                <td hidden>
-                  <!--Modality -->
-                  {{pd.mobileNumber}}
+                <td class="text-primary">
+                    $36,738
                 </td>
-                <td hidden>
-                  <!--Study Datetime -->
-                  {{pd.emailAddress}}
+                <td>
+                  Oud-Turnhout
+              </td>
+            </tr>
+            <tr>
+                <td>
+                    2
                 </td>
-                <td hidden>
-                  <!--Referring Doctor -->
-                  {{pd.address}}
+                <td>
+                    Minerva Hooper
                 </td>
-                <td hidden>
-                  <!--Referring Doctor -->
-                  {{pd.lastOperation}}
+                <td>
+                    Curaçao
                 </td>
-
-                <td class="text-right">
-                  <div class="col col-lg-2">
-                    <button class="btn btn-sm" (click)=patientForm(pd.id) data-toggle="tooltip" data-placement="bottom"
-                      title="Edit"><i class="fas fa-edit"></i></button>
-                    <button class="btn btn-sm" href="/#/" (click)=open(content,emptycontent,pd.patientID)
-                      data-toggle="tooltip" data-placement="top" title="Report Review"><i
-                        class="far fa-file-pdf"></i></button>
-                    <button class="btn btn-sm" href="javascript:void(0)" (click)=DeleteOn(pd.id) data-toggle="tooltip"
-                      data-placement="top" title="Delete"><i class="fas fa-trash-alt"></i></button>
-
-                  </div>
-
-
-                  <!--
-                  <div ngbDropdown placement="bottom-right">
-                    <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                    <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item"  (click) = PdfShow(pd.name) >Report Review </a> 
-                      <a class="dropdown-item" href="javascript:void(0)" (click)= DeleteOn(pd.id)>Delete</a>
-                      <a class="dropdown-item"  (click) = patientForm(pd.id)>Edit</a>
-                      <a class="dropdown-item" href="/#/patient" (click) = patientForm(pd.id)>Edit</a>
-                       <a class="dropdown-item" (click) = PdfShow(pd.name) >Report Review </a>
-                      <a class="dropdown-item" (click) ="open(content,pd.name)" >Report Review </a>
-                      <pdf-viewer  [src] = "pdfScr" [render-text] = "true" [show-all]= "true" style="display: block;"></pdf-viewer> -->
-                  <!--</div>
-                  </div>
-                -->
+                <td>
+                    Sinaai-Waas
                 </td>
-              </tr>
+                <td class="text-primary">
+                    $23,789
+                </td>
+                <td>
+                  Curaçao
+              </td>
+            </tr>
+            <tr>
+                <td>
+                    3
+                </td>
+                <td>
+                    Sage Rodriguez
+                </td>
+                <td>
+                    Netherlands
+                </td>
+                <td>
+                    Baileux
+                </td>
+                <td class="text-primary">
+                    $56,142
+                </td>
+                <td>
+                  Baileux
+              </td>
+            </tr>
+            <tr>
+                <td>
+                    4
+                </td>
+                <td>
+                    Philip Chaney
+                </td>
+                <td>
+                    Korea, South
+                </td>
+                <td>
+                    Overland Park
+                </td>
+                <td class="text-primary">
+                    $38,735
+                </td>
+                <td>
+                  Overland Park
+              </td>
+            </tr>
+            <tr>
+                <td>
+                    5
+                </td>
+                <td>
+                    Doris Greene
+                </td>
+                <td>
+                    Malawi
+                </td>
+                <td>
+                    Feldkirchen in Kärnten
+                </td>
+                <td class="text-primary">
+                    $63,542
+                </td>
+                <td>
+                  Feldkirchen in Kärnten
+              </td>
+            </tr>
+            <tr>
+                <td>
+                    6
+                </td>
+                <td>
+                    Mason Porter
+                </td>
+                <td>
+                    Chile
+                </td>
+                <td>
+                    Gloucester
+                </td>
+                <td class="text-primary">
+                    $78,615
+                </td>
+                <td>
+                  Mason Porter
+              </td>
+            </tr>
 
             </tbody>
           </table>

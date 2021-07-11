@@ -10,7 +10,6 @@ import {
   ExamData, Patient, Doctor, image,
   GeneralInfo, ClinicalInfo, FinalAssessment, Login, features
 } from 'src/app/shared/arb-project.model';
-import { Lightbox } from 'ngx-lightbox';
 
 
 @Component({
@@ -63,7 +62,7 @@ export class PreselectComponent implements OnInit {
     console.log(this.message)
   }
 
-  constructor(public service: ArbProjectService, private http: HttpClient, private sanitizer: DomSanitizer, private _lightbox: Lightbox) {
+  constructor(public service: ArbProjectService, private http: HttpClient, private sanitizer: DomSanitizer) {
     
    }
 
@@ -126,30 +125,7 @@ export class PreselectComponent implements OnInit {
         reader.readAsDataURL(this.THEfile);
       }
     }
-    
-
   }
-  fillarray(){
-    for (let i = 1; i <= this.urls.length; i++) {
-      // var reader = new FileReader();
-      // console.log(this.ImageURL)
-      // const src =  reader.readAsDataURL(this.THEfile[i]);
-      const src =  this.THEfile[i];
-      const caption = "None";
-      const thumb =  this.THEfile[i];
-      const album = {
-         src: src,
-         caption: caption,
-         thumb: thumb
-      };
- 
-      this._albums.push(album);
-      console.log(album)
-    }
-
-  }
-
-
   OnSubmitImage(Image) {
     for (this.file of this.files) {
       this.postFile(this.file).subscribe(data => { console.log(data) });
@@ -213,16 +189,7 @@ export class PreselectComponent implements OnInit {
     this.service.ClinicalInfo = new ClinicalInfo();
 
   }
-  open(index: number): void {
-    // open lightbox
-    this.fillarray();
-    this._lightbox.open(this._albums, index);
-  }
-  
-  close(): void {
-    // close lightbox programmatically
-    this._lightbox.close();
-  }
+
 }
 
 
