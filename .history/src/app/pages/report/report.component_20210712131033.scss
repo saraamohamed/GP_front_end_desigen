@@ -1,0 +1,30 @@
+:host {
+  position: relative;
+  display: block;
+  height: 90%;
+}
+.webviewer{
+  width: auto;
+  height: 19cm;
+}
+.card-header {
+padding: 5px 5px;
+margin-bottom: 0;
+background-color: #fff;
+border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.card-body {
+flex: 1 1 auto;
+min-height: 1px;
+padding: 5px;
+}
+.DocumentContainer {
+border-right: 3px violet;
+}
+table, th, td {
+border: 1px solid black;
+}
+h1{
+color: black;
+font-family: 'Times New Roman', Times, serif;
+}

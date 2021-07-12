@@ -1,0 +1,218 @@
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" 
+  style="min-height: 300px; background-image: url(assets/img/theme/patient-cover.jpg); background-size: cover; background-position: center top;">
+  <!-- Mask -->
+  <span class="mask bg-gradient-danger opacity-8"></span>
+  <!-- Header container -->
+</div>
+
+<div class="container mt--7 " >
+  <div class="row" >
+    <div class="col-xl-8 mb-5 mb-xl-0"  >
+      <div id="contentToConvert" >
+      <div class="card " >
+        <div class="card-header " 
+          style=" border: solid gray thin ; margin: 0ch; padding-bottom: 0.4cm;">
+
+          <table class="table" >
+            <tbody>
+              <tr>
+                <th width="100px">
+                  <div class="row">
+                    <strong>PATIENT NAME: {{service.ExamData.name}} </strong>
+                    
+                  </div>
+                  <div class="row">
+                    <strong>Email Address: {{service.ExamData.emailAddress}}</strong>
+                  </div>
+                </th>
+                <th width="100px">
+                  <div class="row">
+                    <strong>PATIENT ID: {{service.ExamData.patientID}} </strong>
+                  </div>
+                  <div class="row">
+                    <strong>DATE OF SERVICE: {{service.ExamData.studyDate |date:'dd.MM.yyyy'}}</strong>
+                  </div>
+                </th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-body "  style=" border: solid gray thin ; margin: 0ch;">
+          
+          <h1 class="display-4"><u>Indication for Examination:</u></h1>
+          <div>
+            The Reason is {{service.Patient.generalInfo.examReason}}
+            <div *ngIf="service.Patient.generalInfo.examReason==='Complain'; then thenBlockComplain  else elseBlockComplain"></div> Lateral in {{service.Patient.clinicalInfo.massSpecifications[0].laterality}} breast,
+            <ng-template #thenBlockComplain> : {{service.Patient.generalInfo.complain}}, </ng-template>
+            <ng-template #elseBlockComplain>,  </ng-template>
+          </div>
+          
+         
+          <div>
+            <h3>Pervious Mammogram</h3>
+            <div *ngIf="(service.Patient.generalInfo.hadAMammogram==true); then thenBlockHadMammogram  else elseBlockHadMammogram"></div>
+          <ng-template #thenBlockHadMammogram>The Modality is {{service.Patient.generalInfo.modalityType}} in {{service.Patient.generalInfo.whereHadAMammogram}}
+            since {{service.Patient.generalInfo.whenHadAMammogram}} Years ago and The Findings were {{service.Patient.generalInfo.historyOfMammogram}}, 
+          </ng-template>
+          <ng-template #elseBlockHadMammogram> No Pervious Mammogram, </ng-template>
+          </div>
+            
+          <div>
+            <h3>Personal History</h3>
+            <div *ngIf="(service.Patient.generalInfo.personalHistoryOfBreastCancer==true); then thenBlockPersonal  else elseBlockPersonal"></div>
+          <ng-template #thenBlockPersonal> 
+            <div *ngIf="(service.Patient.generalInfo.mother==true)">Mother At Age {{service.Patient.generalInfo.motherAge}}</div>
+            <div *ngIf="(service.Patient.generalInfo.sister==true)">Sister At Age {{service.Patient.generalInfo.sisterAge}}</div>
+            <div *ngIf="(service.Patient.generalInfo.daughter==true)">Daughter At Age {{service.Patient.generalInfo.daughterAge}}</div>
+            <div *ngIf="(service.Patient.generalInfo.grandmother==true)">Grandmother At Age {{service.Patient.generalInfo.grandmotherAge}}</div>
+            <div *ngIf="(service.Patient.generalInfo.aunt==true)">Aunt At Age {{service.Patient.generalInfo.auntAge}}</div>
+            <div *ngIf="(service.Patient.generalInfo.cousin==true)">Cousin At Age {{service.Patient.generalInfo.cousinAge}}</div>
+          </ng-template>
+          <ng-template #elseBlockPersonal> No Personal History </ng-template>
+          </div>
+          
+          <div>
+            <h3>Hormones</h3>
+            <div *ngIf="(service.Patient.generalInfo.takingHormones==true); then thenBlockHormones  else elseBlockHormones"></div>
+            <ng-template #thenBlockHormones> Taking Hormones for {{service.Patient.generalInfo.howlongTakingHormones}} Years</ng-template>
+            <ng-template #elseBlockHormones> No Hormones is Taken</ng-template>
+          </div>
+          <div>
+            <h3>Pergnancy History</h3>
+            <div *ngIf="(service.Patient.generalInfo.pergnancyHistory==true); then thenBlockPregnancy  else elseBlockPregnancy"></div>
+            <ng-template #thenBlockPregnancy>
+              <div *ngIf="service.Patient.generalInfo.menopause==true">Menopause, </div>
+            <div *ngIf="service.Patient.generalInfo.pregnant==true">Pregnant, </div>
+            Gravida = {{service.Patient.generalInfo.gravida}} and Para = {{service.Patient.generalInfo.para}}
+            and LMP is {{service.Patient.generalInfo.lmp |date:'dd.MM.yyyy'}}
+            </ng-template>
+            <ng-template #elseBlockPregnancy> No Prgnancy History</ng-template>
+
+          
+          </div>
+
+          
+          <h1 class="display-4"><u>Findings:</u></h1>
+          
+           
+          <div *ngIf="(service.Patient.clinicalInfo.breastCompostion==='a')">OverAll Breast Composition: .a The Breasts are almost entirely fatty</div>
+          <div *ngIf="(service.Patient.clinicalInfo.breastCompostion==='b')">OverAll Breast Composition: .b There are scattered areas of fibroglandular density</div>
+          <div *ngIf="(service.Patient.clinicalInfo.breastCompostion==='c')">OverAll Breast Composition: .c The breasts are heterogeneously dense, which may obscure small masses</div>
+          <div *ngIf="(service.Patient.clinicalInfo.breastCompostion==='d')">OverAll Breast Composition: .d The breasts are extremely dense, which lowers the sensitivity of mammography</div>
+
+          
+          <div>
+            <h3>Mass Description</h3>
+            <table >
+              
+              <thead>
+                <tr>
+                  <th>
+                    No.
+                  </th>
+                  <th>
+                    Shape
+                  </th>
+                  <th>
+                    Margin
+                  </th>
+                  <th>
+                    Density
+                  </th>
+                  
+                  <th>
+                    laterality
+                  </th>
+                  <th>
+                    O'Clock <br> Face
+                  </th>
+                  <th>
+                    Quadrant
+                  </th>
+                  <th>
+                    Depth<br>(Cm)
+                  </th>
+                  <th>
+                    D.F.N<br>(Cm)
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor = "let pd of massSpecifications ;let i = index">
+                  <td>
+                    {{i+1}}
+                  </td>
+                  <td>
+                    {{pd.massShape}}
+                  </td>
+                  <td>
+                    {{pd.massMargin.name}}
+                  </td>
+                  <td>
+                    {{pd.massDensity.name}}
+                  </td>
+                  <td>
+                    {{pd.laterality}}
+                  </td>
+                  <td>
+                    {{pd.clockFace.name}}
+                  </td>
+                  <td>
+                    {{pd.quadrant.name}}
+                    
+                  </td>
+                  <td>
+                    {{pd.depth}}
+                  </td>
+                  <td>
+                    {{pd.distanceFromTheNipple}}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+
+
+          <h1 class="display-4"><u>Assessment:</u></h1>
+
+
+          <div *ngIf="service.Patient.finalAssessment.biRads.name==='0'">BI-RADS '{{service.Patient.finalAssessment.biRads.name}}' (Incomplete.)</div>
+          <div *ngIf="service.Patient.finalAssessment.biRads.name==='1'">BI-RADS '{{service.Patient.finalAssessment.biRads.name}}' (Negative.)</div>
+          <div *ngIf="service.Patient.finalAssessment.biRads.name==='2'">BI-RADS '{{service.Patient.finalAssessment.biRads.name}}' (Benign.)</div>
+          <div *ngIf="service.Patient.finalAssessment.biRads.name==='3'">BI-RADS '{{service.Patient.finalAssessment.biRads.name}}' (Probably Benign.)</div>
+          <div *ngIf="service.Patient.finalAssessment.biRads.name==='4'">BI-RADS '{{service.Patient.finalAssessment.biRads.name}}' (Suspicious for Malignancy.)</div>
+          <div *ngIf="service.Patient.finalAssessment.biRads.name==='4a'">BI-RADS '{{service.Patient.finalAssessment.biRads.name}}' (Low Suspicion for Malignancy (2-9%).)</div>
+          <div *ngIf="service.Patient.finalAssessment.biRads.name==='4b'">BI-RADS '{{service.Patient.finalAssessment.biRads.name}}' (Moderate Suspicion for Malignancy (10-49%).)</div>
+          <div *ngIf="service.Patient.finalAssessment.biRads.name==='4c'">BI-RADS '{{service.Patient.finalAssessment.biRads.name}}' (High Suspicion for Malignancy (50-94%).)</div>
+          <div *ngIf="service.Patient.finalAssessment.biRads.name==='5'">BI-RADS '{{service.Patient.finalAssessment.biRads.name}}' (Highly Suggestive of Malignancy.)</div>
+          <div *ngIf="service.Patient.finalAssessment.biRads.name==='6'">BI-RADS '{{service.Patient.finalAssessment.biRads.name}}' (Known Biopsy-Proven Malignancy.)</div>
+
+          <h1 class="display-4"><u>Recommendation:</u></h1>
+          {{service.Patient.finalAssessment.recommendation.name}} <br>
+          <!-- "hena el mfrod tab l taht dh satr w dh satr" -->
+          Other Recommendation: {{service.Patient.finalAssessment.recommendationText}}
+
+          <h1 class="display-4"><u>Conclusion:</u> </h1>
+          {{service.Patient.finalAssessment.conc}}
+
+          <div class="card-footer "  style=" border: solid gray thin ; ">
+            <h3 class="display-6">Reported By, </h3>
+            <div class="pl-lg-4">
+              <h3 class="display-6">Dr: {{service.Doctor.name}}</h3>
+            </div>
+          </div>
+
+        </div>
+
+        
+      </div>
+    </div>
+      <button class="btn btn-secondary float-left" (click)=generatePDF()>Export Pdf</button>
+    </div>
+    
+  </div>
+  <!-- <div class="content" role="main">
+    <div #viewer class="webviewer"></div>
+  </div> -->
+</div>
