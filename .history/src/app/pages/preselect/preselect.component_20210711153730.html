@@ -41,7 +41,7 @@
             <input type="file" #image value="Add to favorites" multiple (change)="detectFiles($event)"> -->
           <!-- *ngFor="let url of urls" src={{url}} -->
           <form #imageForm=ngForm (ngSubmit)="OnSubmitImage(Image)">
-            <div class="row ">
+            <div class="row ui-content" id="pageone" data-role="main">
               <div *ngFor="let url of urls ; let i = index" class="col-md-6 img-container">
                 <a (click) = "show(url)">
                   <img  style="float: left" [src]="url" width="180" ></a>           
@@ -57,7 +57,6 @@
             <button class="btn btn-primary btn-sm btn-submit " type="submit" id="right" style="color:white;">
               Add
             </button>
-            <br>
             <!-- <button type = "submit" class="btn-large btn-submit">Submit</button> -->
           </form>
           <!-- <div class="Upcard" >

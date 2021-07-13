@@ -3,7 +3,7 @@
 
 </div>
 
-<form #form="ngForm">
+<form #form="ngForm" name="campaignForm" (ngSubmit)="OnSubmit(form,'patient')">
     <input name="id" type="hidden" [value]="service.Patient.id" (submit)="OnSubmit(form,'patient')" />
     <ngb-tabset #t="ngbTabset">
 
@@ -70,11 +70,13 @@
                                             </li><br>
 
                                         </ul>
+                                        <!-- <div *ngIf = "form.submitted && .errors?.required" class="text text-danger pl-2 pr-2"></div> -->
                                     </th>
                                 </tr>
                             </thead>
                         </table>
-                        
+                        <div *ngIf="form.submitted && screening.errors?.required" class="text-sm text-danger pl-2 pr-2">
+                            Choose Exam Reason !!</div>
 
                     </div>
 
@@ -88,7 +90,8 @@
                             [(ngModel)]="service.Patient.generalInfo.examDate" required />
 
                     </div>
-
+                    <div *ngIf="form.submitted && examDate.errors?.required" class="text-sm text-red pl-2 pr-2">
+                        Enter Exam Date</div>
                 </div>
 
 
@@ -171,7 +174,8 @@
                 </h3>
 
                 <!-- <div class="row justify-content-center" > -->
-                <div class="row justify-content-center" *ngIf="service.Patient.generalInfo.personalHistoryOfBreastCancer == true">
+                <div class="row justify-content-center"
+                    *ngIf="service.Patient.generalInfo.personalHistoryOfBreastCancer == true">
 
 
 
@@ -855,7 +859,7 @@
             <ng-template ngbTabContent>
                 <div class="pl-lg-4">
                     <div class="row">
-                        <div class="col col-lg-6">
+                        <div class="col-lg-6">
                             <div class="form-group focused">
                                 <h5 class="form-control-alternative" for="Mammo-history" style="margin-right: 15px;">
                                     BIRADS Categories
@@ -867,7 +871,9 @@
                                     <option *ngFor="let item of BiRadslist" value="{{item.id}}">{{item.name}}
                                     </option>
                                 </select>
-                                
+                                <div *ngIf="form.submitted && biRadsId.errors?.required"
+                                    class="text-sm text-red pl-2 pr-2">
+                                    Please select Birads</div>
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -881,7 +887,9 @@
                                     <option *ngFor="let item of RecommendationList" value="{{item.id}}">{{item.name}}
                                     </option>
                                 </select>
-                               
+                                <div *ngIf="form.submitted && recommendationId.errors?.required"
+                                    class="text-sm text-red pl-2 pr-2">
+                                    Please select your Recommendation</div>
                             </div>
                         </div>
                     </div>
@@ -894,7 +902,8 @@
                                         name="recommendationText" #recommendationText="ngModel"
                                         [(ngModel)]="service.Patient.finalAssessment.recommendationText"></textarea>
                                 </div>
-                                
+                                <!-- <div *ngIf="form.submitted && recommendationText.errors?.required" class="text-sm text-red pl-2 pr-2">
+                                    Please select Birads</div> -->
                             </div>
                         </div>
                     </div>
@@ -919,17 +928,17 @@
 
                     <div class="card-footer text-muted">
                         <div class="clearfix">
-                           
+                            
                             <div class=" col-md-12 bg-light text-right">
-                                <button href="#!" type="submit" (click)="OnSubmit(form,'Patient')"
-                                    class="btn btn-primary btn-sm float-right ml-2">Save</button>
+                                <!-- <button href="#!" type="submit" (click)="OnSubmit(form,'Patient')"
+                                    class="btn btn-primary btn-sm float-right ml-2">Save</button> -->
+                                <!-- <button href="/dash/report" type="submit" class="btn btn-sm btn-primary">Show Report</button> -->
                                 <button type="submit" class="btn btn-sm btn-primary float-right "
                                     (click)="onClick('/dash/report',service.Patient.id)">Show Report</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                
                 <div class="form-group float-left mb-2">
                     <button class="btn-sm btn-primary" (click)="t.select('Clinical-tab')">Previous</button>
                 </div>
